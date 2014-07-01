@@ -1,0 +1,19 @@
+{
+  "name": "route4me-node",
+  "version": "0.1.0",
+  "description": "Route4me api sdk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/route4me/route4me-node"
+  },
+  "author": "Igor S. <igor@route4me.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/route4me/route4me-node/issues"
+  },
+  "homepage": "https://github.com/route4me/route4me-node"
+}
