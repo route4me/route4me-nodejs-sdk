@@ -1,7 +1,6 @@
 var expect = require('chai').expect
-  , route4me = require('../../lib/route4me')('11111111111111111111111111111111');
-
-route4me.setBaseUrl('http://staging.route4me.com:8080');
+  , utils = require('../utils')
+  , route4me = utils.route4me;
 
 describe('Route API', function() {
   it("should return right methods", function(done) {
