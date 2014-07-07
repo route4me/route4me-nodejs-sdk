@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/route4me/route4me-node",
   "dependencies": {
-    "requests": "0.0.1"
+    "request": "^2.36.0"
   },
   "devDependencies": {
     "chai": "^1.9.1",
