@@ -15,7 +15,6 @@ function getAddresses () {
     },
     {
       address: "6202 Blackstone Blvd, Fredericksburg, VA 22407",
-      is_depot: false,
       lat: 38.2240219116,
       lng: -77.5488815308,
       time_window_start: 32400,
@@ -23,7 +22,6 @@ function getAddresses () {
     },
     {
       address: "10700 Heatherwood Dr, Spotsylvania, VA 22553",
-      is_depot: false,
       lat: 38.2465057373,
       lng: -77.5649108887,
       time_window_start: 14400,
@@ -31,7 +29,6 @@ function getAddresses () {
     },
     {
       address: "10416 Rolling Ridge Dr, Spotsylvania, VA 22553",
-      is_depot: false,
       lat: 38.2465667725,
       lng: -77.5721282959,
       time_window_start: 57600,
@@ -39,7 +36,6 @@ function getAddresses () {
     },
     {
       address: "10609 Mystic Pointe Dr, Fredericksburg, VA 22407",
-      is_depot: false,
       lat: 38.2513427734,
       lng: -77.5993652344,
       time_window_start: 28800,
@@ -48,14 +44,18 @@ function getAddresses () {
   ];
 }
 
-exports.route4me = route4me;
-exports.getAddresses = getAddresses;
+exports.createRoute = function(parameters, callback) {
+  var args = [].slice.call(arguments);
+  var callback = typeof args[args.length - 1] === 'function' && args.pop();
+  var parameters = args[args.length - 1].toString() === '[object Object]' ? args.pop() : { algorithm_type: 1 };
 
-exports.createRoute = function(callback) {
   var params = {
     addresses: getAddresses()
-  , parameters: { algorithm_type: 1 }
+  , parameters: parameters
   };
 
   route4me.OptimizationProblem.optimize(params, callback);
-}
+};
+
+exports.route4me = route4me;
+exports.getAddresses = getAddresses;
