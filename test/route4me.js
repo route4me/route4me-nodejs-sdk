@@ -27,4 +27,12 @@ describe('Route4me', function() {
     expect(route4me.url_base).to.equal('http://support.route4me.com');
     done();
   });
+
+  it("should return api_key", function(done){
+    var route4me = new Route4me('22222222222222222222222222222222');
+
+    expect(route4me.getApiKey()).to.equal('22222222222222222222222222222222');
+    done();
+  });
+
 });
