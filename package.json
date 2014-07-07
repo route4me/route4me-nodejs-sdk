@@ -1,10 +1,10 @@
 {
   "name": "route4me-node",
   "version": "0.1.0",
-  "description": "Route4me api sdk",
-  "main": "index.js",
+  "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
+  "main": "lib/route4me.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha -R spec --timeout 30000"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,9 @@
   "homepage": "https://github.com/route4me/route4me-node",
   "dependencies": {
     "requests": "0.0.1"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.20.1"
   }
 }
