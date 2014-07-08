@@ -4,7 +4,7 @@
   "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
   "main": "lib/route4me.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha $(find test -name '*_test.js') -R spec --timeout 30000"
+    "test": "./node_modules/mocha/bin/mocha $(find test -name '*_test.js') -R spec --timeout 60000"
   },
   "repository": {
     "type": "git",
