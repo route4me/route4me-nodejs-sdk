@@ -44,10 +44,10 @@ function getAddresses () {
   ];
 }
 
-exports.createRoute = function(parameters, callback) {
+exports.createRoute = function() {
   var args = [].slice.call(arguments);
   var callback = typeof args[args.length - 1] === 'function' && args.pop();
-  var parameters = args[args.length - 1].toString() === '[object Object]' ? args.pop() : { algorithm_type: 1 };
+  var parameters = args[args.length - 1] === '[object Object]' ? args.pop() : { algorithm_type: 1 };
 
   var params = {
     addresses: getAddresses()
