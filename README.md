@@ -1,6 +1,8 @@
 Route4Me NODEJS SDK
 -------------------
 
+Access Route4Me's logistics-as-a-service API using our Node.js SDK
+
 ## Installation
 
 ```
