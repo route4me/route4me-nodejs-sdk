@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/route4me/route4me-node/issues"
   },
-  "homepage": "https://github.com/route4me/route4me-node",
+  "homepage": "http://route4me.com",
   "dependencies": {
     "request": "^2.36.0",
     "underscore": "^1.6.0"
