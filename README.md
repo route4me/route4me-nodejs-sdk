@@ -6,7 +6,7 @@ Access Route4Me's logistics-as-a-service API using our Node.js SDK
 ## Installation
 
 ```
-npm install --save route4me
+npm install --save route4me-node
 ```
 
 ## Usage example
