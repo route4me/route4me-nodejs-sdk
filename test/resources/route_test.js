@@ -6,14 +6,14 @@ var r = null;
 
 describe('Route API', function() {
   before(function(done) {
-    var params = { disable_optimization: true };
+    var params = {
+      algorithm_type: 1
+    , disable_optimization: false
+    };
 
     utils.createRoute(params, function(err, optimization) {
-      var problem_id = optimization.optimization_problem_id;
-      route4me.OptimizationProblem.get(problem_id, function(err, problem) {
-        r = problem['routes'][0];
-        done();
-      });
+      r = optimization['routes'][0];
+      done();
     });
   });
 
