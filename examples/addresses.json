@@ -1,0 +1,410 @@
+[
+  {
+    "lng": -85.757308,
+    "lat": 38.251698,
+    "is_depot": true,
+    "time": 300,
+    "sequence_no": 0,
+    "address": "455 S 4th St, Louisville, KY 40202"
+  },
+  {
+    "lng": -85.793846,
+    "lat": 38.141598,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 1,
+    "address": "1604 PARKRIDGE PKWY, Louisville, KY, 40214"
+  },
+  {
+    "lng": -85.786514,
+    "lat": 38.202496,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 2,
+    "address": "1407 MCCOY, Louisville, KY, 40215"
+  },
+  {
+    "lng": -85.774864,
+    "lat": 38.178844,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 3,
+    "address": "4805 BELLEVUE AVE, Louisville, KY, 40215"
+  },
+  {
+    "lng": -85.821121,
+    "lat": 38.248684,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 4,
+    "address": "730 CECIL AVENUE, Louisville, KY, 40211"
+  },
+  {
+    "lng": -85.800034,
+    "lat": 38.251923,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 5,
+    "address": "650 SOUTH 29TH ST UNIT 315, Louisville, KY, 40211"
+  },
+  {
+    "lng": -85.824638,
+    "lat": 38.176067,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 6,
+    "address": "4629 HILLSIDE DRIVE, Louisville, KY, 40216"
+  },
+  {
+    "lng": -85.775558,
+    "lat": 38.179806,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 7,
+    "address": "4738 BELLEVUE AVE, Louisville, KY, 40215"
+  },
+  {
+    "lng": -85.815094,
+    "lat": 38.259335,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 8,
+    "address": "318 SO. 39TH STREET, Louisville, KY, 40212"
+  },
+  {
+    "lng": -85.785118,
+    "lat": 38.179253,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 9,
+    "address": "1324 BLUEGRASS AVE, Louisville, KY, 40215"
+  },
+  {
+    "lng": -85.792854,
+    "lat": 38.162472,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 10,
+    "address": "7305 ROYAL WOODS DR, Louisville, KY, 40214"
+  },
+  {
+    "lng": -85.783966,
+    "lat": 38.229584,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 11,
+    "address": "1661 W HILL ST, Louisville, KY, 40210"
+  },
+  {
+    "lng": -85.822594,
+    "lat": 38.210606,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 12,
+    "address": "3222 KINGSWOOD WAY, Louisville, KY, 40216"
+  },
+  {
+    "lng": -85.796783,
+    "lat": 38.153767,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 13,
+    "address": "1922 PALATKA RD, Louisville, KY, 40214"
+  },
+  {
+    "lng": -85.796852,
+    "lat": 38.235847,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 14,
+    "address": "1314 SOUTH 26TH STREET, Louisville, KY, 40210"
+  },
+  {
+    "lng": -85.789032,
+    "lat": 38.218662,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 15,
+    "address": "2135 MCCLOSKEY AVENUE, Louisville, KY, 40210"
+  },
+  {
+    "lng": -85.781387,
+    "lat": 38.206154,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 16,
+    "address": "1409 PHYLLIS AVE, Louisville, KY, 40215"
+  },
+  {
+    "lng": -85.839149,
+    "lat": 38.187511,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 17,
+    "address": "4504 SUNFLOWER AVE, Louisville, KY, 40216"
+  },
+  {
+    "lng": -85.795059,
+    "lat": 38.241405,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 18,
+    "address": "2512 GREENWOOD AVE, Louisville, KY, 40210"
+  },
+  {
+    "lng": -85.863319,
+    "lat": 38.166065,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 19,
+    "address": "5500 WILKE FARM AVE, Louisville, KY, 40216"
+  },
+  {
+    "lng": -85.786201,
+    "lat": 38.193283,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 20,
+    "address": "3640 LENTZ AVE, Louisville, KY, 40215"
+  },
+  {
+    "lng": -85.780037,
+    "lat": 38.17952,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 21,
+    "address": "1020 BLUEGRASS AVE, Louisville, KY, 40215"
+  },
+  {
+    "lng": -85.814156,
+    "lat": 38.26498,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 22,
+    "address": "123 NORTH 40TH ST, Louisville, KY, 40212"
+  },
+  {
+    "lng": -85.802867,
+    "lat": 38.151072,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 23,
+    "address": "7315 ST ANDREWS WOODS CIRCLE UNIT 104, Louisville, KY, 40214"
+  },
+  {
+    "lng": -85.849937,
+    "lat": 38.182594,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 24,
+    "address": "3210 POPLAR VIEW DR, Louisville, KY, 40216"
+  },
+  {
+    "lng": -85.811447,
+    "lat": 38.1754,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 25,
+    "address": "4519 LOUANE WAY, Louisville, KY, 40216"
+  },
+  {
+    "lng": -85.798279,
+    "lat": 38.161839,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 26,
+    "address": "6812 MANSLICK RD, Louisville, KY, 40214"
+  },
+  {
+    "lng": -85.788353,
+    "lat": 38.172031,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 27,
+    "address": "1524 HUNTOON AVENUE, Louisville, KY, 40215"
+  },
+  {
+    "lng": -85.779816,
+    "lat": 38.209663,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 28,
+    "address": "1307 LARCHMONT AVE, Louisville, KY, 40215"
+  },
+  {
+    "lng": -85.791962,
+    "lat": 38.26844,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 29,
+    "address": "434 N 26TH STREET #2, Louisville, KY, 40212"
+  },
+  {
+    "lng": -85.80629,
+    "lat": 38.250397,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 30,
+    "address": "678 WESTLAWN ST, Louisville, KY, 40211"
+  },
+  {
+    "lng": -85.790421,
+    "lat": 38.248882,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 31,
+    "address": "2308 W BROADWAY, Louisville, KY, 40211"
+  },
+  {
+    "lng": -85.794257,
+    "lat": 38.233579,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 32,
+    "address": "2332 WOODLAND AVE, Louisville, KY, 40210"
+  },
+  {
+    "lng": -85.783928,
+    "lat": 38.239697,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 33,
+    "address": "1706 WEST ST. CATHERINE, Louisville, KY, 40210"
+  },
+  {
+    "lng": -85.792397,
+    "lat": 38.216465,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 34,
+    "address": "1699 WATHEN LN, Louisville, KY, 40216"
+  },
+  {
+    "lng": -85.831787,
+    "lat": 38.186245,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 35,
+    "address": "2416 SUNSHINE WAY, Louisville, KY, 40216"
+  },
+  {
+    "lng": -85.798355,
+    "lat": 38.158466,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 36,
+    "address": "6925 MANSLICK RD, Louisville, KY, 40214"
+  },
+  {
+    "lng": -85.785082,
+    "lat": 38.212438,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 37,
+    "address": "2707 7TH ST, Louisville, KY, 40215"
+  },
+  {
+    "lng": -85.826668,
+    "lat": 38.179394,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 38,
+    "address": "2014 KENDALL LN, Louisville, KY, 40216"
+  },
+  {
+    "lng": -85.812012,
+    "lat": 38.273354,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 39,
+    "address": "612 N 39TH ST, Louisville, KY, 40212"
+  },
+  {
+    "lng": -85.786781,
+    "lat": 38.261703,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 40,
+    "address": "2215 ROWAN ST, Louisville, KY, 40212"
+  },
+  {
+    "lng": -85.78653,
+    "lat": 38.241611,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 41,
+    "address": "1826 W. KENTUCKY ST, Louisville, KY, 40210"
+  },
+  {
+    "lng": -85.796211,
+    "lat": 38.224716,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 42,
+    "address": "1810 GREGG AVE, Louisville, KY, 40210"
+  },
+  {
+    "lng": -85.825836,
+    "lat": 38.191753,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 43,
+    "address": "4103 BURRRELL DRIVE, Louisville, KY, 40216"
+  },
+  {
+    "lng": -85.823463,
+    "lat": 38.259903,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 44,
+    "address": "359 SOUTHWESTERN PKWY, Louisville, KY, 40212"
+  },
+  {
+    "lng": -85.792109,
+    "lat": 38.252781,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 45,
+    "address": "2407 W CHESTNUT ST, Louisville, KY, 40211"
+  },
+  {
+    "lng": -85.786658,
+    "lat": 38.257616,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 46,
+    "address": "225 S 22ND ST, Louisville, KY, 40212"
+  },
+  {
+    "lng": -85.786072,
+    "lat": 38.202122,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 47,
+    "address": "1404 MCCOY AVE, Louisville, KY, 40215"
+  },
+  {
+    "lng": -85.799438,
+    "lat": 38.270061,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 48,
+    "address": "117 FOUNT LANDING CT, Louisville, KY, 40212"
+  },
+  {
+    "lng": -85.7798,
+    "lat": 38.145851,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 49,
+    "address": "5504 SHOREWOOD DRIVE, Louisville, KY, 40214"
+  },
+  {
+    "lng": -85.780251,
+    "lat": 38.211025,
+    "is_depot": false,
+    "time": 300,
+    "sequence_no": 50,
+    "address": "1406 CENTRAL AVE, Louisville, KY, 40208"
+  }
+]
