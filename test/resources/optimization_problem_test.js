@@ -31,7 +31,7 @@ describe('Optimization API', function () {
       expect(err).to.be.null;
       expect(problem).to.be.an('object');
       expect(problem.optimization_problem_id).to.be.an('string');
-      expect(problem.state).to.equal(1);
+      expect(problem.state).to.equal(4);
 
       done();
     });
@@ -57,7 +57,7 @@ describe('Optimization API', function () {
       expect(err).to.be.null;
       expect(problem).to.be.an('object');
       expect(problem.optimization_problem_id).to.be.an('string');
-      expect(problem.state).to.equal(1);
+      expect(problem.state).to.equal(4);
       expect(problem.parameters.rt).to.equal(true);
 
       done();
@@ -85,7 +85,7 @@ describe('Optimization API', function () {
       expect(err).to.be.null;
       expect(problem).to.be.an('object');
       expect(problem.optimization_problem_id).to.be.an('string');
-      expect(problem.state).to.equal(2);
+      expect(problem.state).to.equal(4);
 
       done();
     });
@@ -104,7 +104,7 @@ describe('Optimization API', function () {
       expect(err).to.be.null;
       expect(problem).to.be.an('object');
       expect(problem.optimization_problem_id).to.be.an('string');
-      expect(problem.state).to.equal(1);
+      expect(problem.state).to.equal(4);
 
       done();
     });
