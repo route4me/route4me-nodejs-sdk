@@ -2,7 +2,8 @@ var expect = require('chai').expect
   , utils = require('../utils')
   , route4me = utils.route4me;
 
-var r = null;
+var r = null
+  , r2 = null;
 
 describe('Route API', function() {
   before(function(done) {
@@ -13,7 +14,11 @@ describe('Route API', function() {
 
     utils.createRoute(params, function(err, optimization) {
       r = optimization['routes'][0];
-      done();
+
+      utils.createRoute(params, function(err, optimization) {
+        r2 = optimization['routes'][0];
+        done();
+      });
     });
   });
 
@@ -29,7 +34,7 @@ describe('Route API', function() {
       expect(err).to.be.null;
       expect(route).to.contain.keys(['route_id', 'member_id']);
       expect(route.route_id).to.equal(r.route_id);
-      expect(route.member_id).to.equal('1');
+      expect(route.member_id).to.equal(1);
 
       done();
     });
@@ -38,7 +43,7 @@ describe('Route API', function() {
   it("should return routes info by list of route_id", function(done) {
     var route_ids = [
       r.route_id
-    , '6D756FDB0830F26731EE05AA175CBB62'
+    , r2.route_id
     ];
 
     route4me.Route.get(route_ids, function (err, routes) {
