@@ -1,6 +1,8 @@
 Route4Me NODEJS SDK
 -------------------
 
+[![Build Status](https://travis-ci.org/route4me/route4me-nodejs-sdk.svg?branch=master)](https://travis-ci.org/route4me/route4me-nodejs-sdk)
+
 Access Route4Me's logistics-as-a-service API using our Node.js SDK
 
 ## Installation
