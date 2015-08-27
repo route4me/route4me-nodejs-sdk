@@ -1,8 +1,6 @@
 var api_key = '11111111111111111111111111111111'
   , route4me = require('../lib/route4me')(api_key);
 
-route4me.setBaseUrl('http://staging.route4me.com:8080');
-
 function getAddresses () {
   return [
     {
