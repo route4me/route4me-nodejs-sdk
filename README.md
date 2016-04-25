@@ -172,7 +172,7 @@ Route4Me provides solutions for different types of routes:
 
 ### Single depot, Single Driver
 
-Single Depot, Single Driver is particular case of Optimization Problem of VRP (Vehicle Routing Problem), in which vehicle departs from the depot and visits a set of customers.
+Single Depot, Single Driver is particular case of an Optimization Problem of VRP (Vehicle Routing Problem), in which a vehicle departs from a depot and visits a set of customers.
 
 See video tutorial at [Single Driver, Single Depot](http://support.route4me.com/route-planning-help.php?id=manual0:tutorial2:chapter1:subchapter1)
 
@@ -182,7 +182,7 @@ see detailed description of parameters and sample values [here] (https://www.rou
 
 ### Single Driver Route 10 Stops
 
-Single Depot, Single Driver and 10 stops is particular case of Optimization Problem, in which vehicle departs from the depot, visits 10 stops ends in the 10th stop.
+Single Depot, Single Driver and 10 stops is particular case of an Optimization Problem, in which a vehicle departs from a depot, visits 10 stops and ends exactly in the 10th stop.
 
 Required parameters: addresses, api_key, algorithm_types.
 
@@ -190,7 +190,7 @@ see detailed description of parameters and sample values [here] (https://www.rou
 
 ### Single Driver Round Trip
 
-Single Driver Round Trip is particular case of Optimization Problem, in which vehicle departs from the depot, visits a set of customers and ends it's routes in the depot.
+Single Driver Round Trip is particular case of an Optimization Problem, in which a vehicle departs from a depot, visits a set of customers and ends it's routes in the depot.
 
 Required parameters: addresses, api_key, algorithm_types.
 
@@ -198,7 +198,7 @@ see detailed description of parameters and sample values [here] (https://www.rou
 
 ### Single Depot, Multiple Driver
 
-Single Depot, Multiple Driver is particular case of Optimization Problem, in which multiple vehicles depart from the depot, visit a set of customers and end their routes in the depot.
+Single Depot, Multiple Driver is particular case of an Optimization Problem, in which multiple vehicles depart from a depot, visit a set of customers and end their routes in the depot.
 
 See video tutorial at [Single Depot, Multiple Driver](http://support.route4me.com/route-planning-help.php?id=manual0:tutorial2:chapter1:subchapter2)
 
@@ -208,7 +208,7 @@ see detailed description of parameters and sample values [here] (https://www.rou
 
 ### Single Depot, Multiple Driver, Time window
 
-Single Depot, Multiple Driver, Time window is particular case of Optimization Problem with time constraints, in which multiple vehicles depart from the depot, visit a set of customers and end their routes in the depot.
+Single Depot, Multiple Driver, Time window is particular case of an Optimization Problem with time constraints, in which multiple vehicles depart from a depot, visit a set of customers and end their routes in the depot.
 
 Required parameters: addresses, api_key, algorithm_types.
 
@@ -216,7 +216,7 @@ see detailed description of parameters and sample values [here] (https://www.rou
 
 ### Multiple Depot, Multiple Driver
 
-Multiple Depot, Multiple Driver is particular case of Optimization Problem, in which multiple vehicles depart from the multiple depot, visit a set of customers and end their routes in the depots.
+Multiple Depot, Multiple Driver is particular case of an Optimization Problem, in which multiple vehicles depart from the multiple depot, visit a set of customers and end their routes in the depots.
 
 See video tutorial at [Multiple Depot, Multiple](http://support.route4me.com/route-planning-help.php?id=manual0:tutorial2:chapter2:subchapter1)
 
@@ -226,7 +226,7 @@ see detailed description of parameters and sample values [here] (https://www.rou
 
 ### Multiple Depot, Multiple Driver, Time window
 
-Multiple Depot, Multiple Driver, Time window is particular case of Optimization Problem  with time constraints, in which multiple vehicles depart from the multiple depot, visit a set of customers and end their routes in the depots.
+Multiple Depot, Multiple Driver, Time window is particular case of an Optimization Problem with time constraints, in which multiple vehicles depart from the multiple depot, visit a set of customers and end their routes in the depots.
 
 See video tutorial at [Multiple Depot, Multiple Driver, Time window](http://support.route4me.com/route-planning-help.php?id=manual0:tutorial2:chapter2:subchapter2)
 
