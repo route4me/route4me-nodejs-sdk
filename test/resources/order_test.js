@@ -4,8 +4,6 @@ var expect = require('chai').expect
 
 const Order = route4me.Order;
 
-route4me.setBaseUrl('http://igor.route4me.com');
-
 var order_id = null;
 var day_added_YYMMDD = null;
 var scheduled_for_YYMMDD = '2016-06-16';
