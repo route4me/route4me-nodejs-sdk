@@ -24,7 +24,7 @@ Order.new(order_data, function(err, response_json) {
     throw new Error('Order is undefined');
   }
 
-  // Prinf order api response
+  // Print order api response
   console.log('Order data:', response_json);
 
   // Update order
