@@ -31,7 +31,10 @@ install:
   - npm config set spin false
   # install modules
   - npm install
-  - npm install mocha -G
+
+  # AppVeyor SPECIFIC:
+  - npm install --global mocha
+  - npm install --global mocha-appveyor-reporter
 
 # Post-install test scripts.
 test_script:
@@ -40,7 +43,7 @@ test_script:
   - npm --version
   # run tests
   # - npm test # not a crossplatform solution..
-  - mocha
+  - mocha --reporter mocha-appveyor-reporter
 
 # Don't actually build.
 build: off
