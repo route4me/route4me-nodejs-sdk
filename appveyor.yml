@@ -38,7 +38,8 @@ test_script:
   - node --version
   - npm --version
   # run tests
-  - npm test
+  # - npm test # not a crossplatform solution..
+  - node_modules\.bin\mocha
 
 # Don't actually build.
 build: off
