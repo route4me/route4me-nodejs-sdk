@@ -9,10 +9,9 @@ sudo: false
 language: node_js
 
 node_js:
-  - node
   - 4
   - 6
-  - iojs
+  # - iojs # version 3.3, unsupported...
   - 7
 
 matrix:
@@ -29,6 +28,7 @@ before_install:
 
 install:
   - npm install -g npm
+  - npm install
   # - npm install -g gulp
   - npm install -g codecov
   - npm install -g bithound
