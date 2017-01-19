@@ -1,0 +1,51 @@
+# =========================================
+# javascript NPM-ignore rules
+# =========================================
+
+# place per-project settings here
+
+# =========================================
+# common part
+# =========================================
+# PRIVATE files
+.env
+.npmrc
+.node_repl_history
+
+# dependencies
+.npm
+/node_modules
+/bower_components
+
+# compiled output
+/dist
+/tmp
+/build
+
+# Coverage directory used by tools like istanbul
+/coverage
+/lib-cov
+
+npm-debug.log*
+/logs
+*.log
+testem.log
+
+# =========================================
+
+.github/
+test/
+CONTRIBUTING.md
+CHANGELOG.md
+README.md
+HEADER
+.bithoundrc
+.codeclimate.yml
+codecov.yml
+.editorconfig
+.eslintignore
+.eslintrc.js
+.gitignore
+.node-inspectorrc
+.travis.yml
+gulpfile.js
