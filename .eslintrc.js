@@ -8,6 +8,8 @@ exports = module.exports = {
 		// code style
 		"indent": ["warn", "tab"],
 		"no-tabs": "off",
+		"semi": ["error", "never"],
+		"no-multi-spaces": "off",	// TODO: set strict rule
 
 		// double quotes (JSON love ", and not ')
 		// and we like to copypaste time to time
