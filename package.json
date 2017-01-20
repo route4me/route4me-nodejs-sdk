@@ -4,16 +4,46 @@
   "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
   "main": "lib/route4me.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha $(find test -name '*_test.js') -R spec --timeout 60000"
+    "test": "`npm bin`/mocha",
+    "lint": "`npm bin`/eslint ./",
+    "coverage": "`npm bin`/istanbul cover `npm bin`/_mocha -- --reporter min"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/route4me/route4me-node"
   },
-  "author": "Igor S. <igor@route4me.com>",
+  "keywords": [
+    "route4me",
+    "route",
+    "routing",
+    "route optimization",
+    "API",
+    "route planner",
+    "courier",
+    "API client",
+    "SDK"
+  ],
+  "author": {
+    "name": "Igor S.",
+    "email": "igor@route4me.com"
+  },
+  "contributors": [
+    {
+      "name": "Koryukov Maksim",
+      "email": "maxkoryukov@gmail.com"
+    },
+    {
+      "name": "Igor S.",
+      "email": "igor@route4me.com"
+    }
+  ],
+  "engines": {
+    "node": ">=4.0.0",
+    "npm": ">=3.0.0"
+  },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/route4me/route4me-node/issues"
+    "url": "https://github.com/route4me/route4me-nodejs-sdk/issues"
   },
   "homepage": "http://route4me.com",
   "dependencies": {
@@ -21,7 +51,13 @@
     "underscore": "^1.6.0"
   },
   "devDependencies": {
-    "chai": "^1.9.1",
-    "mocha": "^1.20.1"
+    "chai": "^3.5.0",
+    "eslint": "^3.13.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0"
   }
 }
