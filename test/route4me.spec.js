@@ -1,37 +1,33 @@
-let expect = require("chai").expect,
-	Route4me = require("../lib/route4me");
+const Route4Me = require("../lib/route4me")
 
-describe("Route4me", () => {
-	it("should run without new", (done) => {
-		const route4me = Route4me("11111111111111111111111111111111");
+const testApiKey = "11111111111111111111111111111111"
 
-		expect(route4me).to.contain.keys(["Track", "Route", "OptimizationProblem", "api_key", "url_base"]);
-		expect(route4me.api_key).to.equal("11111111111111111111111111111111");
-		expect(route4me.url_base).to.equal("http://route4me.com");
-		done();
-	});
+describe("route4me.spec", () => {
 
-	it("should run with new", (done) => {
-		const route4me = new Route4me("22222222222222222222222222222222");
+	it("should run with new", () => {
+		const route4me = new Route4Me(testApiKey)
 
-		expect(route4me).to.contain.keys(["Track", "Route", "OptimizationProblem", "api_key", "url_base"]);
-		expect(route4me.api_key).to.equal("22222222222222222222222222222222");
-		expect(route4me.url_base).to.equal("http://route4me.com");
-		done();
-	});
+		expect(route4me).to.be.an('object')
+		expect(route4me).to.be.an.instanceof(Route4Me)
 
-	it("should change base_url", (done) => {
-		const route4me = new Route4me("22222222222222222222222222222222");
+		//expect(route4me.url_base).to.equal("http://route4me.com")
+	})
 
-		route4me.setBaseUrl("http://support.route4me.com");
-		expect(route4me.url_base).to.equal("http://support.route4me.com");
-		done();
-	});
+	describe("call constructor with wrong (empty) apiKey", () => {
 
-	it("should return api_key", (done) => {
-		const route4me = new Route4me("22222222222222222222222222222222");
+		[null, undefined, false, ''].forEach( apiKey => {
 
-		expect(route4me.getApiKey()).to.equal("22222222222222222222222222222222");
-		done();
-	});
-});
+			it(`should raise when apiKey=${apiKey}`, () => {
+				const fn = () => new Route4Me(apiKey)
+				expect(fn).to.throw(/apikey is not set/i)
+			})
+		})
+	})
+
+	describe("methods", () => {
+		it("getOptimizations", done => {
+			const route4me = new Route4Me(testApiKey)
+			route4me.getOptimizations(1,1,1, done)
+		})
+	})
+})
