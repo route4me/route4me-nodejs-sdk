@@ -1,51 +1,51 @@
-var expect = require('chai').expect
-  , utils = require('../utils')
-  , route4me = utils.route4me;
+let expect = require("chai").expect,
+	utils = require("../utils"),
+	route4me = utils.route4me;
 
 const Order = route4me.Order;
 
-var order_id = null;
-var day_added_YYMMDD = null;
-var scheduled_for_YYMMDD = '2016-06-16';
+let order_id = null;
+let day_added_YYMMDD = null;
+let scheduled_for_YYMMDD = "2016-06-16";
 
-describe('Order API', function() {
-  it("Check methods", function(done) {
-    expect(route4me).to.contain.keys('Order');
-    expect(Order).to.contain.keys(['get', 'new', 'update', 'delete']);
-    done();
-  });
+describe("Order API", () => {
+	it("Check methods", (done) => {
+		expect(route4me).to.contain.keys("Order");
+		expect(Order).to.contain.keys(["get", "new", "update", "delete"]);
+		done();
+	});
 
-  it("Create new order", function(done) {
-    var params = {
-      'address_1': "106 Fulton St, Farmingdale, NY 11735, USA",
-      'cached_lat': 40.730730,
-      'cached_lng': -73.459283,
-      'address_alias': 'BK Restaurant #: 17871 (test)',
-      'EXT_FIELD_phone': '(212) 566-5132',
-      'day_scheduled_for_YYMMDD': scheduled_for_YYMMDD
-    };
+	it("Create new order", (done) => {
+		const params = {
+			address_1: "106 Fulton St, Farmingdale, NY 11735, USA",
+			cached_lat: 40.730730,
+			cached_lng: -73.459283,
+			address_alias: "BK Restaurant #: 17871 (test)",
+			EXT_FIELD_phone: "(212) 566-5132",
+			day_scheduled_for_YYMMDD: scheduled_for_YYMMDD,
+		};
 
-    Order.new(params, function(err, json) {
-      expect(err).to.be.null;
-      expect(json).to.contain.keys([
-        'order_id', 'address_1', 'address_alias', 'day_added_YYMMDD', 'day_scheduled_for_YYMMDD', 'cached_lat', 'cached_lng']);
-      expect(json.order_id).to.not.be.empty;
-      expect(json.cached_lat).to.be.equal(40.730730);
-      expect(json.cached_lng).to.be.equal(-73.459283);
-      expect(json.address_1).to.be.equal('106 Fulton St, Farmingdale, NY 11735, USA');
-      expect(json.address_alias).to.be.equal('BK Restaurant #: 17871 (test)');
-      expect(json.EXT_FIELD_phone).to.be.equal('(212) 566-5132');
-      expect(json.day_scheduled_for_YYMMDD).to.be.equal(scheduled_for_YYMMDD);
-      expect(json.is_pending).to.be.true;
-      expect(json.is_started).to.be.false;
-      expect(json.is_accepted).to.be.false;
-      expect(json.is_completed).to.be.false;
+		Order.new(params, (err, json) => {
+			expect(err).to.be.null;
+			expect(json).to.contain.keys([
+				"order_id", "address_1", "address_alias", "day_added_YYMMDD", "day_scheduled_for_YYMMDD", "cached_lat", "cached_lng"]);
+			expect(json.order_id).to.not.be.empty;
+			expect(json.cached_lat).to.be.equal(40.730730);
+			expect(json.cached_lng).to.be.equal(-73.459283);
+			expect(json.address_1).to.be.equal("106 Fulton St, Farmingdale, NY 11735, USA");
+			expect(json.address_alias).to.be.equal("BK Restaurant #: 17871 (test)");
+			expect(json.EXT_FIELD_phone).to.be.equal("(212) 566-5132");
+			expect(json.day_scheduled_for_YYMMDD).to.be.equal(scheduled_for_YYMMDD);
+			expect(json.is_pending).to.be.true;
+			expect(json.is_started).to.be.false;
+			expect(json.is_accepted).to.be.false;
+			expect(json.is_completed).to.be.false;
 
-      order_id = json.order_id;
-      day_added_YYMMDD = json.day_added_YYMMDD;
-      done();
-    })
-  });
+			order_id = json.order_id;
+			day_added_YYMMDD = json.day_added_YYMMDD;
+			done();
+		});
+	});
 
   // it("Create new orders", function(done) {
   //   var params = [
@@ -102,110 +102,110 @@ describe('Order API', function() {
   //   })
   // });
 
-  it("All orders", function(done) {
-    Order.get({}, function(err, json) {
-      expect(err).to.be.null;
-      expect(json.results).to.be.instanceof(Array);
-      expect(json.results).to.have.length.above(0);
-      expect(json.total).to.be.above(0);
-      order_id = json.results[0].order_id;
-      scheduled_for_YYMMDD = json.results[0].scheduled_for_YYMMDD;
-      day_added_YYMMDD = json.results[0].day_added_YYMMDD;
+	it("All orders", (done) => {
+		Order.get({}, (err, json) => {
+			expect(err).to.be.null;
+			expect(json.results).to.be.instanceof(Array);
+			expect(json.results).to.have.length.above(0);
+			expect(json.total).to.be.above(0);
+			order_id = json.results[0].order_id;
+			scheduled_for_YYMMDD = json.results[0].scheduled_for_YYMMDD;
+			day_added_YYMMDD = json.results[0].day_added_YYMMDD;
 
-      done();
-    });
-  });
+			done();
+		});
+	});
 
-  it("Orders by query", function(done) {
-    var params = { query: 'Farmingdale' };
+	it("Orders by query", (done) => {
+		const params = { query: "Farmingdale" };
 
-    Order.get(params, function(err, json) {
-      expect(err).to.be.null;
-      expect(json.results).to.be.instanceof(Array);
-      expect(json.results).to.have.length.above(0);
-      expect(json.total).to.be.above(0);
-      done();
-    });
-  });
+		Order.get(params, (err, json) => {
+			expect(err).to.be.null;
+			expect(json.results).to.be.instanceof(Array);
+			expect(json.results).to.have.length.above(0);
+			expect(json.total).to.be.above(0);
+			done();
+		});
+	});
 
-  it("Order by id", function(done) {
-    var params = { order_id: order_id };
+	it("Order by id", (done) => {
+		const params = { order_id };
 
-    Order.get(params, function(err, json) {
-      expect(err).to.be.null;
-      expect(json).to.be.instanceof(Object);
-      expect(json.order_id).to.be.equal(order_id)
-      done();
-    });
-  });
+		Order.get(params, (err, json) => {
+			expect(err).to.be.null;
+			expect(json).to.be.instanceof(Object);
+			expect(json.order_id).to.be.equal(order_id);
+			done();
+		});
+	});
 
-  it("Order by scheduled_for_YYMMDD", function(done) {
-    var params = { scheduled_for_YYMMDD: scheduled_for_YYMMDD };
+	it("Order by scheduled_for_YYMMDD", (done) => {
+		const params = { scheduled_for_YYMMDD };
 
-    Order.get(params, function(err, json) {
-      expect(err).to.be.null;
-      expect(json.results).to.be.instanceof(Array);
-      expect(json.results).to.have.length.above(0);
-      expect(json.total).to.be.above(0);
+		Order.get(params, (err, json) => {
+			expect(err).to.be.null;
+			expect(json.results).to.be.instanceof(Array);
+			expect(json.results).to.have.length.above(0);
+			expect(json.total).to.be.above(0);
 
-      for (var i = 0; i < json.total; i++) {
-        expect(json.results[i].scheduled_for_YYMMDD).to.be.equal(scheduled_for_YYMMDD)
-      }
+			for (let i = 0; i < json.total; i++) {
+				expect(json.results[i].scheduled_for_YYMMDD).to.be.equal(scheduled_for_YYMMDD);
+			}
 
-      done();
-    });
-  });
+			done();
+		});
+	});
 
-  it("Order by day_added_YYMMDD", function(done) {
-    var params = { day_added_YYMMDD: day_added_YYMMDD };
+	it("Order by day_added_YYMMDD", (done) => {
+		const params = { day_added_YYMMDD };
 
-    Order.get(params, function(err, json) {
-      expect(err).to.be.null;
-      expect(json.results).to.be.instanceof(Array);
-      expect(json.results).to.have.length.above(0);
-      expect(json.total).to.be.above(0);
+		Order.get(params, (err, json) => {
+			expect(err).to.be.null;
+			expect(json.results).to.be.instanceof(Array);
+			expect(json.results).to.have.length.above(0);
+			expect(json.total).to.be.above(0);
 
-      for (var i = 0; i < json.total; i++) {
-        expect(json.results[i].day_added_YYMMDD).to.be.equal(day_added_YYMMDD)
-      }
+			for (let i = 0; i < json.total; i++) {
+				expect(json.results[i].day_added_YYMMDD).to.be.equal(day_added_YYMMDD);
+			}
 
-      done();
-    });
-  });
+			done();
+		});
+	});
 
-  it("Update order statuses", function(done) {
-    var params = {
-      order_id: order_id,
-      is_accepted: true,
-      is_started: true,
-      is_completed: true
-    };
+	it("Update order statuses", (done) => {
+		const params = {
+			order_id,
+			is_accepted: true,
+			is_started: true,
+			is_completed: true,
+		};
 
-    Order.update(params, function(err, json) {
-      expect(err).to.be.null;
-      expect(json.is_pending).to.be.true;
-      expect(json.is_started).to.be.true;
-      expect(json.is_accepted).to.be.true;
-      expect(json.is_completed).to.be.true;
+		Order.update(params, (err, json) => {
+			expect(err).to.be.null;
+			expect(json.is_pending).to.be.true;
+			expect(json.is_started).to.be.true;
+			expect(json.is_accepted).to.be.true;
+			expect(json.is_completed).to.be.true;
 
-      done();
-    })
-  });
+			done();
+		});
+	});
 
-  it("Delete order", function(done) {
-    var params = { order_ids: [order_id] };
+	it("Delete order", (done) => {
+		const params = { order_ids: [order_id] };
 
-    Order.delete(params, function(err, json) {
-      expect(err).to.be.null;
-      expect(json.status).to.be.true;
+		Order.delete(params, (err, json) => {
+			expect(err).to.be.null;
+			expect(json.status).to.be.true;
 
-      var params = {order_id: order_id};
-      Order.get(params, function(err) {
-        expect(err).to.be.not.null;
-        expect(err).to.be.instanceof(Error);
-        expect(err.message).to.be.equal('Address not found');
-        done();
-      });
-    })
-  });
+			const params = { order_id };
+			Order.get(params, (err) => {
+				expect(err).to.be.not.null;
+				expect(err).to.be.instanceof(Error);
+				expect(err.message).to.be.equal("Address not found");
+				done();
+			});
+		});
+	});
 });
