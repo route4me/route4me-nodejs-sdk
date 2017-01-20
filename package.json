@@ -47,8 +47,7 @@
   },
   "homepage": "http://route4me.com",
   "dependencies": {
-    "request": "^2.36.0",
-    "underscore": "^1.6.0"
+    "superagent": "^3.3.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
