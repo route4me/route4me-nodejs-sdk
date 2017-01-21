@@ -45,6 +45,6 @@ deploy:
   provider: npm
   api_key: $NPM_API_KEY
   on:
-    # tags: true                            # published only for tags
+    tags: true                            # published only for tags
     node_js: 6                              # published only for one NPM version
     # repo: route4me/route4me-nodejs-sdk    # published only from ONE repo
