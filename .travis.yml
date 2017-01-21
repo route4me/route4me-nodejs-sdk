@@ -40,10 +40,12 @@ script:
   - npm run coverage
   - codecov
   - bithound check git@github.com:$TRAVIS_REPO_SLUG.git
+  - echo $NPM_API_KEY
 
 deploy:
   provider: npm
   api_key: $NPM_API_KEY
+  email: igor@route4me.com
   on:
     tags: true                            # published only for tags
     node_js: 6                              # published only for one NPM version
