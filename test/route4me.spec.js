@@ -23,10 +23,10 @@ describe("route4me.spec", () => {
 		})
 	})
 
-	describe("methods", () => {
-		it("getOptimizations", (done) => {
-			const route4me = new Route4Me(testApiKey)
-			route4me.getOptimizations(1, 1, 1, done)
-		})
-	})
+	// describe("methods", () => {
+	// 	it("getOptimizations", (done) => {
+	// 		const route4me = new Route4Me(testApiKey)
+	// 		route4me.getOptimizations(1, 1, 1, done)
+	// 	})
+	// })
 })
