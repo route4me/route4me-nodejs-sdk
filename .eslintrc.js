@@ -9,7 +9,8 @@ exports = module.exports = {
 		"indent": ["warn", "tab"],
 		"no-tabs": "off",
 		"semi": ["error", "never"],
-		"no-multi-spaces": "off",	// TODO: set strict rule
+		"no-multi-spaces": "off",     // TODO: set strict rule
+		"quote-props": "off",         // TODO: set strict rule
 
 		// double quotes (JSON love ", and not ')
 		// and we like to copypaste time to time
