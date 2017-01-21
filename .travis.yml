@@ -1,8 +1,9 @@
+# =============================================================================
 # Access Route4Me's logistics-as-a-service API using our Node.js SDK
 #
 # Copyright (C) 2016-2017 Route4Me
-
-# HEADER ??
+#
+# =============================================================================
 
 sudo: false
 
@@ -40,7 +41,6 @@ script:
   - npm run coverage
   - codecov
   - bithound check git@github.com:$TRAVIS_REPO_SLUG.git
-  - echo $NPM_API_KEY
 
 deploy:
   provider: npm
@@ -48,5 +48,5 @@ deploy:
   email: igor@route4me.com
   on:
     tags: true                            # published only for tags
-    node_js: 6                              # published only for one NPM version
-    # repo: route4me/route4me-nodejs-sdk    # published only from ONE repo
+    node_js: 6                            # published only for one NPM version
+    repo: route4me/route4me-nodejs-sdk    # published only from ONE repo
