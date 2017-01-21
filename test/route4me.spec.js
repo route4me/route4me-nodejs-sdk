@@ -1,3 +1,5 @@
+"use strict"
+
 const Route4Me = require("../lib/route4me")
 
 const testApiKey = "11111111111111111111111111111111"

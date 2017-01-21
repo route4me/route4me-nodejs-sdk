@@ -1,3 +1,5 @@
+"use strict"
+
 const pkg = require("../")
 
 describe("package.spec", () => {
