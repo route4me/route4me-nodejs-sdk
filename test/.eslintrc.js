@@ -5,5 +5,9 @@ exports = module.exports = {
 	"globals": {
 		"expect": true,
 		"packageRoot": true
+	},
+
+	"rules": {
+		"no-unused-expressions": "off",   // because of `expect(x).to.be.true`
 	}
 }

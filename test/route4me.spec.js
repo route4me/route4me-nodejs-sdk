@@ -1,5 +1,7 @@
 "use strict"
 
+const sinon = require("sinon")
+
 const Route4Me = require("../lib/route4me")
 
 const testApiKey = "11111111111111111111111111111111"
@@ -23,10 +25,25 @@ describe("route4me.spec", () => {
 		})
 	})
 
-	// describe("methods", () => {
-	// 	it("getOptimizations", (done) => {
-	// 		const route4me = new Route4Me(testApiKey)
-	// 		route4me.getOptimizations(1, 1, 1, done)
-	// 	})
-	// })
+	describe("options", () => {
+		describe("logger", () => {
+			it("should use passed logger", () => {
+				const spy = sinon.spy()
+				const testLogger = {
+					debug() { spy("debug") },
+					info() { spy("info") },
+					warn() { spy("warn") },
+					error() { spy("error") },
+				}
+
+				const route4me = new Route4Me(testApiKey, {
+					logger: testLogger,
+				})
+
+				expect(route4me).is.not.null
+				expect(spy.calledWith("debug")).is.true
+				expect(spy.callCount).is.equal(1)
+			})
+		})
+	})
 })
