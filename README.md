@@ -1,12 +1,15 @@
 Access Route4Me's logistics-as-a-service API using our Node.js SDK
 -------------------
 
-[![Build Status](https://travis-ci.org/maxkoryukov/route4me-nodejs-sdk.svg?branch=master)](https://travis-ci.org/maxkoryukov/route4me-nodejs-sdk)
-[![Build status](https://ci.appveyor.com/api/projects/status/l5go7pqd6qddyqwj?svg=true)](https://ci.appveyor.com/project/maxkoryukov/route4me-nodejs-sdk)
+[![Build Status](https://travis-ci.org/route4me/route4me-nodejs-sdk.svg?branch=master)](https://travis-ci.org/route4me/route4me-nodejs-sdk)
 
-[![bitHound Overall Score](https://www.bithound.io/github/maxkoryukov/route4me-nodejs-sdk/badges/score.svg)](https://www.bithound.io/github/maxkoryukov/route4me-nodejs-sdk)
-[![bitHound Dependencies](https://www.bithound.io/github/maxkoryukov/route4me-nodejs-sdk/badges/dependencies.svg)](https://www.bithound.io/github/maxkoryukov/route4me-nodejs-sdk/master/dependencies/npm)
-[![codecov](https://codecov.io/gh/maxkoryukov/route4me-nodejs-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/maxkoryukov/route4me-nodejs-sdk)
+
+[![Build Status](https://travis-ci.org/route4me/route4me-nodejs-sdk.svg?branch=master)](https://travis-ci.org/route4me/route4me-nodejs-sdk)
+[![Build status](https://ci.appveyor.com/api/projects/status/l5go7pqd6qddyqwj?svg=true)](https://ci.appveyor.com/project/route4me/route4me-nodejs-sdk)
+
+[![bitHound Overall Score](https://www.bithound.io/github/route4me/route4me-nodejs-sdk/badges/score.svg)](https://www.bithound.io/github/route4me/route4me-nodejs-sdk)
+[![bitHound Dependencies](https://www.bithound.io/github/route4me/route4me-nodejs-sdk/badges/dependencies.svg)](https://www.bithound.io/github/route4me/route4me-nodejs-sdk/master/dependencies/npm)
+[![codecov](https://codecov.io/gh/route4me/route4me-nodejs-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/route4me/route4me-nodejs-sdk)
 [![NSP Status](https://nodesecurity.io/orgs/route4me/projects/5a353146-e6b4-4bc1-8108-f35517faadde/badge)](https://nodesecurity.io/orgs/route4me/projects/5a353146-e6b4-4bc1-8108-f35517faadde)
 
 ### What does the Route4Me SDK permit me to do?
@@ -97,10 +100,6 @@ The time required to integrate the SDK can be as little as 1 hour or may take se
 
 
 ### Installation and Usage
-
-
-[![Build Status](https://travis-ci.org/route4me/route4me-nodejs-sdk.svg?branch=master)](https://travis-ci.org/route4me/route4me-nodejs-sdk)
-
 
 
 ## Installation

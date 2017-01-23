@@ -1,7 +1,6 @@
 --reporter spec
---timeout 60000
 --recursive
 --check-leaks
 --ui bdd
 --require test/bootstrap
-test/**/*.test.js
+test/**/*.spec.js test/**/*.test.js examples/**/*.no.js

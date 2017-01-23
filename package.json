@@ -1,8 +1,8 @@
 {
   "name": "route4me-node",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
-  "main": "lib/route4me.js",
+  "main": "lib/index",
   "scripts": {
     "test": "`npm bin`/mocha",
     "lint": "`npm bin`/eslint ./",
@@ -47,8 +47,9 @@
   },
   "homepage": "http://route4me.com",
   "dependencies": {
-    "request": "^2.36.0",
-    "underscore": "^1.6.0"
+    "debug": "^2.6.0",
+    "lodash": "^4.17.4",
+    "superagent": "^3.3.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -58,6 +59,8 @@
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
     "istanbul": "^0.4.5",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7",
+    "superagent-mocker": "^0.5.2"
   }
 }
