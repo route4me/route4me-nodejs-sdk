@@ -20,6 +20,6 @@ exports = module.exports = {
 		// and we like to copypaste time to time
 		"quotes": ["warn", "double"],
 
-		"no-underscore-dangle": ["error", { "allowAfterThis": true }],
+		"no-underscore-dangle": "off",
 	}
 }

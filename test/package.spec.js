@@ -18,4 +18,9 @@ describe("package.spec", () => {
 		expect(pkg).have.property("Route4MeError")
 			.and.be.a("function")
 	})
+
+	it("should export a Route4MeApiError", () => {
+		expect(pkg).have.property("Route4MeApiError")
+			.and.be.a("function")
+	})
 })
