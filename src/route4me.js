@@ -6,9 +6,7 @@ const _        = require("lodash")
 const platform = require("platform")
 
 const Optimizations   = require("./resources/optimizations")
-// const Track                 = require("./resources/track")
-// const Route                 = require("./resources/route")
-// const Order                 = require("./resources/order")
+const Vehicles        = require("./resources/vehicles")
 
 const packageJson     = require("./../package.json")
 const utils           = require("./utils")
@@ -68,6 +66,11 @@ class Route4Me {
 		 * @type {Optimizations}
 		 */
 		this.Optimizations = new Optimizations(this)
+		/**
+		 * **Vehicles** related API calls
+		 * @type {Vehicles}
+		 */
+		this.Vehicles = new Vehicles(this)
 
 		this._logger.debug({ msg: "initialized" })
 	}
@@ -103,7 +106,7 @@ class Route4Me {
 	_makeRequest(options, callback) {
 		const method = options.method.toLowerCase()
 		const apiUrl = `${this._baseUrl}/${options.path}`
-		const qs = options.qs || null // {} /* query string */
+		const qs = options.qs ||  {} /* query string */
 		const body = options.body || null // {} /* body */
 		const schemaName = options.schemaName || null
 		const timeouts = {
@@ -115,11 +118,10 @@ class Route4Me {
 
 		debug("sending request", apiUrl, qs)
 		this._logger.info({ msg: "sending request", "url": apiUrl, "queryString": qs })
-
 		request[method](apiUrl)
 			.set("User-Agent", this._userAgent)
 			.query(qs)
-			.query("api_key", this._apiKey)
+			.query({ "api_key": this._apiKey })
 			.timeout(timeouts)
 			.send(body)
 			.type("application/json")

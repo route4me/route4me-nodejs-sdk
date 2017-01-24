@@ -42,7 +42,6 @@ class ILogger {
 class ResponseHandler {
 	constructor(logger, validate, schemaName, callback) {
 		const cb = typeof callback !== "function" ? _.noop : callback
-
 		this._logger = logger
 		this._cb = cb
 
