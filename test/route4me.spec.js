@@ -20,7 +20,7 @@ describe("route4me.spec", () => {
 		[null, undefined, false, ""].forEach((apiKey) => {
 			it(`should raise when apiKey=${apiKey}`, () => {
 				const fn = () => new Route4Me(apiKey)
-				expect(fn).to.throw(/apikey is not set/i)
+				expect(fn).to.throw(/.?apikey.? is not set/i)
 			})
 		})
 	})

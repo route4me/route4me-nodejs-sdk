@@ -30,7 +30,7 @@
 	},
 	"docdash": {
 		"static": true,  // Display the static members inside the navbar
-		"sort": true     // Sort the methods in the navbar
+		"sort": false     // Sort the methods in the navbar
 	}
 
 }
