@@ -2,7 +2,7 @@
 
 const sinon = require("sinon")
 
-const Route4Me = require("../lib/route4me")
+const Route4Me = require("../src/route4me")
 
 const testApiKey = "11111111111111111111111111111111"
 

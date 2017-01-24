@@ -1,7 +1,7 @@
 {
 	"source": {
 		"include": [
-			"./lib",
+			"./src",
 			"./examples"
 		]
 	},

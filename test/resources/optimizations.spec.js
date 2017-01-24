@@ -6,8 +6,8 @@
 const request = require("superagent")
 const saMock  = require("superagent-mocker")(request)
 
-const Optimizations = require("../../lib/resources/optimizations")
-const Route4Me = require("../../lib/route4me")
+const Optimizations = require("../../src/resources/optimizations")
+const Route4Me = require("../../src/route4me")
 
 const testApiKey = "11111111111111111111111111111111"
 

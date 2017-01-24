@@ -2,7 +2,7 @@
   "name": "route4me-node",
   "version": "0.3.0",
   "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
-  "main": "lib/index",
+  "main": "src/",
   "scripts": {
     "test": "`npm bin`/mocha",
     "lint": "`npm bin`/eslint ./",
