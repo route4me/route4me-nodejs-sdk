@@ -27,18 +27,18 @@ class Optimizations {
 	 * @see {@link https://route4me.io/docs/#create-an-optimization Route4Me API}
 	 * @category Optimizations
 	 *
-	 * @param  {jsonschema:Optimization.CreateRequest} params Parameters for new optimization
-	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimization.Response>}  [callback]
+	 * @param  {jsonschema:Optimizations.CreateRequest} params Parameters for new optimization
+	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>}  [callback]
 	 */
 	create(params, callback) {
-		const verror = this.r._validate(params, "Optimization.CreateRequest")
+		const verror = this.r._validate(params, "Optimizations.CreateRequest")
 		if (verror) { return callback(verror) }
 
 		return this.r._makeRequest({
 			method: "POST",
 			path: "api.v4/optimization_problem.php",
 			body: params,
-			schemaName: "Optimization.Response",
+			schemaName: "Optimizations.Response",
 		}, callback)
 	}
 
@@ -50,7 +50,7 @@ class Optimizations {
 	 * @category Optimizations
 	 *
 	 * @param  {string|number} id Optimization Problem ID
-	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimization.Response>} [callback]
+	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>} [callback]
 	 */
 	get(id, callback) {
 		if (typeof id !== "string" && typeof id !== "number") {
@@ -65,7 +65,7 @@ class Optimizations {
 			method: "GET",
 			path: "api.v4/optimization_problem.php",
 			qs,
-			schemaName: "Optimization.Response",
+			schemaName: "Optimizations.Response",
 		}, callback)
 	}
 
@@ -78,7 +78,7 @@ class Optimizations {
 	 * @param {(integer|string|Array.<string>|Array.<integer>)}  states    List of states [1..6]
 	 * @param {integer}                    [limit]    Search limitation
 	 * @param {integer}                    [offset]   Search starting position
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimization.ResponseMany>} [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.ResponseMany>} [callback]
 	 */
 	list(states, limit, offset, callback) {
 		const _states = utils.parseStates(states)
@@ -95,7 +95,7 @@ class Optimizations {
 			method: "GET",
 			path: "api.v4/optimization_problem.php",
 			qs,
-			schemaName: "Optimization.ResponseMany",
+			schemaName: "Optimizations.ResponseMany",
 		}, callback)
 	}
 }
