@@ -62,6 +62,16 @@ class Route4Me {
 		this._validate = typeof opt.validate === "function" ? opt.validate : _.noop
 
 		/**
+		 * Used for validation of input arguments
+		 *
+		 * @since 0.1.7
+		 * @internal
+		 * @method
+		 * @type {module:route4me-node~ValidationCallback}
+		 */
+		this._validateArgs = this._validate
+
+		/**
 		 * **Optimizations** related API calls
 		 * @type {Optimizations}
 		 */

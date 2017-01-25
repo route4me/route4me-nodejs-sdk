@@ -4,8 +4,9 @@
   "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
   "main": "src/",
   "scripts": {
-    "test": "`npm bin`/mocha",
+    "build": "`npm bin`/gulp build",
     "lint": "`npm bin`/gulp lint",
+    "test": "`npm bin`/gulp test",
     "coverage": "`npm bin`/istanbul cover `npm bin`/_mocha -- --reporter min"
   },
   "repository": {

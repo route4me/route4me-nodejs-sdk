@@ -38,7 +38,7 @@ describe("resources/optimizations.spec", () => {
 					expect(res).is.not.null
 					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/optimization_problem.php", {
 						"states": "1,2,3", "limit": "100" },
-						null
+						null,
 					)
 					done()
 				})
@@ -64,7 +64,7 @@ describe("resources/optimizations.spec", () => {
 					expect(res).is.not.null
 					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/optimization_problem.php", {
 						"optimization_problem_id": "3" },
-						null
+						null,
 					)
 					done()
 				})
@@ -113,7 +113,7 @@ describe("resources/optimizations.spec", () => {
 					expect(res).is.not.null
 					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/optimization_problem.php", {
 						"optimization_problem_id": "300",
-					}, null
+					}, null,
 					)
 					done()
 				})
@@ -123,7 +123,7 @@ describe("resources/optimizations.spec", () => {
 		describe("linkAddress", () => {
 			it("should call route4me", (done) => {
 				const id = 123
-				const addresses = [{ "route_destination_id": 11 }]
+				const addresses = [{ "in-body": true, "route_destination_id": 11 }]
 				const reoptimize = false
 
 				resource.linkAddress(id, addresses, reoptimize, (err, res) => {
@@ -132,7 +132,9 @@ describe("resources/optimizations.spec", () => {
 					helper.expectRequest(req, "PUT", "https://route4me.com/api.v4/optimization_problem.php", {
 						"optimization_problem_id": "123",
 						"reoptimize": "0",
-					}, [{ "route_destination_id": 11 }])
+					}, {
+						"0": { "in-body": true, "route_destination_id": 11,
+						} })
 					done()
 				})
 			})
@@ -140,7 +142,7 @@ describe("resources/optimizations.spec", () => {
 
 		describe("unlinkAddress", () => {
 			it("should call route4me", (done) => {
-				const opt_id = 123
+				const opt_id = 987
 				const route_id = 543
 				resource.unlinkAddress(opt_id, route_id, (err, res) => {
 					expect(err).is.null

@@ -7,7 +7,7 @@ const gulpIf = require("gulp-if")
 
 const eslint = require("gulp-eslint")
 const mocha = require("gulp-mocha")
-const size = require('gulp-size')
+const size = require("gulp-size")
 
 const fix = !!argv.fix
 const grep = argv.grep
@@ -26,7 +26,8 @@ const paths = {
 gulp.task("lint", () => {
 	return gulp.src([
 			//"gulpfile.js",
-			"**/.js"
+			"./src/**/*.js",
+			"./test/**/*.js",
 		])
 		.pipe(eslint({
 			fix,
@@ -49,6 +50,6 @@ gulp.task("test", () => {
 
 gulp.task("build:node", () => {
 	return gulp.src("./src/**/*.js")
-		.pipe(size({title: "build:node", showFiles: true}))
+		.pipe(size({ title: "build:node", showFiles: true }))
 		.pipe(gulp.dest("dist/"))
 })
