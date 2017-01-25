@@ -104,7 +104,6 @@ class Route4Me {
 	 * @param {module:route4me-node~RequestCallback}    [callback]
 	 */
 	_makeRequest(options, callback) {
-		const method = options.method.toLowerCase()
 		const apiUrl = `${this._baseUrl}${options.path}`
 		const qs = options.qs ||  {} /* query string */
 		const body = options.body || null // {} /* body */
@@ -112,6 +111,10 @@ class Route4Me {
 		const timeouts = {
 			response: 5000,  // Wait 5 seconds for the server to start sending,
 			deadline: 10000, // but allow 10 seconds to finish loading.
+		}
+		let method = options.method.toLowerCase()
+		if (method === "delete") {
+			method = "del"
 		}
 
 		qs["api_key"] = this._apiKey
