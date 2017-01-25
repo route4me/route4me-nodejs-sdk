@@ -36,7 +36,7 @@ class Route4Me {
 		})
 
 		// TODO: make a decision, whether this param could be configured
-		opt.userAgent = `superagent/3.3.2 (${platform.name}; Route4Me Node/${Route4Me.version})`
+		opt.userAgent = `superagent/3.3.2 (${platform.name} ${platform.version}; Route4Me-${platform.name}/${Route4Me.version}) ${platform.description}`
 
 		debug("init", opt)
 		debug("version", Route4Me.version)
@@ -105,14 +105,16 @@ class Route4Me {
 	 */
 	_makeRequest(options, callback) {
 		const method = options.method.toLowerCase()
-		const apiUrl = `${this._baseUrl}/${options.path}`
+		const apiUrl = `${this._baseUrl}${options.path}`
 		const qs = options.qs ||  {} /* query string */
 		const body = options.body || null // {} /* body */
-		const schemaName = options.schemaName || null
+		const schemaName = options.schemaName
 		const timeouts = {
 			response: 5000,  // Wait 5 seconds for the server to start sending,
 			deadline: 10000, // but allow 10 seconds to finish loading.
 		}
+
+		qs["api_key"] = this._apiKey
 
 		const resHandler = new utils.ResponseHandler(this._logger, this._validate, schemaName, callback)
 
@@ -121,7 +123,6 @@ class Route4Me {
 		request[method](apiUrl)
 			.set("User-Agent", this._userAgent)
 			.query(qs)
-			.query({ "api_key": this._apiKey })
 			.timeout(timeouts)
 			.send(body)
 			.type("application/json")

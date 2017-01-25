@@ -59,15 +59,17 @@ class ResponseHandler {
 	_handleOk(res) {
 		debug("response ok")
 
+		const data = res.body
+
 		if (this._schemaName) {
-			const verror = this._validate(res, this._schemaName)
+			const verror = this._validate(data, this._schemaName)
 			if (verror) {
 				this._logger.error({ "msg": "response validation error", "err": verror })
 				return this._cb(verror)
 			}
 		}
 		this._logger.info({ "msg": "response ok" })
-		return this._cb(null, res)
+		return this._cb(null, data)
 	}
 
 	_handleError(err, res) {

@@ -53,7 +53,9 @@
     "superagent": "^3.3.2"
   },
   "devDependencies": {
+    "ajv": "^4.11.2",
     "chai": "^3.5.0",
+    "chai-json-schema": "^1.4.0",
     "eslint": "^3.13.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.2.0",

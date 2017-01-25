@@ -5,11 +5,13 @@
 
 const request = require("superagent")
 const saMock  = require("superagent-mocker")(request)
+const helper  = require("./helper")
 
 const Optimizations = require("../../src/resources/optimizations")
 const Route4Me = require("../../src/route4me")
 
 const testApiKey = "11111111111111111111111111111111"
+
 
 describe("resources/optimizations.spec", () => {
 	describe("SDK methods", () => {
@@ -20,6 +22,7 @@ describe("resources/optimizations.spec", () => {
 		beforeEach(() => {
 			req = null
 			saMock.get("*", (r) => { req = r; return {} })
+			saMock.post("*", (r) => { req = r; return {} })
 		})
 
 		afterEach(() => {
@@ -29,18 +32,9 @@ describe("resources/optimizations.spec", () => {
 		describe("list", () => {
 			it("should call route4me", (done) => {
 				resource.list([1, 2, 3], 100, null, (err, res) => {
-					// expect(requestStub.callCount).is.equal(1)
 					expect(err).is.null
 					expect(res).is.not.null
-
-					expect(req).has.property("url")
-						.and.is.equal("https://route4me.com/api.v4/optimization_problem.php")
-
-					expect(req).has.property("body")
-						.and.is.null
-
-					expect(req).has.property("query")
-						.and.has.property("api_key", testApiKey)
+					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/optimization_problem.php")
 					done()
 				})
 			})
@@ -57,5 +51,28 @@ describe("resources/optimizations.spec", () => {
 				})
 			})
 		})
+
+		describe("get", () => {
+			it("should call route4me", (done) => {
+				resource.get(3, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/optimization_problem.php")
+					done()
+				})
+			})
+		})
+
+		describe("create", () => {
+			it("should call route4me", (done) => {
+				resource.create({ "param": 1 }, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "POST", "https://route4me.com/api.v4/optimization_problem.php", { body: { "param": 1 } })
+					done()
+				})
+			})
+		})
 	})
 })
+
