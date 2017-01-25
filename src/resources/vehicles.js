@@ -8,7 +8,7 @@ class Vehicles {
 	 * Vehicles facility
 	 *
 	 * @see {@link https://route4me.io/docs/#vehicles}
-	 * @since 0.2.0
+	 * @since 0.1.4
 	 * @private
 	 *
 	 * @param  {Route4Me}      route4me [description]

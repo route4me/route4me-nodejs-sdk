@@ -21,22 +21,22 @@ class ILogger {
 	 * Debug
 	 * @param {ILogger~LoggerParams|Error|string} [arg]    Something to log
 	 */
-	debug() {}    // eslint-disable-line class-methods-use-this
+	debug(arg) {}    // eslint-disable-line class-methods-use-this, no-unused-vars
 	/**
 	 * Info
 	 * @param {ILogger~LoggerParams|Error|string} [arg]    Something to log
 	 */
-	info() {}     // eslint-disable-line class-methods-use-this
+	info(arg) {}     // eslint-disable-line class-methods-use-this, no-unused-vars
 	/**
 	 * Warning
 	 * @param {ILogger~LoggerParams|Error|string} [arg]    Something to log
 	 */
-	warn() {}     // eslint-disable-line class-methods-use-this
+	warn(arg) {}     // eslint-disable-line class-methods-use-this, no-unused-vars
 	/**
 	 * Error
 	 * @param {ILogger~LoggerParams|Error|string} [arg]    Something to log
 	 */
-	error() {}    // eslint-disable-line class-methods-use-this
+	error(arg) {}    // eslint-disable-line class-methods-use-this, no-unused-vars
 }
 
 class ResponseHandler {

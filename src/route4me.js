@@ -54,12 +54,22 @@ class Route4Me {
 		 * Provides an validation interface of input-output parameters for
 		 * certain internal classes.
 		 *
-		 * @since 0.3.0
+		 * @since 0.1.4
 		 * @internal
 		 * @method
 		 * @type {module:route4me-node~ValidationCallback}
 		 */
 		this._validate = typeof opt.validate === "function" ? opt.validate : _.noop
+
+		/**
+		 * Used for validation of input arguments
+		 *
+		 * @since 0.1.7
+		 * @internal
+		 * @method
+		 * @type {module:route4me-node~ValidationCallback}
+		 */
+		this._validateArgs = this._validate
 
 		/**
 		 * **Optimizations** related API calls
@@ -78,7 +88,7 @@ class Route4Me {
 	/**
 	 * Version of this API client
 	 *
-	 * @since 0.2.0
+	 * @since 0.1.3
 	 *
 	 * @return {string} Version
 	 * @static
@@ -104,7 +114,6 @@ class Route4Me {
 	 * @param {module:route4me-node~RequestCallback}    [callback]
 	 */
 	_makeRequest(options, callback) {
-		const method = options.method.toLowerCase()
 		const apiUrl = `${this._baseUrl}${options.path}`
 		const qs = options.qs ||  {} /* query string */
 		const body = options.body || null // {} /* body */
@@ -112,6 +121,10 @@ class Route4Me {
 		const timeouts = {
 			response: 5000,  // Wait 5 seconds for the server to start sending,
 			deadline: 10000, // but allow 10 seconds to finish loading.
+		}
+		let method = options.method.toLowerCase()
+		if (method === "delete") {
+			method = "del"
 		}
 
 		qs["api_key"] = this._apiKey

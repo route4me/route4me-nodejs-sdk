@@ -1,11 +1,12 @@
 {
   "name": "route4me-node",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
   "main": "src/",
   "scripts": {
-    "test": "`npm bin`/mocha",
-    "lint": "`npm bin`/eslint ./",
+    "build": "`npm bin`/gulp build",
+    "lint": "`npm bin`/gulp lint",
+    "test": "`npm bin`/gulp test",
     "coverage": "`npm bin`/istanbul cover `npm bin`/_mocha -- --reporter min"
   },
   "repository": {
@@ -61,9 +62,15 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-if": "^2.0.2",
+    "gulp-mocha": "^3.0.1",
+    "gulp-size": "^2.1.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "sinon": "^1.17.7",
-    "superagent-mocker": "https://github.com/maxkoryukov/superagent-mocker/tarball/v0.5.3"
+    "superagent-mocker": "https://github.com/maxkoryukov/superagent-mocker/tarball/v0.5.3",
+    "yargs": "^6.6.0"
   }
 }
