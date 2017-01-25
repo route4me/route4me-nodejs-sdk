@@ -97,6 +97,37 @@ class Optimizations {
 		}, callback)
 	}
 
+	/*
+	 * Edit optimization
+	 *
+	 * Re-optimize existing optimizations by changing some parameters or addresses.
+	 *
+	 * @see {@link https://route4me.io/docs/#re-optimize-an-optimization Route4Me API}
+	 * @category Optimizations
+	 * @since 0.1.7
+	 *
+	 * @param {(integer|string)} id Optimization Problem ID `optimization_problem_id`
+	 * @param {jsonschema:Optimizations.CreateRequest}   data New values for `Optimization`
+	 * @param {boolean} reoptimize Determine, whether the `Optimization` should be reoptimized
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>} [callback]
+	 */
+	update(id, data, reoptimize, callback) {
+		const verror = this.r._validate(data, "Optimizations.CreateRequest")
+		if (verror) { return callback(verror) }
+
+		return this.r._makeRequest({
+			method: "PUT",
+			path: "/api.v4/optimization_problem.php",
+			qs: {
+				"optimization_problem_id": id,
+				"reoptimize": reoptimize ? "1" : "0",
+			},
+			body: data,
+			schemaName: "Optimizations.Response",
+		}, callback)
+	}
+
+
 	/**
 	 * Remove an existing optimization belonging to an user.
 	 *
@@ -112,7 +143,7 @@ class Optimizations {
 	 *
 	 * @param {(integer|string)}  id       Optimization Problem ID `optimization_problem_id`
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response.Remove>}
-	 *   [callback]
+	 *     [callback]
 	 */
 	remove(id, callback) {
 		return this.r._makeRequest({
