@@ -36,7 +36,7 @@ class Optimizations {
 
 		return this.r._makeRequest({
 			method: "POST",
-			path: "api.v4/optimization_problem.php",
+			path: "/api.v4/optimization_problem.php",
 			body: params,
 			schemaName: "Optimizations.Response",
 		}, callback)
@@ -63,7 +63,7 @@ class Optimizations {
 
 		return this.r._makeRequest({
 			method: "GET",
-			path: "api.v4/optimization_problem.php",
+			path: "/api.v4/optimization_problem.php",
 			qs,
 			schemaName: "Optimizations.Response",
 		}, callback)
@@ -93,7 +93,7 @@ class Optimizations {
 
 		return this.r._makeRequest({
 			method: "GET",
-			path: "api.v4/optimization_problem.php",
+			path: "/api.v4/optimization_problem.php",
 			qs,
 			schemaName: "Optimizations.ResponseMany",
 		}, callback)

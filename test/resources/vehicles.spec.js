@@ -19,7 +19,7 @@ describe("resources/vehicles.spec", () => {
 
 		beforeEach(() => {
 			req = null
-			saMock.get("*", (r) => { req = r; return {} })
+			saMock.get("*", (r) => { req = r; return { "body": {} } })
 		})
 
 		afterEach(() => {
@@ -30,7 +30,7 @@ describe("resources/vehicles.spec", () => {
 			it("should call route4me", (done) => {
 				resource.list((err, res) => {
 					expect(err).is.null
-					expect(res).is.not.null
+					expect(res).to.exist
 
 					expect(req).has.property("url")
 						.and.is.equal("https://route4me.com/api/vehicles/view_vehicles.php")
