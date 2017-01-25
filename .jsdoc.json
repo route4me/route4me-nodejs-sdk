@@ -21,7 +21,7 @@
 		"recurse": true,
 		//"tutorials": "path/to/tutorials",
 		"readme": "./README.md",
-		"package": "./package.json",
+		//"package": "./package.json",		// commented, because it places doc to the /<PKG>/<VER>/folder
 		"private": true,
 		"verbose": true
 	},
