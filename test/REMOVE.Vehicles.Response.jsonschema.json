@@ -1,0 +1,145 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "https://github.com/route4me/json-schemas/blob/master/Vehicle.dtd",
+	"title": "Vehicle",
+	"type": "object",
+	"name": "Vehicle",
+	"description": "Vehicles in the user's account. Endpoint: url: https://www.route4me.com/api/vehicles/view_vehicles.php",
+	"properties": {
+		"vehicle_id": {
+			"type": "string",
+			"name": "vehicle_id",
+			"title": "Vehicle id",
+			"descrption": "A unique identifcation 32-char string of the vehicle"
+		},
+		"created_time": {
+			"type": "string",
+			"format": "date-time",
+			"name": "created_time",
+			"title": "Created time",
+			"descrption": "Created time of the record about vehicle"
+		},
+		"member_id": {
+			"type": "integer",
+			"name": "member_id",
+			"title": "Member id",
+			"descrption": "An unique identification number of the member"
+		},
+		"vehicle_alias": {
+			"type": "string",
+			"name": "vehicle_alias",
+			"title": "Vehicle alias",
+			"descrption": "Internal name of the vehicle"
+		},
+		"vehicle_reg_state": {
+			"type": ["string", "null"],
+			"name": "vehicle_reg_state",
+			"title": "Vehicle registration state",
+			"descrption": "A state where vehicle was registered"
+		},
+		"vehicle_reg_state_id": {
+			"type": ["string", "null"],
+			"name": "vehicle_reg_state_id",
+			"title": "Vehicle registration state ID",
+			"descrption": "An ID of the state, where vehicle was registered"
+		},
+		"vehicle_reg_country": {
+			"type": ["string", "null"],
+			"name": "vehicle_reg_country",
+			"title": "Vehicle registration country",
+			"descrption": "A country where vehicle was registered"
+		},
+		"vehicle_reg_country_id": {
+			"type": ["string", "null"],
+			"name": "vehicle_reg_country_id",
+			"title": "Vehicle registration country ID",
+			"descrption": "An ID of the country, where vehicle was registered"
+		},
+		"vehicle_license_plate": {
+			"type": ["string", "null"],
+			"name": "vehicle_license_plate",
+			"title": "Vehicle license plate",
+			"descrption": "A license plate of the vehicle"
+		},
+		"vehicle_make": {
+			"type": ["string", "null"],
+			"name": "vehicle_make",
+			"title": "Vehicle make",
+			"descrption": "Vehicle maker brend"
+		},
+		"vehicle_model_year": {
+			"type": ["string", "null"],
+			"name": "vehicle_model_year",
+			"title": "Vehicle model year",
+			"descrption": "A year of the vehicle model"
+		},
+		"vehicle_model": {
+			"type": ["string", "null"],
+			"name": "vehicle_model",
+			"title": "Vehicle model",
+			"descrption": "A model of the vehicle"
+		},
+		"vehicle_year_acquired": {
+			"type": ["string", "null"],
+			"name": "vehicle_year_acquired",
+			"title": "Vehicle acquired year",
+			"descrption": "A year the vehicle was acquired"
+		},
+		"vehicle_cost_new": {
+			"type": ["number", "null"],
+			"name": "vehicle_cost_new",
+			"title": "Vehicle cost new",
+			"descrption": "A cost f the new vehicle"
+		},
+		"license_start_date": {
+			"type": ["string", "null"],
+			"format": "date-time",
+			"name": "license_start_date",
+			"title": "License start date",
+			"descrption": "A start date of the license"
+		},
+		"license_end_date": {
+			"type": ["string", "null"],
+			"format": "date-time",
+			"name": "license_end_date",
+			"title": "License end date",
+			"descrption": "An end date of the license"
+		},
+		"vehicle_axle_count": {
+			"type": ["string", "null"],
+			"name": "vehicle_axle_count",
+			"title": "Vehicle axle count",
+			"descrption": "A number of the vecile's axles"
+		},
+		"mpg_city": {
+			"type": ["string", "null"],
+			"name": "mpg_city",
+			"title": "MPG city",
+			"descrption": "Miles per gallon in the city area"
+		},
+		"mpg_highway": {
+			"type": ["string", "null"],
+			"name": "mpg_highway",
+			"title": "MPG highway",
+			"descrption": "Miles per gallon in the highway area"
+		},
+		"fuel_type": {
+			"type": ["string", "null"],
+			"name": "fuel_type",
+			"title": "Fuel type",
+			"descrption": "A type of the fuel"
+		},
+		"height_inches": {
+			"type": ["string", "null"],
+			"name": "height_inches",
+			"title": "Height inches",
+			"descrption": "A height of the vehicle in the inches."
+		},
+		"weight_lb": {
+			"type": ["string", "null"],
+			"name": "weight_lb",
+			"title": "Weight lbs",
+			"descrption": "A weight of the vehicle in the pounds."
+		}
+	}
+}
