@@ -38,7 +38,7 @@ describe("resources/optimizations.spec", () => {
 					expect(res).is.not.null
 					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/optimization_problem.php", {
 						"states": "1,2,3", "limit": "100" },
-						null,
+						null
 					)
 					done()
 				})
@@ -64,7 +64,7 @@ describe("resources/optimizations.spec", () => {
 					expect(res).is.not.null
 					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/optimization_problem.php", {
 						"optimization_problem_id": "3" },
-						null,
+						null
 					)
 					done()
 				})
@@ -113,7 +113,7 @@ describe("resources/optimizations.spec", () => {
 					expect(res).is.not.null
 					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/optimization_problem.php", {
 						"optimization_problem_id": "300",
-					}, null,
+					}, null
 					)
 					done()
 				})
