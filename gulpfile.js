@@ -1,18 +1,20 @@
 "use strict"
 
-const argv = require('yargs').argv;
+const argv = require("yargs").argv
 
 const gulp = require("gulp")
-const eslint = require('gulp-eslint')
+const gulpIf = require("gulp-if")
+const eslint = require("gulp-eslint")
 
-gulp.task('default', ['lint'])
+gulp.task("default", ["lint"])
 
-gulp.task('lint', () => {
-	return gulp.src(['gulpfile.js', '**/.js'])
+gulp.task("lint", () => {
+	const fix = !!argv.fix
+	return gulp.src(["gulpfile.js", "**/.js"])
 		.pipe(eslint({
-			"fix": !!argv.fix
+			fix,
 		}))
-		.pipe(gulp.dest())
 		.pipe(eslint.format())
+		.pipe(gulpIf(fix, gulp.dest("./")))
 		.pipe(eslint.failAfterError())
 })

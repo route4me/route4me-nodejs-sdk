@@ -5,7 +5,7 @@
   "main": "src/",
   "scripts": {
     "test": "`npm bin`/mocha",
-    "lint": "`npm bin`/eslint ./",
+    "lint": "`npm bin`/gulp lint",
     "coverage": "`npm bin`/istanbul cover `npm bin`/_mocha -- --reporter min"
   },
   "repository": {
@@ -63,6 +63,7 @@
     "eslint-plugin-react": "^6.9.0",
     "gulp": "^3.9.1",
     "gulp-eslint": "^3.0.1",
+    "gulp-if": "^2.0.2",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "sinon": "^1.17.7",
