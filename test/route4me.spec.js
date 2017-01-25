@@ -2,7 +2,7 @@
 
 const sinon = require("sinon")
 
-const Route4Me = require("../lib/route4me")
+const Route4Me = require("../src/route4me")
 
 const testApiKey = "11111111111111111111111111111111"
 
@@ -20,7 +20,7 @@ describe("route4me.spec", () => {
 		[null, undefined, false, ""].forEach((apiKey) => {
 			it(`should raise when apiKey=${apiKey}`, () => {
 				const fn = () => new Route4Me(apiKey)
-				expect(fn).to.throw(/apikey is not set/i)
+				expect(fn).to.throw(/.?apikey.? is not set/i)
 			})
 		})
 	})

@@ -5,34 +5,69 @@ const _       = require("lodash")
 
 const errors  = require("./errors")
 
-class NoopLogger {
+/**
+ * ILogger interface
+ *
+ * @interface ILogger
+ */
+class ILogger {
+	/**
+	 * @typedef ILogger~LoggerParams
+	 * @property {string} [msg] Message to log
+	 * @property {Error}  [err] Error object, if error occured
+	 */
+
+	/**
+	 * Debug
+	 * @param {ILogger~LoggerParams|Error|string} [arg]    Something to log
+	 */
 	debug() {}    // eslint-disable-line class-methods-use-this
+	/**
+	 * Info
+	 * @param {ILogger~LoggerParams|Error|string} [arg]    Something to log
+	 */
 	info() {}     // eslint-disable-line class-methods-use-this
+	/**
+	 * Warning
+	 * @param {ILogger~LoggerParams|Error|string} [arg]    Something to log
+	 */
 	warn() {}     // eslint-disable-line class-methods-use-this
+	/**
+	 * Error
+	 * @param {ILogger~LoggerParams|Error|string} [arg]    Something to log
+	 */
 	error() {}    // eslint-disable-line class-methods-use-this
 }
 
 class ResponseHandler {
-	constructor(logger, callback) {
+	constructor(logger, validate, schemaName, callback) {
 		const cb = typeof callback !== "function" ? _.noop : callback
-
 		this._logger = logger
 		this._cb = cb
+
+		this._validate = validate
+		this._schemaName = schemaName
 	}
 
 	callback(err, res) {
 		if (err) {
 			return this._handleError(err, res)
 		}
-		return this._handleResult(res)
+		return this._handleOk(res)
 	}
 
-	_handleResult(res) {
-		const data = res
+	_handleOk(res) {
 		debug("response ok")
 
+		if (this._schemaName) {
+			const verror = this._validate(res, this._schemaName)
+			if (verror) {
+				this._logger.error({ "msg": "response validation error", "err": verror })
+				return this._cb(verror)
+			}
+		}
 		this._logger.info({ "msg": "response ok" })
-		return this._cb(null, data)
+		return this._cb(null, res)
 	}
 
 	_handleError(err, res) {
@@ -50,11 +85,11 @@ class ResponseHandler {
 	}
 }
 
-function _isInStateRange(state) {
-	return _.inRange(state, 1, 6)
-}
-
 function parseStates(states) {
+	function _isInStateRange(state) {
+		return _.inRange(state, 1, 6)
+	}
+
 	const t = typeof states
 	if (t === "number") {
 		if (_isInStateRange(states)) {
@@ -86,7 +121,7 @@ function qsLimitAndOffset(qs, limit, offset) {
 	return qs
 }
 
-module.exports.noopLogger = new NoopLogger()
-module.exports.ResponseHandler = ResponseHandler
-module.exports.qsLimitAndOffset = qsLimitAndOffset
-module.exports.parseStates = parseStates
+exports.noopLogger = new ILogger()
+exports.ResponseHandler = ResponseHandler
+exports.qsLimitAndOffset = qsLimitAndOffset
+exports.parseStates = parseStates

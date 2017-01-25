@@ -1,6 +1,6 @@
 "use strict"
 
-const utils = require("../lib/utils")
+const utils = require("../src/utils")
 
 describe("utils.test", () => {
 	describe("parseStates", () => {
