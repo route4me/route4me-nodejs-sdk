@@ -64,6 +64,6 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "sinon": "^1.17.7",
-    "superagent-mocker": "^0.5.2"
+    "superagent-mocker": "https://github.com/maxkoryukov/superagent-mocker/tarball/v0.5.3"
   }
 }
