@@ -54,7 +54,7 @@ class Route4Me {
 		 * Provides an validation interface of input-output parameters for
 		 * certain internal classes.
 		 *
-		 * @since 0.3.0
+		 * @since 0.1.4
 		 * @internal
 		 * @method
 		 * @type {module:route4me-node~ValidationCallback}
@@ -78,7 +78,7 @@ class Route4Me {
 	/**
 	 * Version of this API client
 	 *
-	 * @since 0.2.0
+	 * @since 0.1.3
 	 *
 	 * @return {string} Version
 	 * @static

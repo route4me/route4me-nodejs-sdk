@@ -11,7 +11,7 @@ class Optimizations {
 	 * Optimizations facility
 	 *
 	 * @see {@link https://route4me.io/docs/#optimizations}
-	 * @since 0.2.0
+	 * @since 0.1.3
 	 * @private
 	 *
 	 * @param  {Route4Me}      route4me [description]
@@ -57,14 +57,12 @@ class Optimizations {
 			return callback(new errors.Route4MeError("'id' parameter MUST be a string"))
 		}
 
-		const qs = {
-			"optimization_problem_id": id,
-		}
-
 		return this.r._makeRequest({
 			method: "GET",
 			path: "/api.v4/optimization_problem.php",
-			qs,
+			qs: {
+				"optimization_problem_id": id,
+			},
 			schemaName: "Optimizations.Response",
 		}, callback)
 	}
@@ -96,6 +94,34 @@ class Optimizations {
 			path: "/api.v4/optimization_problem.php",
 			qs,
 			schemaName: "Optimizations.ResponseMany",
+		}, callback)
+	}
+
+	/**
+	 * Remove an existing optimization belonging to an user.
+	 *
+	 * @see {@link https://route4me.io/docs/#remove-an-optimization  Route4Me API}
+	 * @category Optimizations
+	 * @since 0.1.7
+	 *
+	 * @example
+	 * const response = {
+	 *	"status":true,
+	 *	"removed":1
+	 * }
+	 *
+	 * @param {(integer|string)}  id       Optimization Problem ID `optimization_problem_id`
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response.Remove>}
+	 *   [callback]
+	 */
+	remove(id, callback) {
+		return this.r._makeRequest({
+			method: "DELETE",
+			path: "/api.v4/optimization_problem.php",
+			qs: {
+				"optimization_problem_id": id,
+			},
+			schemaName: "Optimizations.Response.Remove",
 		}, callback)
 	}
 }

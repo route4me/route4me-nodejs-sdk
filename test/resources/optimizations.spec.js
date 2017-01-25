@@ -23,6 +23,7 @@ describe("resources/optimizations.spec", () => {
 			req = null
 			saMock.get("*", (r) => { req = r; return {} })
 			saMock.post("*", (r) => { req = r; return {} })
+			saMock.del("*", (r) => { req = r; return {} })
 		})
 
 		afterEach(() => {
@@ -46,7 +47,7 @@ describe("resources/optimizations.spec", () => {
 					expect(err).is.not.null
 					expect(err).is.instanceof(Error)
 					expect(err).has.property("message")
-						.and.matches(/states/i)
+						.that.matches(/states/i)
 					done()
 				})
 			})
@@ -69,6 +70,17 @@ describe("resources/optimizations.spec", () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req, "POST", "https://route4me.com/api.v4/optimization_problem.php", { body: { "param": 1 } })
+					done()
+				})
+			})
+		})
+
+		describe("remove", () => {
+			it("should call route4me", (done) => {
+				resource.remove(300, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/optimization_problem.php", {})
 					done()
 				})
 			})

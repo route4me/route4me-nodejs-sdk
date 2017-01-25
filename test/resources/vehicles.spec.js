@@ -35,6 +35,9 @@ describe("resources/vehicles.spec", () => {
 					expect(req).has.property("url")
 						.and.is.equal("https://route4me.com/api/vehicles/view_vehicles.php")
 
+					expect(req).has.property("method")
+						.and.is.equal("GET")
+
 					expect(req).has.property("body")
 						.and.is.null
 					expect(req).has.property("query")
