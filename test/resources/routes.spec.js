@@ -1,0 +1,114 @@
+"use strict"
+
+const request = require("superagent")
+const saMock  = require("superagent-mocker")(request)
+const helper  = require("./helper")
+
+const Resource = require("../../src/resources/routes")
+const Route4Me = require("../../src/route4me")
+
+const testApiKey = "11111111111111111111111111111111"
+
+
+describe("resources/routes.spec", () => {
+	describe("SDK methods", () => {
+		const route4me = new Route4Me(testApiKey)
+		const resource = new Resource(route4me)
+		let req
+
+		beforeEach(() => {
+			req = null
+			saMock.get("*", (r) =>  { req = r; return {} })
+			saMock.post("*", (r) => { req = r; return {} })
+			saMock.del("*", (r) =>  { req = r; return {} })
+			saMock.put("*", (r) =>  { req = r; return {} })
+		})
+
+		afterEach(() => {
+			saMock.clearRoutes()
+		})
+
+		describe("get", () => {
+			it("should call route4me", (done) => {
+				resource.get(3, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/route.php", {
+						"route_id": "3" },
+						null
+					)
+					done()
+				})
+			})
+		})
+
+		describe("list", () => {
+			it("should call route4me", (done) => {
+				resource.list(17, 19, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/route.php", {
+						"limit": "17",
+						"offset": "19" },
+						null
+					)
+					done()
+				})
+			})
+		})
+
+		describe("remove", () => {
+			it("should call route4me for array parameter", (done) => {
+				const options = {}
+				resource.remove([5, 3, "67"], options, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/route.php", {
+						"route_id": "5,3,67" },
+						null
+					)
+					done()
+				})
+			})
+
+			it("should call route4me for number parameter", (done) => {
+				const options = {}
+				resource.remove(896, options, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/route.php", {
+						"route_id": "896" },
+						null
+					)
+					done()
+				})
+			})
+
+			it("should call route4me for simple string parameter", (done) => {
+				const options = {}
+				resource.remove("756af35", options, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/route.php", {
+						"route_id": "756af35" },
+						null
+					)
+					done()
+				})
+			})
+
+			it("should call route4me for CSV-string parameter", (done) => {
+				const options = {}
+				resource.remove("756af35, 12,   11, fd5612ab3", options, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/route.php", {
+						"route_id": "756af35,12,11,fd5612ab3" },
+						null
+					)
+					done()
+				})
+			})
+		})
+	})
+})

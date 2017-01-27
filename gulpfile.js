@@ -28,7 +28,7 @@ gulp.task("lint", () => {
 			//"gulpfile.js",
 			"./src/**/*.js",
 			"./test/**/*.js",
-		])
+		], { "base": "./" })
 		.pipe(eslint({
 			fix,
 		}))

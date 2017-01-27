@@ -7,7 +7,7 @@ const request = require("superagent")
 const saMock  = require("superagent-mocker")(request)
 const helper  = require("./helper")
 
-const Optimizations = require("../../src/resources/optimizations")
+const Resource = require("../../src/resources/optimizations")
 const Route4Me = require("../../src/route4me")
 
 const testApiKey = "11111111111111111111111111111111"
@@ -16,7 +16,7 @@ const testApiKey = "11111111111111111111111111111111"
 describe("resources/optimizations.spec", () => {
 	describe("SDK methods", () => {
 		const route4me = new Route4Me(testApiKey)
-		const resource = new Optimizations(route4me)
+		const resource = new Resource(route4me)
 		let req
 
 		beforeEach(() => {
@@ -29,6 +29,20 @@ describe("resources/optimizations.spec", () => {
 
 		afterEach(() => {
 			saMock.clearRoutes()
+		})
+
+		describe("get", () => {
+			it("should call route4me", (done) => {
+				resource.get(3, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/optimization_problem.php", {
+						"optimization_problem_id": "3" },
+						null
+					)
+					done()
+				})
+			})
 		})
 
 		describe("list", () => {
@@ -52,20 +66,6 @@ describe("resources/optimizations.spec", () => {
 					expect(err).is.instanceof(Error)
 					expect(err).has.property("message")
 						.that.matches(/states/i)
-					done()
-				})
-			})
-		})
-
-		describe("get", () => {
-			it("should call route4me", (done) => {
-				resource.get(3, (err, res) => {
-					expect(err).is.null
-					expect(res).is.not.null
-					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/optimization_problem.php", {
-						"optimization_problem_id": "3" },
-						null
-					)
 					done()
 				})
 			})

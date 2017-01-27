@@ -1,7 +1,6 @@
 "use strict"
 
 const utils = require("../utils")
-const errors = require("../errors")
 
 /**
  * @namespace
@@ -31,9 +30,6 @@ class Optimizations {
 	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>}  [callback]
 	 */
 	create(optimization, callback) {
-		const verror = this.r._validateArgs(arguments, "sdk:Optimizations.create")
-		if (verror instanceof Error) { return callback(verror) }
-
 		return this.r._makeRequest({
 			method: "POST",
 			path: "/api.v4/optimization_problem.php",
@@ -53,13 +49,6 @@ class Optimizations {
 	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>} [callback]
 	 */
 	get(id, callback) {
-		const verror = this.r._validateArgs(arguments, "sdk:Optimizations.get")
-		if (verror instanceof Error) { return callback(verror) }
-
-		if (typeof id !== "string" && typeof id !== "number") {
-			return callback(new errors.Route4MeError("'id' parameter MUST be a string"))
-		}
-
 		return this.r._makeRequest({
 			method: "GET",
 			path: "/api.v4/optimization_problem.php",
@@ -82,9 +71,6 @@ class Optimizations {
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.ResponseMany>} [callback]
 	 */
 	list(states, limit, offset, callback) {
-		const verror = this.r._validateArgs(arguments, "sdk:Optimizations.list")
-		if (verror instanceof Error) { return callback(verror) }
-
 		const _states = utils.parseStates(states)
 		if (_states instanceof Error) {
 			return callback(_states)
@@ -118,9 +104,6 @@ class Optimizations {
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>} [callback]
 	 */
 	update(id, optimization, reoptimize, callback) {
-		const verror = this.r._validateArgs(arguments, "sdk:Optimizations.update")
-		if (verror instanceof Error) { return callback(verror) }
-
 		return this.r._makeRequest({
 			method: "PUT",
 			path: "/api.v4/optimization_problem.php",
@@ -148,14 +131,11 @@ class Optimizations {
 	 *	"removed":1
 	 * }
 	 *
-	 * @param {(integer|string)}  id       Optimization Problem ID `optimization_problem_id`
+	 * @param {(integer|string)}  id       Optimization Problem ID
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response.Remove>}
 	 *     [callback]
 	 */
 	remove(id, callback) {
-		const verror = this.r._validateArgs(arguments, "sdk:Optimizations.remove")
-		if (verror instanceof Error) { return callback(verror) }
-
 		return this.r._makeRequest({
 			method: "DELETE",
 			path: "/api.v4/optimization_problem.php",
@@ -179,9 +159,6 @@ class Optimizations {
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Address.Many>}
 	 */
 	linkAddress(id, addresses, reoptimize, callback) {
-		const verror = this.r._validateArgs(arguments, "sdk:Optimizations.linkAddress")
-		if (verror instanceof Error) { return callback(verror) }
-
 		return this.r._makeRequest({
 			method: "PUT",
 			path: "/api.v4/optimization_problem.php",
@@ -215,9 +192,6 @@ class Optimizations {
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.UnlinkAddressResponse>}
 	 */
 	unlinkAddress(id, routeId, callback) {
-		const verror = this.r._validateArgs(arguments, "sdk:Optimizations.unlinkAddress")
-		if (verror instanceof Error) { return callback(verror) }
-
 		return this.r._makeRequest({
 			method: "DELETE",
 			path: "/api.v4/address.php",
