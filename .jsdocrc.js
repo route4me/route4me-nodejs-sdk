@@ -1,4 +1,4 @@
-{
+module.exports = {
 	"source": {
 		"include": [
 			"./src",
@@ -19,8 +19,8 @@
 		"encoding": "utf8",
 		"destination": "./docs/",
 		"recurse": true,
-		"tutorials": "./tutorials",
-		"readme": "./README.md",
+		"tutorials": "./tutorials/articles",
+		"readme": "./tutorials/index.md",
 		//"package": "./package.json",		// commented, because it places doc to the /<PKG>/<VER>/folder
 		"private": true,
 		"verbose": true

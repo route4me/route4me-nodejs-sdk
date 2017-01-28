@@ -2,10 +2,14 @@
 
 ## Dev tools
 
-We use [GULP](http://gulpjs.com/) as an task-automation tool. It has several useful
-development task, described below.
+We use [GULP](http://gulpjs.com/) as an task-automation tool. And there are several useful
+development gulp-tasks, described below.
 
-### lint
+### task: default
+
+By default `gulp` will `lint` and `test` the sources.
+
+### task:lint
 
 Provides linting for `*.js` sources
 
@@ -20,7 +24,7 @@ of the manual fixes with this command:
 gulp lint --fix
 ```
 
-### test
+### task:test
 
 Run `mocha` tests
 
@@ -29,6 +33,14 @@ gulp test
 
 #or with grep:
 gulp test --grep=integration
+```
+
+### task:doc
+
+Task generates documentation for this package (to the `./docs` folder)
+
+```shell
+gulp doc
 ```
 
 ## Useful links

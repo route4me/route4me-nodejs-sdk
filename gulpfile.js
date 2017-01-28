@@ -7,6 +7,7 @@ const gulpIf = require("gulp-if")
 
 const eslint = require("gulp-eslint")
 const mocha = require("gulp-mocha")
+const jsdoc = require("gulp-jsdoc3")
 const size = require("gulp-size")
 
 const fix = !!argv.fix
@@ -22,6 +23,15 @@ const paths = {
 		"examples/**/*.no.js",
 	],
 }
+
+gulp.task("doc", () => {
+    const jsdocConfig = require('./.jsdocrc.js');
+	return gulp.src(
+		"README.md", {
+			read: false
+		})
+		.pipe(jsdoc(jsdocConfig))
+})
 
 gulp.task("lint", () => {
 	return gulp.src([

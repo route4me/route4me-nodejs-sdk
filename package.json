@@ -4,9 +4,10 @@
   "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
   "main": "src/",
   "scripts": {
-    "build": "`npm bin`/gulp build",
-    "lint": "`npm bin`/gulp lint",
-    "test": "`npm bin`/gulp test",
+    "build": "gulp build",
+    "lint": "gulp lint",
+    "test": "gulp test",
+    "doc": "gulp doc",
     "coverage": "`npm bin`/istanbul cover `npm bin`/_mocha -- --reporter min"
   },
   "repository": {
@@ -17,6 +18,7 @@
     "route4me",
     "route",
     "routing",
+    "path",
     "route optimization",
     "API",
     "route planner",
@@ -57,6 +59,7 @@
     "ajv": "^4.11.2",
     "chai": "^3.5.0",
     "chai-json-schema": "^1.4.0",
+    "docdash": "^0.4.0",
     "eslint": "^3.13.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.2.0",
@@ -65,6 +68,7 @@
     "gulp": "^3.9.1",
     "gulp-eslint": "^3.0.1",
     "gulp-if": "^2.0.2",
+    "gulp-jsdoc3": "^1.0.1",
     "gulp-mocha": "^3.0.1",
     "gulp-size": "^2.1.0",
     "istanbul": "^0.4.5",
