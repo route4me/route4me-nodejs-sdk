@@ -64,6 +64,41 @@ class Routes {
 		}, callback)
 	}
 
+
+	/*
+	 * Update custom data of the route destinations.
+	 *
+	 * @see {@link https://route4me.io/docs/#update-a-route Route4Me API}
+	 * @category Routes
+	 * @since 0.1.8
+	 *
+	 * @todo TODO: there is no schema for the response
+	 * @example
+	 * {
+	 * 	"custom_fields": {
+	 * 		"animal": "lion"
+	 * 	}
+	 * }
+	 *
+	 *
+	 * @param {(number|string)} id                          - Optimization Problem ID
+	 * @param {(number|string)} routeDestinationId          - Route destination ID
+	 * @param {jsonschema:Routes.CustomFields} customFields - Any string array
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Response>} [callback]
+	 */
+	updateCustomData(id, routeDestinationId, customFields, callback) {
+		return this.r._makeRequest({
+			method: "PUT",
+			path: "/api.v4/address.php",
+			qs: {
+				"route_id": id,
+				"route_destination_id": routeDestinationId,
+			},
+			body: customFields,
+			schemaName: "Routes.Route",
+		}, callback)
+	}
+
 	/**
 	 * Given multiple route ID’s, remove all routes at the same time.
 	 *
