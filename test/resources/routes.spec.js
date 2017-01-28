@@ -57,6 +57,23 @@ describe("resources/routes.spec", () => {
 			})
 		})
 
+		describe("updateCustomData", () => {
+			it("should call route4me", (done) => {
+				const customFields = { "banana": false }
+
+				resource.updateCustomData(31, 41, customFields, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "PUT", "https://route4me.com/api.v4/address.php", {
+						"route_id": "31",
+						"route_destination_id": "41" },
+						{ "banana": false }
+					)
+					done()
+				})
+			})
+		})
+
 		describe("remove", () => {
 			it("should call route4me for array parameter", (done) => {
 				const options = {}
