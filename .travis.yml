@@ -15,6 +15,10 @@ node_js:
   # - iojs # version 3.3, unsupported...
   - 7
 
+env:
+  global:
+    - TEST_INTEGRATION=1
+
 matrix:
   allow_failures:
     - node_js: 7  # unstable upstream
@@ -29,15 +33,15 @@ before_install:
 
 install:
   - npm install -g npm
-  - npm install
-  # - npm install -g gulp
+  - npm install -g gulp
   - npm install -g codecov
   - npm install -g bithound
+  - npm install
 
 script:
-# - gulp build
-  - npm run lint
-  - npm test
+  - gulp build
+  - gulp lint
+  - gulp test
   - npm run coverage
   - codecov
   - bithound check git@github.com:$TRAVIS_REPO_SLUG.git

@@ -21,13 +21,44 @@ class Routes {
 	}
 
 	/**
+	 * Duplicates the route. More information - on Route4Me API-doc site (see links section).
+	 *
+	 * @see {@link https://route4me.io/docs/#duplicate-a-route Route4Me API}
+	 * @category Routes
+	 * @since 0.1.8
+	 *
+	 * @todo TODO: There is no output schema
+	 * @example
+	 * SampleOutput = {
+	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
+	 * 	"success":true
+	 * }
+	 *
+	 * @todo TODO: parse the response
+	 *
+	 * @param {string}  id       Route ID
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.DuplicateResponse>} [callback]
+	 */
+	duplicate(id, callback) {
+		return this.r._makeRequest({
+			method: "POST",
+			path: "/actions/duplicate_route.php",
+			qs: {
+				"route_id": id,
+				"to": "none",
+			},
+			schemaName: "Routes.DuplicateResponse",
+		}, callback)
+	}
+
+	/**
 	 * Get a single route.
 	 *
 	 * @see {@link https://route4me.io/docs/#get-a-route Route4Me API}
 	 * @category Routes
 	 * @since 0.1.8
 	 *
-	 * @param {(number|string)}  id       Route ID
+	 * @param {string}  id       Route ID
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
 	 */
 	get(id, callback) {
@@ -61,41 +92,6 @@ class Routes {
 			path: "/api.v4/route.php",
 			qs,
 			schemaName: "Routes.Routes",
-		}, callback)
-	}
-
-
-	/*
-	 * Update custom data of the route destinations.
-	 *
-	 * @see {@link https://route4me.io/docs/#update-a-route Route4Me API}
-	 * @category Routes
-	 * @since 0.1.8
-	 *
-	 * @todo TODO: there is no schema for the response
-	 * @example
-	 * {
-	 * 	"custom_fields": {
-	 * 		"animal": "lion"
-	 * 	}
-	 * }
-	 *
-	 *
-	 * @param {(number|string)} id                          - Optimization Problem ID
-	 * @param {(number|string)} routeDestinationId          - Route destination ID
-	 * @param {jsonschema:Routes.CustomFields} customFields - Any string array
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Response>} [callback]
-	 */
-	updateCustomData(id, routeDestinationId, customFields, callback) {
-		return this.r._makeRequest({
-			method: "PUT",
-			path: "/api.v4/address.php",
-			qs: {
-				"route_id": id,
-				"route_destination_id": routeDestinationId,
-			},
-			body: customFields,
-			schemaName: "Routes.Route",
 		}, callback)
 	}
 

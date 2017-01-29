@@ -8,8 +8,12 @@ const jsonschemaVehicleMany = require("./REMOVE.Vehicles.ResponseMany.jsonschema
 
 const testApiKey = "11111111111111111111111111111111"
 
+const runIntegrationTest = process.env["TEST_INTEGRATION"] === "1"
+
 describe("integration.route4me.test", () => {
-	describe("UNMOCKED Access to `Vehicles` list", function a() {
+	const describeIntegration = runIntegrationTest ? describe : describe.skip
+
+	describeIntegration("UNMOCKED Access to `Vehicles` list", function a() {
 		this.timeout(5000)
 		this.slow(3000)
 		this.retries(3)

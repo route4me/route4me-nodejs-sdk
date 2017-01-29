@@ -28,6 +28,21 @@ describe("resources/routes.spec", () => {
 			saMock.clearRoutes()
 		})
 
+		describe("duplicate", () => {
+			it("should call route4me", (done) => {
+				resource.duplicate(131, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "POST", "https://route4me.com/actions/duplicate_route.php", {
+						"route_id": "131",
+						"to": "none" },
+						null
+					)
+					done()
+				})
+			})
+		})
+
 		describe("get", () => {
 			it("should call route4me", (done) => {
 				resource.get(3, (err, res) => {
@@ -51,23 +66,6 @@ describe("resources/routes.spec", () => {
 						"limit": "17",
 						"offset": "19" },
 						null
-					)
-					done()
-				})
-			})
-		})
-
-		describe("updateCustomData", () => {
-			it("should call route4me", (done) => {
-				const customFields = { "banana": false }
-
-				resource.updateCustomData(31, 41, customFields, (err, res) => {
-					expect(err).is.null
-					expect(res).is.not.null
-					helper.expectRequest(req, "PUT", "https://route4me.com/api.v4/address.php", {
-						"route_id": "31",
-						"route_destination_id": "41" },
-						{ "banana": false }
 					)
 					done()
 				})

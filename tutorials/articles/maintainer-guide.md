@@ -35,6 +35,14 @@ gulp test
 gulp test --grep=integration
 ```
 
+#### Options
+
+By default the hardest and most time-expensive tests (**integration**) are skipped. To run all tests use **environment** variable: `TEST_INTEGRATION`:
+
+```shell
+TEST_INTEGRATION=1 gulp test
+```
+
 ### task:doc
 
 Task generates documentation for this package (to the `./docs` folder)

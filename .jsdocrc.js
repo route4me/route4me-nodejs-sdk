@@ -23,6 +23,8 @@ module.exports = {
 		"readme": "./tutorials/index.md",
 		//"package": "./package.json",		// commented, because it places doc to the /<PKG>/<VER>/folder
 		"private": true,
+
+		"pedantic": true,
 		"verbose": true
 	},
 	"markdown": {

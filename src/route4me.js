@@ -5,7 +5,9 @@ const debug    = require("debug")("route4me")
 const _        = require("lodash")
 const platform = require("platform")
 
+const Addresses       = require("./resources/addresses")
 const Optimizations   = require("./resources/optimizations")
+const Routes          = require("./resources/routes")
 const Vehicles        = require("./resources/vehicles")
 
 const packageJson     = require("./../package.json")
@@ -72,10 +74,22 @@ class Route4Me {
 		this._validateArgs = this._validate
 
 		/**
+		 * **Addresses** related API calls
+		 * @type {Addresses}
+		 * @since 0.1.8
+		 */
+		this.Addresses = new Addresses(this)
+		/**
 		 * **Optimizations** related API calls
 		 * @type {Optimizations}
 		 */
 		this.Optimizations = new Optimizations(this)
+		/**
+		 * **Routes** related API calls
+		 * @type {Routes}
+		 * @since 0.1.8
+		 */
+		this.Routes = new Routes(this)
 		/**
 		 * **Vehicles** related API calls
 		 * @type {Vehicles}
