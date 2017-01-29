@@ -2,8 +2,7 @@
 
 ## Dev tools
 
-We use [GULP](http://gulpjs.com/) as an task-automation tool. And there are several useful
-development gulp-tasks, described below.
+We use [GULP](http://gulpjs.com/) as an task-automation tool. All gulp-tasks are described below.
 
 ### task: default
 

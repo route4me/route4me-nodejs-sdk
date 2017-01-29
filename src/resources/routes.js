@@ -13,8 +13,8 @@ class Routes {
 	 * @since 0.1.8
 	 * @private
 	 *
-	 * @param  {Route4Me}      route4me Route4Me manager
-	 * @return {Routes}                 Routes facility
+	 * @param  {Route4Me}      route4me - Route4Me manager
+	 * @return {Routes}                 - Routes facility
 	 */
 	constructor(route4me) {
 		this.r = route4me
@@ -36,10 +36,41 @@ class Routes {
 	 *
 	 * @todo TODO: parse the response
 	 *
-	 * @param {string}  id       Route ID
+	 * @param {string}  id       - Route ID
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.DuplicateResponse>} [callback]
 	 */
 	duplicate(id, callback) {
+		return this.r._makeRequest({
+			method: "POST",
+			path: "/actions/duplicate_route.php",
+			qs: {
+				"route_id": id,
+				"to": "none",
+			},
+			schemaName: "Routes.DuplicateResponse",
+		}, callback)
+	}
+
+	/**
+	 * Merges the list of routes. More information - on Route4Me API-doc site (see links section).
+	 *
+	 * @see {@link https://route4me.io/docs/#merge-routes Route4Me API}
+	 * @category Routes
+	 * @since 0.1.8
+	 *
+	 * @todo TODO: There is no output schema
+	 * @example
+	 * SampleOutput = {
+	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
+	 * 	"success":true
+	 * }
+	 *
+	 * @todo TODO: parse the response
+	 *
+	 * @param {string|Array<string>}  ids       - Array of the Route IDs to be merged.
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.DuplicateResponse>} [callback]
+	 */
+	merge(ids, callback) {
 		return this.r._makeRequest({
 			method: "POST",
 			path: "/actions/duplicate_route.php",
@@ -58,7 +89,7 @@ class Routes {
 	 * @category Routes
 	 * @since 0.1.8
 	 *
-	 * @param {string}  id       Route ID
+	 * @param {string}  id       - Route ID
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
 	 */
 	get(id, callback) {
@@ -79,8 +110,8 @@ class Routes {
 	 * @category Routes
 	 * @since 0.1.8
 	 *
-	 * @param {number}                    [limit]    Search limitation
-	 * @param {number}                    [offset]   Search starting position
+	 * @param {number}                    [limit]    - Search limitation
+	 * @param {number}                    [offset]   - Search starting position
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Routes>} [callback]
 	 */
 	list(limit, offset, callback) {
@@ -114,11 +145,12 @@ class Routes {
 	 * 	]
 	 * }
 	 *
+	 * @todo TODO: parse the response
 	 *
 	 * @param {(number|string|Array<number>|Array<string>)}  ids - Route ID **or** comma-separated
 	 *        list of route IDs **or** array of route IDs
-	 * @param {Object}         [options] Options for SKD method
-	 * @param {boolean|number} [options.queryLimit=false] `false` means, that query will be sent
+	 * @param {Object}         [options] - Options for SDK method
+	 * @param {boolean|number} [options.queryLimit=false] - `false` means, that query will be sent
 	 *        "as is". `number` value cause to split the original request to several chunks,
 	 *        limited in size by this parameter, chunks will be sent sequentionally.
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.RemoveResponse>}
@@ -128,6 +160,12 @@ class Routes {
 		const idsPure = typeof ids === "string" ?
 			ids.replace(/\s+/g, "") :
 			ids
+
+		if (typeof callback === "undefined"
+			?? typeof options === "function"
+		) {
+			callback = options
+		}
 
 		if (options && options.queryLimit) {
 			// TODO: split ids for max allowed request parameter lengh

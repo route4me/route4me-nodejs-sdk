@@ -43,6 +43,30 @@ describe("resources/routes.spec", () => {
 			})
 		})
 
+		describe("merge", () => {
+			const testCases = [
+				{ msg: "for string parameter", ids: "abcde123", expBody: ["abcde123"] },
+				{ msg: "for CSV-string", ids: "56E8F6BF949670F0C0BBAC00590FD116,A6DAA07A7D4737723A9C85E7C3BA2351", expBody: [] },
+				{ msg: "for array of string", ids: ["56E8F6BF949670F0C0BBAC00590FD116", "A6DAA07A7D4737723A9C85E7C3BA2351"], expBody: [] },
+			]
+
+			testCases.forEach(tc => {
+				it(`should call route4me ${tc.msg}`, (done) => {
+					resource.merge(tc.ids, (err, res) => {
+						expect(err).is.null
+						expect(res).is.not.null
+
+						helper.expectRequest(req, "POST",
+							"https://route4me.com/actions/merge_routes.php",
+							{},
+							tc.expBody
+						)
+						done()
+					})
+				})
+			})
+		})
+
 		describe("get", () => {
 			it("should call route4me", (done) => {
 				resource.get(3, (err, res) => {
