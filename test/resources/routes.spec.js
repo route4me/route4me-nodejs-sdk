@@ -45,13 +45,23 @@ describe("resources/routes.spec", () => {
 
 		describe("merge", () => {
 			const testCases = [
-				{ msg: "for string parameter", ids: "abcde123", expBody: ["abcde123"] },
-				{ msg: "for CSV-string", ids: "56E8F6BF949670F0C0BBAC00590FD116,A6DAA07A7D4737723A9C85E7C3BA2351", expBody: [] },
-				{ msg: "for array of string", ids: ["56E8F6BF949670F0C0BBAC00590FD116", "A6DAA07A7D4737723A9C85E7C3BA2351"], expBody: [] },
+				{ msg: "for string parameter",
+					ids: "abcde123",
+					expBody: { "0" :"abcde123" },
+				},
+				{ msg: "for CSV-string",
+					ids: "56E8F6BF949670F0C0BBAC00590FD116 ,  A6DAA07A7D4737723A9C85E7C3BA2351",
+					expBody: { "0": "56E8F6BF949670F0C0BBAC00590FD116", "1": "A6DAA07A7D4737723A9C85E7C3BA2351"}
+				},
+				{ msg: "for array of string",
+					ids: ["56E8F6BF949670F0", "C0BBAC00590FD116", "123", "456"],
+					expBody: {"0": "56E8F6BF949670F0", "1": "C0BBAC00590FD116", "2": "123", "3": "456"}
+				},
 			]
 
 			testCases.forEach(tc => {
-				it(`should call route4me ${tc.msg}`, (done) => {
+				const m = `should call route4me ${tc.msg}`
+				it(m, (done) => {
 					resource.merge(tc.ids, (err, res) => {
 						expect(err).is.null
 						expect(res).is.not.null

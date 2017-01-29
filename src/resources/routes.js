@@ -71,13 +71,14 @@ class Routes {
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.DuplicateResponse>} [callback]
 	 */
 	merge(ids, callback) {
+		const idsPure = typeof ids === "string" ?
+			ids.split(/\s*,\s*/) :
+			ids
+
 		return this.r._makeRequest({
 			method: "POST",
-			path: "/actions/duplicate_route.php",
-			qs: {
-				"route_id": id,
-				"to": "none",
-			},
+			path: "/actions/merge_routes.php",
+			body: idsPure,
 			schemaName: "Routes.DuplicateResponse",
 		}, callback)
 	}
@@ -161,10 +162,11 @@ class Routes {
 			ids.replace(/\s+/g, "") :
 			ids
 
-		if (typeof callback === "undefined"
-			?? typeof options === "function"
+		let cb = callback
+		if (typeof cb === "undefined"
+			&& typeof options === "function"
 		) {
-			callback = options
+			cb = options
 		}
 
 		if (options && options.queryLimit) {
@@ -180,7 +182,7 @@ class Routes {
 				"route_id": idsPure,
 			},
 			schemaName: "Routes.RemoveResponse",
-		}, callback)
+		}, cb)
 	}
 }
 
