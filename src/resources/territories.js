@@ -37,7 +37,7 @@ class Territories {
 			method: "POST",
 			path: "/api.v4/territory.php",
 			body: data,
-			schemaName: "Territories.Territory",
+			validationContext: "Territories.Territory",
 		}, callback)
 	}
 
@@ -73,7 +73,7 @@ class Territories {
 				"territory_id": id,
 				"addresses": ia ? "1" : "0",
 			},
-			schemaName: "Territories.Territory",
+			validationContext: "Territories.Territory",
 		}, cb)
 	}
 
@@ -92,7 +92,7 @@ class Territories {
 		return this.r._makeRequest({
 			method: "GET",
 			path: "/api.v4/territory.php",
-			schemaName: "Territories.Territories",
+			validationContext: "Territories.Territories",
 		}, callback)
 	}
 
@@ -116,7 +116,7 @@ class Territories {
 				"territory_id": id,
 			},
 			body: data,
-			schemaName: "Territories.Territory",
+			validationContext: "Territories.Territory",
 		}, callback)
 	}
 
@@ -144,7 +144,7 @@ class Territories {
 			qs: {
 				"territory_id": id,
 			},
-			schemaName: "Territories.RemoveResponse",
+			validationContext: "Territories.RemoveResponse",
 		}, callback)
 	}
 }

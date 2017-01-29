@@ -35,7 +35,7 @@ class Optimizations {
 			method: "POST",
 			path: "/api.v4/optimization_problem.php",
 			body: optimization,
-			schemaName: "Optimizations.Response",
+			validationContext: "Optimizations.Response",
 		}, callback)
 	}
 
@@ -57,7 +57,7 @@ class Optimizations {
 			qs: {
 				"optimization_problem_id": id,
 			},
-			schemaName: "Optimizations.Optimization",
+			validationContext: "Optimizations.Optimization",
 		}, callback)
 	}
 
@@ -88,7 +88,7 @@ class Optimizations {
 			method: "GET",
 			path: "/api.v4/optimization_problem.php",
 			qs,
-			schemaName: "Optimizations.Optimizations",
+			validationContext: "Optimizations.Optimizations",
 		}, callback)
 	}
 
@@ -115,7 +115,7 @@ class Optimizations {
 				"reoptimize": reoptimize ? "1" : "0",
 			},
 			body: optimization,
-			schemaName: "Optimizations.Response",
+			validationContext: "Optimizations.Response",
 		}, callback)
 	}
 
@@ -145,7 +145,7 @@ class Optimizations {
 			qs: {
 				"optimization_problem_id": id,
 			},
-			schemaName: "Optimizations.RemoveResponse",
+			validationContext: "Optimizations.RemoveResponse",
 		}, callback)
 	}
 
@@ -170,7 +170,7 @@ class Optimizations {
 				"reoptimize": reoptimize ? "1" : "0",
 			},
 			body: addresses,
-			schemaName: "Addresses.Addresses",
+			validationContext: "Addresses.Addresses",
 		}, callback)
 	}
 
@@ -202,7 +202,7 @@ class Optimizations {
 				"optimization_problem_id": id,
 				"route_destination_id": addressId,
 			},
-			schemaName: "Optimizations.UnlinkAddressResponse",
+			validationContext: "Optimizations.UnlinkAddressResponse",
 		}, callback)
 	}
 

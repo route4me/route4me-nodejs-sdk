@@ -35,7 +35,7 @@ class Vehicles {
 			// but it doesn't work though...
 			path: "/api/vehicles/view_vehicles.php",
 
-			schemaName: "Vehicles.ResponseMany",
+			validationContext: "Vehicles.ResponseMany",
 		}, callback)
 	}
 }

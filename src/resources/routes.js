@@ -47,7 +47,7 @@ class Routes {
 				"route_id": id,
 				"to": "none",
 			},
-			schemaName: "Routes.DuplicateResponse",
+			validationContext: "Routes.DuplicateResponse",
 		}, callback)
 	}
 
@@ -79,7 +79,7 @@ class Routes {
 			method: "POST",
 			path: "/actions/merge_routes.php",
 			body: idsPure,
-			schemaName: "Routes.MergeResponse",
+			validationContext: "Routes.MergeResponse",
 		}, callback)
 	}
 
@@ -100,7 +100,7 @@ class Routes {
 			qs: {
 				"route_id": id,
 			},
-			schemaName: "Routes.Route",
+			validationContext: "Routes.Route",
 		}, callback)
 	}
 
@@ -123,7 +123,7 @@ class Routes {
 			method: "GET",
 			path: "/api.v4/route.php",
 			qs,
-			schemaName: "Routes.Routes",
+			validationContext: "Routes.Routes",
 		}, callback)
 	}
 
@@ -181,7 +181,7 @@ class Routes {
 			qs: {
 				"route_id": idsPure,
 			},
-			schemaName: "Routes.RemoveResponse",
+			validationContext: "Routes.RemoveResponse",
 		}, cb)
 	}
 }

@@ -41,7 +41,7 @@ class Addresses {
 				"route_destination_id": id,
 			},
 			body: customFields,
-			schemaName: "Addresses.Address",
+			validationContext: "Addresses.Address",
 		}, callback)
 	}
 }

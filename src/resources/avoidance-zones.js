@@ -35,7 +35,7 @@ class AvoidanceZones {
 			method: "POST",
 			path: "/api.v4/avoidance.php",
 			body: data,
-			schemaName: "AvoidanceZones.AvoidanceZone",
+			validationContext: "AvoidanceZones.AvoidanceZone",
 		}, callback)
 	}
 
@@ -57,7 +57,7 @@ class AvoidanceZones {
 			qs: {
 				"territory_id": id,
 			},
-			schemaName: "AvoidanceZones.AvoidanceZone",
+			validationContext: "AvoidanceZones.AvoidanceZone",
 		}, callback)
 	}
 
@@ -77,7 +77,7 @@ class AvoidanceZones {
 		return this.r._makeRequest({
 			method: "GET",
 			path: "/api.v4/avoidance.php",
-			schemaName: "AvoidanceZones.AvoidanceZones",
+			validationContext: "AvoidanceZones.AvoidanceZones",
 		}, callback)
 	}
 
@@ -101,7 +101,7 @@ class AvoidanceZones {
 				"territory_id": id,
 			},
 			body: data,
-			schemaName: "AvoidanceZones.AvoidanceZone",
+			validationContext: "AvoidanceZones.AvoidanceZone",
 		}, callback)
 	}
 
@@ -129,7 +129,7 @@ class AvoidanceZones {
 			qs: {
 				"territory_id": id,
 			},
-			schemaName: "AvoidanceZones.RemoveResponse",
+			validationContext: "AvoidanceZones.RemoveResponse",
 		}, callback)
 	}
 }
