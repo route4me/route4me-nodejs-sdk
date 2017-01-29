@@ -6,6 +6,7 @@ const _        = require("lodash")
 const platform = require("platform")
 
 const Addresses       = require("./resources/addresses")
+const AvoidanceZones  = require("./resources/avoidance-zones")
 const Optimizations   = require("./resources/optimizations")
 const Routes          = require("./resources/routes")
 const Vehicles        = require("./resources/vehicles")
@@ -79,6 +80,12 @@ class Route4Me {
 		 * @since 0.1.8
 		 */
 		this.Addresses = new Addresses(this)
+		/**
+		 * **AvoidanceZones** related API calls
+		 * @type {AvoidanceZones}
+		 * @since 0.1.8
+		 */
+		this.AvoidanceZones = new AvoidanceZones(this)
 		/**
 		 * **Optimizations** related API calls
 		 * @type {Optimizations}
