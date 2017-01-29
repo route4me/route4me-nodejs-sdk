@@ -125,10 +125,10 @@ class Route4Me {
 	 * @param {string} options.path         Server path
 	 * @param {object} [options.qs]         Query string
 	 * @param {object} [options.body]       Body
-	 * @param {null|string|function} [options.schemaName=null] The name of JSON Schema
-	 *        which should be used for validation of the response. If `schemaName`
-	 *        is a function - this function will be used for validation.
-	 *
+	 * @param {null|string|function} [options.validationContext=null]
+	 *        * `null` cause validation disabled (TODO: test this case)
+	 *        * `string` is threated as the name of JSON Schema
+	 *        * `function` will be used for validation.
 	 * @param {module:route4me-node~RequestCallback}    [callback]
 	 */
 	_makeRequest(options, callback) {
@@ -145,15 +145,15 @@ class Route4Me {
 		}
 
 		let vld = this._validate
-		let shm = options.schemaName
-		if (typeof shm === "function") {
-			vld = shm
-			shm = true
+		let vctx = options.validationContext || null
+		if (typeof vctx === "function") {
+			vld = vctx
+			vctx = true
 		}
 
 		qs["api_key"] = this._apiKey
 
-		const resHandler = new utils.ResponseHandler(this._logger, vld, shm, callback)
+		const resHandler = new utils.ResponseHandler(this._logger, vld, vctx, callback)
 
 		debug("sending request", apiUrl, qs)
 		this._logger.info({ msg: "sending request", "url": apiUrl, "queryString": qs })

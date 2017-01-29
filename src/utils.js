@@ -9,6 +9,7 @@ const errors  = require("./errors")
  * ILogger interface
  *
  * @interface ILogger
+ * @public
  */
 class ILogger {
 	/**
