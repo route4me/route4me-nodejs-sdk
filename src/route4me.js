@@ -63,17 +63,7 @@ class Route4Me {
 		 * @method
 		 * @type {module:route4me-node~ValidationCallback}
 		 */
-		this._validate = typeof opt.validate === "function" ? opt.validate : _.noop
-
-		/**
-		 * Used for validation of input arguments
-		 *
-		 * @since 0.1.7
-		 * @internal
-		 * @method
-		 * @type {module:route4me-node~ValidationCallback}
-		 */
-		this._validateArgs = this._validate
+		this._validate = typeof opt.validate === "function" ? opt.validate : (ix)=>ix
 
 		/**
 		 * **Addresses** related API calls
@@ -135,8 +125,9 @@ class Route4Me {
 	 * @param {string} options.path         Server path
 	 * @param {object} [options.qs]         Query string
 	 * @param {object} [options.body]       Body
-	 * @param {null|string} [options.schemaName=null] The name of JSON Schema which should be used for
-	 * validation of the response
+	 * @param {null|string|function} [options.schemaName=null] The name of JSON Schema
+	 *        which should be used for validation of the response. If `schemaName`
+	 *        is a function - this function will be used for validation.
 	 *
 	 * @param {module:route4me-node~RequestCallback}    [callback]
 	 */
@@ -144,7 +135,6 @@ class Route4Me {
 		const apiUrl = `${this._baseUrl}${options.path}`
 		const qs = options.qs ||  {} /* query string */
 		const body = options.body || null // {} /* body */
-		const schemaName = options.schemaName
 		const timeouts = {
 			response: 5000,  // Wait 5 seconds for the server to start sending,
 			deadline: 10000, // but allow 10 seconds to finish loading.
@@ -154,9 +144,16 @@ class Route4Me {
 			method = "del"
 		}
 
+		let vld = this._validate
+		let shm = options.schemaName
+		if (typeof shm === "function") {
+			vld = shm
+			shm = true
+		}
+
 		qs["api_key"] = this._apiKey
 
-		const resHandler = new utils.ResponseHandler(this._logger, this._validate, schemaName, callback)
+		const resHandler = new utils.ResponseHandler(this._logger, vld, shm, callback)
 
 		debug("sending request", apiUrl, qs)
 		this._logger.info({ msg: "sending request", "url": apiUrl, "queryString": qs })

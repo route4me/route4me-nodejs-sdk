@@ -32,11 +32,15 @@ module.exports.Route4MeApiError = errors.Route4MeApiError
  */
 
 /**
- * Input and output validation callback
+ * Validation callback, applied to each API-response
  *
  * @callback ValidationCallback
  * @private
- * @param {*}       obj          Object to validate
- * @param {string}  schemaName   Name of the schema to validate against
- * @return {null|Error}          **Falsey** value or {@link Error} object
+ * @param {*}       obj          - Object to validate. Route4Me will pass
+ *         API-responses with this argument
+ * @param {string}  schemaName   - Name of the schema to validate against.
+ *         Route4Me will pass the name of appropriate schema for validation.
+ * @return {*|Error}             - Returns:
+ *         * {@link Error} on validation error
+ *         * `obj` argument (modifications allowed)
  */

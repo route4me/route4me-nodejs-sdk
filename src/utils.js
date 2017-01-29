@@ -40,13 +40,13 @@ class ILogger {
 }
 
 class ResponseHandler {
-	constructor(logger, validate, schemaName, callback) {
+	constructor(logger, validate, validateContext, callback) {
 		const cb = typeof callback !== "function" ? _.noop : callback
 		this._logger = logger
 		this._cb = cb
 
 		this._validate = validate
-		this._schemaName = schemaName
+		this._validateContext = validateContext
 	}
 
 	callback(err, res) {
@@ -59,13 +59,13 @@ class ResponseHandler {
 	_handleOk(res) {
 		debug("response ok")
 
-		const data = res.body
+		let data = res.body
 
-		if (this._schemaName) {
-			const verror = this._validate(data, this._schemaName)
-			if (verror) {
-				this._logger.error({ "msg": "response validation error", "err": verror })
-				return this._cb(verror)
+		if (this._validateContext) {
+			data = this._validate(data, this._validateContext)
+			if (data instanceof Error) {
+				this._logger.error({ "msg": "response validation error", "err": data })
+				return this._cb(data, null)
 			}
 		}
 		this._logger.info({ "msg": "response ok" })
@@ -76,11 +76,7 @@ class ResponseHandler {
 		let e = null
 		debug("response error")
 
-		if (err.status >= 400) {
-			e = new errors.Route4MeApiError(err.message, res, err)
-		} else {
-			e = new errors.Route4MeApiError(err.message, res, err)
-		}
+		e = new errors.Route4MeApiError(err.message, res, err)
 
 		this._logger.error({ "msg": "response error", "err": e })
 		return this._cb(e)
