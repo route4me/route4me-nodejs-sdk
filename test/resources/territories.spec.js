@@ -29,11 +29,11 @@ describe("resources/territories.spec", () => {
 
 		describe("create", () => {
 			const data = {
-				"territory_name":"Polygon Territory",
-				"territory_color":"ff0000",
-				"territory":{
-					"type":"poly",
-					"data":[
+				"territory_name": "Polygon Territory",
+				"territory_color": "ff0000",
+				"territory": {
+					"type": "poly",
+					"data": [
 						"37.769752822786455,-77.67833251953125",
 						"37.75886716305343,-77.68974800109863",
 						"37.76641925847049,-77.66846199035645",
@@ -57,7 +57,7 @@ describe("resources/territories.spec", () => {
 		describe("get", () => {
 			it("should call route4me", (done) => {
 				const includeAddresses = true
-				resource.get('596A2A44FE9FB19EEB9C3C072BF2D0BE', includeAddresses, (err, res) => {
+				resource.get("596A2A44FE9FB19EEB9C3C072BF2D0BE", includeAddresses, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
@@ -90,11 +90,11 @@ describe("resources/territories.spec", () => {
 
 		describe("update", () => {
 			const data = {
-				"territory_name":"Test Territory 12",
-				"territory_color":"ff0000",
+				"territory_name": "Test Territory 12",
+				"territory_color": "ff0000",
 				"territory": {
-					"type":"circle",
-					"data":["37.5697528227121212,-77.478332519151515", "4031"]
+					"type": "circle",
+					"data": ["37.5697528227121212,-77.478332519151515", "4031"]
 				}
 			}
 
@@ -104,7 +104,7 @@ describe("resources/territories.spec", () => {
 					expect(res).is.not.null
 					helper.expectRequest(req, "PUT",
 						"https://route4me.com/api.v4/territory.php",
-						{"territory_id": "39236C3A30F92CA338C41EB0978F9D8A"},
+						{ "territory_id": "39236C3A30F92CA338C41EB0978F9D8A" },
 						data
 					)
 					done()

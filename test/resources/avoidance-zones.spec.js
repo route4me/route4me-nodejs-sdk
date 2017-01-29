@@ -30,11 +30,11 @@ describe("resources/avoidance-zones.spec", () => {
 		describe("create", () => {
 			// yup, even for Avoidance Zones` territory prefixes
 			const data = {
-				"territory_name":"Test Territory",
-				"territory_color":"ff0000",
+				"territory_name": "Test Territory",
+				"territory_color": "ff0000",
 				"territory": {
-					"type":"circle",
-					"data":["37.569752822786455,-77.47833251953125", "5000"]
+					"type": "circle",
+					"data": ["37.569752822786455,-77.47833251953125", "5000"]
 				}
 			}
 
@@ -53,7 +53,7 @@ describe("resources/avoidance-zones.spec", () => {
 
 		describe("get", () => {
 			it("should call route4me", (done) => {
-				resource.get('adf123ADEDB', (err, res) => {
+				resource.get("adf123ADEDB", (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
@@ -84,11 +84,11 @@ describe("resources/avoidance-zones.spec", () => {
 		describe("update", () => {
 			// yup, even for Avoidance Zones` territory prefixes
 			const data = {
-				"territory_name":"Test Territory",
-				"territory_color":"ff0000",
+				"territory_name": "Test Territory",
+				"territory_color": "ff0000",
 				"territory": {
-					"type":"circle",
-					"data":["37.569752822786455,-77.47833251953125", "5000"]
+					"type": "circle",
+					"data": ["37.569752822786455,-77.47833251953125", "5000"]
 				}
 			}
 
@@ -98,7 +98,7 @@ describe("resources/avoidance-zones.spec", () => {
 					expect(res).is.not.null
 					helper.expectRequest(req, "PUT",
 						"https://route4me.com/api.v4/avoidance.php",
-						{"territory_id": "1234567"},
+						{ "territory_id": "1234567" },
 						data
 					)
 					done()

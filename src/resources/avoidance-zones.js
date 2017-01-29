@@ -1,7 +1,5 @@
 "use strict"
 
-const utils = require("../utils")
-
 /**
  * @namespace
  */
@@ -49,7 +47,8 @@ class AvoidanceZones {
 	 * @since 0.1.8
 	 *
 	 * @param {string}  id       - Avoidance zone ID
-	 * @param {module:route4me-node~RequestCallback<jsonschema:AvoidanceZones.AvoidanceZone>} [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:AvoidanceZones.AvoidanceZone>}
+	 *        [callback]
 	 */
 	get(id, callback) {
 		return this.r._makeRequest({
@@ -71,7 +70,8 @@ class AvoidanceZones {
 	 *
 	 * @todo TODO: There is no schema for the response, but it is just an array of known schema
 	 *
-	 * @param {module:route4me-node~RequestCallback<jsonschema:AvoidanceZones.AvoidanceZones>} [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:AvoidanceZones.AvoidanceZones>}
+	 *        [callback]
 	 */
 	list(callback) {
 		return this.r._makeRequest({

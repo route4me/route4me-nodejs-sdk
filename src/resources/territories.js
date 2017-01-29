@@ -1,5 +1,7 @@
 "use strict"
 
+const errors          = require("./../errors")
+
 /**
  * @namespace
  */
@@ -53,15 +55,15 @@ class Territories {
 	 */
 	get(id, includeAddresses, callback) {
 		let cb = callback
-		if (typeof cb === 'undefined'
-			&& typeof includeAddresses === 'function')
-		{
-			cb = includeAddresses
-			includeAddresses = false
-		}
 		let ia = includeAddresses
-		if (typeof ia !== 'boolean') {
-			throw new Route4MeError("Territory.get: wrong type for argument 'includeAddresses':" + typeof ia)
+		if (typeof cb === "undefined"
+			&& typeof ia === "function")		{
+			cb = ia
+			ia = false
+		}
+		if (typeof ia !== "boolean") {
+			throw new errors.Route4MeError(
+				`Territory.get: wrong type for argument 'includeAddresses':${typeof ia}`)
 		}
 
 		return this.r._makeRequest({
