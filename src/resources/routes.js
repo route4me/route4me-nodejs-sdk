@@ -68,7 +68,7 @@ class Routes {
 	 * @todo TODO: parse the response
 	 *
 	 * @param {string|Array<string>}  ids       - Array of the Route IDs to be merged.
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.DuplicateResponse>} [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.MergeResponse>} [callback]
 	 */
 	merge(ids, callback) {
 		const idsPure = typeof ids === "string" ?
@@ -79,7 +79,7 @@ class Routes {
 			method: "POST",
 			path: "/actions/merge_routes.php",
 			body: idsPure,
-			schemaName: "Routes.DuplicateResponse",
+			schemaName: "Routes.MergeResponse",
 		}, callback)
 	}
 
