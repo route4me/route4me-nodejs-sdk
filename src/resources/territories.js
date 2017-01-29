@@ -127,14 +127,8 @@ class Territories {
 	 * @category Territories
 	 * @since 0.1.8
 	 *
-	 * @todo TODO: There is no schema for the response
-	 * @example
-	 * SampleResponse = {"status":true}
-	 *
-	 * @todo TODO: parse the response
-	 *
 	 * @param {string}  id       - Territory ID
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Territories.RemoveResponse>}
+	 * @param {module:route4me-node~RequestCallback<boolean>}
 	 *     [callback]
 	 */
 	remove(id, callback) {
@@ -144,8 +138,20 @@ class Territories {
 			qs: {
 				"territory_id": id,
 			},
-			validationContext: "Territories.RemoveResponse",
+			validationContext: this._removeValidator,
 		}, callback)
+	}
+
+	static _removeValidator(data) {
+		if (!data) {
+			return new errors.Route4MeInternalValidationError("Empty response", data)
+		}
+
+		if (typeof data.status !== "boolean") {
+			return new errors.Route4MeInternalValidationError("Invalid response", data)
+		}
+
+		return data.status
 	}
 }
 
