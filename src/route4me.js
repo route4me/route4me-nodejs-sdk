@@ -59,11 +59,11 @@ class Route4Me {
 		 * certain internal classes.
 		 *
 		 * @since 0.1.4
-		 * @internal
-		 * @method
+		 * @protected
+		 * @function
 		 * @type {module:route4me-node~ValidationCallback}
 		 */
-		this._validate = typeof opt.validate === "function" ? opt.validate : (ix)=>ix
+		this._validate = typeof opt.validate === "function" ? opt.validate : ix => ix
 
 		/**
 		 * **Addresses** related API calls
@@ -118,7 +118,7 @@ class Route4Me {
 	/**
 	 * Wrapper around {@link external:superagent} with all options applied.
 	 *
-	 * @internal
+	 * @protected
 	 *
 	 * @param {object} options              Request options
 	 * @param {string} options.method       HTTP method

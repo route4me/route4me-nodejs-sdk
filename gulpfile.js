@@ -13,6 +13,8 @@ const size = require("gulp-size")
 const fix = !!argv.fix
 const grep = argv.grep
 
+const jsdocConfig = require("./.jsdocrc.js")
+
 gulp.task("default", ["lint", "test"])
 gulp.task("build", ["build:node"])
 
@@ -24,21 +26,19 @@ const paths = {
 	],
 }
 
-gulp.task("doc", () => {
-    const jsdocConfig = require('./.jsdocrc.js');
+gulp.task("doc", function D() {           // eslint-disable-line prefer-arrow-callback
 	return gulp.src(
 		"README.md", {
-			read: false
+			read: false,
 		})
 		.pipe(jsdoc(jsdocConfig))
 })
 
-gulp.task("lint", () => {
+gulp.task("lint", function L() {          // eslint-disable-line prefer-arrow-callback
 	return gulp.src([
-			//"gulpfile.js",
-			"./src/**/*.js",
-			"./test/**/*.js",
-		], { "base": "./" })
+		"./src/**/*.js",
+		"./test/**/*.js",
+	], { "base": "./" })
 		.pipe(eslint({
 			fix,
 		}))
@@ -47,7 +47,7 @@ gulp.task("lint", () => {
 		.pipe(eslint.failAfterError())
 })
 
-gulp.task("test", () => {
+gulp.task("test", function T() {          // eslint-disable-line prefer-arrow-callback
 	return gulp.src(paths.test, { read: false })
 		.pipe(mocha({
 			// reporter: "list",
@@ -58,7 +58,7 @@ gulp.task("test", () => {
 		}))
 })
 
-gulp.task("build:node", () => {
+gulp.task("build:node", function BN() {      // eslint-disable-line prefer-arrow-callback
 	return gulp.src("./src/**/*.js")
 		.pipe(size({ title: "build:node", showFiles: true }))
 		.pipe(gulp.dest("dist/"))

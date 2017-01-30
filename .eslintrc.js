@@ -4,7 +4,7 @@ exports = module.exports = {
 	],
 	"plugins": [
 		// TODO: this is LINT rules for DOC. `Use with npm install eslint-plugin-jsdoc`
-		//"jsdoc"
+		"jsdoc"
 	],
 	"parserOptions": {
 		"sourceType": "script"   // required to set "strict mode" explicitly
@@ -29,7 +29,7 @@ exports = module.exports = {
 
 		// TODO: this is LINT rules for DOC. `Use with npm install eslint-plugin-jsdoc`
 		//"jsdoc/check-param-names": 1,
-		// "jsdoc/check-tag-names": 1,
+		"jsdoc/check-tag-names": 1,
 		// "jsdoc/check-types": 1,
 		// "jsdoc/newline-after-description": 1,
 		// "jsdoc/require-description-complete-sentence": 1,
@@ -39,5 +39,15 @@ exports = module.exports = {
 		// "jsdoc/require-param-type": 1,
 		// "jsdoc/require-returns-description": 1,
 		// "jsdoc/require-returns-type": 1
+	},
+	"settings": {
+		"jsdoc": {
+			"tagNamePreference": {
+				"returns": "return"
+			},
+			"additionalTagNames": {
+				"customTags": "category"
+			}
+		}
 	}
 }
