@@ -2,13 +2,13 @@ Access Route4Me's logistics-as-a-service API using our Node.js SDK
 -------------------
 
 [![Build Status](https://travis-ci.org/route4me/route4me-nodejs-sdk.svg?branch=master)](https://travis-ci.org/route4me/route4me-nodejs-sdk)
-[![Build status](https://ci.appveyor.com/api/projects/status/t292y0ywsri2x4el?svg=true)](https://ci.appveyor.com/project/maxkoryukov/route4me-nodejs-sdk-oga5i)
+[![Build Status](https://ci.appveyor.com/api/projects/status/t292y0ywsri2x4el?svg=true)](https://ci.appveyor.com/project/maxkoryukov/route4me-nodejs-sdk-oga5i)
 
 [![bitHound Overall Score](https://www.bithound.io/github/route4me/route4me-nodejs-sdk/badges/score.svg)](https://www.bithound.io/github/route4me/route4me-nodejs-sdk)
 [![bitHound Dependencies](https://www.bithound.io/github/route4me/route4me-nodejs-sdk/badges/dependencies.svg)](https://www.bithound.io/github/route4me/route4me-nodejs-sdk/master/dependencies/npm)
-[![codecov](https://codecov.io/gh/route4me/route4me-nodejs-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/route4me/route4me-nodejs-sdk)
+[![CodeCov](https://codecov.io/gh/route4me/route4me-nodejs-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/route4me/route4me-nodejs-sdk)
 [![NSP Status](https://nodesecurity.io/orgs/route4me/projects/5a353146-e6b4-4bc1-8108-f35517faadde/badge)](https://nodesecurity.io/orgs/route4me/projects/5a353146-e6b4-4bc1-8108-f35517faadde)
-[![codebeat badge](https://codebeat.co/badges/79f229c5-27f7-4ab9-8503-2d6fc95052f9)](https://codebeat.co/projects/github-com-route4me-route4me-nodejs-sdk)
+[![CodeBeat Badge](https://codebeat.co/badges/79f229c5-27f7-4ab9-8503-2d6fc95052f9)](https://codebeat.co/projects/github-com-route4me-route4me-nodejs-sdk)
 
 
 ### What does the Route4Me SDK permit me to do?
@@ -95,78 +95,3 @@ Route4Me does not currently lease or sell servers, and does not have on-premise 
 
 ### Does the Route4Me API/SDK require me to have my own programmers?
 The time required to integrate the SDK can be as little as 1 hour or may take several weeks, depending on the number of features being incorporated into the customer’s application and how much integration testing will be done by the client. A programmer’s involvement is almost always required to use Route4Me’s technology when accessing it through the API.
-
-
-
-### Installation and Usage
-
-
-## Installation
-
-```
-npm install --save route4me-node
-```
-
-## Usage example
-
-### Single Driver Route Optimization
-
-```javascript
-var api_key = '11111111111111111111111111111111'
-  , route4me = require('..')(api_key)
-  , addresses = require('./addresses.json');
-
-var params = {
-  addresses: addresses
-, parameters:{
-    algorithm_type: 1
-  , distance_unit: 'mi'
-  , device_type: 'web'
-  , optimize: 'Distance'
-  , travel_mode: 'Driving'
-  , route_max_duration: 86400
-  , vehicle_capacity: 1
-  , vehicle_max_distance_mi: 10000
-  , rt: true
-  }
-};
-
-route4me.OptimizationProblem.optimize(params, function(err, problem) {
-  console.log(err, problem);
-});
-```
-
-### Multiple Depot Multiple driver route optimization
-
-```javascript
-var api_key = '11111111111111111111111111111111'
-  , route4me = require('..')(api_key)
-  , addresses = require('./addresses.json');
-
-var params = {
-  addresses: addresses
-, parameters:{
-    algorithm_type: 4
-  , distance_unit: 'mi'
-  , device_type: 'web'
-  , optimize: 'Distance'
-  , travel_mode: 'Driving'
-  , route_max_duration: 86400
-  , vehicle_capacity: 50
-  , vehicle_max_distance_mi: 10000
-  , parts: 50
-  }
-};
-
-route4me.OptimizationProblem.optimize(params, function(err, problem) {
-  console.log(err, problem);
-});
-```
-
-## Tests
-
-```
-npm test
-```
-
-
