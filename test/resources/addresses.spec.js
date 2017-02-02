@@ -17,10 +17,10 @@ describe("resources/addresses.spec", () => {
 
 		beforeEach(() => {
 			req = null
-			saMock.get("*", (r) =>  { r.method="GET";    req = r; return {} })
-			saMock.post("*", (r) => { r.method="POST";   req = r; return {} })
-			saMock.del("*", (r) =>  { r.method="DELETE"; req = r; return {} })
-			saMock.put("*", (r) =>  { r.method="PUT";    req = r; return {} })
+			saMock.get("*", (r) =>  { r.method = "GET";    req = r; return {} })
+			saMock.post("*", (r) => { r.method = "POST";   req = r; return {} })
+			saMock.del("*", (r) =>  { r.method = "DELETE"; req = r; return {} })
+			saMock.put("*", (r) =>  { r.method = "PUT";    req = r; return {} })
 		})
 
 		afterEach(() => {

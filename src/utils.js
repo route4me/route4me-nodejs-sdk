@@ -41,7 +41,7 @@ class ILogger {
 
 class ResponseHandler {
 	constructor(logger, validate, validateContext, callback) {
-		const cb = typeof callback !== "function" ? (x)=>x : callback
+		const cb = typeof callback !== "function" ? x => x : callback
 		this._logger = logger
 		this._cb = cb
 
@@ -92,7 +92,7 @@ TYPECONV
 function uniq(arr) {
 	const uq = {}
 	const res = []
-	for(const i of arr) {
+	for (const i of arr) {
 		if (!(i in uq)) {
 			uq[i] = true
 			res.push(i)
@@ -102,7 +102,7 @@ function uniq(arr) {
 }
 
 function toStringArray(arg, trim) {
-	let t = trim !== false
+	const t = trim !== false
 	let a = arg
 
 	if (typeof a === "number") {
@@ -119,7 +119,7 @@ function toStringArray(arg, trim) {
 
 	if (Array.isArray(a)) {
 		a = a
-			.map( x => `${x}` )
+			.map(x => `${x}`)
 
 		return a
 	}
@@ -139,8 +139,8 @@ function toIntArray(arg) {
 
 	if (Array.isArray(a)) {
 		a = a
-			.map( x=> parseInt(x))
-			.filter( x => typeof x === "number" )
+			.map(x => parseInt(x))
+			.filter(x => typeof x === "number")
 
 		return a
 	}
@@ -160,10 +160,9 @@ function toOptimizationStatesSafe(states) {
 		arr = toIntArray(states)
 	} catch (e) {
 		if (e instanceof errors.Route4MeError) {
-			return new errors.Route4MeError('Invalid states argument', e)
-		} else {
-			throw e
+			return new errors.Route4MeError("Invalid states argument", e)
 		}
+		throw e
 	}
 	arr = uniq(arr.filter(_isInStateRange))
 

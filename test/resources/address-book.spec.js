@@ -18,10 +18,10 @@ describe("resources/address-book.spec", () => {
 
 		beforeEach(() => {
 			req = null
-			saMock.get("*", (r) =>  { r.method="GET";    req = r; return {} })
-			saMock.post("*", (r) => { r.method="POST";   req = r; return {} })
-			saMock.del("*", (r) =>  { r.method="DELETE"; req = r; return {} })
-			saMock.put("*", (r) =>  { r.method="PUT";    req = r; return {} })
+			saMock.get("*", (r) =>  { r.method = "GET";    req = r; return {} })
+			saMock.post("*", (r) => { r.method = "POST";   req = r; return {} })
+			saMock.del("*", (r) =>  { r.method = "DELETE"; req = r; return {} })
+			saMock.put("*", (r) =>  { r.method = "PUT";    req = r; return {} })
 		})
 
 		afterEach(() => {
@@ -88,8 +88,7 @@ describe("resources/address-book.spec", () => {
 				},
 			]
 
-			testCases.forEach(tc => {
-
+			testCases.forEach((tc) => {
 				it(`${tc.msg} should call route4me`, (done) => {
 					resource.getMany(tc.ids, (err, res) => {
 						expect(err).is.null
@@ -108,14 +107,14 @@ describe("resources/address-book.spec", () => {
 		describe("list", () => {
 			let mock
 			const options = {
-				"offset" : 3173,
+				"offset": 3173,
 			}
 
-			before( () => {
+			before(() => {
 				mock = sinon.mock(resource)
 			})
 
-			after( () => {
+			after(() => {
 				mock.verify()
 				mock.restore()
 			})
@@ -163,11 +162,11 @@ describe("resources/address-book.spec", () => {
 
 		describe("update", () => {
 			const data = {
-				"address_id":6879135,
-				"member_id":1,
-				"curbside_lat":38.024654,
-				"curbside_lng":-77.338814,
-				"first_name":"Modified"
+				"address_id": 6879135,
+				"member_id": 1,
+				"curbside_lat": 38.024654,
+				"curbside_lng": -77.338814,
+				"first_name": "Modified"
 			}
 
 			it("should call route4me", (done) => {
@@ -178,11 +177,11 @@ describe("resources/address-book.spec", () => {
 						"PUT", "https://route4me.com/api.v4/address_book.php",
 						{},
 						{
-							"address_id":7364,
-							"member_id":1,
-							"curbside_lat":38.024654,
-							"curbside_lng":-77.338814,
-							"first_name":"Modified"
+							"address_id": 7364,
+							"member_id": 1,
+							"curbside_lat": 38.024654,
+							"curbside_lng": -77.338814,
+							"first_name": "Modified"
 						}
 					)
 					done()
@@ -194,7 +193,7 @@ describe("resources/address-book.spec", () => {
 			const testCases = [
 				{ msg: "for for number",
 					ids: 152,
-					expBody: { "address_ids": [ "152" ] },
+					expBody: { "address_ids": ["152"] },
 				},
 				{ msg: "for sinmple string",
 					ids: "9761",
@@ -210,7 +209,7 @@ describe("resources/address-book.spec", () => {
 				},
 				{ msg: "for CSV-string",
 					ids: "59783,78230,   11, 10005",
-					expBody: { "address_ids": ["59783" , "78230", "11", "10005"] },
+					expBody: { "address_ids": ["59783", "78230", "11", "10005"] },
 				},
 			]
 
@@ -231,7 +230,5 @@ describe("resources/address-book.spec", () => {
 				})
 			})
 		})
-
-
 	})
 })

@@ -173,7 +173,7 @@ class Optimizations {
 				"optimization_problem_id": id,
 				"reoptimize": reoptimize ? "1" : "0",
 			},
-			body: { "addresses" : addresses },
+			body: { "addresses": addresses },
 			validationContext: "Addresses.Addresses",
 		}, callback)
 	}

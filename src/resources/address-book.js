@@ -156,7 +156,6 @@ class AddressBook {
 	 *        [callback]
 	 */
 	update(id, data, callback) {
-
 		// TODO : do not change args!
 		data.address_id = id
 
@@ -193,7 +192,7 @@ class AddressBook {
 			method: "DELETE",
 			path: "/api.v4/address_book.php",
 			body: {
-				"address_ids": pureIds
+				"address_ids": pureIds,
 			},
 			validationContext: this._removeValidator,
 		}, callback)

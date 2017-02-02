@@ -12,8 +12,8 @@ function expectRequest(req, method, url, query, body) {
 	expect(req).has.property("method")
 		.and.is.equal(method)
 
-	expect(req).has.property('headers')
-		.that.has.property('content-type', 'application/json')
+	expect(req).has.property("headers")
+		.that.has.property("content-type", "application/json")
 
 	// QUERY assertions
 	expect(req).has.property("query")
