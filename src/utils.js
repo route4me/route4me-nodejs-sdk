@@ -101,6 +101,32 @@ function uniq(arr) {
 	return res
 }
 
+function toStringArray(arg, trim) {
+	let t = trim !== false
+	let a = arg
+
+	if (typeof a === "number") {
+		return [`${a}`]
+	}
+
+	if (typeof a === "string") {
+		if (t) {
+			a = a.split(/[,\s]+/)
+		} else {
+			a = a.split(/,+/)
+		}
+	}
+
+	if (Array.isArray(a)) {
+		a = a
+			.map( x => `${x}` )
+
+		return a
+	}
+
+	throw new errors.Route4MeError("Argument is not a number OR CSV-string OR string OR array")
+}
+
 function toIntArray(arg) {
 	let a = arg
 	if (typeof a === "number") {
@@ -154,6 +180,7 @@ function qsLimitAndOffset(qs, limit, offset) {
 exports.noopLogger = new ILogger()
 exports.ResponseHandler = ResponseHandler
 
+exports.toStringArray = toStringArray
 exports.toIntArray = toIntArray
 exports.toOptimizationStatesSafe = toOptimizationStatesSafe
 exports.qsLimitAndOffset = qsLimitAndOffset
