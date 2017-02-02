@@ -101,6 +101,8 @@ class Optimizations {
 	 * @category Optimizations
 	 * @since 0.1.7
 	 *
+	 * @todo TODO: make reoptimize optional parameter
+	 *
 	 * @param {string} id - Optimization Problem ID
 	 * @param {jsonschema:Optimizations.CreateRequest}   optimization - New values for `Optimization`
 	 * @param {boolean} reoptimize - Determine, whether the `Optimization` should be reoptimized
@@ -156,8 +158,10 @@ class Optimizations {
 	 * @category Optimizations
 	 * @since 0.1.7
 	 *
+	 * @todo TODO: make reoptimize optional parameter
+	 *
 	 * @param {string}  id                                   - Optimization Problem ID
-	 * @param {jsonschema:Addresses.Addresses}   addresses   - Addresses array
+	 * @param {Array<jsonschema:Addresses.Address>}   addresses   - Addresses array
 	 * @param {boolean} reoptimize - Determine, whether the `Optimization` should be reoptimized
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Addresses.Addresses>} [callback]
 	 */
@@ -169,7 +173,7 @@ class Optimizations {
 				"optimization_problem_id": id,
 				"reoptimize": reoptimize ? "1" : "0",
 			},
-			body: addresses,
+			body: { "addresses" : addresses },
 			validationContext: "Addresses.Addresses",
 		}, callback)
 	}

@@ -132,8 +132,10 @@ describe("resources/optimizations.spec", () => {
 						"optimization_problem_id": "123",
 						"reoptimize": "0",
 					}, {
-						"0": { "in-body": true, "route_destination_id": 11,
-						} })
+						"addresses": [
+							{ "route_destination_id": 11, "in-body": true }
+						]
+					})
 					done()
 				})
 			})
