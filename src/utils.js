@@ -1,7 +1,6 @@
 "use strict"
 
 const debug   = require("debug")("route4me")
-const _       = require("lodash")
 
 const errors  = require("./errors")
 
@@ -42,7 +41,7 @@ class ILogger {
 
 class ResponseHandler {
 	constructor(logger, validate, validateContext, callback) {
-		const cb = typeof callback !== "function" ? _.noop : callback
+		const cb = typeof callback !== "function" ? (x)=>x : callback
 		this._logger = logger
 		this._cb = cb
 
@@ -84,33 +83,65 @@ class ResponseHandler {
 	}
 }
 
-function parseStates(states) {
-	function _isInStateRange(state) {
-		return _.inRange(state, 1, 6)
+
+/*
+=============================
+TYPECONV
+=============================
+ */
+function uniq(arr) {
+	const uq = {}
+	const res = []
+	for(const i of arr) {
+		if (!(i in uq)) {
+			uq[i] = true
+			res.push(i)
+		}
+	}
+	return res
+}
+
+function toIntArray(arg) {
+	let a = arg
+	if (typeof a === "number") {
+		return [a]
 	}
 
-	const t = typeof states
-	if (t === "number") {
-		if (_isInStateRange(states)) {
-			return states.toString()
-		}
-		return ""
+	if (typeof a === "string") {
+		a = a.split(/[,\s]+/)
+	}
+
+	if (Array.isArray(a)) {
+		a = a
+			.map( x=> parseInt(x))
+			.filter( x => typeof x === "number" )
+
+		return a
+	}
+
+	throw new errors.Route4MeError("Argument is not a number OR CSV-string OR string OR array")
+}
+
+function toOptimizationStatesSafe(states) {
+	function _isInStateRange(state) {
+		if (state < 1) return false
+		if (state > 6) return false
+		return true
 	}
 
 	let arr
-	if (t === "string") {
-		arr = states.split(/[,\s]+/i)
-	} else if (_.isArray(states)) {
-		arr = states
-	} else {
-		return new TypeError(`unexpected type of 'states' argument: ${t}`)
+	try {
+		arr = toIntArray(states)
+	} catch (e) {
+		if (e instanceof errors.Route4MeError) {
+			return new errors.Route4MeError('Invalid states argument', e)
+		} else {
+			throw e
+		}
 	}
+	arr = uniq(arr.filter(_isInStateRange))
 
-	return _(arr)
-		.map(_.toInteger)
-		.filter(_isInStateRange)
-		.uniq()
-		.join(",")
+	return arr.join(",")
 }
 
 function qsLimitAndOffset(qs, limit, offset) {
@@ -122,5 +153,7 @@ function qsLimitAndOffset(qs, limit, offset) {
 
 exports.noopLogger = new ILogger()
 exports.ResponseHandler = ResponseHandler
+
+exports.toIntArray = toIntArray
+exports.toOptimizationStatesSafe = toOptimizationStatesSafe
 exports.qsLimitAndOffset = qsLimitAndOffset
-exports.parseStates = parseStates

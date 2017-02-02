@@ -74,7 +74,7 @@ class Optimizations {
 	 *        [callback]
 	 */
 	list(states, limit, offset, callback) {
-		const _states = utils.parseStates(states)
+		const _states = utils.toOptimizationStatesSafe(states)
 		if (_states instanceof Error) {
 			return callback(_states)
 		}
