@@ -2,7 +2,7 @@
 
 const request = require("superagent")
 const saMock  = require("superagent-mocker")(request)
-const helper  = require("./helper")
+const helper  = require("./../helper")
 
 const Route4Me = require("../../src/route4me")
 
