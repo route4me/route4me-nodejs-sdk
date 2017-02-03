@@ -22,7 +22,7 @@ const paths = {
 	"test": [
 		"test/**/*.spec.js",
 		"test/**/*.test.js",
-		"examples/**/*.no.js",
+		"examples/**/*.js",
 	],
 }
 

@@ -28,7 +28,8 @@ class Optimizations {
 	 * @category Optimizations
 	 *
 	 * @param  {jsonschema:Optimizations.CreateRequest} optimization - Parameters for new optimization
-	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>}  [callback]
+	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>}
+	 * [callback]
 	 */
 	create(optimization, callback) {
 		return this.r._makeRequest({
@@ -48,7 +49,7 @@ class Optimizations {
 	 *
 	 * @param  {string} id - Optimization Problem ID
 	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimizations.Optimization>}
-	 *         [callback]
+	 * [callback]
 	 */
 	get(id, callback) {
 		return this.r._makeRequest({
@@ -71,7 +72,7 @@ class Optimizations {
 	 * @param {integer}                    [limit]    - Search limitation
 	 * @param {integer}                    [offset]   - Search starting position
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Optimizations>}
-	 *        [callback]
+	 * [callback]
 	 */
 	list(states, limit, offset, callback) {
 		const _states = utils.toOptimizationStatesSafe(states)
@@ -106,7 +107,8 @@ class Optimizations {
 	 * @param {string} id - Optimization Problem ID
 	 * @param {jsonschema:Optimizations.CreateRequest}   optimization - New values for `Optimization`
 	 * @param {boolean} reoptimize - Determine, whether the `Optimization` should be reoptimized
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>} [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>}
+	 * [callback]
 	 */
 	update(id, optimization, reoptimize, callback) {
 		return this.r._makeRequest({
@@ -138,7 +140,7 @@ class Optimizations {
 	 *
 	 * @param {string}  id       - Optimization Problem ID
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.RemoveResponse>}
-	 *     [callback]
+	 * [callback]
 	 */
 	remove(id, callback) {
 		return this.r._makeRequest({
@@ -163,7 +165,8 @@ class Optimizations {
 	 * @param {string}  id                                   - Optimization Problem ID
 	 * @param {Array<jsonschema:Addresses.Address>}   addresses   - Addresses array
 	 * @param {boolean} reoptimize - Determine, whether the `Optimization` should be reoptimized
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Addresses.Addresses>} [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Addresses.Addresses>}
+	 * [callback]
 	 */
 	linkAddress(id, addresses, reoptimize, callback) {
 		return this.r._makeRequest({
@@ -197,7 +200,7 @@ class Optimizations {
 	 * @param {string}  id         - Optimization Problem ID
 	 * @param {number}  addressId  - Route destination ID
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.UnlinkAddressResponse>}
-	 *        [callback]
+	 * [callback]
 	 */
 	unlinkAddress(id, addressId, callback) {
 		return this.r._makeRequest({
