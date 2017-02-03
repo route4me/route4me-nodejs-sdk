@@ -74,7 +74,7 @@ class Optimizations {
 	 *        [callback]
 	 */
 	list(states, limit, offset, callback) {
-		const _states = utils.parseStates(states)
+		const _states = utils.toOptimizationStatesSafe(states)
 		if (_states instanceof Error) {
 			return callback(_states)
 		}
@@ -100,6 +100,8 @@ class Optimizations {
 	 * @see {@link https://route4me.io/docs/#re-optimize-an-optimization Route4Me API}
 	 * @category Optimizations
 	 * @since 0.1.7
+	 *
+	 * @todo TODO: make reoptimize optional parameter
 	 *
 	 * @param {string} id - Optimization Problem ID
 	 * @param {jsonschema:Optimizations.CreateRequest}   optimization - New values for `Optimization`
@@ -156,10 +158,12 @@ class Optimizations {
 	 * @category Optimizations
 	 * @since 0.1.7
 	 *
+	 * @todo TODO: make reoptimize optional parameter
+	 *
 	 * @param {string}  id                                   - Optimization Problem ID
-	 * @param {jsonschema:Addresses.Addresses}   addresses   - Addresses array
+	 * @param {Array<jsonschema:Addresses.Address>}   addresses   - Addresses array
 	 * @param {boolean} reoptimize - Determine, whether the `Optimization` should be reoptimized
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Addresses.Addresses>}
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Addresses.Addresses>} [callback]
 	 */
 	linkAddress(id, addresses, reoptimize, callback) {
 		return this.r._makeRequest({
@@ -169,7 +173,7 @@ class Optimizations {
 				"optimization_problem_id": id,
 				"reoptimize": reoptimize ? "1" : "0",
 			},
-			body: addresses,
+			body: { "addresses": addresses },
 			validationContext: "Addresses.Addresses",
 		}, callback)
 	}
@@ -193,6 +197,7 @@ class Optimizations {
 	 * @param {string}  id         - Optimization Problem ID
 	 * @param {number}  addressId  - Route destination ID
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.UnlinkAddressResponse>}
+	 *        [callback]
 	 */
 	unlinkAddress(id, addressId, callback) {
 		return this.r._makeRequest({

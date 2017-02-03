@@ -57,7 +57,7 @@ class Territories {
 		let cb = callback
 		let ia = includeAddresses
 		if (typeof cb === "undefined"
-			&& typeof ia === "function")		{
+			&& typeof ia === "function") {
 			cb = ia
 			ia = false
 		}

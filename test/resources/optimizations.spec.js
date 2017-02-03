@@ -5,7 +5,7 @@
 
 const request = require("superagent")
 const saMock  = require("superagent-mocker")(request)
-const helper  = require("./helper")
+const helper  = require("./../helper")
 
 const Route4Me = require("../../src/route4me")
 
@@ -20,10 +20,11 @@ describe("resources/optimizations.spec", () => {
 
 		beforeEach(() => {
 			req = null
-			saMock.get("*", (r) => { req = r; return {} })
-			saMock.post("*", (r) => { req = r; return {} })
-			saMock.del("*", (r) => { req = r; return {} })
-			saMock.put("*", (r) => { req = r; return {} })
+			// TODO : mock in helper
+			saMock.get("*", (r) =>  { req = r; req.method = "GET";    return {} })
+			saMock.post("*", (r) => { req = r; req.method = "POST";   return {} })
+			saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return {} })
+			saMock.put("*", (r) =>  { req = r; req.method = "PUT";    return {} })
 		})
 
 		afterEach(() => {
@@ -132,8 +133,10 @@ describe("resources/optimizations.spec", () => {
 						"optimization_problem_id": "123",
 						"reoptimize": "0",
 					}, {
-						"0": { "in-body": true, "route_destination_id": 11,
-						} })
+						"addresses": [
+							{ "route_destination_id": 11, "in-body": true }
+						]
+					})
 					done()
 				})
 			})

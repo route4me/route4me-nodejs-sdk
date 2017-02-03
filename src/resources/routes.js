@@ -71,9 +71,7 @@ class Routes {
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.MergeResponse>} [callback]
 	 */
 	merge(ids, callback) {
-		const idsPure = typeof ids === "string" ?
-			ids.split(/\s*,\s*/) :
-			ids
+		const idsPure = utils.toStringArray(ids)
 
 		return this.r._makeRequest({
 			method: "POST",
@@ -158,9 +156,7 @@ class Routes {
 	 *     [callback]
 	 */
 	remove(ids, options, callback) {
-		const idsPure = typeof ids === "string" ?
-			ids.replace(/\s+/g, "") :
-			ids
+		const idsPure = utils.toStringArray(ids)
 
 		let cb = callback
 		if (typeof cb === "undefined"

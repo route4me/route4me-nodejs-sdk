@@ -3,16 +3,17 @@
 const Ajv = require("ajv")
 
 const Route4Me = require("../src/route4me")
+
+const helper = require("./helper")
+
 const jsonschemaVehicle = require("./REMOVE.Vehicles.Response.jsonschema")
 const jsonschemaVehicleMany = require("./REMOVE.Vehicles.ResponseMany.jsonschema")
 
 const testApiKey = "11111111111111111111111111111111"
 
-const runIntegrationTests = process.env["TEST_INTEGRATION"] === "1"
-const describeIntegration = runIntegrationTests ? describe : describe.skip
 
-describe("integration.route4me.test", () => {
-	describeIntegration("UNMOCKED Access to `Vehicles` list", function a() {
+describe("route4me.integration", () => {
+	helper.describeIntegration("UNMOCKED Access to `Vehicles` list", function a() {
 		this.timeout(5000)
 		this.slow(3000)
 		this.retries(3)

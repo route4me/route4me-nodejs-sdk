@@ -6,6 +6,7 @@ const _        = require("lodash")
 const platform = require("platform")
 
 const Addresses       = require("./resources/addresses")
+const AddressBook     = require("./resources/address-book")
 const AvoidanceZones  = require("./resources/avoidance-zones")
 const Optimizations   = require("./resources/optimizations")
 const Routes          = require("./resources/routes")
@@ -54,17 +55,14 @@ class Route4Me {
 		this._userAgent = opt.userAgent
 
 		this._logger = opt.logger
-		/**
-		 * Provides an validation interface of input-output parameters for
-		 * certain internal classes.
-		 *
-		 * @since 0.1.4
-		 * @protected
-		 * @function
-		 * @type {module:route4me-node~ValidationCallback}
-		 */
 		this._validate = typeof opt.validate === "function" ? opt.validate : ix => ix
 
+		/**
+		 * **AddressBook** related API calls
+		 * @type {AddressBook}
+		 * @since 0.1.8
+		 */
+		this.AddressBook = new AddressBook(this)
 		/**
 		 * **Addresses** related API calls
 		 * @type {Addresses}
