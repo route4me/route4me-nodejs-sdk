@@ -1,6 +1,5 @@
 "use strict"
 
-const errors          = require("./../errors")
 const utils           = require("./../utils")
 
 // TODO: remove Territory
@@ -28,7 +27,7 @@ class AddressBook {
 	/**
 	 * Create a new AddressBook.
 	 *
-	 * @see {@link https://route4me.io/docs/#create-a-location Route4Me API}
+	 * @see {@link https://route4me.io/docs/#create-a-location}
 	 * @category AddressBook
 	 * @since 0.1.8
 	 *
@@ -48,7 +47,7 @@ class AddressBook {
 	/**
 	 * GET locations from an address book by a specified list of locations IDs.
 	 *
-	 * @see {@link https://route4me.io/docs/#get-locations-by-ids Route4Me API}
+	 * @see {@link https://route4me.io/docs/#get-locations-by-ids}
 	 * @category AddressBook
 	 * @since 0.1.8
 	 *
@@ -75,7 +74,7 @@ class AddressBook {
 	/**
 	 * GET all locations from a user’s address book.
 	 *
-	 * @see {@link https://route4me.io/docs/#get-locations Route4Me API}
+	 * @see {@link https://route4me.io/docs/#get-locations}
 	 * @category AddressBook
 	 * @since 0.1.8
 	 *
@@ -94,8 +93,8 @@ class AddressBook {
 	 * Search an address book location by containing specified text in any
 	 * field/defined fields.
 	 *
-	 * @see {@link https://route4me.io/docs/#get-a-location Route4Me API}
-	 * @see {@link https://route4me.io/docs/#location-search Route4Me API}
+	 * @see {@link https://route4me.io/docs/#get-a-location}
+	 * @see {@link https://route4me.io/docs/#location-search}
 	 * @category AddressBook
 	 * @since 0.1.8
 	 *
@@ -109,7 +108,7 @@ class AddressBook {
 	 */
 	search(query, options, callback) {
 		const qs = {}
-		if (typeof query !== "null" && typeof query !== "undefined") {
+		if (query !== null && query !== undefined) {
 			qs["query"] = query
 		}
 		// "query": "dan",
@@ -156,13 +155,13 @@ class AddressBook {
 	 *        [callback]
 	 */
 	update(id, data, callback) {
-		// TODO : do not change args!
-		data.address_id = id
+		const d = utils.clone(data)
+		d["address_id"] = id
 
 		return this.r._makeRequest({
 			method: "PUT",
 			path: "/api.v4/address_book.php",
-			body: data,
+			body: d,
 			validationContext: "AddressBook.AddressBook",
 		}, callback)
 	}

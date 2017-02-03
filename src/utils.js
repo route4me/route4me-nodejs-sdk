@@ -83,6 +83,9 @@ class ResponseHandler {
 	}
 }
 
+function clone(obj) {
+	return JSON.parse(JSON.stringify(obj))
+}
 
 /*
 =============================
@@ -92,12 +95,12 @@ TYPECONV
 function uniq(arr) {
 	const uq = {}
 	const res = []
-	for (const i of arr) {
+	arr.forEach((i) => {
 		if (!(i in uq)) {
 			uq[i] = true
 			res.push(i)
 		}
-	}
+	})
 	return res
 }
 
@@ -139,7 +142,7 @@ function toIntArray(arg) {
 
 	if (Array.isArray(a)) {
 		a = a
-			.map(x => parseInt(x))
+			.map(x => parseInt(x, 10))
 			.filter(x => typeof x === "number")
 
 		return a
@@ -179,6 +182,7 @@ function qsLimitAndOffset(qs, limit, offset) {
 exports.noopLogger = new ILogger()
 exports.ResponseHandler = ResponseHandler
 
+exports.clone = clone
 exports.toStringArray = toStringArray
 exports.toIntArray = toIntArray
 exports.toOptimizationStatesSafe = toOptimizationStatesSafe

@@ -18,10 +18,11 @@ describe("resources/address-book.spec", () => {
 
 		beforeEach(() => {
 			req = null
-			saMock.get("*", (r) =>  { r.method = "GET";    req = r; return {} })
-			saMock.post("*", (r) => { r.method = "POST";   req = r; return {} })
-			saMock.del("*", (r) =>  { r.method = "DELETE"; req = r; return {} })
-			saMock.put("*", (r) =>  { r.method = "PUT";    req = r; return {} })
+			// TODO : mock in helper
+			saMock.get("*", (r) =>  { req = r; req.method = "GET";    return {} })
+			saMock.post("*", (r) => { req = r; req.method = "POST";   return {} })
+			saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return {} })
+			saMock.put("*", (r) =>  { req = r; req.method = "PUT";    return {} })
 		})
 
 		afterEach(() => {
@@ -125,7 +126,7 @@ describe("resources/address-book.spec", () => {
 					.withExactArgs(undefined, options, sinon.match.any)
 					.callsArg(2) // call DONE (second argument)
 
-				resource.list(options, (err, res) => {
+				resource.list(options, (/* err, res */) => {
 					done()
 				})
 			})
