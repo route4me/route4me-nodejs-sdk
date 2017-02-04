@@ -78,7 +78,7 @@ describe("resources/routes.spec", () => {
 		})
 
 		describe("get", () => {
-			it("should call route4me", (done) => {
+			it("without options should call route4me", (done) => {
 				resource.get(3, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
@@ -87,6 +87,25 @@ describe("resources/routes.spec", () => {
 						null
 					)
 					done()
+				})
+			})
+
+			describe("with option `includeTracking`", () => {
+				it("should call route4me", (done) => {
+					const options = {
+						includeTracking: true
+					}
+					resource.get(11, options, (err, res) => {
+						expect(err).is.null
+						expect(res).is.not.null
+						helper.expectRequest(req, "GET", "https://route4me.com/api.v4/route.php", {
+							"route_id": "11",
+							"device_tracking_history": "1",
+							},
+							null
+						)
+						done()
+					})
 				})
 			})
 		})
@@ -107,55 +126,28 @@ describe("resources/routes.spec", () => {
 		})
 
 		describe("remove", () => {
-			it("should call route4me for array parameter", (done) => {
-				const options = {}
-				resource.remove([5, 3, "67"], options, (err, res) => {
-					expect(err).is.null
-					expect(res).is.not.null
-					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/route.php", {
-						"route_id": "5,3,67" },
-						null
-					)
-					done()
-				})
-			})
 
-			it("should call route4me for number parameter", (done) => {
-				const options = {}
-				resource.remove(896, options, (err, res) => {
-					expect(err).is.null
-					expect(res).is.not.null
-					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/route.php", {
-						"route_id": "896" },
-						null
-					)
-					done()
-				})
-			})
+			const testCases = [
+				{ msg: "for array parameter",      ids: [5, 3, "67"], expQs: {"route_id": "5,3,67" } },
+				{ msg: "for number parameter",     ids: 896,          expQs: {"route_id": "896"} },
+				{ msg: "for string parameter",     ids: "756af35",    expQs: {"route_id": "756af35"} },
+				{ msg: "for CSV-string parameter", ids: "756af35, 12,   11, fd5612ab3",
+					expQs: {"route_id": "756af35,12,11,fd5612ab3"}
+				},
+			]
 
-			it("should call route4me for simple string parameter", (done) => {
-				const options = {}
-				resource.remove("756af35", options, (err, res) => {
-					expect(err).is.null
-					expect(res).is.not.null
-					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/route.php", {
-						"route_id": "756af35" },
-						null
-					)
-					done()
-				})
-			})
-
-			it("should call route4me for CSV-string parameter", (done) => {
-				const options = {}
-				resource.remove("756af35, 12,   11, fd5612ab3", options, (err, res) => {
-					expect(err).is.null
-					expect(res).is.not.null
-					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/route.php", {
-						"route_id": "756af35,12,11,fd5612ab3" },
-						null
-					)
-					done()
+			testCases.forEach(tc => {
+				it(`${tc.msg} should call route4me`, (done) => {
+					resource.remove(tc.ids, (err, res) => {
+						expect(err).is.null
+						expect(res).is.not.null
+						helper.expectRequest(req,
+							"DELETE", "https://route4me.com/api.v4/route.php",
+							tc.expQs,
+							null
+						)
+						done()
+					})
 				})
 			})
 		})

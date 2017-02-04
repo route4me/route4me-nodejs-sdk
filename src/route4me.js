@@ -12,6 +12,7 @@ const AvoidanceZones  = require("./resources/avoidance-zones")
 const Optimizations   = require("./resources/optimizations")
 const Routes          = require("./resources/routes")
 const Territories     = require("./resources/territories")
+const Tracking        = require("./resources/tracking")
 const Vehicles        = require("./resources/vehicles")
 
 const packageJson     = require("./../package.json")
@@ -96,9 +97,14 @@ class Route4Me {
 		this.Routes = new Routes(this)
 		/**
 		 * **Territories** related API calls
-		 * @type {Vehicles}
+		 * @type {Territories}
 		 */
 		this.Territories = new Territories(this)
+		/**
+		 * **Tracking** related API calls
+		 * @type {Tracking}
+		 */
+		this.Tracking = new Tracking(this)
 		/**
 		 * **Vehicles** related API calls
 		 * @type {Vehicles}

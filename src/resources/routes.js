@@ -23,7 +23,7 @@ class Routes {
 	/**
 	 * Duplicates the route. More information - on Route4Me API-doc site (see links section).
 	 *
-	 * @see {@link https://route4me.io/docs/#duplicate-a-route Route4Me API}
+	 * @see {@link https://route4me.io/docs/#duplicate-a-route}
 	 * @category Routes
 	 * @since 0.1.8
 	 *
@@ -54,7 +54,7 @@ class Routes {
 	/**
 	 * Merges the list of routes. More information - on Route4Me API-doc site (see links section).
 	 *
-	 * @see {@link https://route4me.io/docs/#merge-routes Route4Me API}
+	 * @see {@link https://route4me.io/docs/#merge-routes}
 	 * @category Routes
 	 * @since 0.1.8
 	 *
@@ -84,28 +84,46 @@ class Routes {
 	/**
 	 * Get a single route.
 	 *
-	 * @see {@link https://route4me.io/docs/#get-a-route Route4Me API}
+	 * @see {@link https://route4me.io/docs/#get-a-route}
 	 * @category Routes
 	 * @since 0.1.8
 	 *
+	 * @todo TODO: describe all OPTIONS
+	 *
 	 * @param {string}  id       - Route ID
+	 * @param {Object} [options] - Options
+	 * @param {boolean} [options.includeTracking] - if `true` - the route tracking data
+	 * will be included into the response.
+	 * See also {@link https://route4me.io/docs/#get-route-tracking-data}
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
 	 */
-	get(id, callback) {
+	get(id, options, callback) {
+		let cb = callback
+		let opt = options
+		let qs = {}
+
+		if (cb === undefined && typeof opt === "function") {
+			cb = opt
+			opt = null
+		}
+
+		qs["route_id"] = id
+		if (opt && opt["includeTracking"] === true) {
+			qs["device_tracking_history"] = "1"
+		}
+
 		return this.r._makeRequest({
 			method: "GET",
 			path: "/api.v4/route.php",
-			qs: {
-				"route_id": id,
-			},
+			qs,
 			validationContext: "Routes.Route",
-		}, callback)
+		}, cb)
 	}
 
 	/**
 	 * Get a limited number of the routes belonging to the user.
 	 *
-	 * @see {@link https://route4me.io/docs/#get-multiple-routes Route4Me API}
+	 * @see {@link https://route4me.io/docs/#get-multiple-routes}
 	 * @category Routes
 	 * @since 0.1.8
 	 *
@@ -128,7 +146,7 @@ class Routes {
 	/**
 	 * Given multiple route ID’s, remove all routes at the same time.
 	 *
-	 * @see {@link https://route4me.io/docs/#remove-routes Route4Me API}
+	 * @see {@link https://route4me.io/docs/#remove-routes}
 	 * @category Routes
 	 * @since 0.1.8
 	 *
@@ -148,28 +166,11 @@ class Routes {
 	 *
 	 * @param {(number|string|Array<number>|Array<string>)}  ids - Route ID **or** comma-separated
 	 *        list of route IDs **or** array of route IDs
-	 * @param {Object}         [options] - Options for SDK method
-	 * @param {boolean|number} [options.queryLimit=false] - `false` means, that query will be sent
-	 *        "as is". `number` value cause to split the original request to several chunks,
-	 *        limited in size by this parameter, chunks will be sent sequentionally.
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.RemoveResponse>}
 	 *     [callback]
 	 */
-	remove(ids, options, callback) {
+	remove(ids, callback) {
 		const idsPure = utils.toStringArray(ids)
-
-		let cb = callback
-		if (typeof cb === "undefined"
-			&& typeof options === "function"
-		) {
-			cb = options
-		}
-
-		if (options && options.queryLimit) {
-			// TODO: split ids for max allowed request parameter lengh
-			// and perform several queries
-			this.r._logger.error("Route.remove with options.queryLimit is not implemented")
-		}
 
 		return this.r._makeRequest({
 			method: "DELETE",
@@ -178,7 +179,7 @@ class Routes {
 				"route_id": idsPure,
 			},
 			validationContext: "Routes.RemoveResponse",
-		}, cb)
+		}, callback)
 	}
 }
 
