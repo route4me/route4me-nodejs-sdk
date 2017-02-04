@@ -8,6 +8,7 @@ const platform = require("platform")
 const Addresses       = require("./resources/addresses")
 const AddressBook     = require("./resources/address-book")
 const AvoidanceZones  = require("./resources/avoidance-zones")
+// const Members         = require("./resources/members")
 const Optimizations   = require("./resources/optimizations")
 const Routes          = require("./resources/routes")
 const Territories     = require("./resources/territories")
@@ -75,6 +76,13 @@ class Route4Me {
 		 * @since 0.1.8
 		 */
 		this.AvoidanceZones = new AvoidanceZones(this)
+		// /*
+		//  * **Members** related API calls
+		//  * @type {Members}
+		//  * @since 0.1.8
+		//  */
+		// this.Members = new Members(this)
+
 		/**
 		 * **Optimizations** related API calls
 		 * @type {Optimizations}
