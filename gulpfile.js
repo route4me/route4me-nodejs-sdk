@@ -20,8 +20,9 @@ gulp.task("build", ["build:node"])
 
 const paths = {
 	"test": [
-		"test/**/*.spec.js",
 		"test/**/*.test.js",
+		"test/**/*.spec.js",
+		"test/**/*.integration.js",
 		"examples/**/*.js",
 	],
 }

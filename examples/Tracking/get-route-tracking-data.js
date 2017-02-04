@@ -4,13 +4,14 @@ const path = require("path")
 const debug = require("debug")("route4me-node")
 
 require("../init-examples-suite")
+const helper  = require("./../../test/helper")
 
-// const Route4Me = require("route4me-node")
-
-describe(path.basename(__dirname), function T() {
+helper.describeIntegration(path.basename(__dirname), function T() {
 	this.timeout(5000)
 	this.slow(3000)
 	it(path.basename(__filename), (done) => {
+
+		// const Route4Me = require("route4me-node")
 
 		const apiKey   = "11111111111111111111111111111111"
 		const route4me = new Route4Me(apiKey)
