@@ -8,6 +8,7 @@ const platform = require("platform")
 const Addresses       = require("./resources/addresses")
 const AddressBook     = require("./resources/address-book")
 const AvoidanceZones  = require("./resources/avoidance-zones")
+const Geocoding       = require("./resources/geocoding")
 const Members         = require("./resources/members")
 const Optimizations   = require("./resources/optimizations")
 const Routes          = require("./resources/routes")
@@ -77,6 +78,12 @@ class Route4Me {
 		 * @since 0.1.8
 		 */
 		this.AvoidanceZones = new AvoidanceZones(this)
+		/**
+		 * **Geocoding** related API calls
+		 * @type {Geocoding}
+		 * @since 0.1.8
+		 */
+		this.Geocoding = new Geocoding(this)
 		/*
 		 * **Members** related API calls
 		 * @type {Members}
@@ -111,7 +118,7 @@ class Route4Me {
 		 */
 		this.Vehicles = new Vehicles(this)
 
-		this._logger.debug({ msg: "initialized" })
+		this._logger.debug({ msg: "initialized", version: Route4Me.version })
 	}
 
 	/**
@@ -144,7 +151,6 @@ class Route4Me {
 	 * @param {module:route4me-node~RequestCallback}    [callback]
 	 */
 	_makeRequest(options, callback) {
-		const apiUrl = `${this._baseUrl}${options.path}`
 		const qs = options.qs ||  {} /* query string */
 		const body = options.body || null // {} /* body */
 		const timeouts = {
@@ -155,6 +161,16 @@ class Route4Me {
 		if (method === "delete") {
 			method = "del"
 		}
+
+		let apiUrl
+		if (options.url) {
+			debug("WARNING: _makeRequest called with FULL url, but MUST be called only for partial path",
+				options.url)
+			apiUrl = options.url
+		} else {
+			apiUrl = `${this._baseUrl}${options.path}`
+		}
+
 
 		qs["api_key"] = this._apiKey
 
@@ -167,8 +183,13 @@ class Route4Me {
 
 		const resHandler = new utils.ResponseHandler(this._logger, v, c, callback)
 
-		debug("sending request", apiUrl, qs)
-		this._logger.info({ msg: "sending request", "url": apiUrl, "queryString": qs })
+		debug("sending request", method, apiUrl, qs)
+		this._logger.info({
+			msg: "sending request",
+			method,
+			url: apiUrl,
+			queryString: qs,
+		})
 		request[method](apiUrl)
 			.set("User-Agent", this._userAgent)
 			.query(qs)
