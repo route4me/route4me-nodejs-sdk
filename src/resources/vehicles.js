@@ -31,8 +31,7 @@ class Vehicles {
 	list(callback) {
 		return this.r._makeRequest({
 			method: "GET",
-			path: "/api.v4/vehicles.php",
-
+			path: "/api.v4/vehicle.php",
 			validationContext: "Vehicles.ResponseMany",
 		}, callback)
 	}

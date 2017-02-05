@@ -68,7 +68,7 @@ describe(helper.toSuiteName(__filename), () => {
 
 				const valid = ajv.validate("Vehicles.ResponseMany", obj)
 				if (!valid) {
-					return new Error(ajv.errors)
+					return new Error(`Test validation error ${ajv.errors}`)
 				}
 
 				return obj
