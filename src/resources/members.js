@@ -1,7 +1,5 @@
 "use strict"
 
-const errors          = require("./../errors")
-
 // Territories
 // Territory
 

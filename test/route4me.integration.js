@@ -51,7 +51,7 @@ describe(helper.toSuiteName(__filename), () => {
 			function validate_onlyVehicleSchema(obj, schemaName) {
 				validationCallCount += 1
 
-				if (schemaName !== "Vehicles.ResponseMany") {
+				if ("Vehicles.ResponseMany" !== schemaName) {
 					return new Error(`Unknown schema: ${schemaName}`)
 				}
 

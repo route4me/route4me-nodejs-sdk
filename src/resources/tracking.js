@@ -3,7 +3,7 @@
 const errors          = require("./../errors")
 
 function _createRouteTrackingValidate(data) {
-	if (data && data.status === true) {
+	if (data && true === data.status) {
 		return true
 	}
 	return new errors.Route4MeValidationError("Invalid response", data)
@@ -83,7 +83,7 @@ class Tracking {
 			"route_id": routeId,
 		}
 
-		if (typeof period === "object") {
+		if ("object" === typeof period) {
 			const span = period.span || "custom"
 
 			if ("custom" === span) {

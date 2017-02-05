@@ -17,6 +17,7 @@ exports = module.exports = {
 		"indent": ["warn", "tab"],
 		"no-tabs": "off",
 		"semi": ["error", "never"],
+		"yoda": ["error", "always"],
 		"no-multi-spaces": "off",     // TODO: stop ignoring, set a rule
 		"quote-props": "off",         // TODO: stop ignoring, set a rule
 

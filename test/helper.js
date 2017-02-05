@@ -3,7 +3,7 @@
 const path    = require("path")
 const _       = require("lodash")
 
-const runIntegrationTests = process.env["TEST_INTEGRATION"] === "1"
+const runIntegrationTests = "1" === process.env["TEST_INTEGRATION"]
 const describeIntegration = runIntegrationTests ? describe : describe.skip
 
 function expectRequest(req, method, url, query, body) {

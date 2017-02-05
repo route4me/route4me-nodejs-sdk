@@ -41,7 +41,7 @@ class ILogger {
 
 class ResponseHandler {
 	constructor(logger, validate, validateContext, callback) {
-		const cb = typeof callback !== "function" ? x => x : callback
+		const cb = "function" !== typeof callback ? x => x : callback
 		this._logger = logger
 		this._cb = cb
 
@@ -108,12 +108,12 @@ function uniq(arr) {
 function toStringArray(arg, trim) {
 	let a = arg
 
-	if (typeof a === "number") {
+	if ("number" === typeof a) {
 		return [`${a}`]
 	}
 
-	if (typeof a === "string") {
-		if (trim !== false) {
+	if ("string" === typeof a) {
+		if (false !== trim) {
 			a = a.trim().split(/[,\s]+/)
 		} else {
 			a = a.split(/,+/)
@@ -132,18 +132,18 @@ function toStringArray(arg, trim) {
 
 function toIntArray(arg) {
 	let a = arg
-	if (typeof a === "number") {
+	if ("number" === typeof a) {
 		return [a]
 	}
 
-	if (typeof a === "string") {
+	if ("string" === typeof a) {
 		a = a.split(/[,\s]+/)
 	}
 
 	if (Array.isArray(a)) {
 		a = a
 			.map(x => Number(x))
-			.filter(x => typeof x === "number")
+			.filter(x => "number" === typeof x)
 
 		return a
 	}
@@ -153,8 +153,8 @@ function toIntArray(arg) {
 
 function toOptimizationStatesSafe(states) {
 	function _isInStateRange(state) {
-		if (state < 1) return false
-		if (state > 6) return false
+		if (1 > state) return false
+		if (6 < state) return false
 		return true
 	}
 

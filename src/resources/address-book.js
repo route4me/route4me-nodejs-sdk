@@ -110,7 +110,7 @@ class AddressBook {
 	 */
 	search(query, options, callback) {
 		const qs = {}
-		if (query !== null && query !== undefined) {
+		if (null !== query && query !== undefined) {
 			qs["query"] = query
 		}
 		// "query": "dan",
@@ -131,7 +131,7 @@ class AddressBook {
 			qs["fields"] = options.fields
 		}
 
-		if ("routed" in options && typeof options.routed === "boolean") {
+		if ("routed" in options && "boolean" === typeof options.routed) {
 			qs["display"] = options.routed ? "routed" : "unrouted"
 		}
 

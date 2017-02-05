@@ -149,8 +149,8 @@ class Geocoding {
 		let pathparams = ""
 
 		if (options &&
-			typeof options["offset"] === "number" &&
-			typeof options["limit"] === "number"
+			"number" === typeof options["offset"] &&
+			"number" === typeof options["limit"]
 			) {
 			pathopts = `${options.offset}/${options.limit}/`
 		}

@@ -3,7 +3,7 @@
 const errors          = require("./../errors")
 
 function _removeValidate(data) {
-	if (data && data.status === true) {
+	if (data && true === data.status) {
 		return true
 	}
 	return new errors.Route4MeValidationError("Invalid response", data)
@@ -63,12 +63,12 @@ class Territories {
 	get(id, includeAddresses, callback) {
 		let cb = callback
 		let ia = includeAddresses
-		if (typeof cb === "undefined"
-			&& typeof ia === "function") {
+		if ("undefined" === typeof cb
+			&& "function" === typeof ia) {
 			cb = ia
 			ia = false
 		}
-		if (typeof ia !== "boolean") {
+		if ("boolean" !== typeof ia) {
 			throw new errors.Route4MeError(
 				`Territory.get: wrong type for argument 'includeAddresses':${typeof ia}`)
 		}

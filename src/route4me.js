@@ -58,7 +58,7 @@ class Route4Me {
 		this._userAgent = opt.userAgent
 
 		this._logger = opt.logger
-		this._validate = typeof opt.validate === "function" ? opt.validate : ix => ix
+		this._validate = "function" === typeof opt.validate ? opt.validate : ix => ix
 
 		/**
 		 * **AddressBook** related API calls
@@ -158,7 +158,7 @@ class Route4Me {
 			deadline: 10000, // but allow 10 seconds to finish loading.
 		}
 		let method = options.method.toLowerCase()
-		if (method === "delete") {
+		if ("delete" === method) {
 			method = "del"
 		}
 
@@ -176,7 +176,7 @@ class Route4Me {
 
 		let v = this._validate
 		let c = options.validationContext || null
-		if (typeof c === "function") {
+		if ("function" === typeof c) {
 			v = c
 			c = null
 		}

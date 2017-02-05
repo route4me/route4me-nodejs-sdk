@@ -102,13 +102,13 @@ class Routes {
 		let cb = callback
 		const qs = {}
 
-		if (cb === undefined && typeof opt === "function") {
+		if (cb === undefined && "function" === typeof opt) {
 			cb = opt
 			opt = null
 		}
 
 		qs["route_id"] = id
-		if (opt && opt["includeTracking"] === true) {
+		if (opt && true === opt["includeTracking"]) {
 			qs["device_tracking_history"] = "1"
 		}
 
