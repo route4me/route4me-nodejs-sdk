@@ -10,7 +10,6 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 	this.timeout(5000)
 	this.slow(3000)
 	it(path.basename(__filename), (done) => {
-
 		// const Route4Me = require("route4me-node")
 
 		const apiKey   = "11111111111111111111111111111111"
