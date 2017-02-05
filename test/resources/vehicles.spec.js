@@ -35,16 +35,11 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					expect(req).has.property("url")
-						.and.is.equal("https://route4me.com/api/vehicles/view_vehicles.php")
-
-					expect(req).has.property("method")
-						.and.is.equal("GET")
-
-					expect(req).has.property("body")
-						.and.is.null
-					expect(req).has.property("query")
-						.and.has.property("api_key", testApiKey)
+					helper.expectRequest(req,
+						"GET", "https://route4me.com/api.v4/vehicles.php",
+						{},
+						null
+					)
 
 					done()
 				})
