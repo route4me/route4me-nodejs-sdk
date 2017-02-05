@@ -98,8 +98,8 @@ class Routes {
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
 	 */
 	get(id, options, callback) {
-		let cb = callback
 		let opt = options
+		let cb = callback
 		const qs = {}
 
 		if (cb === undefined && typeof opt === "function") {
@@ -127,13 +127,21 @@ class Routes {
 	 * @category Routes
 	 * @since 0.1.8
 	 *
-	 * @param {number}                    [limit]    - Search limitation
-	 * @param {number}                    [offset]   - Search starting position
+	 * @param {Object} options          - List-parameters
+	 * @param {number} [options.limit]  - List limit
+	 * @param {number} [options.offset] - List offset
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Routes>} [callback]
 	 */
-	list(limit, offset, callback) {
+	list(options, callback) {
 		const qs = {}
-		utils.qsLimitAndOffset(qs, limit, offset)
+
+		if ("limit" in options) {
+			qs["limit"] = options.limit
+		}
+
+		if ("offset" in options) {
+			qs["offset"] = options.offset
+		}
 
 		return this.r._makeRequest({
 			method: "GET",
@@ -165,9 +173,9 @@ class Routes {
 	 * @todo TODO: parse the response
 	 *
 	 * @param {(number|string|Array<number>|Array<string>)}  ids - Route ID **or** comma-separated
-	 *        list of route IDs **or** array of route IDs
+	 * list of route IDs **or** array of route IDs
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.RemoveResponse>}
-	 *     [callback]
+	 * [callback]
 	 */
 	remove(ids, callback) {
 		const idsPure = utils.toStringArray(ids)

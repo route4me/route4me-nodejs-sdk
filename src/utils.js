@@ -170,13 +170,6 @@ function toOptimizationStatesSafe(states) {
 	return arr.join(",")
 }
 
-function qsLimitAndOffset(qs, limit, offset) {
-	if (typeof limit === "number") { qs["limit"] = limit }      // eslint-disable-line no-param-reassign
-	if (typeof offset === "number") { qs["offset"] = offset }   // eslint-disable-line no-param-reassign
-
-	return qs
-}
-
 exports.noopLogger = new ILogger()
 exports.ResponseHandler = ResponseHandler
 
@@ -184,4 +177,3 @@ exports.clone = clone
 exports.toStringArray = toStringArray
 exports.toIntArray = toIntArray
 exports.toOptimizationStatesSafe = toOptimizationStatesSafe
-exports.qsLimitAndOffset = qsLimitAndOffset

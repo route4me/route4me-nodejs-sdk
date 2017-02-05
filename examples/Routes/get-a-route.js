@@ -1,7 +1,7 @@
 "use strict"
 
 const path = require("path")
-const debug = require("debug")("route4me-node")
+const debug = require("debug")("route4me-node:examples")
 
 require("../init-examples-suite")
 const helper  = require("./../../test/helper")

@@ -69,12 +69,13 @@ class Optimizations {
 	 * @category Optimizations
 	 *
 	 * @param {(number|string|Array<string>|Array<number>)} states   - List of states [1..6]
-	 * @param {number}                                        [limit]  - Search limit
-	 * @param {number}                                        [offset] - Search offset
+	 * @param {Object} options          - List-parameters
+	 * @param {number} [options.limit]  - List limit
+	 * @param {number} [options.offset] - List offset
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Optimizations>}
 	 * [callback]
 	 */
-	list(states, limit, offset, callback) {
+	list(states, options, callback) {
 		const _states = utils.toOptimizationStatesSafe(states)
 		if (_states instanceof Error) {
 			return callback(_states)
@@ -83,7 +84,13 @@ class Optimizations {
 		const qs = {}
 		if (_states) { qs["states"] = _states }
 
-		utils.qsLimitAndOffset(qs, limit, offset)
+		if ("offset" in options) {
+			qs["offset"] = options.offset
+		}
+
+		if ("limit" in options) {
+			qs["limit"] = options.limit
+		}
 
 		return this.r._makeRequest({
 			method: "GET",

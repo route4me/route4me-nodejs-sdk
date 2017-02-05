@@ -16,17 +16,21 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 		const apiKey   = "11111111111111111111111111111111"
 		const route4me = new Route4Me(apiKey)
 
-		const routeId = "32F63FD03B08A5754CF2D516198FC8BA"
-		const options = { includeTracking: true }
+		const address = "Los Angeles International Airport, CA"
 
-		route4me.Routes.get(routeId, options, (err, route) => {
+		route4me.Geocoding.forward(address, (err, coordinates) => {
 			debug("error  ", err)
-			debug("result ", route)
+			debug("result ", coordinates)
 
-			expect(route).is.not.empty
-			expect(route).has.property("route_id", "32F63FD03B08A5754CF2D516198FC8BA")
-			expect(route).has.property("tracking_history")
-				.that.is.an("array")
+			// Several expectations about result
+			expect(err).is.null
+			expect(coordinates).is.not.empty
+			expect(coordinates).to.have.length.at.least(1)
+
+			const c = coordinates[0]
+			expect(c).has.property("lat", 33.9415889)
+			expect(c).has.property("lng", -118.40853)
+			expect(c).has.property("original", "Los Angeles International Airport, CA")
 
 			// TODO: remove `done` call from examples
 			done()

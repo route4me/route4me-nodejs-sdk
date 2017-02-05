@@ -45,7 +45,12 @@ describe(helper.toSuiteName(__filename), () => {
 
 		describe("list", () => {
 			it("should call route4me", (done) => {
-				resource.list([1, 2, 3], 100, null, (err, res) => {
+				const options = {
+					limit: 100,
+					//offset: 0,
+				}
+
+				resource.list([1, 2, 3], options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/optimization_problem.php", {
@@ -57,7 +62,12 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 
 			it("should return error on invalid states", (done) => {
-				resource.list(undefined, 100, null, (err, res) => {
+				const options = {
+					limit: 100,
+					//offset: 0,
+				}
+
+				resource.list(undefined, options, (err, res) => {
 					expect(res).is.empty
 
 					expect(err).is.not.null

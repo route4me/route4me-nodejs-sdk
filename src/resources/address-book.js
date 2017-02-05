@@ -101,8 +101,10 @@ class AddressBook {
 	 * @todo TODO: Parse response
 	 * @todo TODO: Describe ALL options (in one place, list+search)
 	 *
-	 * @param {string} query   - Searched text
-	 * @param {Object} options - List-parameters
+	 * @param {string} query            - Searched text
+	 * @param {Object} options          - List-parameters
+	 * @param {number} [options.limit]  - List limit
+	 * @param {number} [options.offset] - List offset
 	 * @param {module:route4me-node~RequestCallback<jsonschema:AddressBook.AddressBookSearchResult>}
 	 * [callback]
 	 */
@@ -120,7 +122,6 @@ class AddressBook {
 		if ("offset" in options) {
 			qs["offset"] = options.offset
 		}
-
 
 		if ("limit" in options) {
 			qs["limit"] = options.limit

@@ -113,7 +113,12 @@ describe(helper.toSuiteName(__filename), () => {
 
 		describe("list", () => {
 			it("should call route4me", (done) => {
-				resource.list(17, 19, (err, res) => {
+				const options = {
+					limit: 17,
+					offset: 19,
+				}
+
+				resource.list(options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/route.php", {
