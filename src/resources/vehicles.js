@@ -11,8 +11,8 @@ class Vehicles {
 	 * @since 0.1.4
 	 * @private
 	 *
-	 * @param  {Route4Me}      route4me [description]
-	 * @return {Vehicles}               [description]
+	 * @param  {Route4Me}      route4me - Route4Me manager
+	 * @return {Vehicles}               - Vehicles facility
 	 */
 	constructor(route4me) {
 		this.r = route4me
