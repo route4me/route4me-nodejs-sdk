@@ -21,6 +21,9 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			debug("error  ", err)
 			debug("result ", optimization)
 
+			// Expectations about result
+			expect(err).is.null
+
 			expect(optimization).has.property("optimization_problem_id", "07372F2CF3814EC6DFFAFE92E22771AA")
 
 			// TODO: remove `done` call from examples

@@ -22,8 +22,9 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			debug("error  ", err)
 			debug("result ", coordinates)
 
-			// Several expectations about result
+			// Expectations about result
 			expect(err).is.null
+
 			expect(coordinates).is.not.empty
 			expect(coordinates).to.have.length.at.least(1)
 

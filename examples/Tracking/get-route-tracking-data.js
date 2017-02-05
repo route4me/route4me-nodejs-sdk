@@ -23,6 +23,9 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			debug("error  ", err)
 			debug("result ", route)
 
+			// Expectations about result
+			expect(err).is.null
+
 			expect(route).is.not.empty
 			expect(route).has.property("route_id", "32F63FD03B08A5754CF2D516198FC8BA")
 			expect(route).has.property("tracking_history")
