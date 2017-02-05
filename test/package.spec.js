@@ -1,8 +1,9 @@
 "use strict"
 
 const pkg = require("../")
+const helper  = require("./helper")
 
-describe("package.spec", () => {
+describe(helper.toSuiteName(__filename), () => {
 	it("should export a function", () => {
 		expect(pkg).to.be.a("function")
 		expect(pkg).have.property("version").and.be.a("string")

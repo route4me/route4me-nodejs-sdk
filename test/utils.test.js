@@ -2,7 +2,9 @@
 
 const utils = require("../src/utils")
 
-describe("utils.test", () => {
+const helper  = require("./helper")
+
+describe(helper.toSuiteName(__filename), () => {
 	describe("toOptimizationStatesSafe", () => {
 		[
 			{ in: 1,             exp: "1",             msg: "number" },

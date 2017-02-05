@@ -9,7 +9,6 @@ const Route4Me = require("../../src/route4me")
 
 const testApiKey = "11111111111111111111111111111111"
 
-
 describe(helper.toSuiteName(__filename), () => {
 	describe("SDK methods", () => {
 		const route4me = new Route4Me(testApiKey)

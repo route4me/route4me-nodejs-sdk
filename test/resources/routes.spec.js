@@ -2,6 +2,7 @@
 
 const request = require("superagent")
 const saMock  = require("superagent-mocker")(request)
+
 const helper  = require("./../helper")
 
 const Route4Me = require("../../src/route4me")
@@ -9,7 +10,7 @@ const Route4Me = require("../../src/route4me")
 const testApiKey = "11111111111111111111111111111111"
 
 
-describe("resources/routes.spec", () => {
+describe(helper.toSuiteName(__filename), () => {
 	describe("SDK methods", () => {
 		const route4me = new Route4Me(testApiKey)
 		const resource = route4me.Routes

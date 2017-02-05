@@ -1,12 +1,14 @@
 "use strict"
 
 const sinon = require("sinon")
+const helper  = require("./helper")
 
 const Route4Me = require("../src/route4me")
 
 const testApiKey = "11111111111111111111111111111111"
 
-describe("route4me.spec", () => {
+
+describe(helper.toSuiteName(__filename), () => {
 	it("should run with new", () => {
 		const route4me = new Route4Me(testApiKey)
 

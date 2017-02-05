@@ -6,7 +6,7 @@ const debug = require("debug")("route4me-node")
 require("../init-examples-suite")
 const helper  = require("./../../test/helper")
 
-helper.describeIntegration(path.basename(__dirname), function T() {
+helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 	this.timeout(5000)
 	this.slow(3000)
 	it(path.basename(__filename), (done) => {

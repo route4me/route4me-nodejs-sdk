@@ -1,6 +1,7 @@
 "use strict"
 
-const _ = require("lodash")
+const path    = require("path")
+const _       = require("lodash")
 
 const runIntegrationTests = process.env["TEST_INTEGRATION"] === "1"
 const describeIntegration = runIntegrationTests ? describe : describe.skip
@@ -42,5 +43,12 @@ function expectRequest(req, method, url, query, body) {
 	}
 }
 
+function toSuiteName(filename) {
+	const ext = path.extname(filename)
+	const re = new RegExp(`${ext}$`, "i")
+	return path.relative(process.cwd(), filename).replace(re, "")
+}
+
 exports.expectRequest = expectRequest
 exports.describeIntegration = describeIntegration
+exports.toSuiteName = toSuiteName

@@ -11,8 +11,7 @@ const jsonschemaVehicleMany = require("./REMOVE.Vehicles.ResponseMany.jsonschema
 
 const testApiKey = "11111111111111111111111111111111"
 
-
-describe("route4me.integration", () => {
+describe(helper.toSuiteName(__filename), () => {
 	helper.describeIntegration("UNMOCKED Access to `Vehicles` list", function a() {
 		this.timeout(5000)
 		this.slow(3000)
