@@ -35,7 +35,7 @@ describe(helper.toSuiteName(__filename), () => {
 
 				expect(act).to.deep.equal(tc.exp)
 			})
-		});
+		})
 
 		describe("on invalid args", () => {
 			const testCases = [
@@ -59,15 +59,15 @@ describe(helper.toSuiteName(__filename), () => {
 
 
 	describe("toStringArray", () => {
-		describe("with one arg", ()=> {
+		describe("with one arg", () => {
 			const testCases = [
-				{ msg:"empty string", val: "", exp: [""]},
-				{ msg:"number", val: 121, exp: ["121"]},
-				{ msg:"string", val: "asdf", exp: ["asdf"]},
-				{ msg:"CSV-string", val: "a,s, d,f", exp: ["a", "s", "d", "f"]},
+				{ msg: "empty string", val: "", exp: [""] },
+				{ msg: "number", val: 121, exp: ["121"] },
+				{ msg: "string", val: "asdf", exp: ["asdf"] },
+				{ msg: "CSV-string", val: "a,s, d,f", exp: ["a", "s", "d", "f"] },
 			]
 
-			testCases.forEach(tc => {
+			testCases.forEach((tc) => {
 				it(`${tc.msg} handled`, () => {
 					const act = utils.toStringArray(tc.val)
 					expect(act).eql(tc.exp)
@@ -75,19 +75,19 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
-		describe("with two args", ()=>{
+		describe("with two args", () => {
 			const testCases = [
-				{ msg:"empty string", val: "", trim: false, exp: [""]},
-				{ msg:"number", val: 121, trim: false, exp: ["121"]},
+				{ msg: "empty string", val: "", trim: false, exp: [""] },
+				{ msg: "number", val: 121, trim: false, exp: ["121"] },
 
-				{ msg:"string", val: " asdf ", trim: false, exp: [" asdf "]},
-				{ msg:"string", val: " asdf ", trim: true, exp: ["asdf"]},
+				{ msg: "string", val: " asdf ", trim: false, exp: [" asdf "] },
+				{ msg: "string", val: " asdf ", trim: true, exp: ["asdf"] },
 
-				{ msg:"CSV-string", val: "  a,s, d,f	", trim: false, exp: ["  a", "s", " d", "f	"]},
-				{ msg:"CSV-string", val: "  a,s, d,f	", trim: true, exp: ["a", "s", "d", "f"]},
+				{ msg: "CSV-string", val: "  a,s, d,f	", trim: false, exp: ["  a", "s", " d", "f	"] },
+				{ msg: "CSV-string", val: "  a,s, d,f	", trim: true, exp: ["a", "s", "d", "f"] },
 			]
 
-			testCases.forEach(tc => {
+			testCases.forEach((tc) => {
 				const trimstr = tc.trim ? "with" : "without"
 				it(`${tc.msg} ${trimstr} trimming handled`, () => {
 					const act = utils.toStringArray(tc.val, tc.trim)
@@ -96,22 +96,20 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
-		describe("over invalid arguments", ()=>{
+		describe("over invalid arguments", () => {
 			const testCases = [
-				{ msg:"Date", val: new Date(), trim: false},
-				{ msg:"null", val: null, trim: false},
+				{ msg: "Date", val: new Date(), trim: false },
+				{ msg: "null", val: null, trim: false },
 			]
 
-			testCases.forEach(tc => {
+			testCases.forEach((tc) => {
 				it(`${tc.msg} cause error thrown`, () => {
-					expect(()=>{
-						const act = utils.toStringArray(tc.val, tc.trim)
+					expect(() => {
+						utils.toStringArray(tc.val, tc.trim)
 					})
 						.throw(errors.Route4MeError)
 				})
 			})
 		})
-
 	})
-
 })

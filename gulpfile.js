@@ -39,7 +39,7 @@ gulp.task("lint", function L() {          // eslint-disable-line prefer-arrow-ca
 	return gulp.src([
 		"./src/**/*.js",
 		"./test/**/*.js",
-		"./examples/*.js",
+		"./examples/**/*.js",
 	], { "base": "./" })
 		.pipe(eslint({
 			fix,

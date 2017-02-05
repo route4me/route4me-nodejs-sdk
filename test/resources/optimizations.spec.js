@@ -73,7 +73,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.not.null
 					expect(err).is.instanceof(Error)
 					expect(err).has.property("message")
-						.that.matches(/states/i)
+						.that.matches(/argument/i)
 					done()
 				})
 			})

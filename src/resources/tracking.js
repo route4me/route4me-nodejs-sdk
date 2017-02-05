@@ -53,6 +53,8 @@ class Tracking {
 	/**
 	 * Get a device’s location history from a time range.
 	 *
+	 * **Be carefull:** custom dates are considered as in local timezone!
+	 *
 	 * @see {@link https://route4me.io/docs/#get-route-tracking-data}
 	 * @category Tracking
 	 * @since 0.1.8

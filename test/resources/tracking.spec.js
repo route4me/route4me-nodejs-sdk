@@ -54,8 +54,8 @@ describe(helper.toSuiteName(__filename), () => {
 			describe("with custom dates", () => {
 				it("should call route4me", (done) => {
 					const period = {
-						from: new Date(2016, 9, 20),
-						trim: new Date(2016, 9, 26, 23, 59, 0)
+						from: new Date(Date.UTC(2016, 9, 20)),
+						trim: new Date(Date.UTC(2016, 9, 26, 23, 59, 0))
 					}
 					const routeId = "814FB49CEA8188D134E9D4D4B8B0DAF7"
 
@@ -67,8 +67,8 @@ describe(helper.toSuiteName(__filename), () => {
 							{
 								"route_id": "814FB49CEA8188D134E9D4D4B8B0DAF7",
 								"time_period": "custom",
-								"start_date": "1476903600",
-								"end_date": "1477508340",
+								"start_date": "1476921600",
+								"end_date": "1477526340",
 							},
 							null
 						)

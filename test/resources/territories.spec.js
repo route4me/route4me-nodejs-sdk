@@ -138,9 +138,8 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 
 			describe("non-existanse territory", () => {
-
 				beforeEach(() => {
-					saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return { "body": {"status":null} } })
+					saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return { "body": { "status": null } } })
 				})
 				afterEach(() => {
 					saMock.clearRoutes()
