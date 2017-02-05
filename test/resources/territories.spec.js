@@ -6,6 +6,7 @@ const saMock  = require("superagent-mocker")(request)
 const helper  = require("./../helper")
 
 const Route4Me = require("../../src/route4me")
+const errors   = require("../../src/errors")
 
 const testApiKey = "11111111111111111111111111111111"
 
@@ -114,23 +115,52 @@ describe(helper.toSuiteName(__filename), () => {
 		})
 
 		describe("remove", () => {
-			beforeEach(() => {
-				saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return { "body": { "status": true } } })
-			})
-			afterEach(() => {
-				saMock.clearRoutes()
+			describe("normal case", () => {
+				beforeEach(() => {
+					saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return { "body": { "status": true } } })
+				})
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				it("should call route4me", (done) => {
+					resource.remove("8506E4725A006B59D5CA2EA375E08B97", (err, res) => {
+						expect(err).is.null
+						expect(res).is.not.null
+						helper.expectRequest(req,
+							"DELETE", "https://route4me.com/api.v4/territory.php",
+							{ "territory_id": "8506E4725A006B59D5CA2EA375E08B97" },
+							null
+						)
+						done()
+					})
+				})
 			})
 
-			it("should call route4me", (done) => {
-				resource.remove("8506E4725A006B59D5CA2EA375E08B97", (err, res) => {
-					expect(err).is.null
-					expect(res).is.not.null
-					helper.expectRequest(req,
-						"DELETE", "https://route4me.com/api.v4/territory.php",
-						{ "territory_id": "8506E4725A006B59D5CA2EA375E08B97" },
-						null
-					)
-					done()
+			describe("non-existanse territory", () => {
+
+				beforeEach(() => {
+					saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return { "body": {"status":null} } })
+				})
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				it("should call route4me", (done) => {
+					resource.remove("AAAAAAAAAAAAAAA9D5CA2EA375E08B97", (err, res) => {
+						expect(err).is.not.null
+						expect(res).is.null
+						helper.expectRequest(req,
+							"DELETE", "https://route4me.com/api.v4/territory.php",
+							{ "territory_id": "AAAAAAAAAAAAAAA9D5CA2EA375E08B97" },
+							null
+						)
+
+						expect(err).is.instanceof(errors.Route4MeValidationError)
+						expect(err).has.property("message")
+							.that.match(/valid/i)
+						done()
+					})
 				})
 			})
 		})

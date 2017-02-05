@@ -6,7 +6,7 @@ function _createRouteTrackingValidate(data) {
 	if (data && data.status === true) {
 		return true
 	}
-	return new errors.Route4MeInternalValidationError("Invalid response", data)
+	return new errors.Route4MeValidationError("Invalid response", data)
 }
 
 /**

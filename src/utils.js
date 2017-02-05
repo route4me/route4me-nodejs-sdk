@@ -61,8 +61,11 @@ class ResponseHandler {
 
 		let data = res.body
 		data = this._validate(data, this._validateContext)
-		if (data instanceof Error) {
-			this._logger.error({ "msg": "response validation error", "err": data })
+		if (data instanceof errors.Route4MeError) {
+			this._logger.warn({ "msg": "response validation error", "err": data })
+			return this._cb(data, null)
+		} else if (data instanceof Error) {
+			this._logger.error({ "msg": "Unhandled error during validation", "err": data, "fatal": true })
 			return this._cb(data, null)
 		}
 
@@ -76,7 +79,7 @@ class ResponseHandler {
 
 		e = new errors.Route4MeApiError(err.message, res, err)
 
-		this._logger.error({ "msg": "response error", "err": e })
+		this._logger.warn({ "msg": "response error", "err": e })
 		return this._cb(e)
 	}
 }
@@ -103,7 +106,6 @@ function uniq(arr) {
 }
 
 function toStringArray(arg, trim) {
-	const t = trim !== false
 	let a = arg
 
 	if (typeof a === "number") {
@@ -111,8 +113,8 @@ function toStringArray(arg, trim) {
 	}
 
 	if (typeof a === "string") {
-		if (t) {
-			a = a.split(/[,\s]+/)
+		if (trim !== false) {
+			a = a.trim().split(/[,\s]+/)
 		} else {
 			a = a.split(/,+/)
 		}
@@ -159,12 +161,13 @@ function toOptimizationStatesSafe(states) {
 	let arr
 	try {
 		arr = toIntArray(states)
-	} catch (e) {
-		if (e instanceof errors.Route4MeError) {
-			return new errors.Route4MeError("Invalid states argument", e)
+	} catch (err) {
+		if (err instanceof errors.Route4MeError) {
+			return err
 		}
-		throw e
+		throw err
 	}
+
 	arr = uniq(arr.filter(_isInStateRange))
 
 	return arr.join(",")
