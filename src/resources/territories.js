@@ -143,15 +143,10 @@ class Territories {
 	}
 
 	static _removeValidator(data) {
-		if (!data) {
-			return new errors.Route4MeInternalValidationError("Empty response", data)
+		if (data && data.status === true) {
+			return true
 		}
-
-		if (typeof data.status !== "boolean") {
-			return new errors.Route4MeInternalValidationError("Invalid response", data)
-		}
-
-		return data.status
+		return new errors.Route4MeInternalValidationError("Invalid response", data)
 	}
 }
 

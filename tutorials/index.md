@@ -15,7 +15,7 @@ NPM package: `route4me-node`
 
 This is official NodeJS/javascript SDK for Route4Me API.
 
-**IMPORTANT:** trying to preserve consistent naming (`create`, `get`, `update`, `delete`), **SDK** have several differences with namespaces of the server API. For example, API method [Tracking::Get route tracking data](https://route4me.io/docs/#get-route-tracking-data) is implemented as [route4me.Routes.get]{@link Routes#get} with options. Full list of differences: [API vs SDK]{@tutorial api-vs-sdk}
+**IMPORTANT:** trying to preserve consistent naming (`create`, `get`, `update`, `remove`) for methods, **SDK** has several differences with namespaces of the server API. For example, API method [Tracking::Get route tracking data](https://route4me.io/docs/#get-route-tracking-data) is implemented as [route4me.Routes.get]{@link Routes#get} with options. Full list of differences: [API vs SDK]{@tutorial api-vs-sdk}
 
 ## Install
 
