@@ -20,7 +20,6 @@ describe(helper.toSuiteName(__filename), () => {
 			// TODO : mock in helper
 			saMock.get("*", (r) =>  { req = r; req.method = "GET";    return {} })
 			saMock.post("*", (r) => { req = r; req.method = "POST";   return {} })
-			saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return {} })
 			saMock.put("*", (r) =>  { req = r; req.method = "PUT";    return {} })
 		})
 
@@ -101,6 +100,13 @@ describe(helper.toSuiteName(__filename), () => {
 		})
 
 		describe("createRouteTracking", () => {
+			beforeEach(() => {
+				saMock.post("*", (r) =>  { req = r; req.method = "POST"; return { "body": { "status": true } } })
+			})
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
 			it("should call route4me", (done) => {
 				const trackingData = {
 					memberId: 1,

@@ -21,7 +21,6 @@ describe(helper.toSuiteName(__filename), () => {
 			// TODO : mock in helper
 			saMock.get("*", (r) =>  { req = r; req.method = "GET";    return {} })
 			saMock.post("*", (r) => { req = r; req.method = "POST";   return {} })
-			saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return {} })
 			saMock.put("*", (r) =>  { req = r; req.method = "PUT";    return {} })
 		})
 
@@ -115,6 +114,13 @@ describe(helper.toSuiteName(__filename), () => {
 		})
 
 		describe("remove", () => {
+			beforeEach(() => {
+				saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return { "body": { "status": true } } })
+			})
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
 			it("should call route4me", (done) => {
 				resource.remove("8506E4725A006B59D5CA2EA375E08B97", (err, res) => {
 					expect(err).is.null

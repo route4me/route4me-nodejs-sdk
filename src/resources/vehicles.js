@@ -31,7 +31,7 @@ class Vehicles {
 	list(callback) {
 		return this.r._makeRequest({
 			method: "GET",
-			// NEW VERSION: path: "/api.v4/vehicles.php",
+			// path: "/api.v4/vehicles.php",
 			// but it doesn't work though...
 			path: "/api/vehicles/view_vehicles.php",
 

@@ -2,6 +2,13 @@
 
 const errors          = require("./../errors")
 
+function _createRouteTrackingValidate(data) {
+	if (data && data.status === true) {
+		return true
+	}
+	return new errors.Route4MeInternalValidationError("Invalid response", data)
+}
+
 /**
  * @namespace
  */
@@ -118,15 +125,8 @@ class Tracking {
 			method: "POST",
 			path: "/track/set.php",
 			qs,
-			validationContext: this._createRouteTrackingValidate,
+			validationContext: _createRouteTrackingValidate,
 		}, callback)
-	}
-
-	static _createRouteTrackingValidate(data) {
-		if (data && data.status === true) {
-			return true
-		}
-		return new errors.Route4MeInternalValidationError("Invalid response", data)
 	}
 }
 

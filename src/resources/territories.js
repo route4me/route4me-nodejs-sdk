@@ -2,6 +2,13 @@
 
 const errors          = require("./../errors")
 
+function _removeValidate(data) {
+	if (data && data.status === true) {
+		return true
+	}
+	return new errors.Route4MeInternalValidationError("Invalid response", data)
+}
+
 /**
  * @namespace
  */
@@ -138,15 +145,8 @@ class Territories {
 			qs: {
 				"territory_id": id,
 			},
-			validationContext: this._removeValidate,
+			validationContext: _removeValidate,
 		}, callback)
-	}
-
-	static _removeValidate(data) {
-		if (data && data.status === true) {
-			return true
-		}
-		return new errors.Route4MeInternalValidationError("Invalid response", data)
 	}
 }
 

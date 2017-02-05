@@ -8,7 +8,7 @@ const platform = require("platform")
 const Addresses       = require("./resources/addresses")
 const AddressBook     = require("./resources/address-book")
 const AvoidanceZones  = require("./resources/avoidance-zones")
-// const Members         = require("./resources/members")
+const Members         = require("./resources/members")
 const Optimizations   = require("./resources/optimizations")
 const Routes          = require("./resources/routes")
 const Territories     = require("./resources/territories")
@@ -77,12 +77,12 @@ class Route4Me {
 		 * @since 0.1.8
 		 */
 		this.AvoidanceZones = new AvoidanceZones(this)
-		// /*
-		//  * **Members** related API calls
-		//  * @type {Members}
-		//  * @since 0.1.8
-		//  */
-		// this.Members = new Members(this)
+		/*
+		 * **Members** related API calls
+		 * @type {Members}
+		 * @since 0.1.8
+		 */
+		this.Members = new Members(this)
 
 		/**
 		 * **Optimizations** related API calls
@@ -156,16 +156,16 @@ class Route4Me {
 			method = "del"
 		}
 
-		let vld = this._validate
-		let vctx = options.validationContext || null
-		if (typeof vctx === "function") {
-			vld = vctx
-			vctx = true
-		}
-
 		qs["api_key"] = this._apiKey
 
-		const resHandler = new utils.ResponseHandler(this._logger, vld, vctx, callback)
+		let v = this._validate
+		let c = options.validationContext || null
+		if (typeof c === "function") {
+			v = c
+			c = null
+		}
+
+		const resHandler = new utils.ResponseHandler(this._logger, v, c, callback)
 
 		debug("sending request", apiUrl, qs)
 		this._logger.info({ msg: "sending request", "url": apiUrl, "queryString": qs })

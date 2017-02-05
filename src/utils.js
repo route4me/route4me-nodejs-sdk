@@ -60,14 +60,12 @@ class ResponseHandler {
 		debug("response ok")
 
 		let data = res.body
-
-		if (this._validateContext) {
-			data = this._validate(data, this._validateContext)
-			if (data instanceof Error) {
-				this._logger.error({ "msg": "response validation error", "err": data })
-				return this._cb(data, null)
-			}
+		data = this._validate(data, this._validateContext)
+		if (data instanceof Error) {
+			this._logger.error({ "msg": "response validation error", "err": data })
+			return this._cb(data, null)
 		}
+
 		this._logger.info({ "msg": "response ok" })
 		return this._cb(null, data)
 	}

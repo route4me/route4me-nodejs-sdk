@@ -193,7 +193,7 @@ class AddressBook {
 			body: {
 				"address_ids": pureIds,
 			},
-			validationContext: this._removeValidator,
+			validationContext: "AddressBook.RemoveSchema",
 		}, callback)
 	}
 }
