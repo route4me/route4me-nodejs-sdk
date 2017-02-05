@@ -68,9 +68,9 @@ class Optimizations {
 	 * @see {@link https://route4me.io/docs/#get-optimizations  Route4Me API}
 	 * @category Optimizations
 	 *
-	 * @param {(integer|string|Array.<string>|Array.<integer>)}  states    - List of states [1..6]
-	 * @param {integer}                    [limit]    - Search limitation
-	 * @param {integer}                    [offset]   - Search starting position
+	 * @param {(number|string|Array<string>|Array<number>)} states   - List of states [1..6]
+	 * @param {number}                                        [limit]  - Search limit
+	 * @param {number}                                        [offset] - Search offset
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Optimizations>}
 	 * [callback]
 	 */
