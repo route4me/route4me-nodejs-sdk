@@ -30,8 +30,13 @@ Run `mocha` tests
 ```shell
 gulp test
 
-#or with grep:
+# or with grep:
 gulp test --grep=integration
+
+# run all tests (including examples and integration)
+# for Geocoding functionality:
+export TEST_INTEGRATION=1
+gulp test --grep geocoding
 ```
 
 #### Options

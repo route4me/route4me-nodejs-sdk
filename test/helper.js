@@ -46,7 +46,9 @@ function expectRequest(req, method, url, query, body) {
 function toSuiteName(filename) {
 	const ext = path.extname(filename)
 	const re = new RegExp(`${ext}$`, "i")
-	return path.relative(process.cwd(), filename).replace(re, "")
+	return path.relative(process.cwd(), filename)
+		.replace(re, "")
+		.toLowerCase()
 }
 
 exports.expectRequest = expectRequest
