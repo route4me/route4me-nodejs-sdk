@@ -141,11 +141,11 @@ class Members {
 			qs: {
 				"territory_id": id,
 			},
-			validationContext: this._removeValidator,
+			validationContext: this._removeValidate,
 		}, callback)
 	}
 
-	static _removeValidator(data) {
+	static _removeValidate(data) {
 		if (!data) {
 			return new errors.Route4MeInternalValidationError("Empty response", data)
 		}
@@ -158,4 +158,4 @@ class Members {
 	}
 }
 
-module.exports = Territories
+module.exports = Members

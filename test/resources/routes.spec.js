@@ -101,7 +101,7 @@ describe("resources/routes.spec", () => {
 						helper.expectRequest(req, "GET", "https://route4me.com/api.v4/route.php", {
 							"route_id": "11",
 							"device_tracking_history": "1",
-							},
+						},
 							null
 						)
 						done()
@@ -126,17 +126,17 @@ describe("resources/routes.spec", () => {
 		})
 
 		describe("remove", () => {
-
 			const testCases = [
-				{ msg: "for array parameter",      ids: [5, 3, "67"], expQs: {"route_id": "5,3,67" } },
-				{ msg: "for number parameter",     ids: 896,          expQs: {"route_id": "896"} },
-				{ msg: "for string parameter",     ids: "756af35",    expQs: {"route_id": "756af35"} },
-				{ msg: "for CSV-string parameter", ids: "756af35, 12,   11, fd5612ab3",
-					expQs: {"route_id": "756af35,12,11,fd5612ab3"}
+				{ msg: "for array parameter",      ids: [5, 3, "67"], expQs: { "route_id": "5,3,67" } },
+				{ msg: "for number parameter",     ids: 896,          expQs: { "route_id": "896" } },
+				{ msg: "for string parameter",     ids: "756af35",    expQs: { "route_id": "756af35" } },
+				{ msg: "for CSV-string parameter",
+					ids: "756af35, 12,   11, fd5612ab3",
+					expQs: { "route_id": "756af35,12,11,fd5612ab3" }
 				},
 			]
 
-			testCases.forEach(tc => {
+			testCases.forEach((tc) => {
 				it(`${tc.msg} should call route4me`, (done) => {
 					resource.remove(tc.ids, (err, res) => {
 						expect(err).is.null

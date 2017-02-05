@@ -68,16 +68,15 @@ class Tracking {
 	 *        [callback]
 	 */
 	getRouteTrackingHistory(routeId, period, callback) {
-		let time = period
 		const qs = {
 			"route_id": routeId,
 		}
 
-		if (typeof period === 'object') {
+		if (typeof period === "object") {
 			const from = period.from || period.start || period.begin
 			const trim = period.trim || period.finish || period.end
-			qs["start_date"]  = from.valueOf() / 1000 | 0
-			qs["end_date"]    = trim.valueOf() / 1000 | 0
+			qs["start_date"]  = Math.floor(from.valueOf() / 1000)
+			qs["end_date"]    = Math.floor(trim.valueOf() / 1000)
 			qs["time_period"] = "custom"
 		} else {
 			qs["time_period"] = period.toString()
@@ -105,7 +104,7 @@ class Tracking {
 	 * [callback]
 	 */
 	createRouteTracking(trackingData, callback) {
-		const qs = {"frm": "JSON"}
+		const qs = { "frm": "JSON" }
 		qs["member_id"] = trackingData.memberId || trackingData.member_id
 		qs["route_id"] = trackingData.routeId || trackingData.route_id
 		qs["course"] = trackingData.course
@@ -119,11 +118,11 @@ class Tracking {
 			method: "POST",
 			path: "/track/set.php",
 			qs,
-			validationContext: this._validate_createRouteTracking,
+			validationContext: this._createRouteTrackingValidate,
 		}, callback)
 	}
 
-	static _validate_createRouteTracking(data) {
+	static _createRouteTrackingValidate(data) {
 		if (data && data.status === true) {
 			return true
 		}

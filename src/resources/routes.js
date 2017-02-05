@@ -100,7 +100,7 @@ class Routes {
 	get(id, options, callback) {
 		let cb = callback
 		let opt = options
-		let qs = {}
+		const qs = {}
 
 		if (cb === undefined && typeof opt === "function") {
 			cb = opt

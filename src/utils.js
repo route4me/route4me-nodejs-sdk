@@ -142,7 +142,7 @@ function toIntArray(arg) {
 
 	if (Array.isArray(a)) {
 		a = a
-			.map(x => parseInt(x, 10))
+			.map(x => Number(x))
 			.filter(x => typeof x === "number")
 
 		return a

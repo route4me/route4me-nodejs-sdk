@@ -138,11 +138,11 @@ class Territories {
 			qs: {
 				"territory_id": id,
 			},
-			validationContext: this._removeValidator,
+			validationContext: this._removeValidate,
 		}, callback)
 	}
 
-	static _removeValidator(data) {
+	static _removeValidate(data) {
 		if (data && data.status === true) {
 			return true
 		}
