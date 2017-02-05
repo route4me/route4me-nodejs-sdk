@@ -71,8 +71,10 @@ class Tracking {
 	 * * `60days`
 	 * * `90days`
 	 * * `all_time`
-	 * @param {Date}  period.from        - Custom start date
-	 * @param {Date}  period.trim        - Custom end date
+	 * @param {string} [period.span="custom"] - One of predefined strings (this is an another
+	 * one way to determine it)
+	 * @param {Date}   period.from   - Custom start date
+	 * @param {Date}   period.trim   - Custom end date
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Tracking.TrackingHistory>}
 	 *        [callback]
 	 */
@@ -82,11 +84,15 @@ class Tracking {
 		}
 
 		if (typeof period === "object") {
-			const from = period.from || period.start || period.begin
-			const trim = period.trim || period.finish || period.end
-			qs["start_date"]  = Math.floor(from.valueOf() / 1000)
-			qs["end_date"]    = Math.floor(trim.valueOf() / 1000)
-			qs["time_period"] = "custom"
+			const span = period.span || "custom"
+
+			if ("custom" === span) {
+				const from = period.from || period.start || period.begin
+				const trim = period.trim || period.finish || period.end
+				qs["start_date"]  = Math.floor(from.valueOf() / 1000)
+				qs["end_date"]    = Math.floor(trim.valueOf() / 1000)
+			}
+			qs["time_period"] = span
 		} else {
 			qs["time_period"] = period.toString()
 		}

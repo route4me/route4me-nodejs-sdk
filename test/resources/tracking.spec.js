@@ -46,10 +46,6 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
-// start=$(date -d"2016-10-20T00:00" +%s)
-// end=  $(date -d"2016-10-26T23:59" +%s)
-
-
 		describe("getRouteTrackingHistory", () => {
 			describe("with custom dates", () => {
 				it("should call route4me", (done) => {

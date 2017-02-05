@@ -81,7 +81,7 @@ class Route4Me {
 		/**
 		 * **Geocoding** related API calls
 		 * @type {Geocoding}
-		 * @since 0.1.8
+		 * @since 0.1.9
 		 */
 		this.Geocoding = new Geocoding(this)
 		/*
