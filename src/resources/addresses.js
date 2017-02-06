@@ -59,6 +59,10 @@ class Addresses {
 	 *
 	 * The example refers to the process of marking an address as Detected as Departed.
 	 *
+	 * This method affects:
+	 * * ++ **`is_departed`**
+	 * * ++ **`timestamp_last_departed`**
+	 *
 	 * @see {@link https://route4me.io/docs/#mark-as-detected-as-departed}
 	 * @category Addresses
 	 * @since 0.1.9
@@ -90,6 +94,10 @@ class Addresses {
 	 *
 	 * The example refers to the process of marking an address as Detected as Visited.
 	 *
+	 * This method affects:
+	 * * ++ **`is_visited`**
+	 * * ++ **`timestamp_last_visited`**
+	 *
 	 * @see {@link https://route4me.io/docs/#mark-as-detected-as-visited}
 	 * @category Addresses
 	 * @since 0.1.9
@@ -118,6 +126,10 @@ class Addresses {
 
 	/**
 	 * Mark an address of a route as visited.
+	 *
+	 * This method affects:
+	 * * ++ **`timestamp_last_visited`**
+	 * * -- `is_visited`
 	 *
 	 * @see {@link https://route4me.io/docs/#mark-as-visited}
 	 * @category Addresses
@@ -150,6 +162,10 @@ class Addresses {
 
 	/**
 	 * Mark an address of a route as departed.
+	 *
+	 * This method affects:
+	 * * ++ **`timestamp_last_departed`**
+	 * * -- `is_departed`
 	 *
 	 * @see {@link https://route4me.io/docs/#mark-as-departed}
 	 * @category Addresses
