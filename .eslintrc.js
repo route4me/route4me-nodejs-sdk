@@ -26,7 +26,13 @@ exports = module.exports = {
 		"quotes": ["warn", "double"],
 
 		"no-underscore-dangle": "off",
-
+		"comma-dangle": ["error", {
+			"arrays": "only-multiline",
+			"objects": "only-multiline",
+			"imports": "only-multiline",
+			"exports": "only-multiline",
+			"functions": "ignore",
+		}],
 
 		// TODO: this is LINT rules for DOC. `Use with npm install eslint-plugin-jsdoc`
 		//"jsdoc/check-param-names": 1,
