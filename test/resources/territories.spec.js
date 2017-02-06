@@ -145,10 +145,11 @@ describe(helper.toSuiteName(__filename), () => {
 					saMock.clearRoutes()
 				})
 
-				it("should call route4me", (done) => {
+				it("should invoke callback with not empty error", (done) => {
 					resource.remove("AAAAAAAAAAAAAAA9D5CA2EA375E08B97", (err, res) => {
-						expect(err).is.not.null
-						expect(res).is.null
+						expect(err).to.exist
+						expect(res).to.not.exist
+
 						helper.expectRequest(req,
 							"DELETE", "https://route4me.com/api.v4/territory.php",
 							{ "territory_id": "AAAAAAAAAAAAAAA9D5CA2EA375E08B97" },

@@ -40,13 +40,24 @@ class ILogger {
 }
 
 class ResponseHandler {
-	constructor(logger, validate, validateContext, callback) {
+	constructor(PromiseConstructor, logger, validate, validateContext, callback) {
 		const cb = "function" !== typeof callback ? x => x : callback
 		this._logger = logger
-		this._cb = cb
 
 		this._validate = validate
 		this._validateContext = validateContext
+
+		if (PromiseConstructor) {
+			const self = this
+			this._p = new PromiseConstructor((res, rej) => {
+				self._res = res
+				self._rej = rej
+			})
+		} else {
+			this._p = undefined
+			this._res = res => cb(null, res)
+			this._rej = err => cb(err)
+		}
 	}
 
 	callback(err, res) {
@@ -56,31 +67,33 @@ class ResponseHandler {
 		return this._handleOk(res)
 	}
 
+	getPromise() {
+		return this._p
+	}
+
 	_handleOk(res) {
 		debug("response ok")
 
-		let data = res.body
-		data = this._validate(data, this._validateContext)
+		const data = this._validate(res.body, this._validateContext)
 		if (data instanceof errors.Route4MeError) {
 			this._logger.warn({ "msg": "response validation error", "err": data })
-			return this._cb(data, null)
+			return this._rej(data)
 		} else if (data instanceof Error) {
 			this._logger.error({ "msg": "Unhandled error during validation", "err": data, "fatal": true })
-			return this._cb(data, null)
+			return this._rej(data)
 		}
 
 		this._logger.info({ "msg": "response ok" })
-		return this._cb(null, data)
+		return this._res(data)
 	}
 
 	_handleError(err, res) {
 		let e = null
 		debug("response error")
-
 		e = new errors.Route4MeApiError(err.message, res, err)
 
 		this._logger.warn({ "msg": "response error", "err": e })
-		return this._cb(e)
+		return this._rej(e)
 	}
 }
 
