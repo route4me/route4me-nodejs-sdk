@@ -1,5 +1,6 @@
 "use strict"
 
+//const path     = require("path")
 const request  = require("superagent")
 const debug    = require("debug")("route4me")
 const _        = require("lodash")
@@ -16,7 +17,7 @@ const Territories     = require("./resources/territories")
 const Tracking        = require("./resources/tracking")
 const Vehicles        = require("./resources/vehicles")
 
-const packageJson     = require("./../package.json")
+const packageJson     = require("./../package.json")  // eslint-disable-line import/no-dynamic-require
 const utils           = require("./utils")
 const errors          = require("./errors")
 

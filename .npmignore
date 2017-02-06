@@ -4,6 +4,9 @@
 
 # place per-project settings here
 /docs/
+/examples/
+/tutorials/
+# /src/
 
 # =========================================
 # common part
@@ -19,7 +22,6 @@
 /bower_components
 
 # compiled output
-/dist
 /tmp
 /build
 
@@ -33,6 +35,12 @@ npm-debug.log*
 testem.log
 
 # =========================================
+
+appveyor.yml
+.codebeatsettings
+.gitattributes
+.jsdocrc.js
+.npmignore
 
 .github/
 test/

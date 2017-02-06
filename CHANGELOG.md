@@ -7,6 +7,8 @@ This is the history of changes of the `route4me-node` package
 
 ## unreleased // ???
 
+* Can return `Promise` instead of callbacks (option `promise`)
+
 ## 2015-08-28 // 0.1.1
 
 Prehistorical first release of the package.
