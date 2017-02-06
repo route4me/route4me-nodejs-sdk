@@ -41,6 +41,7 @@ class Route4Me {
 			"baseUrl": "https://route4me.com",
 			"logger": utils.noopLogger,
 			"validate": false,
+			"promise": false,
 		})
 
 		// TODO: make a decision, whether this param could be configured
@@ -59,6 +60,17 @@ class Route4Me {
 
 		this._logger = opt.logger
 		this._validate = "function" === typeof opt.validate ? opt.validate : ix => ix
+
+		if (true === opt.promise) {
+			debug("promises: global Promise")
+			this._promise = Promise
+		} else if (typeof opt.promise === "function") {
+			debug("promises: explicitly defined promise-lib")
+			this._promise = opt.promise
+		} else {
+			debug("promises: off")
+			this._promise = null
+		}
 
 		/**
 		 * **AddressBook** related API calls
@@ -181,7 +193,7 @@ class Route4Me {
 			c = null
 		}
 
-		const resHandler = new utils.ResponseHandler(this._logger, v, c, callback)
+		const resHandler = new utils.ResponseHandler(this._promise, this._logger, v, c, callback)
 
 		debug("sending request", method, apiUrl, qs)
 		this._logger.info({
@@ -190,6 +202,7 @@ class Route4Me {
 			url: apiUrl,
 			queryString: qs,
 		})
+
 		request[method](apiUrl)
 			.set("User-Agent", this._userAgent)
 			.query(qs)
@@ -199,6 +212,8 @@ class Route4Me {
 			.accept("application/json")
 			.redirects(1000)	// unlimited number of redirects
 			.end((err, res) => resHandler.callback(err, res))
+
+		return resHandler.getPromise()
 	}
 }
 

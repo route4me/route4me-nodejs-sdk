@@ -40,13 +40,20 @@ class ILogger {
 }
 
 class ResponseHandler {
-	constructor(logger, validate, validateContext, callback) {
+	constructor(promise, logger, validate, validateContext, callback) {
 		const cb = "function" !== typeof callback ? x => x : callback
 		this._logger = logger
 		this._cb = cb
+		this._promise = promise
 
 		this._validate = validate
 		this._validateContext = validateContext
+
+		this._p = undefined
+		if (this._promise) {
+			this._p = new Promise(function(res, rej) {
+			})
+		}
 	}
 
 	callback(err, res) {
@@ -54,6 +61,10 @@ class ResponseHandler {
 			return this._handleError(err, res)
 		}
 		return this._handleOk(res)
+	}
+
+	getPromise() {
+		return this._p
 	}
 
 	_handleOk(res) {
