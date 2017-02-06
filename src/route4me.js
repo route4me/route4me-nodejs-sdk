@@ -63,13 +63,13 @@ class Route4Me {
 
 		if (true === opt.promise) {
 			debug("promises: global Promise")
-			this._promise = Promise
-		} else if (typeof opt.promise === "function") {
+			this._promiseConstructor = Promise
+		} else if ("function" === typeof opt.promise) {
 			debug("promises: explicitly defined promise-lib")
-			this._promise = opt.promise
+			this._promiseConstructor = opt.promise
 		} else {
 			debug("promises: off")
-			this._promise = null
+			this._promiseConstructor = null
 		}
 
 		/**
@@ -183,7 +183,6 @@ class Route4Me {
 			apiUrl = `${this._baseUrl}${options.path}`
 		}
 
-
 		qs["api_key"] = this._apiKey
 
 		let v = this._validate
@@ -193,8 +192,6 @@ class Route4Me {
 			c = null
 		}
 
-		const resHandler = new utils.ResponseHandler(this._promise, this._logger, v, c, callback)
-
 		debug("sending request", method, apiUrl, qs)
 		this._logger.info({
 			msg: "sending request",
@@ -202,6 +199,14 @@ class Route4Me {
 			url: apiUrl,
 			queryString: qs,
 		})
+
+		const resHandler = new utils.ResponseHandler(
+			this._promiseConstructor,
+			this._logger,
+			v,
+			c,
+			callback
+		)
 
 		request[method](apiUrl)
 			.set("User-Agent", this._userAgent)
