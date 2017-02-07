@@ -30,6 +30,50 @@ class Addresses {
 	}
 
 	/**
+	 * Get an Address from a Route
+	 *
+	 * Get an address with specified `addressId` from a route with specified `routeId`.
+	 *
+	 * @see {@link https://route4me.io/docs/#get-an-address-from-a-route}
+	 * @see {@link https://route4me.io/docs/#get-notes}
+	 * @category Addresses
+	 * @since 0.1.9
+	 *
+	 * @param {number}  id         - Address ID
+	 * @param {string}  routeId    - Route ID
+	 * @param {Object}  [options]  - Additional options for `get`
+	 * @param {boolean} [options.includeNotes=false] - Aquire address' notes
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Addresses.Address>} [callback]
+	 */
+	get(id, routeId, options, callback) {
+		let cb = callback
+		let opt = options
+		if ("undefined" === typeof cb
+			&& "function" === typeof opt) {
+			cb = opt
+			opt = {}
+		}
+
+		opt = opt || {}
+
+		let includeNotes = false
+		if (undefined !== opt.includeNotes) {
+			includeNotes = !!opt.includeNotes
+		}
+
+		return this.r._makeRequest({
+			method: "GET",
+			path: "/api.v4/address.php",
+			qs: {
+				"route_id": routeId,
+				"route_destination_id": id,
+				"notes": includeNotes ? "1" : "0",
+			},
+			validationContext: "Addresses.Address",
+		}, callback)
+	}
+
+	/**
 	 * Update custom data of the address (as a route destination).
 	 *
 	 * @see {@link https://route4me.io/docs/#update-a-route}

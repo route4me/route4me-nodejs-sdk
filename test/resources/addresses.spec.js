@@ -29,6 +29,26 @@ describe(helper.toSuiteName(__filename), () => {
 			saMock.clearRoutes()
 		})
 
+		describe("get", () => {
+			it("should call route4me", (done) => {
+				const options = { includeNotes: true }
+				resource.get(167899269, "241466F15515D67D3F951E2DA38DE76D", options, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req,
+						"GET", "https://route4me.com/api.v4/address.php",
+						{
+							"route_id": "241466F15515D67D3F951E2DA38DE76D",
+							"route_destination_id": "167899269",
+							"notes": "1",
+						},
+						null
+					)
+					done()
+				})
+			})
+		})
+
 		describe("updateCustomData", () => {
 			beforeEach(() => {
 				// TODO : mock in helper
