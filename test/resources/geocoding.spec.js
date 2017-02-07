@@ -74,9 +74,9 @@ describe(helper.toSuiteName(__filename), () => {
 		})
 
 		describe("rapid", () => {
-			describe("rapidId", () => {
+			describe("rapidGet", () => {
 				it("should call route4me", (done) => {
-					resource.rapidId(121, (err, res) => {
+					resource.rapidGet(121, (err, res) => {
 						expect(err).is.null
 						expect(res).to.exist
 

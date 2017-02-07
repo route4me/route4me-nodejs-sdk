@@ -81,7 +81,7 @@ class Geocoding {
 	}
 
 	/**
-	 * Rapid Address Search
+	 * Rapid Address Search by ID
 	 *
 	 * Single address geocoding refers to the process of getting a geographic
 	 * address by address name sent with HTTP GET data.
@@ -96,7 +96,7 @@ class Geocoding {
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Geocoding.Rapid>}
 	 * [callback]
 	 */
-	rapidId(id, callback) {
+	rapidGet(id, callback) {
 		// ----a
 		// https://rapid.route4me.com/street_data/<PK>/
 
