@@ -1,12 +1,19 @@
 "use strict"
 
+const debug           = require("debug")("route4me")
 const errors          = require("./../errors")
 
-function _createRouteTrackingValidate(data) {
-	if (data && true === data.status) {
+function _createRouteTrackingValidate(data, ctx, res) {
+	if (!data || "boolean" !== typeof data.status) {
+		return new errors.Route4MeValidationError("Invalid response", data)
+	}
+
+	if (true === data.status) {
 		return true
 	}
-	return new errors.Route4MeValidationError("Invalid response", data)
+
+	// TODO: parse real error
+	return new errors.Route4MeApiError("Failed", res)
 }
 
 /**
@@ -115,6 +122,14 @@ class Tracking {
 	 * @since 0.1.8
 	 *
 	 * @param {jsonschema:Tracking.TrackingData}   trackingData - Route Tracking Data
+	 * @param {number}   trackingData.memberId - ???
+	 * @param {string}   trackingData.routeId - ???
+	 * @param {number}   trackingData.course - ???
+	 * @param {number}   trackingData.speed - ???
+	 * @param {number}   trackingData.latitude - ???
+	 * @param {number}   trackingData.longitude - ???
+	 * @param {string}   trackingData.deviceType - ???
+	 * @param {string}   trackingData.deviceGuid - ???
 	 * @param {module:route4me-node~RequestCallback<boolean>}
 	 * [callback]
 	 */
@@ -128,6 +143,8 @@ class Tracking {
 		qs["lng"] = trackingData.longitude || trackingData.lng
 		qs["device_type"] = trackingData.deviceType || trackingData.device_type
 		qs["device_guid"] = trackingData.deviceGuid || trackingData.device_guid
+
+		debug(`createRouteTracking: parsed trackingData: ${qs}`)
 
 		return this.r._makeRequest({
 			method: "POST",

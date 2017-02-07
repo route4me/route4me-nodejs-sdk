@@ -74,15 +74,19 @@ class ResponseHandler {
 	_handleOk(res) {
 		debug("response ok")
 
-		const data = this._validate(res.body, this._validateContext)
+		const data = this._validate(res.body, this._validateContext, res)
+
 		if (data instanceof errors.Route4MeError) {
+			// TODO: include url and method to the log message
 			this._logger.warn({ "msg": "response validation error", "err": data })
 			return this._rej(data)
 		} else if (data instanceof Error) {
+			// TODO: include url and method to the log message
 			this._logger.error({ "msg": "Unhandled error during validation", "err": data, "fatal": true })
 			return this._rej(data)
 		}
 
+		// TODO: include url and method to the log message
 		this._logger.info({ "msg": "response ok" })
 		return this._res(data)
 	}
@@ -92,20 +96,23 @@ class ResponseHandler {
 		debug("response error")
 		e = new errors.Route4MeApiError(err.message, res, err)
 
+		// TODO: include url and method to the log message
 		this._logger.warn({ "msg": "response error", "err": e })
 		return this._rej(e)
 	}
 }
 
-function clone(obj) {
-	return JSON.parse(JSON.stringify(obj))
-}
 
 /*
 =============================
 TYPECONV
 =============================
  */
+
+function clone(obj) {
+	return JSON.parse(JSON.stringify(obj))
+}
+
 function uniq(arr) {
 	const uq = {}
 	const res = []
