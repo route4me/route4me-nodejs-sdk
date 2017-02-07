@@ -121,16 +121,16 @@ class Tracking {
 	 * @category Tracking
 	 * @since 0.1.8
 	 *
-	 * @param {jsonschema:Tracking.TrackingData}   trackingData - Route Tracking Data
-	 * @param {number}   trackingData.memberId - ???
-	 * @param {string}   trackingData.routeId - ???
-	 * @param {number}   trackingData.course - ???
-	 * @param {number}   trackingData.speed - ???
-	 * @param {number}   trackingData.latitude - ???
-	 * @param {number}   trackingData.longitude - ???
-	 * @param {string}   trackingData.deviceType - ???
-	 * @param {string}   trackingData.deviceGuid - ???
-	 * @param {module:route4me-node~RequestCallback<boolean>}
+	 * @param {int}   trackingData - Route Tracking Data
+	 * @param {number}   trackingData.memberId - Member ID
+	 * @param {string}   trackingData.routeId - Route ID
+	 * @param {number}   trackingData.course - Movement course
+	 * @param {number}   trackingData.speed - Movement speed
+	 * @param {number}   trackingData.latitude - Latitude
+	 * @param {number}   trackingData.longitude - Longitude
+	 * @param {string}   trackingData.deviceType - Device type
+	 * @param {string}   trackingData.deviceGuid - Device GUID
+	 * @param {module:route4me-node~RequestCallback}
 	 * [callback]
 	 */
 	createRouteTracking(trackingData, callback) {

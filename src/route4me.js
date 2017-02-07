@@ -11,6 +11,7 @@ const AddressBook     = require("./resources/address-book")
 const AvoidanceZones  = require("./resources/avoidance-zones")
 const Geocoding       = require("./resources/geocoding")
 const Members         = require("./resources/members")
+const Notes           = require("./resources/notes")
 const Optimizations   = require("./resources/optimizations")
 const Routes          = require("./resources/routes")
 const Territories     = require("./resources/territories")
@@ -103,7 +104,12 @@ class Route4Me {
 		 * @since 0.1.8
 		 */
 		this.Members = new Members(this)
-
+		/**
+		 * **Notes** related API calls
+		 * @type {Notes}
+		 * @since 0.1.9
+		 */
+		this.Notes = new Notes(this)
 		/**
 		 * **Optimizations** related API calls
 		 * @type {Optimizations}
@@ -158,9 +164,9 @@ class Route4Me {
 	 * @param {object} [options.qs]         Query string
 	 * @param {object} [options.body]       Body
 	 * @param {null|string|function} [options.validationContext=null]
-	 *        * `null` cause validation disabled (TODO: test this case)
-	 *        * `string` is threated as the name of JSON Schema
-	 *        * `function` will be used for validation.
+	 * * `null` cause validation disabled (TODO: test this case)
+	 * * `string` is threated as the name of JSON Schema
+	 * * `function` will be used for validation.
 	 * @param {module:route4me-node~RequestCallback}    [callback]
 	 */
 	_makeRequest(options, callback) {

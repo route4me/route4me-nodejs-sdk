@@ -58,8 +58,8 @@ describe(helper.toSuiteName(__filename), () => {
 
 		describe("get", () => {
 			it("should call route4me", (done) => {
-				const includeAddresses = true
-				resource.get("596A2A44FE9FB19EEB9C3C072BF2D0BE", includeAddresses, (err, res) => {
+				const options = { includeAddresses: true }
+				resource.get("596A2A44FE9FB19EEB9C3C072BF2D0BE", options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,

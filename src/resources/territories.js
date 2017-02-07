@@ -55,22 +55,26 @@ class Territories {
 	 * @category Territories
 	 * @since 0.1.8
 	 *
-	 * @param {string}   id                       - Territory ID
-	 * @param {boolean}  [includeAddresses=false] - If true, enclosed addresses will be
-	 *        included in a response
+	 * @param {string}   id        - Territory ID
+	 * @param {Object}   [options] - Additional options for `get`
+	 * @param {boolean}  [options.includeAddresses=false] - If true, enclosed
+	 * addresses will be included in a response
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Territories.Territory>} [callback]
 	 */
-	get(id, includeAddresses, callback) {
+	get(id, options, callback) {
 		let cb = callback
-		let ia = includeAddresses
+		let opt = options
 		if ("undefined" === typeof cb
-			&& "function" === typeof ia) {
-			cb = ia
-			ia = false
+			&& "function" === typeof opt) {
+			cb = opt
+			opt = {}
 		}
-		if ("boolean" !== typeof ia) {
-			throw new errors.Route4MeError(
-				`Territory.get: wrong type for argument 'includeAddresses':${typeof ia}`)
+
+		opt = opt || {}
+
+		let includeAddresses = false
+		if (undefined !== opt.includeAddresses) {
+			includeAddresses = !!opt.includeAddresses
 		}
 
 		return this.r._makeRequest({
@@ -78,7 +82,7 @@ class Territories {
 			path: "/api.v4/territory.php",
 			qs: {
 				"territory_id": id,
-				"addresses": ia ? "1" : "0",
+				"addresses": includeAddresses ? "1" : "0",
 			},
 			validationContext: "Territories.Territory",
 		}, cb)
