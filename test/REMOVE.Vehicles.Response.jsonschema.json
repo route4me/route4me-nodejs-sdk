@@ -1,145 +1,81 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "https://github.com/route4me/json-schemas/blob/master/Vehicle.dtd",
-	"title": "Vehicle",
+	"id": "https://github.com/route4me/json-schemas/blob/master/Optimization_response.dtd",
+	"title": "Optimization Response",
 	"type": "object",
-	"name": "Vehicle",
-	"description": "Vehicles in the user's account. Endpoint: url: https://www.route4me.com/api/vehicles/view_vehicles.php",
 	"properties": {
-		"vehicle_id": {
+		"optimization_problem_id": {
 			"type": "string",
-			"name": "vehicle_id",
-			"title": "Vehicle id",
-			"descrption": "A unique identifcation 32-char string of the vehicle"
+			"title": "Optimization Problem ID",
+			"descrption": "Optimization which generated this route"
 		},
-		"created_time": {
-			"type": "string",
-			"format": "date-time",
-			"name": "created_time",
-			"title": "Created time",
-			"descrption": "Created time of the record about vehicle"
+		"user_errors": {
+			"type": "array",
+			"title": "User Errors",
+			"items": {"type": "string"},
+			"descrption": "User Errors"
 		},
-		"member_id": {
+		"optimization_errors": {
+			"type": "array",
+			"title": "Optimization Errors",
+			"items": {"type": "string"},
+			"descrption": "Optimization Errors"
+		},
+		"state": {
 			"type": "integer",
-			"name": "member_id",
-			"title": "Member id",
-			"descrption": "An unique identification number of the member"
+			"enum": [1, 2, 3, 4, 5, 6 ],
+			"title": "State",
+			"description": "an optimization problem can be at one state at any given time (Initial = 1, MatrixProcessing = 2, Optimizing = 3, Optimized = 4, Error = 5, ComputingDirections = 6)"
 		},
-		"vehicle_alias": {
-			"type": "string",
-			"name": "vehicle_alias",
-			"title": "Vehicle alias",
-			"descrption": "Internal name of the vehicle"
+		"created_timestamp": {
+			"type": "integer",
+			"title": "Created Timestamp",
+			"descrption": "When the optimization problem was created"
 		},
-		"vehicle_reg_state": {
-			"type": ["string", "null"],
-			"name": "vehicle_reg_state",
-			"title": "Vehicle registration state",
-			"descrption": "A state where vehicle was registered"
+		"scheduled_for": {
+			"type": "integer",
+			"title": "Scheduled For",
+			"descrption": "An Unix Timestamp the Optimization Problem was scheduled for."
 		},
-		"vehicle_reg_state_id": {
-			"type": ["string", "null"],
-			"name": "vehicle_reg_state_id",
-			"title": "Vehicle registration state ID",
-			"descrption": "An ID of the state, where vehicle was registered"
+		"optimization_completed_timestamp": {
+			"type": "integer",
+			"title": "Optimization Completed Timestamp",
+			"descrption": "When the Optimization Problem was completed."
 		},
-		"vehicle_reg_country": {
-			"type": ["string", "null"],
-			"name": "vehicle_reg_country",
-			"title": "Vehicle registration country",
-			"descrption": "A country where vehicle was registered"
+		"parameters": {
+			"type": "array",
+			"title": "Route Parameters",
+			"items": {"$ref": "https://github.com/route4me/json-schemas/blob/master/RouteParameters.dtd"},
+			"descrption": "Route Parameters"
 		},
-		"vehicle_reg_country_id": {
-			"type": ["string", "null"],
-			"name": "vehicle_reg_country_id",
-			"title": "Vehicle registration country ID",
-			"descrption": "An ID of the country, where vehicle was registered"
+		"sent_to_background": {
+			"type": "boolean",
+			"title": "Sent to Background",
+			"descrption": "If true it means the solution was not returned (it is being computed in the background)"
 		},
-		"vehicle_license_plate": {
-			"type": ["string", "null"],
-			"name": "vehicle_license_plate",
-			"title": "Vehicle license plate",
-			"descrption": "A license plate of the vehicle"
+		"addresses": {
+			"type": "array",
+			"title": "Route Addresses",
+			"items": {"$ref": "https://github.com/route4me/json-schemas/blob/master/Address.dtd"},
+			"descrption": "Route Addresses"
 		},
-		"vehicle_make": {
-			"type": ["string", "null"],
-			"name": "vehicle_make",
-			"title": "Vehicle make",
-			"descrption": "Vehicle maker brend"
+		"routes": {
+			"type": "array",
+			"title": "Routes",
+			"items": {"$ref": "https://github.com/route4me/json-schemas/blob/master/DataObjectRoute.dtd"},
+			"descrption": "Routes"
 		},
-		"vehicle_model_year": {
-			"type": ["string", "null"],
-			"name": "vehicle_model_year",
-			"title": "Vehicle model year",
-			"descrption": "A year of the vehicle model"
+		"links": {
+			"type": "array",
+			"title": "Links",
+			"items": {"$ref": "https://github.com/route4me/json-schemas/blob/master/Links.dtd"},
+			"descrption": "Links to the GET operations for the optimization problem"
 		},
-		"vehicle_model": {
-			"type": ["string", "null"],
-			"name": "vehicle_model",
-			"title": "Vehicle model",
-			"descrption": "A model of the vehicle"
-		},
-		"vehicle_year_acquired": {
-			"type": ["string", "null"],
-			"name": "vehicle_year_acquired",
-			"title": "Vehicle acquired year",
-			"descrption": "A year the vehicle was acquired"
-		},
-		"vehicle_cost_new": {
-			"type": ["number", "null"],
-			"name": "vehicle_cost_new",
-			"title": "Vehicle cost new",
-			"descrption": "A cost f the new vehicle"
-		},
-		"license_start_date": {
-			"type": ["string", "null"],
-			"format": "date-time",
-			"name": "license_start_date",
-			"title": "License start date",
-			"descrption": "A start date of the license"
-		},
-		"license_end_date": {
-			"type": ["string", "null"],
-			"format": "date-time",
-			"name": "license_end_date",
-			"title": "License end date",
-			"descrption": "An end date of the license"
-		},
-		"vehicle_axle_count": {
-			"type": ["string", "null"],
-			"name": "vehicle_axle_count",
-			"title": "Vehicle axle count",
-			"descrption": "A number of the vecile's axles"
-		},
-		"mpg_city": {
-			"type": ["string", "null"],
-			"name": "mpg_city",
-			"title": "MPG city",
-			"descrption": "Miles per gallon in the city area"
-		},
-		"mpg_highway": {
-			"type": ["string", "null"],
-			"name": "mpg_highway",
-			"title": "MPG highway",
-			"descrption": "Miles per gallon in the highway area"
-		},
-		"fuel_type": {
-			"type": ["string", "null"],
-			"name": "fuel_type",
-			"title": "Fuel type",
-			"descrption": "A type of the fuel"
-		},
-		"height_inches": {
-			"type": ["string", "null"],
-			"name": "height_inches",
-			"title": "Height inches",
-			"descrption": "A height of the vehicle in the inches."
-		},
-		"weight_lb": {
-			"type": ["string", "null"],
-			"name": "weight_lb",
-			"title": "Weight lbs",
-			"descrption": "A weight of the vehicle in the pounds."
+		"tracking_history": {
+			"type": "array",
+			"title": "TrackingHistory",
+			"items": {"$ref": "https://github.com/route4me/json-schemas/blob/master/TrackingHistory.dtd"},
+			"descrption": "A collection of device tracking data with coordinates, speed, and timestamps"
 		}
 	}
 }

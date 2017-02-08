@@ -1,11 +1,10 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "https://github.com/route4me/json-schemas/blob/master/VehicleMany.dtd",
-	"title": "VehicleMany",
+	"id": "https://github.com/route4me/json-schemas/blob/master/OptimizationMany.dtd",
+	"title": "OptimizationMany",
 	"type": "array",
-	"name": "VehicleMany",
 	"description": "???",
 	"items": {
-		"$ref": "https://github.com/route4me/json-schemas/blob/master/Vehicle.dtd"
+		"$ref": "https://github.com/route4me/json-schemas/blob/master/Optimization_response.dtd"
 	}
 }
