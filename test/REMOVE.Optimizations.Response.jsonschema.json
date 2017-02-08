@@ -43,7 +43,7 @@
 			"descrption": "When the Optimization Problem was completed."
 		},
 		"parameters": {
-			"type": "array",
+			"type": "object",
 			"title": "Route Parameters",
 			"items": {"$ref": "https://github.com/route4me/json-schemas/blob/master/RouteParameters.dtd"},
 			"descrption": "Route Parameters"
@@ -66,7 +66,7 @@
 			"descrption": "Routes"
 		},
 		"links": {
-			"type": "array",
+			"type": "object",
 			"title": "Links",
 			"items": {"$ref": "https://github.com/route4me/json-schemas/blob/master/Links.dtd"},
 			"descrption": "Links to the GET operations for the optimization problem"

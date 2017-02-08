@@ -1,0 +1,19 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "https://github.com/route4me/json-schemas/blob/master/OptimizationMany.dtd",
+	"title": "OptimizationMany",
+	"type": "object",
+	"description": "???",
+	"properties": {
+		"optimizations": {
+			"type": "array",
+			"items": {
+				"$ref": "https://github.com/route4me/json-schemas/blob/master/Optimization_response.dtd"
+			}
+		},
+		"totalRecords": {
+			"type": "number",
+			"descrption": "User Errors"
+		}
+	}
+}

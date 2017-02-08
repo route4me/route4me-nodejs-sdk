@@ -68,6 +68,8 @@ class Optimizations {
 	 * @see {@link https://route4me.io/docs/#get-optimizations  Route4Me API}
 	 * @category Optimizations
 	 *
+	 * @todo TODO: there is no JSON-schema for the response
+	 *
 	 * @param {(number|string|Array<string>|Array<number>)} states   - List of states [1..6]
 	 * @param {Object} options          - List-parameters
 	 * @param {number} [options.limit]  - List limit
@@ -76,13 +78,13 @@ class Optimizations {
 	 * [callback]
 	 */
 	list(states, options, callback) {
-		const _states = utils.toOptimizationStatesSafe(states)
-		if (_states instanceof Error) {
-			return callback(_states)
+		const validStates = utils.toOptimizationStatesSafe(states)
+		if (validStates instanceof Error) {
+			return callback(validStates)
 		}
 
 		const qs = {}
-		if (_states) { qs["states"] = _states }
+		if (validStates) { qs["states"] = validStates }
 
 		if ("offset" in options) {
 			qs["offset"] = options.offset
