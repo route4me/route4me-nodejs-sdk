@@ -20,7 +20,7 @@ const jsonschemaTrackingHistory = require("./REMOVE.TrackingHistory.jsonschema")
 const testApiKey = "11111111111111111111111111111111"
 
 describe(helper.toSuiteName(__filename), () => {
-	const states = [1,2,3,4,5,6,7]
+	const states = [1, 2, 3, 4, 5, 6, 7]
 	const options = { limit: 10 }
 	helper.describeIntegration("UNMOCKED Access to `Optimizations` list", function a() {
 		this.timeout(5000)
@@ -88,7 +88,6 @@ describe(helper.toSuiteName(__filename), () => {
 
 				const valid = ajv.validate("Optimizations.ResponseMany", obj)
 				if (!valid) {
-console.log(ajv.errors)
 					return new Error(`Test validation error ${ajv.errors}`)
 				}
 
