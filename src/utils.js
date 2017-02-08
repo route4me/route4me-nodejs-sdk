@@ -109,6 +109,19 @@ TYPECONV
 =============================
  */
 
+function get(obj, prop, def) {
+	if (undefined === obj || null === obj) {
+		return def
+	}
+
+	const val = obj[prop]
+	if (undefined === val) {
+		return def
+	}
+
+	return val
+}
+
 function clone(obj) {
 	return JSON.parse(JSON.stringify(obj))
 }
@@ -196,6 +209,7 @@ function toOptimizationStatesSafe(states) {
 exports.noopLogger = new ILogger()
 exports.ResponseHandler = ResponseHandler
 
+exports.get = get
 exports.clone = clone
 exports.toStringArray = toStringArray
 exports.toIntArray = toIntArray

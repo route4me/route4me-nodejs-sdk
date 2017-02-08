@@ -6,57 +6,39 @@ const errors   = require("../src/errors")
 const helper  = require("./helper")
 
 describe(helper.toSuiteName(__filename), () => {
-	describe("toOptimizationStatesSafe", () => {
-		[
-			{ in: 1,             exp: "1",             msg: "number" },
-			{ in: "1",           exp: "1",             msg: "string" },
-			{ in: "1,2,2",       exp: "1,2",           msg: "comma separated string" },
-			{ in: [1, 2, 2],       exp: "1,2",           msg: "array of numbers" },
-			{ in: ["1", "2", "2"], exp: "1,2",           msg: "array of strings" },
-		].forEach((tc) => {
-			it(`should parse ${tc.msg}`, () => {
-				const act = utils.toOptimizationStatesSafe(tc.in)
-
-				expect(act).to.deep.equal(tc.exp)
-			})
-		});
-
-		[
-			{ in: -1,             exp: "",             msg: "number" },
-			{ in: 1000,           exp: "",             msg: "number" },
-			{ in: "-1",           exp: "",             msg: "string" },
-			{ in: "1000",         exp: "",             msg: "string" },
-			{ in: "-1,2,3,1000",  exp: "2,3",          msg: "comma separated string" },
-			{ in: [-1, 2, 3, 1000], exp: "2,3",          msg: "array of numbers" },
-			{ in: ["-1", "2", "3", "1000"], exp: "2,3",  msg: "array of strings" },
-		].forEach((tc) => {
-			it(`should keep states in [1,6] for ${tc.msg}`, () => {
-				const act = utils.toOptimizationStatesSafe(tc.in)
-
-				expect(act).to.deep.equal(tc.exp)
-			})
-		})
-
-		describe("on invalid args", () => {
+	describe("get", () => {
+		describe("without default value", () => {
 			const testCases = [
-				{ in: null,             msg: "null" },
-				{ in: undefined,        msg: "undefined" },
-				{ in: new Date(),       msg: "Date" },
-				{ in: false,            msg: "false" },
-				{ in: true,             msg: "true" },
-				{ in: {},               msg: "object" },
+				{ msg: "obj = null",  obj: null,            path: "name", exp: undefined },
+				{ msg: "obj = undef", obj: undefined,       path: "name", exp: undefined },
+				{ msg: "obj = empty", obj: { },             path: "name", exp: undefined },
+				{ msg: "obj = normal", obj: { name: 111 }, path: "name", exp: 111 },
 			]
 
 			testCases.forEach((tc) => {
-				it(`like ${tc.msg} should RETURN error`, () => {
-					const act = utils.toOptimizationStatesSafe(tc.in)
+				it(`${tc.msg}`, () => {
+					const act = utils.get(tc.obj, tc.path)
+					expect(act).is.equal(tc.exp)
+				})
+			})
+		})
 
-					expect(act).to.be.an.instanceof(errors.Route4MeError)
+		describe("with default value", () => {
+			const testCases = [
+				{ msg: "obj = null",    obj: null,      path: "name", def: 1, exp: 1 },
+				{ msg: "obj = undef",   obj: undefined,      path: "name", def: 2, exp: 2 },
+				{ msg: "obj = empty",   obj: { },            path: "name", def: 3, exp: 3 },
+				{ msg: "obj with name", obj: { name: 317 }, path: "name", exp: 317 },
+			]
+
+			testCases.forEach((tc) => {
+				it(`${tc.msg}`, () => {
+					const act = utils.get(tc.obj, tc.path, tc.def)
+					expect(act).is.equal(tc.exp)
 				})
 			})
 		})
 	})
-
 
 	describe("toStringArray", () => {
 		describe("with one arg", () => {
@@ -108,6 +90,58 @@ describe(helper.toSuiteName(__filename), () => {
 						utils.toStringArray(tc.val, tc.trim)
 					})
 						.throw(errors.Route4MeError)
+				})
+			})
+		})
+	})
+
+
+	describe("toOptimizationStatesSafe", () => {
+		[
+			{ in: 1,             exp: "1",             msg: "number" },
+			{ in: "1",           exp: "1",             msg: "string" },
+			{ in: "1,2,2",       exp: "1,2",           msg: "comma separated string" },
+			{ in: [1, 2, 2],       exp: "1,2",           msg: "array of numbers" },
+			{ in: ["1", "2", "2"], exp: "1,2",           msg: "array of strings" },
+		].forEach((tc) => {
+			it(`should parse ${tc.msg}`, () => {
+				const act = utils.toOptimizationStatesSafe(tc.in)
+
+				expect(act).to.deep.equal(tc.exp)
+			})
+		});
+
+		[
+			{ in: -1,             exp: "",             msg: "number" },
+			{ in: 1000,           exp: "",             msg: "number" },
+			{ in: "-1",           exp: "",             msg: "string" },
+			{ in: "1000",         exp: "",             msg: "string" },
+			{ in: "-1,2,3,1000",  exp: "2,3",          msg: "comma separated string" },
+			{ in: [-1, 2, 3, 1000], exp: "2,3",          msg: "array of numbers" },
+			{ in: ["-1", "2", "3", "1000"], exp: "2,3",  msg: "array of strings" },
+		].forEach((tc) => {
+			it(`should keep states in [1,6] for ${tc.msg}`, () => {
+				const act = utils.toOptimizationStatesSafe(tc.in)
+
+				expect(act).to.deep.equal(tc.exp)
+			})
+		})
+
+		describe("on invalid args", () => {
+			const testCases = [
+				{ in: null,             msg: "null" },
+				{ in: undefined,        msg: "undefined" },
+				{ in: new Date(),       msg: "Date" },
+				{ in: false,            msg: "false" },
+				{ in: true,             msg: "true" },
+				{ in: {},               msg: "object" },
+			]
+
+			testCases.forEach((tc) => {
+				it(`like ${tc.msg} should RETURN error`, () => {
+					const act = utils.toOptimizationStatesSafe(tc.in)
+
+					expect(act).to.be.an.instanceof(errors.Route4MeError)
 				})
 			})
 		})

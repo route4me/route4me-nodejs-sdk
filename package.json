@@ -51,7 +51,6 @@
   "homepage": "http://route4me.com",
   "dependencies": {
     "debug": "^2.6.0",
-    "lodash": "^4.17.4",
     "platform": "^1.3.3",
     "superagent": "^3.4.1"
   },
@@ -74,6 +73,7 @@
     "gulp-mocha": "^3.0.1",
     "gulp-size": "^2.1.0",
     "istanbul": "^0.4.5",
+    "lodash": "^4.17.4",
     "mocha": "^3.2.0",
     "sinon": "^1.17.7",
     "superagent-mocker": "https://github.com/maxkoryukov/superagent-mocker/tarball/v0.5.3",

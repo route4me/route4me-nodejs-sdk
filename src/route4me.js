@@ -3,7 +3,6 @@
 // const path     = require("path")
 const request  = require("superagent")
 const debug    = require("debug")("route4me")
-const _        = require("lodash")
 const platform = require("platform")
 
 const Addresses       = require("./resources/addresses")
@@ -39,15 +38,14 @@ class Route4Me {
 	 */
 	constructor(apiKey, options) {
 		const opt = {}
-		_.defaults(opt, options, {
-			"baseUrl": "https://route4me.com",
-			"logger": utils.noopLogger,
-			"validate": false,
-			"promise": false,
-		})
+
+		opt["baseUrl"]  = utils.get(options, "baseUrl", "https://route4me.com")
+		opt["logger"]   = utils.get(options, "logger",   utils.noopLogger)
+		opt["validate"] = utils.get(options, "validate", false)
+		opt["promise"]  = utils.get(options, "promise",  false)
 
 		// TODO: make a decision, whether this param could be configured
-		opt.userAgent = `superagent/3.3.2 (${platform.name} ${platform.version}; Route4Me-${platform.name}/${Route4Me.version}) ${platform.description}`
+		opt["userAgent"] = `superagent/3.3.2 (${platform.name} ${platform.version}; Route4Me-${platform.name}/${Route4Me.version}) ${platform.description}`
 
 		debug("init", opt)
 		debug("version", Route4Me.version)
@@ -57,18 +55,18 @@ class Route4Me {
 		}
 
 		this._apiKey = apiKey
-		this._baseUrl = opt.baseUrl
-		this._userAgent = opt.userAgent
+		this._baseUrl = opt["baseUrl"]
+		this._userAgent = opt["userAgent"]
 
-		this._logger = opt.logger
-		this._validate = "function" === typeof opt.validate ? opt.validate : ix => ix
+		this._logger = opt["logger"]
+		this._validate = "function" === typeof opt["validate"] ? opt["validate"] : ix => ix
 
-		if (true === opt.promise) {
+		if (true === opt["promise"]) {
 			debug("promises: global Promise")
 			this._promiseConstructor = Promise
-		} else if ("function" === typeof opt.promise) {
+		} else if ("function" === typeof opt["promise"]) {
 			debug("promises: explicitly defined promise-lib")
-			this._promiseConstructor = opt.promise
+			this._promiseConstructor = opt["promise"]
 		} else {
 			debug("promises: off")
 			this._promiseConstructor = null
