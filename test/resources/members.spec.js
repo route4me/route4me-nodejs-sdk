@@ -19,10 +19,9 @@ describe(helper.toSuiteName(__filename), () => {
 		beforeEach(() => {
 			req = null
 			// TODO : mock in helper
-			saMock.get("*", (r) =>  { req = r; req.method = "GET";    return { body: {} } })
+			saMock.get("*",  (r) => { req = r; req.method = "GET";    return { body: {} } })
 			saMock.post("*", (r) => { req = r; req.method = "POST";   return { body: {} } })
-			saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return { body: {} } })
-			saMock.put("*", (r) =>  { req = r; req.method = "PUT";    return { body: {} } })
+			saMock.put("*",  (r) => { req = r; req.method = "PUT";    return { body: {} } })
 		})
 
 		afterEach(() => {
@@ -31,21 +30,21 @@ describe(helper.toSuiteName(__filename), () => {
 
 		describe("create", () => {
 			const data = {
-				"HIDE_ROUTED_ADDRESSES": "FALSE",
-				"member_phone": "571-259-5939",
-				"member_zipcode": "22102",
-				"route_count": null,
-				"member_email": "skrynkovskyy+newdispatcher@gmail.com",
-				"HIDE_VISITED_ADDRESSES": "FALSE",
-				"READONLY_USER": "FALSE",
-				"member_type": "SUB_ACCOUNT_DISPATCHER",
-				"date_of_birth": "2010",
-				"member_first_name": "Clay",
-				"member_password": "123456",
-				"HIDE_NONFUTURE_ROUTES": "FALSE",
-				"member_last_name": "Abraham",
-				"SHOW_ALL_VEHICLES": "FALSE",
-				"SHOW_ALL_DRIVERS": "FALSE"
+				"firstName": "Clay",
+				"lastName": "Abraham",
+				"phone": "571-259-5939",
+				"zipcode": "22102",
+				"routeCount": null,
+				"email": "skrynkovskyy+newdispatcher@gmail.com",
+				"type": "SUB_ACCOUNT_DISPATCHER",
+				"dateOfBirth": 2010,
+				"password": "123456",
+				"readonlyUser": false,
+				"hideVisitedAddresses": false,
+				"hideRoutedAddresses": false,
+				"hideNonfutureRoutes": false,
+				"showAllVehicles": false,
+				"showAllDrivers": false,
 			}
 
 			it("should call route4me", (done) => {
@@ -55,7 +54,23 @@ describe(helper.toSuiteName(__filename), () => {
 					helper.expectRequest(req,
 						"POST", "https://route4me.com/api.v4/user.php",
 						{},
-						data
+						{
+							"member_phone": "571-259-5939",
+							"member_zipcode": "22102",
+							"route_count": null,
+							"member_email": "skrynkovskyy+newdispatcher@gmail.com",
+							"member_type": "SUB_ACCOUNT_DISPATCHER",
+							"date_of_birth": "2010",
+							"member_first_name": "Clay",
+							"member_password": "123456",
+							"member_last_name": "Abraham",
+							"READONLY_USER": "FALSE",
+							"HIDE_VISITED_ADDRESSES": "FALSE",
+							"HIDE_ROUTED_ADDRESSES": "FALSE",
+							"HIDE_NONFUTURE_ROUTES": "FALSE",
+							"SHOW_ALL_VEHICLES": "FALSE",
+							"SHOW_ALL_DRIVERS": "FALSE",
+						}
 					)
 					done()
 				})
@@ -85,7 +100,7 @@ describe(helper.toSuiteName(__filename), () => {
 					helper.expectRequest(req,
 						"GET", "https://route4me.com/api.v4/user.php",
 						{
-							"member_id": 127
+							"member_id": "127"
 						},
 						null
 					)
@@ -97,22 +112,23 @@ describe(helper.toSuiteName(__filename), () => {
 		describe("update", () => {
 			const data = {
 				"member_id": 717171,
+				"memberId": 828282,
 
-				"HIDE_ROUTED_ADDRESSES": "FALSE",
-				"member_phone": "571-259-5939",
-				"member_zipcode": "22102",
-				"route_count": null,
-				"member_email": "skrynkovskyy+newdispatcher@gmail.com",
-				"HIDE_VISITED_ADDRESSES": "FALSE",
-				"READONLY_USER": "FALSE",
-				"member_type": "SUB_ACCOUNT_DISPATCHER",
-				"date_of_birth": "2010",
-				"member_first_name": "Clay",
-				"member_last_name": "Abraham",
-				"member_password": "123456",
-				"HIDE_NONFUTURE_ROUTES": "FALSE",
-				"SHOW_ALL_VEHICLES": "FALSE",
-				"SHOW_ALL_DRIVERS": "FALSE"
+				"firstName": "Clay",
+				"lastName": "Abraham",
+				"phone": "571-259-5939",
+				"zipcode": "22102",
+				"routeCount": null,
+				"email": "skrynkovskyy+newdispatcher@gmail.com",
+				"type": "SUB_ACCOUNT_DISPATCHER",
+				"dateOfBirth": 2010,
+				"password": "123456",
+				"readonlyUser": false,
+				"hideVisitedAddresses": false,
+				"hideRoutedAddresses": false,
+				"hideNonfutureRoutes": false,
+				"showAllVehicles": false,
+				"showAllDrivers": false,
 			}
 
 			it("should call route4me", (done) => {
@@ -124,21 +140,22 @@ describe(helper.toSuiteName(__filename), () => {
 						{},
 						{
 							"member_id": 8765,
-							"HIDE_ROUTED_ADDRESSES": "FALSE",
+
 							"member_phone": "571-259-5939",
 							"member_zipcode": "22102",
 							"route_count": null,
 							"member_email": "skrynkovskyy+newdispatcher@gmail.com",
-							"HIDE_VISITED_ADDRESSES": "FALSE",
-							"READONLY_USER": "FALSE",
 							"member_type": "SUB_ACCOUNT_DISPATCHER",
 							"date_of_birth": "2010",
 							"member_first_name": "Clay",
-							"member_last_name": "Abraham",
 							"member_password": "123456",
+							"member_last_name": "Abraham",
+							"READONLY_USER": "FALSE",
+							"HIDE_VISITED_ADDRESSES": "FALSE",
+							"HIDE_ROUTED_ADDRESSES": "FALSE",
 							"HIDE_NONFUTURE_ROUTES": "FALSE",
 							"SHOW_ALL_VEHICLES": "FALSE",
-							"SHOW_ALL_DRIVERS": "FALSE"
+							"SHOW_ALL_DRIVERS": "FALSE",
 						}
 					)
 					done()
@@ -147,6 +164,18 @@ describe(helper.toSuiteName(__filename), () => {
 		})
 
 		describe("remove", () => {
+			beforeEach(() => {
+				saMock.del("*",  (r) => {
+					req = r
+					req.method = "DELETE"
+					return { body: { "status": true } }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
 			it("should call route4me", (done) => {
 				resource.remove(81943, (err, res) => {
 					expect(err).not.exist
@@ -175,6 +204,7 @@ describe(helper.toSuiteName(__filename), () => {
 						{
 							"strEmail": "man@ya.com",
 							"strPassword": "12345",
+							"format": "json",
 						}
 					)
 					done()
@@ -183,10 +213,22 @@ describe(helper.toSuiteName(__filename), () => {
 		})
 
 		describe("validateSession", () => {
+			beforeEach(() => {
+				saMock.get("*",  (r) => {
+					req = r
+					req.method = "GET"
+					return { body: { "authenticated": true, "member_id": 1 } }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
 			const sessionId = 4552222222
 			const memberId = 787544566
 			it("should call route4me", (done) => {
-				resource.validateSession(sessionId, memberId, (err, res) => {
+				resource.validateSession(memberId, sessionId, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
@@ -205,7 +247,7 @@ describe(helper.toSuiteName(__filename), () => {
 
 		describe("registerAccount", () => {
 			const data = {
-				"plan": "demoPlan",
+				"accountPlan": "demoPlan",
 				"industry": "Gifting",
 				"firstName": "Olman",
 				"lastName": "Oland",

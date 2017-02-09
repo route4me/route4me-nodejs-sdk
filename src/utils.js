@@ -92,9 +92,8 @@ class ResponseHandler {
 	}
 
 	_handleError(err, res) {
-		let e = null
 		debug("response error")
-		e = new errors.Route4MeApiError(err.message, res, err)
+		const e = new errors.Route4MeApiError(err.message, res, err)
 
 		// TODO: include url and method to the log message
 		this._logger.warn({ "msg": "response error", "err": e })
@@ -122,6 +121,28 @@ function get(obj, prop, def) {
 	return val
 }
 
+function mapObject(obj, map) {
+	if (null === obj || undefined === obj) {
+		return obj
+	}
+
+	const res = {}
+	for(const tgt in map) {
+		const src = map[tgt]
+		res[src] = obj[tgt]
+	}
+
+	return res
+}
+
+/**
+ * Deep clone an object
+ *
+ * @protected
+ *
+ * @param  {any} obj - Original object
+ * @return {any}     - The deep copy of an object
+ */
 function clone(obj) {
 	return JSON.parse(JSON.stringify(obj))
 }
@@ -211,6 +232,7 @@ exports.ResponseHandler = ResponseHandler
 
 exports.get = get
 exports.clone = clone
+exports.mapObject = mapObject
 exports.toStringArray = toStringArray
 exports.toIntArray = toIntArray
 exports.toOptimizationStatesSafe = toOptimizationStatesSafe
