@@ -19,10 +19,10 @@ describe(helper.toSuiteName(__filename), () => {
 		beforeEach(() => {
 			req = null
 			// TODO : mock in helper
-			saMock.get("*", (r) =>  { req = r; req.method = "GET";    return {} })
-			saMock.post("*", (r) => { req = r; req.method = "POST";   return {} })
-			saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return {} })
-			saMock.put("*", (r) =>  { req = r; req.method = "PUT";    return {} })
+			saMock.get("*", (r) =>  { req = r; req.method = "GET";    return { body: {} } })
+			saMock.post("*", (r) => { req = r; req.method = "POST";   return { body: {} } })
+			saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return { body: {} } })
+			saMock.put("*", (r) =>  { req = r; req.method = "PUT";    return { body: {} } })
 		})
 
 		afterEach(() => {
@@ -64,7 +64,7 @@ describe(helper.toSuiteName(__filename), () => {
 
 		describe("list", () => {
 			it("should call route4me", (done) => {
-				resource.listSubusers((err, res) => {
+				resource.list((err, res) => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
