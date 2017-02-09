@@ -80,7 +80,8 @@ class Optimizations {
 	list(states, options, callback) {
 		const validStates = utils.toOptimizationStatesSafe(states)
 		if (validStates instanceof Error) {
-			return callback(validStates)
+			const err = validStates
+			return this.r._makeError(err, callback)
 		}
 
 		const qs = {}

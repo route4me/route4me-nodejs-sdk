@@ -225,6 +225,22 @@ class Route4Me {
 
 		return resHandler.getPromise()
 	}
+
+	_makeError(error, callback) {
+		const resHandler = new utils.ResponseHandler(
+			this._promiseConstructor,
+			this._logger,
+			this._validate,
+			null,
+			callback
+		)
+
+		setTimeout(() => {
+			resHandler.fail(error)
+		}, 0)
+
+		return resHandler.getPromise()
+	}
 }
 
 module.exports = Route4Me

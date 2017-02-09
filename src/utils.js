@@ -67,6 +67,10 @@ class ResponseHandler {
 		return this._handleOk(res)
 	}
 
+	fail(err) {
+		return this._rej(err)
+	}
+
 	getPromise() {
 		return this._p
 	}
@@ -79,11 +83,11 @@ class ResponseHandler {
 		if (data instanceof errors.Route4MeError) {
 			// TODO: include url and method to the log message
 			this._logger.warn({ "msg": "response validation error", "err": data })
-			return this._rej(data)
+			return this.fail(data)
 		} else if (data instanceof Error) {
 			// TODO: include url and method to the log message
 			this._logger.error({ "msg": "Unhandled error during validation", "err": data, "fatal": true })
-			return this._rej(data)
+			return this.fail(data)
 		}
 
 		// TODO: include url and method to the log message
@@ -97,7 +101,7 @@ class ResponseHandler {
 
 		// TODO: include url and method to the log message
 		this._logger.warn({ "msg": "response error", "err": e })
-		return this._rej(e)
+		return this.fail(e)
 	}
 }
 
