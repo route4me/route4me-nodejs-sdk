@@ -37,6 +37,8 @@ class Addresses {
 	 * @see {@link https://route4me.io/docs/#get-an-address-from-a-route}
 	 * @see {@link https://route4me.io/docs/#get-notes}
 	 * @category Addresses
+	 * @tag Addresses
+	 * @tag Notes
 	 * @since 0.1.9
 	 *
 	 * @param {number}  id         - Address ID
@@ -78,6 +80,8 @@ class Addresses {
 	 *
 	 * @see {@link https://route4me.io/docs/#update-a-route}
 	 * @category Addresses
+	 * @tag Routes
+	 * @tag Addresses
 	 * @since 0.1.8
 	 *
 	 * @param {number} id       - Address ID

@@ -127,10 +127,11 @@ function mapObject(obj, map) {
 	}
 
 	const res = {}
-	for(const tgt in map) {
+
+	Object.keys(map).forEach((tgt) => {
 		const src = map[tgt]
 		res[src] = obj[tgt]
-	}
+	})
 
 	return res
 }

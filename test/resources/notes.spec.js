@@ -12,7 +12,7 @@ const testApiKey = "11111111111111111111111111111111"
 describe(helper.toSuiteName(__filename), () => {
 	describe("SDK methods", () => {
 		const route4me = new Route4Me(testApiKey)
-		const resource = route4me.Tracking
+		const resource = route4me.Notes
 		let req
 
 		beforeEach(() => {
@@ -27,7 +27,7 @@ describe(helper.toSuiteName(__filename), () => {
 			saMock.clearRoutes()
 		})
 
-		describe("createRouteTracking", () => {
+		describe("create", () => {
 			beforeEach(() => {
 				saMock.post("*", (r) =>  { req = r; req.method = "POST"; return { "body": { "status": true } } })
 			})
@@ -36,49 +36,37 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 
 			const testCases = [
-				{ msg: "with aliases for input 1",
-					trackingData: {
-						memberId: 1,
-						routeId: "114B01238180A4227FD187E128C056F5",
-						course: 70,
-						speed: 60,
-						latitude: 55.6884868,
-						longitude: 12.5366426,
+				{ msg: "with string-note",
+					data: {
+						addressId: 167899269,
+						routeId: "241466F15515D67D3F951E2DA38DE76D",
+						deviceLatitude: 55.6884868,
+						deviceLongitude: 12.5366426,
 						deviceType: "android_phone",
-						deviceGuid: "HK5454H0K454564WWER445",
-					} },
-				{ msg: "with aliases for input 2",
-					trackingData: {
-						member_id: 1,
-						route_id: "114B01238180A4227FD187E128C056F5",
-						course: 70,
-						speed: 60,
-						lat: 55.6884868,
-						lng: 12.5366426,
-						device_type: "android_phone",
-						device_guid: "HK5454H0K454564WWER445",
+						note: "Just a test note",
+						type: "web",
+					},
+					expBody: {
+						strNoteContents: "Just a test note"
 					} },
 			]
 
 			testCases.forEach((tc) => {
 				it(`${tc.msg} should call route4me`, (done) => {
-					resource.createRouteTracking(tc.trackingData, (err, res) => {
+					resource.create(tc.data, (err, res) => {
 						expect(err).is.not.exist
 						expect(res).is.exist
 						helper.expectRequest(req,
-							"POST", "https://route4me.com/track/set.php",
+							"POST", "https://route4me.com/actions/addroutenotes.php",
 							{
-								"frm": "JSON",
-								"member_id": "1",
-								"route_id": "114B01238180A4227FD187E128C056F5",
-								"course": "70",
-								"speed": "60",
-								"lat": "55.6884868",
-								"lng": "12.5366426",
+								"address_id": "167899269",
+								"route_id": "241466F15515D67D3F951E2DA38DE76D",
+								"dev_lat": "55.6884868",
+								"dev_lng": "12.5366426",
 								"device_type": "android_phone",
-								"device_guid": "HK5454H0K454564WWER445",
+								"strUpdateType": "web"
 							},
-							null
+							tc.expBody
 						)
 						done()
 					})

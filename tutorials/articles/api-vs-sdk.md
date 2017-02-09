@@ -24,6 +24,7 @@ methods are moved among section. This is a list of such differences.
 			<th>API section</th>
 			<th>API method</th>
 			<th>Description</th>
+			<th>Reason</th>
 			<th>SDK method</th>
 	</thead>
 	<tbody>
@@ -34,6 +35,7 @@ methods are moved among section. This is a list of such differences.
 				Get an Address from a Route
 			</a></th>
 			<td>get an address</td>
+			<td>Because this method just **gets an entity**. By convention of this SDK, such action is provided by `get` method.</td>
 			<td>{@link Addresses#get}</td>
 		</tr>
 
@@ -43,6 +45,7 @@ methods are moved among section. This is a list of such differences.
 				Update a Route (a)
 			</a></th>
 			<td>updates custom data of a route destination</td>
+			<td>this method **modifies a field of an entity**. By convention of this SDK, such action is provided by `updateXXX` method.</td>
 			<td>{@link Addresses#updateCustomData}</td>
 		</tr>
 
@@ -52,6 +55,7 @@ methods are moved among section. This is a list of such differences.
 				Get Notes
 			</a></th>
 			<td>To get an address notes, just run with `includeNotes` option</td>
+			<td>This method can't be in {@link Notes} namespace, because it returns {@link jsonschema:Addresses.Address} entity.</td>
 			<td>{@link Addresses#get}</td>
 		</tr>
 
@@ -61,6 +65,7 @@ methods are moved among section. This is a list of such differences.
 				Get Route Tracking Data (a)
 			</a></th>
 			<td>Get a device’s last location history.</td>
+			<td>Actually this method returns a {@link Routes}</td>
 			<td>{@link Routes#get}</td>
 		</tr>
 

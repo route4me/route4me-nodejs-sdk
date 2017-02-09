@@ -53,7 +53,7 @@ exports = module.exports = {
 				"returns": "return"
 			},
 			"additionalTagNames": {
-				"customTags": "category"
+				"customTags": ["category", "tag"]
 			}
 		}
 	}

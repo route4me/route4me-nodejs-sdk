@@ -7,7 +7,8 @@ const errors          = require("./../errors")
 
 function propertyToUpper(obj, key) {
 	if (key in obj) {
-		obj[key] = obj[key].toString().toUpperCase()
+		// Modify original object, it is expected behaviour
+		obj[key] = obj[key].toString().toUpperCase()	// eslint-disable-line no-param-reassign
 	}
 }
 
@@ -23,21 +24,21 @@ function remapUserData(data) {
 	propertyToUpper(mapped, "showAllDrivers")
 
 	return utils.mapObject(mapped, {
-		"phone" : "member_phone",
-		"zipcode" : "member_zipcode",
-		"routeCount" : "route_count",
-		"email" : "member_email",
-		"type" : "member_type",
-		"dateOfBirth" : "date_of_birth",
-		"firstName" : "member_first_name",
-		"password" : "member_password",
-		"lastName" : "member_last_name",
-		"readonlyUser" : "READONLY_USER",
-		"hideVisitedAddresses" : "HIDE_VISITED_ADDRESSES",
-		"hideRoutedAddresses" : "HIDE_ROUTED_ADDRESSES",
-		"hideNonfutureRoutes" : "HIDE_NONFUTURE_ROUTES",
-		"showAllVehicles" : "SHOW_ALL_VEHICLES",
-		"showAllDrivers" : "SHOW_ALL_DRIVERS",
+		"phone": "member_phone",
+		"zipcode": "member_zipcode",
+		"routeCount": "route_count",
+		"email": "member_email",
+		"type": "member_type",
+		"dateOfBirth": "date_of_birth",
+		"firstName": "member_first_name",
+		"password": "member_password",
+		"lastName": "member_last_name",
+		"readonlyUser": "READONLY_USER",
+		"hideVisitedAddresses": "HIDE_VISITED_ADDRESSES",
+		"hideRoutedAddresses": "HIDE_ROUTED_ADDRESSES",
+		"hideNonfutureRoutes": "HIDE_NONFUTURE_ROUTES",
+		"showAllVehicles": "SHOW_ALL_VEHICLES",
+		"showAllDrivers": "SHOW_ALL_DRIVERS",
 	})
 }
 
@@ -45,12 +46,12 @@ function remapAccountData(data) {
 	const mapped = utils.clone(data)
 
 	const res = utils.mapObject(mapped, {
-		"industry" : "strIndustry",
-		"firstName" : "strFirstName",
-		"lastName" : "strLastName",
-		"email" : "strEmail",
-		"deviceType" : "device_type",
-		"password" : "strPassword_1",
+		"industry": "strIndustry",
+		"firstName": "strFirstName",
+		"lastName": "strLastName",
+		"email": "strEmail",
+		"deviceType": "device_type",
+		"password": "strPassword_1",
 	})
 
 	res["strPassword_2"] = data["password"]

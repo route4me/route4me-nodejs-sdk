@@ -12,7 +12,7 @@ describe(helper.toSuiteName(__filename), () => {
 				{ msg: "obj = null",  obj: null,            path: "name", exp: undefined },
 				{ msg: "obj = undef", obj: undefined,       path: "name", exp: undefined },
 				{ msg: "obj = empty", obj: { },             path: "name", exp: undefined },
-				{ msg: "obj = normal", obj: { name: 111 }, path: "name", exp: 111 },
+				{ msg: "simple success case", obj: { name: 111 }, path: "name", exp: 111 },
 			]
 
 			testCases.forEach((tc) => {
@@ -28,13 +28,28 @@ describe(helper.toSuiteName(__filename), () => {
 				{ msg: "obj = null",    obj: null,      path: "name", def: 1, exp: 1 },
 				{ msg: "obj = undef",   obj: undefined,      path: "name", def: 2, exp: 2 },
 				{ msg: "obj = empty",   obj: { },            path: "name", def: 3, exp: 3 },
-				{ msg: "obj with name", obj: { name: 317 }, path: "name", exp: 317 },
+				{ msg: "simple success case", obj: { name: 317 }, path: "name", exp: 317 },
 			]
 
 			testCases.forEach((tc) => {
 				it(`${tc.msg}`, () => {
 					const act = utils.get(tc.obj, tc.path, tc.def)
 					expect(act).is.equal(tc.exp)
+				})
+			})
+		})
+	})
+
+	describe("mapObject", () => {
+		describe("simpleMap", () => {
+			const testCases = [
+				{ msg: "simple obj",    obj: { "name": 1 }, map: { "name": "X" }, exp: { "X": 1 } },
+			]
+
+			testCases.forEach((tc) => {
+				it(`${tc.msg}`, () => {
+					const act = utils.mapObject(tc.obj, tc.map)
+					expect(act).is.deep.equal(tc.exp)
 				})
 			})
 		})

@@ -196,7 +196,7 @@ describe(helper.toSuiteName(__filename), () => {
 					ids: 152,
 					expBody: { "address_ids": ["152"] },
 				},
-				{ msg: "for sinmple string",
+				{ msg: "for simple string",
 					ids: "9761",
 					expBody: { "address_ids": ["9761"] },
 				},
