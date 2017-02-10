@@ -19,63 +19,14 @@ describe(helper.toSuiteName(__filename), () => {
 		beforeEach(() => {
 			req = null
 			// TODO : mock in helper
-			saMock.get("*", (r) =>  { req = r; req.method = "GET";    return {} })
-			saMock.post("*", (r) => { req = r; req.method = "POST";   return {} })
-			saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return {} })
-			saMock.put("*", (r) =>  { req = r; req.method = "PUT";    return {} })
+			saMock.get("*", (r) =>  { req = r; req.method = "GET";    return { body: {} } })
+			saMock.post("*", (r) => { req = r; req.method = "POST";   return { body: {} } })
+			saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return { body: {} } })
+			saMock.put("*", (r) =>  { req = r; req.method = "PUT";    return { body: {} } })
 		})
 
 		afterEach(() => {
 			saMock.clearRoutes()
-		})
-
-		describe("duplicate", () => {
-			it("should call route4me", (done) => {
-				resource.duplicate(131, (err, res) => {
-					expect(err).is.null
-					expect(res).is.not.null
-					helper.expectRequest(req, "POST", "https://route4me.com/actions/duplicate_route.php", {
-						"route_id": "131",
-						"to": "none" },
-						null
-					)
-					done()
-				})
-			})
-		})
-
-		describe("merge", () => {
-			const testCases = [
-				{ msg: "for string parameter",
-					ids: "abcde123",
-					expBody: { "0": "abcde123" },
-				},
-				{ msg: "for CSV-string",
-					ids: "56E8F6BF949670F0C0BBAC00590FD116 ,  A6DAA07A7D4737723A9C85E7C3BA2351",
-					expBody: { "0": "56E8F6BF949670F0C0BBAC00590FD116", "1": "A6DAA07A7D4737723A9C85E7C3BA2351" }
-				},
-				{ msg: "for array of string",
-					ids: ["56E8F6BF949670F0", "C0BBAC00590FD116", "123", "456"],
-					expBody: { "0": "56E8F6BF949670F0", "1": "C0BBAC00590FD116", "2": "123", "3": "456" }
-				},
-			]
-
-			testCases.forEach((tc) => {
-				const m = `should call route4me ${tc.msg}`
-				it(m, (done) => {
-					resource.merge(tc.ids, (err, res) => {
-						expect(err).is.null
-						expect(res).is.not.null
-
-						helper.expectRequest(req, "POST",
-							"https://route4me.com/actions/merge_routes.php",
-							{},
-							tc.expBody
-						)
-						done()
-					})
-				})
-			})
 		})
 
 		describe("get", () => {
@@ -157,5 +108,103 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 		})
+
+		describe("linkAddress", () => {
+			const addresses = [
+				{
+					"address":"Cabo Rojo, Cabo Rojo 00623, Puerto Rico",
+					"alias":"",
+					"lat":18.086627,
+					"lng":-67.145735,
+					"curbside_lat":18.086627,
+					"curbside_lng":-67.145735,
+					"contact_id":null,
+					"sequence_no":14,
+					"is_departed":false,
+					"is_visited":false
+				}
+			]
+			const options = {
+				optimalPosition: true,
+			}
+
+			it("should call route4me", (done) => {
+				resource.linkAddress("5C15E83A4BE005BCD1537955D28D51D7", addresses, options, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req, "PUT", "https://route4me.com/api.v4/route.php", {
+						"route_id": "5C15E83A4BE005BCD1537955D28D51D7", },
+						{
+							"addresses": [
+								{
+									"address":"Cabo Rojo, Cabo Rojo 00623, Puerto Rico",
+									"alias":"",
+									"lat":18.086627,
+									"lng":-67.145735,
+									"curbside_lat":18.086627,
+									"curbside_lng":-67.145735,
+									"contact_id":null,
+									"sequence_no":14,
+									"is_departed":false,
+									"is_visited":false,
+								}
+							],
+							"optimal_position":true
+						}
+					)
+					done()
+				})
+			})
+		})
+
+		describe("duplicate", () => {
+			it("should call route4me", (done) => {
+				resource.duplicate(131, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "POST", "https://route4me.com/actions/duplicate_route.php", {
+						"route_id": "131",
+						"to": "none" },
+						null
+					)
+					done()
+				})
+			})
+		})
+
+		describe("merge", () => {
+			const testCases = [
+				{ msg: "for string parameter",
+					ids: "abcde123",
+					expBody: { "0": "abcde123" },
+				},
+				{ msg: "for CSV-string",
+					ids: "56E8F6BF949670F0C0BBAC00590FD116 ,  A6DAA07A7D4737723A9C85E7C3BA2351",
+					expBody: { "0": "56E8F6BF949670F0C0BBAC00590FD116", "1": "A6DAA07A7D4737723A9C85E7C3BA2351" }
+				},
+				{ msg: "for array of string",
+					ids: ["56E8F6BF949670F0", "C0BBAC00590FD116", "123", "456"],
+					expBody: { "0": "56E8F6BF949670F0", "1": "C0BBAC00590FD116", "2": "123", "3": "456" }
+				},
+			]
+
+			testCases.forEach((tc) => {
+				const m = `should call route4me ${tc.msg}`
+				it(m, (done) => {
+					resource.merge(tc.ids, (err, res) => {
+						expect(err).is.null
+						expect(res).is.not.null
+
+						helper.expectRequest(req, "POST",
+							"https://route4me.com/actions/merge_routes.php",
+							{},
+							tc.expBody
+						)
+						done()
+					})
+				})
+			})
+		})
+
 	})
 })

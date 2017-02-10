@@ -21,67 +21,6 @@ class Routes {
 	}
 
 	/**
-	 * Duplicates the route. More information - on Route4Me API-doc site (see links section).
-	 *
-	 * @see {@link https://route4me.io/docs/#duplicate-a-route}
-	 * @category Routes
-	 * @since 0.1.8
-	 *
-	 * @todo TODO: There is no output schema
-	 * @example
-	 * SampleOutput = {
-	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
-	 * 	"success":true
-	 * }
-	 *
-	 * @todo TODO: parse the response
-	 *
-	 * @param {string}  id       - Route ID
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.DuplicateResponse>} [callback]
-	 */
-	duplicate(id, callback) {
-		return this.r._makeRequest({
-			method: "POST",
-			path: "/actions/duplicate_route.php",
-			qs: {
-				"route_id": id,
-				"to": "none",
-			},
-			validationContext: "Routes.DuplicateResponse",
-		}, callback)
-	}
-
-	/**
-	 * Merges the list of routes. More information - on Route4Me API-doc site (see links section).
-	 *
-	 * @see {@link https://route4me.io/docs/#merge-routes}
-	 * @category Routes
-	 * @since 0.1.8
-	 *
-	 * @todo TODO: There is no output schema
-	 * @example
-	 * SampleOutput = {
-	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
-	 * 	"success":true
-	 * }
-	 *
-	 * @todo TODO: parse the response
-	 *
-	 * @param {string|Array<string>}  ids       - Array of the Route IDs to be merged.
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.MergeResponse>} [callback]
-	 */
-	merge(ids, callback) {
-		const idsPure = utils.toStringArray(ids)
-
-		return this.r._makeRequest({
-			method: "POST",
-			path: "/actions/merge_routes.php",
-			body: idsPure,
-			validationContext: "Routes.MergeResponse",
-		}, callback)
-	}
-
-	/**
 	 * Get a single route.
 	 *
 	 * @see {@link https://route4me.io/docs/#get-a-route}
@@ -189,6 +128,146 @@ class Routes {
 			validationContext: "Routes.RemoveResponse",
 		}, callback)
 	}
+
+	/**
+	 * Add Addresses to Routes
+	 *
+	 * @see {@link https://route4me.io/docs/#add-addresses-to-routes}
+	 * @category Routes
+	 * @since 0.1.10
+	 *
+	 * @param {string}  id  - Route ID
+	 * @param {Array<jsonschema:Addresses.Address>} addresses   - Array of `Addresses`
+	 * @param {Object}  [options]                      - Insert options
+	 * @param {boolean} [options.optimalPosition=true] - If true, an address will be
+	 * inserted at optimal position of a route
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>}
+	 * [callback]
+	 */
+	linkAddress(id, addresses, options, callback) {
+		let opt = options
+		let cb = callback
+		if (undefined === cb
+			&& "function" === typeof(opt)
+		) {
+			cb = opt
+			opt = {}
+		}
+
+		if (!opt) {
+			opt = {}
+		}
+
+		const body = {}
+		body["optimal_position"] = undefined === opt.optimalPosition ? true : !!opt.optimalPosition
+		body["addresses"] = addresses
+
+		return this.r._makeRequest({
+			method: "PUT",
+			path: "/api.v4/route.php",
+			qs: {
+				"route_id": id,
+			},
+			body,
+			validationContext: "Routes.Route",
+		}, cb)
+	}
+
+	/**
+	 * Remove a destination (an address) with specified route_destination_id
+	 * from an optimization problem with specified optimization_problem_id.
+	 *
+	 * @see {@link https://route4me.io/docs/#remove-an-address-from-an-optimization Route4Me API}
+	 * @category Optimizations
+	 * @since 0.1.7
+	 *
+	 * @todo TODO: There is no schema for validation an output
+	 *
+	 * @example
+	 * const response = {
+	 *	"deleted":true,
+	 *	"route_destination_id":1
+	 * }
+	 *
+	 * @param {string}  id         - Optimization Problem ID
+	 * @param {number}  addressId  - Route destination ID
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.UnlinkAddressResponse>}
+	 * [callback]
+	 */
+	unlinkAddress(id, addressId, callback) {
+		return this.r._makeRequest({
+			method: "DELETE",
+			path: "/api.v4/address.php",
+			qs: {
+				"optimization_problem_id": id,
+				"route_destination_id": addressId,
+			},
+			validationContext: "Optimizations.UnlinkAddressResponse",
+		}, callback)
+	}
+
+
+	/**
+	 * Duplicates the route. More information - on Route4Me API-doc site (see links section).
+	 *
+	 * @see {@link https://route4me.io/docs/#duplicate-a-route}
+	 * @category Routes
+	 * @since 0.1.8
+	 *
+	 * @todo TODO: There is no output schema
+	 * @example
+	 * SampleOutput = {
+	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
+	 * 	"success":true
+	 * }
+	 *
+	 * @todo TODO: parse the response
+	 *
+	 * @param {string}  id       - Route ID
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.DuplicateResponse>} [callback]
+	 */
+	duplicate(id, callback) {
+		return this.r._makeRequest({
+			method: "POST",
+			path: "/actions/duplicate_route.php",
+			qs: {
+				"route_id": id,
+				"to": "none",
+			},
+			validationContext: "Routes.DuplicateResponse",
+		}, callback)
+	}
+
+	/**
+	 * Merges the list of routes. More information - on Route4Me API-doc site (see links section).
+	 *
+	 * @see {@link https://route4me.io/docs/#merge-routes}
+	 * @category Routes
+	 * @since 0.1.8
+	 *
+	 * @todo TODO: There is no output schema
+	 * @example
+	 * SampleOutput = {
+	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
+	 * 	"success":true
+	 * }
+	 *
+	 * @todo TODO: parse the response
+	 *
+	 * @param {string|Array<string>}  ids       - Array of the Route IDs to be merged.
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.MergeResponse>} [callback]
+	 */
+	merge(ids, callback) {
+		const idsPure = utils.toStringArray(ids)
+
+		return this.r._makeRequest({
+			method: "POST",
+			path: "/actions/merge_routes.php",
+			body: idsPure,
+			validationContext: "Routes.MergeResponse",
+		}, callback)
+	}
+
 }
 
 module.exports = Routes

@@ -10,19 +10,6 @@ const Route4Me = require("./route4me")
 module.exports = Route4Me
 
 /**
- * @type {Route4Me}
- */
-module.exports.Route4Me = Route4Me
-/**
- * @type {Route4MeError}
- */
-module.exports.Route4MeError = errors.Route4MeError
-/**
- * @type {Route4MeApiError}
- */
-module.exports.Route4MeApiError = errors.Route4MeApiError
-
-/**
  * API-response callback
  *
  * @callback RequestCallback
@@ -44,3 +31,20 @@ module.exports.Route4MeApiError = errors.Route4MeApiError
  *         * {@link Error} on validation error
  *         * `obj` argument (modifications allowed)
  */
+
+/**
+ * @type {Route4Me}
+ */
+module.exports.Route4Me = Route4Me
+/**
+ * @type {Route4MeError}
+ */
+module.exports.Route4MeError = errors.Route4MeError
+/**
+ * @type {Route4MeApiError}
+ */
+module.exports.Route4MeApiError = errors.Route4MeApiError
+/**
+ * @type {Route4MeValidationError}
+ */
+module.exports.Route4MeValidationError = errors.Route4MeValidationError
