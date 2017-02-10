@@ -101,6 +101,23 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
+		describe("search", () => {
+			it("should call route4me", (done) => {
+				const query = "Tbilisi"
+
+				resource.search(query, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/route.php", {
+						"query": "Tbilisi",
+					},
+						null
+					)
+					done()
+				})
+			})
+		})
+
 		describe("remove", () => {
 			const testCases = [
 				{ msg: "for array parameter",      ids: [5, 3, "67"], expQs: { "route_id": "5,3,67" } },
@@ -131,16 +148,16 @@ describe(helper.toSuiteName(__filename), () => {
 		describe("linkAddress", () => {
 			const addresses = [
 				{
-					"address":"Cabo Rojo, Cabo Rojo 00623, Puerto Rico",
-					"alias":"",
-					"lat":18.086627,
-					"lng":-67.145735,
-					"curbside_lat":18.086627,
-					"curbside_lng":-67.145735,
-					"contact_id":null,
-					"sequence_no":14,
-					"is_departed":false,
-					"is_visited":false
+					"address": "Cabo Rojo, Cabo Rojo 00623, Puerto Rico",
+					"alias": "",
+					"lat": 18.086627,
+					"lng": -67.145735,
+					"curbside_lat": 18.086627,
+					"curbside_lng": -67.145735,
+					"contact_id": null,
+					"sequence_no": 14,
+					"is_departed": false,
+					"is_visited": false
 				}
 			]
 			const options = {
@@ -152,23 +169,23 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req, "PUT", "https://route4me.com/api.v4/route.php", {
-						"route_id": "5C15E83A4BE005BCD1537955D28D51D7", },
+						"route_id": "5C15E83A4BE005BCD1537955D28D51D7" },
 						{
 							"addresses": [
 								{
-									"address":"Cabo Rojo, Cabo Rojo 00623, Puerto Rico",
-									"alias":"",
-									"lat":18.086627,
-									"lng":-67.145735,
-									"curbside_lat":18.086627,
-									"curbside_lng":-67.145735,
-									"contact_id":null,
-									"sequence_no":14,
-									"is_departed":false,
-									"is_visited":false,
+									"address": "Cabo Rojo, Cabo Rojo 00623, Puerto Rico",
+									"alias": "",
+									"lat": 18.086627,
+									"lng": -67.145735,
+									"curbside_lat": 18.086627,
+									"curbside_lng": -67.145735,
+									"contact_id": null,
+									"sequence_no": 14,
+									"is_departed": false,
+									"is_visited": false,
 								}
 							],
-							"optimal_position":true
+							"optimal_position": true
 						}
 					)
 					done()
@@ -190,10 +207,13 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 
 			const testCases = [
-				{ msg: "for simple address and route", id: 153, addressId: 1777, expQs: {
-					"route_id": "153",
-					"route_destination_id": "1777"
-				} },
+				{ msg: "for simple address and route",
+					id: 153,
+					addressId: 1777,
+					expQs: {
+						"route_id": "153",
+						"route_destination_id": "1777"
+					} },
 			]
 
 			testCases.forEach((tc) => {
@@ -260,6 +280,5 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 		})
-
 	})
 })

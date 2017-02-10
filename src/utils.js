@@ -1,5 +1,10 @@
 "use strict"
 
+/**
+ * @module route4me-node/utils
+ * @protected
+ */
+
 const debug   = require("debug")("route4me")
 
 const errors  = require("./errors")

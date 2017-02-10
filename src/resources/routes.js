@@ -128,6 +128,31 @@ class Routes {
 	}
 
 	/**
+	 * Search the Routes for a Specified Text.
+	 *
+	 * Search for the specified text throughout all routes belonging to the user’s account.
+	 *
+	 * @see {@link https://route4me.io/docs/#search-routes}
+	 * @category Routes
+	 * @since 0.1.10
+	 *
+	 * @param {string} query          - A text to be searched for
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Routes>} [callback]
+	 */
+	search(query, callback) {
+		const qs = {
+			"query": query.toString()
+		}
+
+		return this.r._makeRequest({
+			method: "GET",
+			path: "/api.v4/route.php",
+			qs,
+			validationContext: "Routes.Routes",
+		}, callback)
+	}
+
+	/**
 	 * Given multiple route ID’s, remove all routes at the same time.
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-routes}
@@ -187,7 +212,7 @@ class Routes {
 		let opt = options
 		let cb = callback
 		if (undefined === cb
-			&& "function" === typeof(opt)
+			&& "function" === typeof (opt)
 		) {
 			cb = opt
 			opt = {}

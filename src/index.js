@@ -14,22 +14,26 @@ module.exports = Route4Me
  *
  * @callback RequestCallback
  * @private
- * @param {Error}   err    Error (if ocurred)
- * @param {Object} [res]   Value returned by API (on success)
+ * @param {Error}  err              - Error (if ocurred)
+ * @param {Object} [res=undefined]  - Value returned by API (on success)
  */
 
 /**
  * Validation callback, applied to each API-response
  *
  * @callback ValidationCallback
+ *
  * @private
+ *
  * @param {*}       obj          - Object to validate. Route4Me will pass
- *         API-responses with this argument
+ * API-responses with this argument
+ *
  * @param {string}  schemaName   - Name of the schema to validate against.
- *         Route4Me will pass the name of appropriate schema for validation.
- * @return {*|Error}             - Returns:
- *         * {@link Error} on validation error
- *         * `obj` argument (modifications allowed)
+ * Route4Me will pass the name of appropriate schema for validation.
+ *
+ * @return {*|Error}             Returns:
+ * * {@link Error} on validation error
+ * * `obj` argument (modifications allowed)
  */
 
 /**
