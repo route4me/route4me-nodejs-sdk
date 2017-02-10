@@ -1,6 +1,24 @@
 "use strict"
 
-const utils = require("../utils")
+const utils           = require("./../utils")
+const errors          = require("./../errors")
+
+// ===================================
+
+function _unlinkAddressValidate(data, ctx, res) {
+	if (!data || "boolean" !== typeof data.deleted) {
+		return new errors.Route4MeValidationError("Invalid response", data)
+	}
+
+	if (true === data.deleted) {
+		return true
+	}
+
+	// TODO: parse real error
+	return new errors.Route4MeApiError("Failed", res)
+}
+
+// ===================================
 
 /**
  * @namespace
@@ -134,6 +152,8 @@ class Routes {
 	 *
 	 * @see {@link https://route4me.io/docs/#add-addresses-to-routes}
 	 * @category Routes
+	 * @tag Routes
+	 * @tag Addresses
 	 * @since 0.1.10
 	 *
 	 * @param {string}  id  - Route ID
@@ -174,38 +194,29 @@ class Routes {
 	}
 
 	/**
-	 * Remove a destination (an address) with specified route_destination_id
-	 * from an optimization problem with specified optimization_problem_id.
+	 * REMOVE an address from a route.
 	 *
-	 * @see {@link https://route4me.io/docs/#remove-an-address-from-an-optimization Route4Me API}
-	 * @category Optimizations
-	 * @since 0.1.7
+	 * @see {@link https://route4me.io/docs/#remove-addresses-from-routes}
+	 * @category Routes
+	 * @tag Routes
+	 * @tag Addresses
+	 * @since 0.1.10
 	 *
-	 * @todo TODO: There is no schema for validation an output
-	 *
-	 * @example
-	 * const response = {
-	 *	"deleted":true,
-	 *	"route_destination_id":1
-	 * }
-	 *
-	 * @param {string}  id         - Optimization Problem ID
-	 * @param {number}  addressId  - Route destination ID
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.UnlinkAddressResponse>}
-	 * [callback]
+	 * @param {string}  id         - Route ID
+	 * @param {number}  addressId  - Address ID
+	 * @param {module:route4me-node~RequestCallback} [callback]
 	 */
 	unlinkAddress(id, addressId, callback) {
 		return this.r._makeRequest({
 			method: "DELETE",
 			path: "/api.v4/address.php",
 			qs: {
-				"optimization_problem_id": id,
+				"route_id": id,
 				"route_destination_id": addressId,
 			},
-			validationContext: "Optimizations.UnlinkAddressResponse",
+			validationContext: _unlinkAddressValidate,
 		}, callback)
 	}
-
 
 	/**
 	 * Duplicates the route. More information - on Route4Me API-doc site (see links section).

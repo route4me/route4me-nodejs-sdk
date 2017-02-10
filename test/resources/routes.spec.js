@@ -157,6 +157,42 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
+		describe("unlinkAddress", () => {
+			beforeEach(() => {
+				saMock.del("*",  (r) => {
+					req = r
+					req.method = "DELETE"
+					return { body: { "deleted": true } }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
+			const testCases = [
+				{ msg: "for simple address and route", id: 153, addressId: 1777, expQs: {
+					"route_id": "153",
+					"route_destination_id": "1777"
+				} },
+			]
+
+			testCases.forEach((tc) => {
+				it(`${tc.msg} should call route4me`, (done) => {
+					resource.unlinkAddress(tc.id, tc.addressId, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+						helper.expectRequest(req,
+							"DELETE", "https://route4me.com/api.v4/address.php",
+							tc.expQs,
+							null
+						)
+						done()
+					})
+				})
+			})
+		})
+
 		describe("duplicate", () => {
 			it("should call route4me", (done) => {
 				resource.duplicate(131, (err, res) => {

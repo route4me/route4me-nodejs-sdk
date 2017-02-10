@@ -168,6 +168,8 @@ class Optimizations {
 	 *
 	 * @see {@link https://route4me.io/docs/#insert-an-address-into-an-optimization Route4Me API}
 	 * @category Optimizations
+	 * @tag Optimizations
+	 * @tag Addresses
 	 * @since 0.1.7
 	 *
 	 * @todo TODO: make reoptimize optional parameter
@@ -197,6 +199,8 @@ class Optimizations {
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-an-address-from-an-optimization Route4Me API}
 	 * @category Optimizations
+	 * @tag Optimizations
+	 * @tag Addresses
 	 * @since 0.1.7
 	 *
 	 * @todo TODO: There is no schema for validation an output
@@ -208,7 +212,7 @@ class Optimizations {
 	 * }
 	 *
 	 * @param {string}  id         - Optimization Problem ID
-	 * @param {number}  addressId  - Route destination ID
+	 * @param {number}  addressId  - Address ID
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.UnlinkAddressResponse>}
 	 * [callback]
 	 */
