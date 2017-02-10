@@ -118,6 +118,31 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
+		describe("updateParameters", () => {
+			const id = "5C15E83A4BE005BCD1537955D28D51D7"
+			const data = {
+				"parameters": {
+					"member_id": "177496",
+					"optimize": "Distance",
+					"route_max_duration": "82400",
+					"route_name": "updated 040516"
+				}
+			}
+
+			it("should call route4me", (done) => {
+				resource.updateParameters(id, data, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"PUT", "https://route4me.com/api.v4/route.php", {
+							"route_id": "5C15E83A4BE005BCD1537955D28D51D7" },
+						data
+					)
+					done()
+				})
+			})
+		})
+
 		describe("remove", () => {
 			const testCases = [
 				{ msg: "for array parameter",      ids: [5, 3, "67"], expQs: { "route_id": "5,3,67" } },

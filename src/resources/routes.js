@@ -153,6 +153,34 @@ class Routes {
 	}
 
 	/**
+	 * Update a route’s specified parameters.
+	 *
+	 * @see {@link https://route4me.io/docs/#update-a-route}
+	 * @category Routes
+	 * @since 0.1.10
+	 *
+	 * @param {string} id    - A text to be searched for
+	 * @param {jsonschema:Routes.RouteParameters} data  - Route parameters
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>}
+	 * [callback]
+	 */
+	updateParameters(id, data, callback) {
+		const qs = {
+			"route_id": id
+		}
+
+		const body = data
+
+		return this.r._makeRequest({
+			method: "PUT",
+			path: "/api.v4/route.php",
+			qs,
+			body,
+			validationContext: "Routes.Route",
+		}, callback)
+	}
+
+	/**
 	 * Given multiple route ID’s, remove all routes at the same time.
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-routes}
