@@ -42,7 +42,10 @@ class Routes {
 	 * Get a single route.
 	 *
 	 * @see {@link https://route4me.io/docs/#get-a-route}
+	 * @see {@link https://route4me.io/docs/#get-route-tracking-data}
 	 * @category Routes
+	 * @tag Routes
+	 * @tag Tracking
 	 * @since 0.1.8
 	 *
 	 * @todo TODO: describe all OPTIONS
@@ -52,21 +55,37 @@ class Routes {
 	 * @param {boolean} [options.includeTracking] - if `true` - the route tracking data
 	 * will be included into the response.
 	 * See also {@link https://route4me.io/docs/#get-route-tracking-data}
+	 * @param {boolean} [options.includeDirections] - if `true` - returns directions
+	 * @param {boolean} [options.includeRoutePath] - if `true` - include route path
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
 	 */
 	get(id, options, callback) {
 		let opt = options
 		let cb = callback
-		const qs = {}
 
-		if (cb === undefined && "function" === typeof opt) {
+		if (cb === undefined
+			&& "function" === typeof opt
+		) {
 			cb = opt
 			opt = null
 		}
 
+		if (!opt) {
+			opt = {}
+		}
+
+		const qs = {}
 		qs["route_id"] = id
-		if (opt && true === opt["includeTracking"]) {
+		if (true === opt["includeTracking"]) {
 			qs["device_tracking_history"] = "1"
+		}
+
+		if (true === opt["includeDirections"]) {
+			qs["directions"] = "1"
+		}
+
+		if (undefined !== opt["includeRoutePath"]) {
+			qs["route_path_output"] = opt.includeRoutePath ? "Points" : "None"
 		}
 
 		return this.r._makeRequest({

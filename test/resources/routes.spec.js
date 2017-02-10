@@ -60,6 +60,25 @@ describe(helper.toSuiteName(__filename), () => {
 					})
 				})
 			})
+
+			describe("with option `includeRoutePath`", () => {
+				it("should call route4me", (done) => {
+					const options = {
+						includeRoutePath: true
+					}
+					resource.get(117, options, (err, res) => {
+						expect(err).is.null
+						expect(res).is.not.null
+						helper.expectRequest(req, "GET", "https://route4me.com/api.v4/route.php", {
+							"route_id": "117",
+							"route_path_output": "Points",
+						},
+							null
+						)
+						done()
+					})
+				})
+			})
 		})
 
 		describe("list", () => {
