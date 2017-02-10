@@ -27,13 +27,22 @@ const errors          = require("./errors")
 class Route4Me {
 	/**
 	 * Create new API client
+	 *
 	 * @param  {string}  apiKey API KEY
 	 * @param  {object}  [options] Additional options for new instance
 	 * @param  {string}  [options.baseUrl="https://route4me.com"] Base URL for sending requests
-	 * @param  {ILogger} [options.logger]  Logger facility
+	 * @param  {ILogger} [options.logger=null]   Logger facility
+	 * @param  {boolean|function} [options.promise=false] Use promises instead of
+	 * callbacks. Usage:
+	 * * `false` means _no promises, use callbacks_;
+	 * * `true` means _use global `Promise`_ as promises' constructor;
+	 * * `constructor (function)` forces to use explicit Promise library.
+	 * See also Examples section of this documentation.
+	 *
 	 * @param  {module:route4me-node~ValidationCallback} [options.validate=false]
 	 * Validator for input and output parameters of the API methods. Set **falsey**
 	 * value to skip autovalidation (in favor of manual check).
+	 *
 	 * @return {Route4Me}                  New API client
 	 */
 	constructor(apiKey, options) {
@@ -41,8 +50,8 @@ class Route4Me {
 
 		opt["baseUrl"]  = utils.get(options, "baseUrl", "https://route4me.com")
 		opt["logger"]   = utils.get(options, "logger",   utils.noopLogger)
-		opt["validate"] = utils.get(options, "validate", false)
 		opt["promise"]  = utils.get(options, "promise",  false)
+		opt["validate"] = utils.get(options, "validate", false)
 
 		// TODO: make a decision, whether this param could be configured
 		opt["userAgent"] = `superagent/3.3.2 (${platform.name} ${platform.version}; Route4Me-${platform.name}/${Route4Me.version}) ${platform.description}`

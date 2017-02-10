@@ -18,6 +18,19 @@ function _unlinkAddressValidate(data, ctx, res) {
 	return new errors.Route4MeApiError("Failed", res)
 }
 
+function _shareValidate(data, ctx, res) {
+	if (!data || "boolean" !== typeof data.status) {
+		return new errors.Route4MeValidationError("Invalid response", data)
+	}
+
+	if (true === data.status) {
+		return true
+	}
+
+	// TODO: parse real error
+	return new errors.Route4MeApiError("Failed", res)
+}
+
 // ===================================
 
 /**
@@ -159,7 +172,7 @@ class Routes {
 	 * @category Routes
 	 * @since 0.1.10
 	 *
-	 * @param {string} id    - A text to be searched for
+	 * @param {string}                            id    - Route ID
 	 * @param {jsonschema:Routes.RouteParameters} data  - Route parameters
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>}
 	 * [callback]
@@ -351,6 +364,37 @@ class Routes {
 		}, callback)
 	}
 
+	/**
+	 * Share Routes
+	 *
+	 * Share a route via email.
+	 *
+	 * @see {@link https://route4me.io/docs/#share-routes}
+	 * @category Routes
+	 * @since 0.1.10
+	 *
+	 * @param {string} id     - Route ID
+	 * @param {string} email  - Recipient email
+	 * @param {module:route4me-node~RequestCallback} [callback]
+	 */
+	share(id, email, callback) {
+		const qs = {
+			"route_id": id,
+			"response_format": "json",
+		}
+
+		const body = {
+			"recipient_email": email,
+		}
+
+		return this.r._makeRequest({
+			method: "POST",
+			path: "/actions/route/share_route.php",
+			qs,
+			body,
+			validationContext: _shareValidate,
+		}, callback)
+	}
 }
 
 module.exports = Routes

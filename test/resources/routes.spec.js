@@ -305,5 +305,39 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 		})
+
+		describe("share", () => {
+			beforeEach(() => {
+				saMock.post("*",  (r) => {
+					req = r
+					req.method = "POST"
+					return { body: { "status": true } }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
+			const id = "5C15E83A4BE005BCD1537955D28D51D7"
+			const email = "noreply@route4me.com"
+
+			it("should call route4me", (done) => {
+				resource.share(id, email, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"POST", "https://route4me.com/actions/route/share_route.php", {
+							"response_format": "json",
+							"route_id": "5C15E83A4BE005BCD1537955D28D51D7",
+						},
+						{
+							"recipient_email": "noreply@route4me.com",
+						}
+					)
+					done()
+				})
+			})
+		})
 	})
 })
