@@ -288,6 +288,21 @@ describe(helper.toSuiteName(__filename), () => {
 		})
 
 		describe("merge", () => {
+			beforeEach(() => {
+				saMock.post("*",  (r) => {
+					req = r
+					req.method = "POST"
+					return { body: {
+						"success": true,
+						"optimization_problem_id": "ABCDEF12345"
+					} }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
 			const testCases = [
 				{ msg: "for string parameter",
 					ids: "abcde123",

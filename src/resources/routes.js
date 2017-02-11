@@ -4,70 +4,91 @@ const utils           = require("./../utils")
 const errors          = require("./../errors")
 // const debug           = require("debug")("route4me")
 
-// ===================================
-/**
- * Handle `duplicate` output
- *
- * @private
- *
- * @example <caption>Expected input</caption>
- * Sample = {
- * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
- * 	"success":true
- * }
- *
- * @param  {Object} data - Internal
- * @param  {Object} ctx  - Internal
- * @param  {Object} res  - Internal
- * @return {string}      - The ID of duplicate
- */
-function _duplicateValidate(data, ctx, res) {
-	if (
-		!data
-		|| "boolean" !== typeof data["success"]
-		|| "string" !== typeof data["optimization_problem_id"]
-	) {
-		return new errors.Route4MeValidationError("Invalid response", data)
+class RoutesValidate {
+	/**
+	 * Handle `duplicate` output
+	 *
+	 * @private
+	 *
+	 * @example <caption>Expected input</caption>
+	 * Sample = {
+	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
+	 * 	"success":true
+	 * }
+	 *
+	 * @param  {Object} data - Internal
+	 * @param  {Object} ctx  - Internal
+	 * @param  {Object} res  - Internal
+	 * @return {string}      - The ID of duplicate
+	 */
+	static duplicate(data, ctx, res) {
+		if (
+			!data
+			|| "boolean" !== typeof data["success"]
+			|| "string" !== typeof data["optimization_problem_id"]
+		) {
+			return new errors.Route4MeValidationError("Invalid response", data)
+		}
+
+		if (true === data["success"]) {
+			return data["optimization_problem_id"]
+		}
+
+		// TODO: parse real error
+		return new errors.Route4MeApiError("Failed", res)
 	}
 
-	if (true === data["success"]) {
-		return data["optimization_problem_id"]
+	/**
+	 * merge post-processor
+	 *
+	 * @private
+	 *
+	 * @example
+	 * Sample = {
+	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
+	 * 	"success":true
+	 * }
+	 *
+	 * @param  {Object} data - Internal
+	 * @param  {Object} ctx  - Internal
+	 * @param  {Object} res  - Internal
+	 * @return {string}      - The ID of merged Route
+	 */
+	static merge(data, ctx, res) {
+		return RoutesValidate.duplicate(data, ctx, res)
 	}
 
-	// TODO: parse real error
-	return new errors.Route4MeApiError("Failed", res)
-}
+	static unlinkAddress(data, ctx, res) {
+		if (!data || "boolean" !== typeof data.deleted) {
+			return new errors.Route4MeValidationError("Invalid response", data)
+		}
 
-function _unlinkAddressValidate(data, ctx, res) {
-	if (!data || "boolean" !== typeof data.deleted) {
-		return new errors.Route4MeValidationError("Invalid response", data)
+		if (true === data.deleted) {
+			return true
+		}
+
+		// TODO: parse real error
+		return new errors.Route4MeApiError("Failed", res)
 	}
 
-	if (true === data.deleted) {
-		return true
+	static share(data, ctx, res) {
+		// HACK: currently, API returns 'text/plain', so
+		// the response in not parsed automatically
+		if ("{\"status\":true}" === res.text) {
+			return true
+		}
+
+		if (!data || "boolean" !== typeof data.status) {
+			return new errors.Route4MeValidationError("Invalid response", data)
+		}
+
+		if (true === data.status) {
+			return true
+		}
+
+		// TODO: parse real error
+		return new errors.Route4MeApiError("Failed", res)
 	}
-
-	// TODO: parse real error
-	return new errors.Route4MeApiError("Failed", res)
-}
-
-function _shareValidate(data, ctx, res) {
-	// HACK: currently, API returns 'text/plain', so
-	// the response in not parsed automatically
-	if ("{\"status\":true}" === res.text) {
-		return true
-	}
-
-	if (!data || "boolean" !== typeof data.status) {
-		return new errors.Route4MeValidationError("Invalid response", data)
-	}
-
-	if (true === data.status) {
-		return true
-	}
-
-	// TODO: parse real error
-	return new errors.Route4MeApiError("Failed", res)
 }
 
 // ===================================
@@ -99,8 +120,6 @@ class Routes {
 	 * @tag Routes
 	 * @tag Tracking
 	 * @since 0.1.8
-	 *
-	 * @todo TODO: describe all OPTIONS
 	 *
 	 * @param {string}  id       - Route ID
 	 * @param {Object} [options] - Options
@@ -340,7 +359,7 @@ class Routes {
 				"route_id": id,
 				"route_destination_id": addressId,
 			},
-			validationContext: _unlinkAddressValidate,
+			validationContext: RoutesValidate.unlinkAddress,
 		}, callback)
 	}
 
@@ -363,7 +382,7 @@ class Routes {
 				"route_id": id,
 				"to": "none",
 			},
-			validationContext: _duplicateValidate,
+			validationContext: RoutesValidate.duplicate,
 		}, callback)
 	}
 
@@ -374,17 +393,8 @@ class Routes {
 	 * @category Routes
 	 * @since 0.1.8
 	 *
-	 * @todo TODO: There is no output schema
-	 * @example
-	 * SampleOutput = {
-	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
-	 * 	"success":true
-	 * }
-	 *
-	 * @todo TODO: parse the response
-	 *
 	 * @param {string|Array<string>}  ids       - Array of the Route IDs to be merged.
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.MergeResponse>} [callback]
+	 * @param {module:route4me-node~RequestCallback<string>} [callback]
 	 */
 	merge(ids, callback) {
 		const idsPure = utils.toStringArray(ids)
@@ -393,7 +403,7 @@ class Routes {
 			method: "POST",
 			path: "/actions/merge_routes.php",
 			body: idsPure,
-			validationContext: "Routes.MergeResponse",
+			validationContext: RoutesValidate.merge,
 		}, callback)
 	}
 
@@ -425,7 +435,7 @@ class Routes {
 			path: "/actions/route/share_route.php",
 			qs,
 			form,
-			validationContext: _shareValidate,
+			validationContext: RoutesValidate.share,
 		}, callback)
 	}
 }
