@@ -2,7 +2,7 @@
 
 const utils           = require("./../utils")
 const errors          = require("./../errors")
-const debug           = require("debug")("route4me")
+// const debug           = require("debug")("route4me")
 
 // ===================================
 
@@ -22,7 +22,7 @@ function _unlinkAddressValidate(data, ctx, res) {
 function _shareValidate(data, ctx, res) {
 	// HACK: currently, API returns 'text/plain', so
 	// the response in not parsed automatically
-	if (res.text === '{"status":true}') {
+	if ("{\"status\":true}" === res.text) {
 		return true
 	}
 

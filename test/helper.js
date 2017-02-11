@@ -7,7 +7,7 @@ const runIntegrationTests = "1" === process.env["TEST_INTEGRATION"]
 const describeIntegration = runIntegrationTests ? describe : describe.skip
 
 function expectRequest(req, method, url, query, body, contentType /* , form */) {
-	contentType = contentType || "application/json"
+	const ct = contentType || "application/json"
 
 	expect(req).has.property("url")
 		.and.is.equal(url)
@@ -16,7 +16,7 @@ function expectRequest(req, method, url, query, body, contentType /* , form */) 
 		.and.is.equal(method)
 
 	expect(req).has.property("headers")
-		.that.has.property("content-type", contentType)
+		.that.has.property("content-type", ct)
 
 	// QUERY assertions
 	expect(req).has.property("query")
