@@ -258,6 +258,21 @@ describe(helper.toSuiteName(__filename), () => {
 		})
 
 		describe("duplicate", () => {
+			beforeEach(() => {
+				saMock.post("*",  (r) => {
+					req = r
+					req.method = "POST"
+					return { body: {
+						"success": true,
+						"optimization_problem_id": "ABCDEF12345"
+					} }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
 			it("should call route4me", (done) => {
 				resource.duplicate(131, (err, res) => {
 					expect(err).is.null

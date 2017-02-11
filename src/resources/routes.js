@@ -5,6 +5,38 @@ const errors          = require("./../errors")
 // const debug           = require("debug")("route4me")
 
 // ===================================
+/**
+ * Handle `duplicate` output
+ *
+ * @private
+ *
+ * @example <caption>Expected input</caption>
+ * Sample = {
+ * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
+ * 	"success":true
+ * }
+ *
+ * @param  {Object} data - Internal
+ * @param  {Object} ctx  - Internal
+ * @param  {Object} res  - Internal
+ * @return {string}      - The ID of duplicate
+ */
+function _duplicateValidate(data, ctx, res) {
+	if (
+		!data
+		|| "boolean" !== typeof data["success"]
+		|| "string" !== typeof data["optimization_problem_id"]
+	) {
+		return new errors.Route4MeValidationError("Invalid response", data)
+	}
+
+	if (true === data["success"]) {
+		return data["optimization_problem_id"]
+	}
+
+	// TODO: parse real error
+	return new errors.Route4MeApiError("Failed", res)
+}
 
 function _unlinkAddressValidate(data, ctx, res) {
 	if (!data || "boolean" !== typeof data.deleted) {
@@ -270,8 +302,10 @@ class Routes {
 			opt = {}
 		}
 
+		const optimalPosition = undefined === opt.optimalPosition ? true : !!opt.optimalPosition
+
 		const body = {}
-		body["optimal_position"] = undefined === opt.optimalPosition ? true : !!opt.optimalPosition
+		body["optimal_position"] = optimalPosition
 		body["addresses"] = addresses
 
 		return this.r._makeRequest({
@@ -317,17 +351,9 @@ class Routes {
 	 * @category Routes
 	 * @since 0.1.8
 	 *
-	 * @todo TODO: There is no output schema
-	 * @example
-	 * SampleOutput = {
-	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
-	 * 	"success":true
-	 * }
-	 *
-	 * @todo TODO: parse the response
-	 *
 	 * @param {string}  id       - Route ID
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.DuplicateResponse>} [callback]
+	 * @param {module:route4me-node~RequestCallback<string>} [callback] - callback, will be called
+	 * with the ID (<string>) of the new created Route
 	 */
 	duplicate(id, callback) {
 		return this.r._makeRequest({
@@ -337,7 +363,7 @@ class Routes {
 				"route_id": id,
 				"to": "none",
 			},
-			validationContext: "Routes.DuplicateResponse",
+			validationContext: _duplicateValidate,
 		}, callback)
 	}
 
