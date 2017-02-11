@@ -333,7 +333,8 @@ describe(helper.toSuiteName(__filename), () => {
 						},
 						{
 							"recipient_email": "noreply@route4me.com",
-						}
+						},
+						"multipart/form-data"
 					)
 					done()
 				})

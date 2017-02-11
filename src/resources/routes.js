@@ -2,6 +2,7 @@
 
 const utils           = require("./../utils")
 const errors          = require("./../errors")
+const debug           = require("debug")("route4me")
 
 // ===================================
 
@@ -19,6 +20,12 @@ function _unlinkAddressValidate(data, ctx, res) {
 }
 
 function _shareValidate(data, ctx, res) {
+	// HACK: currently, API returns 'text/plain', so
+	// the response in not parsed automatically
+	if (res.text === '{"status":true}') {
+		return true
+	}
+
 	if (!data || "boolean" !== typeof data.status) {
 		return new errors.Route4MeValidationError("Invalid response", data)
 	}
@@ -383,7 +390,7 @@ class Routes {
 			"response_format": "json",
 		}
 
-		const body = {
+		const form = {
 			"recipient_email": email,
 		}
 
@@ -391,7 +398,7 @@ class Routes {
 			method: "POST",
 			path: "/actions/route/share_route.php",
 			qs,
-			body,
+			form,
 			validationContext: _shareValidate,
 		}, callback)
 	}
