@@ -178,7 +178,8 @@ class Route4Me {
 	 */
 	_makeRequest(options, callback) {
 		const qs = options.qs ||  {} /* query string */
-		const body = options.body || null // {} /* body */
+		const body = options.body || null
+		const form = options.form || null
 		const timeouts = {
 			response: 5000,  // Wait 5 seconds for the server to start sending,
 			deadline: 10000, // but allow 10 seconds to finish loading.
@@ -222,15 +223,26 @@ class Route4Me {
 			callback
 		)
 
-		request[method](apiUrl)
+		// debug only!
+		// qs["oldUrl"] = apiUrl
+		// apiUrl = "https://httpbin.org/post"
+
+		const req = request[method](apiUrl)
 			.set("User-Agent", this._userAgent)
-			.query(qs)
 			.timeout(timeouts)
-			.send(body)
-			.type("application/json")
-			.accept("application/json")
 			.redirects(1000)	// unlimited number of redirects
-			.end((err, res) => resHandler.callback(err, res))
+			.accept("application/json")
+			.query(qs)
+
+		if (form) {
+			req.type("multipart/form-data")
+				.field(form)
+		} else {
+			req.type("application/json")
+				.send(body)
+		}
+
+		req.end((err, res) => resHandler.callback(err, res))
 
 		return resHandler.getPromise()
 	}

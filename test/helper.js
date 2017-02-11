@@ -6,7 +6,9 @@ const _       = require("lodash")
 const runIntegrationTests = "1" === process.env["TEST_INTEGRATION"]
 const describeIntegration = runIntegrationTests ? describe : describe.skip
 
-function expectRequest(req, method, url, query, body) {
+function expectRequest(req, method, url, query, body, contentType /* , form */) {
+	contentType = contentType || "application/json"
+
 	expect(req).has.property("url")
 		.and.is.equal(url)
 
@@ -14,7 +16,7 @@ function expectRequest(req, method, url, query, body) {
 		.and.is.equal(method)
 
 	expect(req).has.property("headers")
-		.that.has.property("content-type", "application/json")
+		.that.has.property("content-type", contentType)
 
 	// QUERY assertions
 	expect(req).has.property("query")
@@ -41,6 +43,13 @@ function expectRequest(req, method, url, query, body) {
 		expect(req).has.property("body")
 			.and.is.null
 	}
+
+	// if (form) {
+	// 	expect(req).has.property("form")
+	// 		.that.is.deep.equal(form)
+	// } else {
+	// 	expect(req).has.not.property("form")
+	// }
 }
 
 function toSuiteName(filename) {

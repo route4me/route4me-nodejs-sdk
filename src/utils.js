@@ -5,7 +5,7 @@
  * @protected
  */
 
-const debug   = require("debug")("route4me")
+const debug   = require("debug")("route4me:utils")
 
 const errors  = require("./errors")
 
