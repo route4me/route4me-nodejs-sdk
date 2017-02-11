@@ -110,6 +110,36 @@ class ResponseHandler {
 	}
 }
 
+class CustomInternalPostProcessing {
+	/**
+	 * status
+	 *
+	 * @private
+	 *
+	 * @example
+	 * Sample = {
+	 * 	"status": true
+	 * }
+	 *
+	 * @param  {Object} data - Internal
+	 * @param  {Object} ctx  - Internal
+	 * @param  {Object} res  - Internal
+	 * @return {boolean}     - Success
+	 */
+	static status(data, ctx, res) {
+		if (!data || "boolean" !== typeof data.status) {
+			return new errors.Route4MeValidationError("Invalid response", data)
+		}
+
+		if (true === data.status) {
+			return true
+		}
+
+		// TODO: parse real error
+		return new errors.Route4MeApiError("Failed", res)
+	}
+
+}
 
 /*
 =============================
@@ -239,6 +269,7 @@ function toOptimizationStatesSafe(states) {
 
 exports.noopLogger = new ILogger()
 exports.ResponseHandler = ResponseHandler
+exports.CustomInternalPostProcessing = CustomInternalPostProcessing
 
 exports.get = get
 exports.clone = clone

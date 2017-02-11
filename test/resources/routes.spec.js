@@ -370,5 +370,67 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 		})
+
+		describe("resequence", () => {
+			const routeId = "241466F15515D67D3F951E2DA38DE76D"
+			const order = {
+				167899269: 9
+			}
+
+			it("should call route4me", (done) => {
+				resource.resequence(routeId, order, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"PUT", "https://route4me.com/api.v4/route.php", {
+							"route_id": "241466F15515D67D3F951E2DA38DE76D",
+						}, {
+							"addresses": [
+								{
+									"route_destination_id": 167899269,
+									"sequence_no": 9
+								}
+							]
+						}
+					)
+					done()
+				})
+			})
+		})
+
+		describe("optimize", () => {
+			beforeEach(() => {
+				saMock.post("*",  (r) => {
+					req = r
+					req.method = "POST"
+					return { body: { "status": true } }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
+			const routeId = "241466F15515D67D3F951E2DA38DE76D"
+			const criteria = "Distance"
+
+			it("should call route4me", (done) => {
+				resource.optimize(routeId, criteria, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"POST", "https://route4me.com/api.v3/route/reoptimize_2.php", {
+							"route_id": "241466F15515D67D3F951E2DA38DE76D",
+							"disable_optimization": "0",
+							"optimize": "Distance",
+						},
+						null
+					)
+					done()
+				})
+			})
+		})
 	})
 })

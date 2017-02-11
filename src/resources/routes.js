@@ -2,9 +2,9 @@
 
 const utils           = require("./../utils")
 const errors          = require("./../errors")
-// const debug           = require("debug")("route4me")
+const debug           = require("debug")("route4me")
 
-class RoutesValidate {
+class CustomInternalPostProcessing {
 	/**
 	 * Handle `duplicate` output
 	 *
@@ -55,9 +55,24 @@ class RoutesValidate {
 	 * @return {string}      - The ID of merged Route
 	 */
 	static merge(data, ctx, res) {
-		return RoutesValidate.duplicate(data, ctx, res)
+		return CustomInternalPostProcessing.duplicate(data, ctx, res)
 	}
 
+	/**
+	 * unlinkAddress
+	 *
+	 * @private
+	 *
+	 * @example
+	 * Sample = {
+	 * 	"deleted":true
+	 * }
+	 *
+	 * @param  {Object} data - Internal
+	 * @param  {Object} ctx  - Internal
+	 * @param  {Object} res  - Internal
+	 * @return {boolean}     - Success
+	 */
 	static unlinkAddress(data, ctx, res) {
 		if (!data || "boolean" !== typeof data.deleted) {
 			return new errors.Route4MeValidationError("Invalid response", data)
@@ -359,7 +374,7 @@ class Routes {
 				"route_id": id,
 				"route_destination_id": addressId,
 			},
-			validationContext: RoutesValidate.unlinkAddress,
+			validationContext: CustomInternalPostProcessing.unlinkAddress,
 		}, callback)
 	}
 
@@ -382,7 +397,7 @@ class Routes {
 				"route_id": id,
 				"to": "none",
 			},
-			validationContext: RoutesValidate.duplicate,
+			validationContext: CustomInternalPostProcessing.duplicate,
 		}, callback)
 	}
 
@@ -403,7 +418,7 @@ class Routes {
 			method: "POST",
 			path: "/actions/merge_routes.php",
 			body: idsPure,
-			validationContext: RoutesValidate.merge,
+			validationContext: CustomInternalPostProcessing.merge,
 		}, callback)
 	}
 
@@ -435,7 +450,78 @@ class Routes {
 			path: "/actions/route/share_route.php",
 			qs,
 			form,
-			validationContext: RoutesValidate.share,
+			validationContext: CustomInternalPostProcessing.share,
+		}, callback)
+	}
+
+	/**
+	 * Manually Re-sequence a Route
+	 *
+	 * @see {@link https://route4me.io/docs/#manually-re-sequence-a-route}
+	 * @category Routes
+	 * @since 0.1.10
+	 *
+	 * @param {string}                 id     - Route ID
+	 * @param {Object<number, number>} order  - Resequence rules:
+	 *
+	 * * **keys**: ID of an address
+	 * * **values**: new sequence order of the address (counting from `1`)
+	 *
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
+	 */
+	resequence(id, order, callback) {
+		const qs = {
+			"route_id": id,
+		}
+
+		const addresses = Object.keys(order)
+			.map(addressId => ({
+				"route_destination_id": Number(addressId),
+				"sequence_no": Number(order[addressId]),
+			}))
+
+		const body = {
+			addresses
+		}
+
+		debug(`route resequence BODY: ${body}`)
+
+		return this.r._makeRequest({
+			method: "PUT",
+			path: "/api.v4/route.php",
+			qs,
+			body,
+			validationContext: "Routes.Route",
+		}, callback)
+	}
+
+	/**
+	 * Optimize and re-sequence all destinations
+	 *
+	 * @see {@link https://route4me.io/docs/#manually-re-sequence-a-route}
+	 * @category Routes
+	 * @since 0.1.10
+	 *
+	 * @param {string} id       - Route ID
+	 * @param {string} criteria - Optimization type, possible values:
+	 * * `Distance` - optimize for distance
+	 * * `Time`
+	 * * `TimeWithTraffic`
+	 * * `NoneOptimize`
+	 * @param {module:route4me-node~RequestCallback} [callback]
+	 */
+	optimize(id, criteria, callback) {
+		const qs = {
+			"route_id": id,
+			"disable_optimization": "0",
+			"optimize": criteria,
+		}
+
+		return this.r._makeRequest({
+			method: "POST",
+			path: "/api.v3/route/reoptimize_2.php",
+			qs,
+			validationContext: utils.CustomInternalPostProcessing.status,
 		}, callback)
 	}
 }
