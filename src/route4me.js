@@ -200,6 +200,11 @@ class Route4Me {
 
 		qs["api_key"] = this._apiKey
 
+		if (undefined === options.validationContext) {
+			// this is just a protective wall
+			throw new errors.Route4MeError("validationContext should not be undefined")
+		}
+
 		let v = this._validate
 		let c = options.validationContext || null
 		if ("function" === typeof c) {

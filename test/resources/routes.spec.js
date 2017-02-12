@@ -366,6 +366,9 @@ describe(helper.toSuiteName(__filename), () => {
 						},
 						"multipart/form-data"
 					)
+
+					// result expectation
+					expect(res).true
 					done()
 				})
 			})

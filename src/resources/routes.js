@@ -5,6 +5,105 @@ const debug           = require("debug")("route4me")
 const utils           = require("./../utils")
 const errors          = require("./../errors")
 
+class CustomInternalPostProcessing {
+	/**
+	 * Handle `duplicate` output
+	 *
+	 * @private
+	 *
+	 * @example <caption>Expected input</caption>
+	 * Sample = {
+	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
+	 * 	"success":true
+	 * }
+	 *
+	 * @param  {Object} data - Internal
+	 * @param  {Object} ctx  - Internal
+	 * @param  {Object} res  - Internal
+	 * @return {string}      - The ID of duplicate
+	 */
+	static duplicate(data, ctx, res) {
+		if (
+			!data
+			|| "boolean" !== typeof data["success"]
+			|| "string" !== typeof data["optimization_problem_id"]
+		) {
+			return new errors.Route4MeValidationError("Invalid response", data)
+		}
+
+		if (true === data["success"]) {
+			return data["optimization_problem_id"]
+		}
+
+		// TODO: parse real error
+		return new errors.Route4MeApiError("Failed", res)
+	}
+
+	static pullIn(data, ctx, res) {
+		if (
+			!data
+			|| "boolean" !== typeof data["success"]
+		) {
+			return new errors.Route4MeValidationError("Invalid response", data)
+		}
+
+		if (true === data["success"]) {
+			return true
+		}
+
+		// TODO: parse real error
+		return new errors.Route4MeApiError("Failed", res)
+	}
+
+	/**
+	 * merge post-processor
+	 *
+	 * @private
+	 *
+	 * @example
+	 * Sample = {
+	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
+	 * 	"success":true
+	 * }
+	 *
+	 * @param  {Object} data - Internal
+	 * @param  {Object} ctx  - Internal
+	 * @param  {Object} res  - Internal
+	 * @return {string}      - The ID of merged Route
+	 */
+	static merge(data, ctx, res) {
+		return CustomInternalPostProcessing.duplicate(data, ctx, res)
+	}
+
+	/**
+	 * unlinkAddress
+	 *
+	 * @private
+	 *
+	 * @example
+	 * Sample = {
+	 * 	"deleted":true
+	 * }
+	 *
+	 * @param  {Object} data - Internal
+	 * @param  {Object} ctx  - Internal
+	 * @param  {Object} res  - Internal
+	 * @return {boolean}     - Success
+	 */
+	static unlinkAddress(data, ctx, res) {
+		if (!data || "boolean" !== typeof data.deleted) {
+			return new errors.Route4MeValidationError("Invalid response", data)
+		}
+
+		if (true === data.deleted) {
+			return true
+		}
+
+		// TODO: parse real error
+		return new errors.Route4MeApiError("Failed", res)
+	}
+}
+
 // ===================================
 
 /**
@@ -349,7 +448,7 @@ class Routes {
 			path: "/actions/route/share_route.php",
 			qs,
 			form,
-			validationContext: CustomInternalPostProcessing.share,
+			validationContext: utils.CustomInternalPostProcessing.fromJsonWithStatus,
 		}, callback)
 	}
 
@@ -452,105 +551,6 @@ class Routes {
 			qs,
 			validationContext: utils.CustomInternalPostProcessing.fromJsonWithStatus,
 		}, callback)
-	}
-}
-
-class CustomInternalPostProcessing {
-	/**
-	 * Handle `duplicate` output
-	 *
-	 * @private
-	 *
-	 * @example <caption>Expected input</caption>
-	 * Sample = {
-	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
-	 * 	"success":true
-	 * }
-	 *
-	 * @param  {Object} data - Internal
-	 * @param  {Object} ctx  - Internal
-	 * @param  {Object} res  - Internal
-	 * @return {string}      - The ID of duplicate
-	 */
-	static duplicate(data, ctx, res) {
-		if (
-			!data
-			|| "boolean" !== typeof data["success"]
-			|| "string" !== typeof data["optimization_problem_id"]
-		) {
-			return new errors.Route4MeValidationError("Invalid response", data)
-		}
-
-		if (true === data["success"]) {
-			return data["optimization_problem_id"]
-		}
-
-		// TODO: parse real error
-		return new errors.Route4MeApiError("Failed", res)
-	}
-
-	static pullIn(data, ctx, res) {
-		if (
-			!data
-			|| "boolean" !== typeof data["success"]
-		) {
-			return new errors.Route4MeValidationError("Invalid response", data)
-		}
-
-		if (true === data["success"]) {
-			return true
-		}
-
-		// TODO: parse real error
-		return new errors.Route4MeApiError("Failed", res)
-	}
-
-	/**
-	 * merge post-processor
-	 *
-	 * @private
-	 *
-	 * @example
-	 * Sample = {
-	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
-	 * 	"success":true
-	 * }
-	 *
-	 * @param  {Object} data - Internal
-	 * @param  {Object} ctx  - Internal
-	 * @param  {Object} res  - Internal
-	 * @return {string}      - The ID of merged Route
-	 */
-	static merge(data, ctx, res) {
-		return CustomInternalPostProcessing.duplicate(data, ctx, res)
-	}
-
-	/**
-	 * unlinkAddress
-	 *
-	 * @private
-	 *
-	 * @example
-	 * Sample = {
-	 * 	"deleted":true
-	 * }
-	 *
-	 * @param  {Object} data - Internal
-	 * @param  {Object} ctx  - Internal
-	 * @param  {Object} res  - Internal
-	 * @return {boolean}     - Success
-	 */
-	static unlinkAddress(data, ctx, res) {
-		if (!data || "boolean" !== typeof data.deleted) {
-			return new errors.Route4MeValidationError("Invalid response", data)
-		}
-
-		if (true === data.deleted) {
-			return true
-		}
-
-		// TODO: parse real error
-		return new errors.Route4MeApiError("Failed", res)
 	}
 }
 

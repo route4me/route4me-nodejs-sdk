@@ -1,6 +1,5 @@
 "use strict"
 
-const errors          = require("./../errors")
 const utils           = require("./../utils")
 
 /**
