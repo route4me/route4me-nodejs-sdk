@@ -6,39 +6,6 @@ const utils           = require("./../utils")
 const errors          = require("./../errors")
 
 class CustomInternalPostProcessing {
-	/**
-	 * Handle `duplicate` output
-	 *
-	 * @private
-	 *
-	 * @example <caption>Expected input</caption>
-	 * Sample = {
-	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
-	 * 	"success":true
-	 * }
-	 *
-	 * @param  {Object} data - Internal
-	 * @param  {Object} ctx  - Internal
-	 * @param  {Object} res  - Internal
-	 * @return {string}      - The ID of duplicate
-	 */
-	static _____duplicate(data, ctx, res) {
-		if (
-			!data
-			|| "boolean" !== typeof data["success"]
-			|| "string" !== typeof data["optimization_problem_id"]
-		) {
-			return new errors.Route4MeValidationError("Invalid response", data)
-		}
-
-		if (true === data["success"]) {
-			return data["optimization_problem_id"]
-		}
-
-		// TODO: parse real error
-		return new errors.Route4MeApiError("Failed", res)
-	}
-
 	static list(data, ctx, res) {
 		if (!data
 			|| !utils.isObject(data)
@@ -173,6 +140,42 @@ class Orders {
 				"order_id": pureIds,
 			},
 			validationContext: CustomInternalPostProcessing.list,
+		}, callback)
+	}
+
+	/**
+	 * Remove an Order
+	 *
+	 * @see {@link https://route4me.io/docs/#remove-an-order}
+	 * @category Orders
+	 * @since 0.1.11
+	 *
+	 * @param {number|string|Array<number>|Array<string>}  ids - Order ID/IDs to remove in one
+	 * of the following form:
+	 * * CSV-string
+	 * * one ID as string
+	 * * one ID as number
+	 * * array of strings
+	 * * array of numbers
+	 *
+	 * @param {module:route4me-node~RequestCallback} [callback]
+	 */
+	remove(ids, callback) {
+		const pureIds = utils.toIntArray(ids)
+
+		const qs = {
+			"redirect": 0,
+		}
+		const body = {
+			"order_ids": pureIds
+		}
+
+		return this.r._makeRequest({
+			method: "DELETE",
+			path: "/api.v4/order.php",
+			qs,
+			body,
+			validationContext: utils.CustomInternalPostProcessing.fromJsonWithStatus,
 		}, callback)
 	}
 }

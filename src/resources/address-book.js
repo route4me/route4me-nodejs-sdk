@@ -2,9 +2,6 @@
 
 const utils           = require("./../utils")
 
-// TODO: remove Territory
-// TODO: remove Territories
-
 /**
  * @namespace
  */

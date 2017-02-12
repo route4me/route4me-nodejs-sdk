@@ -174,5 +174,38 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 		})
+
+		describe("remove", () => {
+			beforeEach(() => {
+				saMock.del("*",  (r) => {
+					req = r
+					req.method = "DELETE"
+					return { body: { "status": true } }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
+			const orderIds = "7205711 , 7205713"
+
+			it("should call route4me", (done) => {
+				resource.remove(orderIds, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"DELETE", "https://route4me.com/api.v4/order.php", {
+							"redirect": "0",
+						}, {
+							"order_ids": [7205711, 7205713]
+						}
+					)
+
+					done()
+				})
+			})
+		})
 	})
 })
