@@ -175,6 +175,56 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
+		describe("update", () => {
+			beforeEach(() => {
+				saMock.put("*",  (r) => {
+					req = r
+					req.method = "PUT"
+					return { body: { } }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
+			const orderId = "7205711"
+			const data = {
+				"order_id": "34",
+				"address_2": "Lviv",
+				"EXT_FIELD_custom_data": [
+					{
+						"customer_no": 11
+					}
+				],
+				"EXT_FIELD_phone": "032268593"
+			}
+
+			it("should call route4me", (done) => {
+				resource.update(orderId, data, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"PUT", "https://route4me.com/api.v4/order.php", {
+							"redirect": "0",
+						}, {
+							"order_id": 7205711,
+							"address_2": "Lviv",
+							"EXT_FIELD_custom_data": [
+								{
+									"customer_no": 11
+								}
+							],
+							"EXT_FIELD_phone": "032268593"
+						}
+					)
+
+					done()
+				})
+			})
+		})
+
 		describe("remove", () => {
 			beforeEach(() => {
 				saMock.del("*",  (r) => {

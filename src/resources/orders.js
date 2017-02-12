@@ -178,6 +178,34 @@ class Orders {
 			validationContext: utils.CustomInternalPostProcessing.fromJsonWithStatus,
 		}, callback)
 	}
+
+	/**
+	 * Update an Order
+	 *
+	 * @see {@link https://route4me.io/docs/#update-an-order}
+	 * @category Orders
+	 * @since 0.1.11
+	 *
+	 * @param {number}                  id   - Order ID
+	 * @param {jsonschema:Orders.Order} data - Order data
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Order>} [callback]
+	 */
+	update(id, data, callback) {
+		const qs = {
+			"redirect": 0,
+		}
+		const body = utils.clone(data)
+		body["order_id"] = Number(id)
+
+		return this.r._makeRequest({
+			method: "PUT",
+			path: "/api.v4/order.php",
+			qs,
+			body,
+			validationContext: "Orders.Order",
+		}, callback)
+	}
+
 }
 
 module.exports = Orders
