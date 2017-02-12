@@ -22,7 +22,7 @@ class CustomInternalPostProcessing {
 	 * @param  {Object} res  - Internal
 	 * @return {string}      - The ID of duplicate
 	 */
-	static duplicate(data, ctx, res) {
+	static _____duplicate(data, ctx, res) {
 		if (
 			!data
 			|| "boolean" !== typeof data["success"]
@@ -33,6 +33,31 @@ class CustomInternalPostProcessing {
 
 		if (true === data["success"]) {
 			return data["optimization_problem_id"]
+		}
+
+		// TODO: parse real error
+		return new errors.Route4MeApiError("Failed", res)
+	}
+
+	static list(data, ctx, res) {
+		if (!data
+			|| !utils.isObject(data)
+		) {
+			return new errors.Route4MeValidationError("Invalid response", data)
+		}
+
+		if (Array.isArray(data["results"])
+			&& undefined !== data["total"]
+		) {
+			debug("Orders:list:pp received a response with an array")
+			// the response is an array of Orders
+			return data["results"]
+		}
+
+		if ("number" === typeof data["order_id"]) {
+			debug("Orders:list:pp received a response with one item (it will be wrapped)")
+			// the response contains only one item, we should wrap it to array
+			return [data]
 		}
 
 		// TODO: parse real error
@@ -100,6 +125,54 @@ class Orders {
 			path: "/api.v4/order.php",
 			body,
 			validationContext: "Orders.Order",
+		}, callback)
+	}
+
+	/**
+	 * Get an Order Details
+	 *
+	 * @see {@link https://route4me.io/docs/#get-an-order-details}
+	 * @category Orders
+	 * @since 0.1.11
+	 *
+	 * @param {number} id - Order ID
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Order>} [callback]
+	 */
+	get(id, callback) {
+		const pureId = Number(id)
+
+		return this.r._makeRequest({
+			method: "GET",
+			path: "/api.v4/order.php",
+			qs: {
+				"order_id": pureId,
+			},
+			validationContext: "Orders.Order",
+		}, callback)
+	}
+
+	/**
+	 * Get all the orders created under the specific Route4Me account
+	 *
+	 * @see {@link https://route4me.io/docs/#get-orders-with-details}
+	 * @category Orders
+	 * @since 0.1.11
+	 *
+	 * @param {number|string|Array<number>|Array<string>} ids - Order IDs (as number,
+	 * string, CSV-separated string, or an array of numbers, or an array of strings).
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Orders>} [callback]
+	 * [callback]
+	 */
+	list(ids, callback) {
+		const pureIds = utils.toIntArray(ids)
+
+		return this.r._makeRequest({
+			method: "GET",
+			path: "/api.v4/order.php",
+			qs: {
+				"order_id": pureIds,
+			},
+			validationContext: CustomInternalPostProcessing.list,
 		}, callback)
 	}
 }

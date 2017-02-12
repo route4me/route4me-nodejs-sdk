@@ -39,7 +39,7 @@ class CustomInternalPostProcessing {
 		return new errors.Route4MeApiError("Failed", res)
 	}
 
-	static pullIn(data, ctx, res) {
+	static pullAddress(data, ctx, res) {
 		if (
 			!data
 			|| "boolean" !== typeof data["success"]
@@ -467,7 +467,7 @@ class Routes {
 	 * which the moved destination will be inserted
 	 * @param {module:route4me-node~RequestCallback} [callback]
 	 */
-	pullIn(id, addressId, afterAddressId, callback) {
+	pullAddress(id, addressId, afterAddressId, callback) {
 		const form = {
 			"to_route_id": id,
 			"route_destination_id": addressId,
@@ -478,7 +478,7 @@ class Routes {
 			method: "POST",
 			path: "/actions/route/move_route_destination.php",
 			form,
-			validationContext: CustomInternalPostProcessing.pullIn,
+			validationContext: CustomInternalPostProcessing.pullAddress,
 		}, callback)
 	}
 

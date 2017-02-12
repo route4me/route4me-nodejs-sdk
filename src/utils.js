@@ -152,6 +152,9 @@ class CustomInternalPostProcessing {
 TYPECONV
 =============================
  */
+function isObject(obj) {
+	return null !== obj && "object" === typeof obj
+}
 
 function get(obj, prop, def) {
 	if (undefined === obj || null === obj) {
@@ -277,6 +280,7 @@ exports.noopLogger = new ILogger()
 exports.ResponseHandler = ResponseHandler
 exports.CustomInternalPostProcessing = CustomInternalPostProcessing
 
+exports.isObject = isObject
 exports.get = get
 exports.clone = clone
 exports.mapObject = mapObject

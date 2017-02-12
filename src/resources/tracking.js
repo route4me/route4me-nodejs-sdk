@@ -90,7 +90,7 @@ class Tracking {
 			"route_id": routeId,
 		}
 
-		if ("object" === typeof period) {
+		if (utils.isObject(period)) {
 			const span = period.span || "custom"
 
 			if ("custom" === span) {

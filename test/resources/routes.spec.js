@@ -374,7 +374,7 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
-		describe("pullIn", () => {
+		describe("pullAddress", () => {
 			beforeEach(() => {
 				saMock.post("*",  (r) => {
 					req = r
@@ -392,7 +392,7 @@ describe(helper.toSuiteName(__filename), () => {
 			const afterAddressId = 167899270
 
 			it("should call route4me", (done) => {
-				resource.pullIn(id, addressId, afterAddressId, (err, res) => {
+				resource.pullAddress(id, addressId, afterAddressId, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
