@@ -1,6 +1,8 @@
 "use strict"
 
 const debug           = require("debug")("route4me")
+
+const utils           = require("./../utils")
 const errors          = require("./../errors")
 
 function _createRouteTrackingValidate(data, ctx, res) {
