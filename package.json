@@ -78,5 +78,9 @@
     "sinon": "^1.17.7",
     "superagent-mocker": "https://github.com/maxkoryukov/superagent-mocker/tarball/v0.5.2-beta.2",
     "yargs": "^6.6.0"
+  },
+  "publishConfig": {
+    "tag": "beta",
+    "access": "public"
   }
 }
