@@ -112,25 +112,33 @@ class Optimizations {
 	 * @category Optimizations
 	 * @since 0.1.7
 	 *
-	 * @todo TODO: make reoptimize optional parameter
-	 *
 	 * @param {string} id - Optimization Problem ID
-	 * @param {jsonschema:Optimizations.CreateRequest}   optimization - New values for `Optimization`
-	 * @param {boolean} reoptimize - Determine, whether the `Optimization` should be reoptimized
+	 * @param {jsonschema:Optimizations.CreateRequest}   data - New values for `Optimization`
+	 * @param {boolean} [reoptimize=false] - Determine, whether the `Optimization` should be reoptimized
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>}
 	 * [callback]
 	 */
-	update(id, optimization, reoptimize, callback) {
+	update(id, data, reoptimize, callback) {
+		let cb = callback
+		let reopt = reoptimize
+
+		if (undefined === cb
+			&& "function" === typeof(reopt)
+		) {
+			cb = reopt
+			reopt = false
+		}
+
 		return this.r._makeRequest({
 			method: "PUT",
 			path: "/api.v4/optimization_problem.php",
 			qs: {
 				"optimization_problem_id": id,
-				"reoptimize": reoptimize ? "1" : "0",
+				"reoptimize": reopt ? "1" : "0",
 			},
-			body: optimization,
+			body: data,
 			validationContext: "Optimizations.Response",
-		}, callback)
+		}, cb)
 	}
 
 	/**
@@ -172,25 +180,35 @@ class Optimizations {
 	 * @tag Addresses
 	 * @since 0.1.7
 	 *
-	 * @todo TODO: make reoptimize optional parameter
+	 * @param {string}                              id                 - Optimization Problem ID
+	 * @param {Array<jsonschema:Addresses.Address>} addresses          - Addresses array
+	 * @param {boolean}                             [reoptimize=false] - Determine, whether the
+	 * `Optimization` should be reoptimized
 	 *
-	 * @param {string}  id                                   - Optimization Problem ID
-	 * @param {Array<jsonschema:Addresses.Address>}   addresses   - Addresses array
-	 * @param {boolean} reoptimize - Determine, whether the `Optimization` should be reoptimized
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Addresses.Addresses>}
 	 * [callback]
 	 */
 	linkAddress(id, addresses, reoptimize, callback) {
+		let cb = callback
+		let reopt = reoptimize
+
+		if (undefined === cb
+			&& "function" === typeof(reopt)
+		) {
+			cb = reopt
+			reopt = false
+		}
+
 		return this.r._makeRequest({
 			method: "PUT",
 			path: "/api.v4/optimization_problem.php",
 			qs: {
 				"optimization_problem_id": id,
-				"reoptimize": reoptimize ? "1" : "0",
+				"reoptimize": reopt ? "1" : "0",
 			},
 			body: { "addresses": addresses },
 			validationContext: "Addresses.Addresses",
-		}, callback)
+		}, cb)
 	}
 
 	/**

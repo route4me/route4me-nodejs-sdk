@@ -243,8 +243,8 @@ class Routes {
 	 * @category Routes
 	 * @since 0.1.10
 	 *
-	 * @param {string}                            id    - Route ID
-	 * @param {jsonschema:Routes.RouteParameters} data  - Route parameters
+	 * @param {string}                  id    - Route ID
+	 * @param {jsonschema:Routes.Route} data  - New route data
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>}
 	 * [callback]
 	 */
