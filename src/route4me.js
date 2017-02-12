@@ -12,6 +12,7 @@ const Geocoding       = require("./resources/geocoding")
 const Members         = require("./resources/members")
 const Notes           = require("./resources/notes")
 const Optimizations   = require("./resources/optimizations")
+const Orders          = require("./resources/orders")
 const Routes          = require("./resources/routes")
 const Territories     = require("./resources/territories")
 const Tracking        = require("./resources/tracking")
@@ -122,6 +123,11 @@ class Route4Me {
 		 * @type {Optimizations}
 		 */
 		this.Optimizations = new Optimizations(this)
+		/**
+		 * **Orders** related API calls
+		 * @type {Orders}
+		 */
+		this.Orders = new Orders(this)
 		/**
 		 * **Routes** related API calls
 		 * @type {Routes}
