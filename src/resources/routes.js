@@ -1,110 +1,9 @@
 "use strict"
 
-const utils           = require("./../utils")
-const errors          = require("./../errors")
 const debug           = require("debug")("route4me")
 
-class CustomInternalPostProcessing {
-	/**
-	 * Handle `duplicate` output
-	 *
-	 * @private
-	 *
-	 * @example <caption>Expected input</caption>
-	 * Sample = {
-	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
-	 * 	"success":true
-	 * }
-	 *
-	 * @param  {Object} data - Internal
-	 * @param  {Object} ctx  - Internal
-	 * @param  {Object} res  - Internal
-	 * @return {string}      - The ID of duplicate
-	 */
-	static duplicate(data, ctx, res) {
-		if (
-			!data
-			|| "boolean" !== typeof data["success"]
-			|| "string" !== typeof data["optimization_problem_id"]
-		) {
-			return new errors.Route4MeValidationError("Invalid response", data)
-		}
-
-		if (true === data["success"]) {
-			return data["optimization_problem_id"]
-		}
-
-		// TODO: parse real error
-		return new errors.Route4MeApiError("Failed", res)
-	}
-
-	/**
-	 * merge post-processor
-	 *
-	 * @private
-	 *
-	 * @example
-	 * Sample = {
-	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
-	 * 	"success":true
-	 * }
-	 *
-	 * @param  {Object} data - Internal
-	 * @param  {Object} ctx  - Internal
-	 * @param  {Object} res  - Internal
-	 * @return {string}      - The ID of merged Route
-	 */
-	static merge(data, ctx, res) {
-		return CustomInternalPostProcessing.duplicate(data, ctx, res)
-	}
-
-	/**
-	 * unlinkAddress
-	 *
-	 * @private
-	 *
-	 * @example
-	 * Sample = {
-	 * 	"deleted":true
-	 * }
-	 *
-	 * @param  {Object} data - Internal
-	 * @param  {Object} ctx  - Internal
-	 * @param  {Object} res  - Internal
-	 * @return {boolean}     - Success
-	 */
-	static unlinkAddress(data, ctx, res) {
-		if (!data || "boolean" !== typeof data.deleted) {
-			return new errors.Route4MeValidationError("Invalid response", data)
-		}
-
-		if (true === data.deleted) {
-			return true
-		}
-
-		// TODO: parse real error
-		return new errors.Route4MeApiError("Failed", res)
-	}
-
-	static share(data, ctx, res) {
-		// HACK: currently, API returns 'text/plain', so
-		// the response in not parsed automatically
-		if ("{\"status\":true}" === res.text) {
-			return true
-		}
-
-		if (!data || "boolean" !== typeof data.status) {
-			return new errors.Route4MeValidationError("Invalid response", data)
-		}
-
-		if (true === data.status) {
-			return true
-		}
-
-		// TODO: parse real error
-		return new errors.Route4MeApiError("Failed", res)
-	}
-}
+const utils           = require("./../utils")
+const errors          = require("./../errors")
 
 // ===================================
 
@@ -455,6 +354,36 @@ class Routes {
 	}
 
 	/**
+	 * Move a Destination Into a Route
+	 *
+	 * _ID of the source route **is not required**_
+	 *
+	 * @see {@link https://route4me.io/docs/#move-a-destination-into-a-route}
+	 * @category Routes
+	 * @since 0.1.10
+	 *
+	 * @param {string} id       - Destination route ID
+	 * @param {number} addressId      - An address ID to be moved
+	 * @param {number} afterAddressId - An address ID in a destination route after
+	 * which the moved destination will be inserted
+	 * @param {module:route4me-node~RequestCallback} [callback]
+	 */
+	pullIn(id, addressId, afterAddressId, callback) {
+		const form = {
+			"to_route_id": id,
+			"route_destination_id": addressId,
+			"after_destination_id": afterAddressId,
+		}
+
+		return this.r._makeRequest({
+			method: "POST",
+			path: "/actions/route/move_route_destination.php",
+			form,
+			validationContext: CustomInternalPostProcessing.pullIn,
+		}, callback)
+	}
+
+	/**
 	 * Manually Re-sequence a Route
 	 *
 	 * @see {@link https://route4me.io/docs/#manually-re-sequence-a-route}
@@ -521,8 +450,107 @@ class Routes {
 			method: "POST",
 			path: "/api.v3/route/reoptimize_2.php",
 			qs,
-			validationContext: utils.CustomInternalPostProcessing.status,
+			validationContext: utils.CustomInternalPostProcessing.fromJsonWithStatus,
 		}, callback)
+	}
+}
+
+class CustomInternalPostProcessing {
+	/**
+	 * Handle `duplicate` output
+	 *
+	 * @private
+	 *
+	 * @example <caption>Expected input</caption>
+	 * Sample = {
+	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
+	 * 	"success":true
+	 * }
+	 *
+	 * @param  {Object} data - Internal
+	 * @param  {Object} ctx  - Internal
+	 * @param  {Object} res  - Internal
+	 * @return {string}      - The ID of duplicate
+	 */
+	static duplicate(data, ctx, res) {
+		if (
+			!data
+			|| "boolean" !== typeof data["success"]
+			|| "string" !== typeof data["optimization_problem_id"]
+		) {
+			return new errors.Route4MeValidationError("Invalid response", data)
+		}
+
+		if (true === data["success"]) {
+			return data["optimization_problem_id"]
+		}
+
+		// TODO: parse real error
+		return new errors.Route4MeApiError("Failed", res)
+	}
+
+	static pullIn(data, ctx, res) {
+		if (
+			!data
+			|| "boolean" !== typeof data["success"]
+		) {
+			return new errors.Route4MeValidationError("Invalid response", data)
+		}
+
+		if (true === data["success"]) {
+			return true
+		}
+
+		// TODO: parse real error
+		return new errors.Route4MeApiError("Failed", res)
+	}
+
+	/**
+	 * merge post-processor
+	 *
+	 * @private
+	 *
+	 * @example
+	 * Sample = {
+	 * 	"optimization_problem_id":"672998C4269918AFF461E5A691BAB8D0",
+	 * 	"success":true
+	 * }
+	 *
+	 * @param  {Object} data - Internal
+	 * @param  {Object} ctx  - Internal
+	 * @param  {Object} res  - Internal
+	 * @return {string}      - The ID of merged Route
+	 */
+	static merge(data, ctx, res) {
+		return CustomInternalPostProcessing.duplicate(data, ctx, res)
+	}
+
+	/**
+	 * unlinkAddress
+	 *
+	 * @private
+	 *
+	 * @example
+	 * Sample = {
+	 * 	"deleted":true
+	 * }
+	 *
+	 * @param  {Object} data - Internal
+	 * @param  {Object} ctx  - Internal
+	 * @param  {Object} res  - Internal
+	 * @return {boolean}     - Success
+	 */
+	static unlinkAddress(data, ctx, res) {
+		if (!data || "boolean" !== typeof data.deleted) {
+			return new errors.Route4MeValidationError("Invalid response", data)
+		}
+
+		if (true === data.deleted) {
+			return true
+		}
+
+		// TODO: parse real error
+		return new errors.Route4MeApiError("Failed", res)
 	}
 }
 

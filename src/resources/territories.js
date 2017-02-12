@@ -1,13 +1,7 @@
 "use strict"
 
 const errors          = require("./../errors")
-
-function _removeValidate(data) {
-	if (data && true === data.status) {
-		return true
-	}
-	return new errors.Route4MeValidationError("Invalid response", data)
-}
+const utils           = require("./../utils")
 
 /**
  * @namespace
@@ -149,7 +143,7 @@ class Territories {
 			qs: {
 				"territory_id": id,
 			},
-			validationContext: _removeValidate,
+			validationContext: utils.CustomInternalPostProcessing.fromJsonWithStatus,
 		}, callback)
 	}
 }

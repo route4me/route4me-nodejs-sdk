@@ -126,12 +126,18 @@ class CustomInternalPostProcessing {
 	 * @param  {Object} res  - Internal
 	 * @return {boolean}     - Success
 	 */
-	static status(data, ctx, res) {
-		if (!data || "boolean" !== typeof data.status) {
+	static fromJsonWithStatus(data, ctx, res) {
+		// HACK: currently, API returns 'text/plain', so
+		// the response in not parsed automatically
+		if ("{\"status\":true}" === res.text) {
+			return true
+		}
+
+		if (!data || "boolean" !== typeof data["status"]) {
 			return new errors.Route4MeValidationError("Invalid response", data)
 		}
 
-		if (true === data.status) {
+		if (true === data["status"]) {
 			return true
 		}
 

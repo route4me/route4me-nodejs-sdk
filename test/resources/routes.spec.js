@@ -371,6 +371,42 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
+		describe("pullIn", () => {
+			beforeEach(() => {
+				saMock.post("*",  (r) => {
+					req = r
+					req.method = "POST"
+					return { body: { "success": true } }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
+			const id = "5C15E83A4BE005BCD1537955D28D51D7"
+			const addressId = 167899269
+			const afterAddressId = 167899270
+
+			it("should call route4me", (done) => {
+				resource.pullIn(id, addressId, afterAddressId, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"POST", "https://route4me.com/actions/route/move_route_destination.php",
+						{},
+						{
+							"to_route_id": "5C15E83A4BE005BCD1537955D28D51D7",
+							"route_destination_id": 167899269,
+							"after_destination_id": 167899270,
+						},
+						"multipart/form-data"
+					)
+					done()
+				})
+			})
+		})
+
 		describe("resequence", () => {
 			const routeId = "241466F15515D67D3F951E2DA38DE76D"
 			const order = {
