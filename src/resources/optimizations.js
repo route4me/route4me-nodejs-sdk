@@ -114,7 +114,9 @@ class Optimizations {
 	 *
 	 * @param {string} id - Optimization Problem ID
 	 * @param {jsonschema:Optimizations.CreateRequest}   data - New values for `Optimization`
-	 * @param {boolean} [reoptimize=false] - Determine, whether the `Optimization` should be reoptimized
+	 * @param {boolean} [reoptimize=false] - Determine, whether the `Optimization`
+	 * should be reoptimized
+	 *
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>}
 	 * [callback]
 	 */
@@ -123,7 +125,7 @@ class Optimizations {
 		let reopt = reoptimize
 
 		if (undefined === cb
-			&& "function" === typeof(reopt)
+			&& "function" === typeof (reopt)
 		) {
 			cb = reopt
 			reopt = false
@@ -193,7 +195,7 @@ class Optimizations {
 		let reopt = reoptimize
 
 		if (undefined === cb
-			&& "function" === typeof(reopt)
+			&& "function" === typeof (reopt)
 		) {
 			cb = reopt
 			reopt = false

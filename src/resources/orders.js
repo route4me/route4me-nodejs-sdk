@@ -145,7 +145,7 @@ class Orders {
 
 		const qs = {}
 
-		if (pureIds || pureIds === 0) {
+		if (pureIds || 0 === pureIds) {
 			pureIds = utils.toIntArray(pureIds)
 			qs["order_id"] = pureIds
 		}

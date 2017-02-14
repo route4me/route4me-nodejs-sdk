@@ -7,17 +7,7 @@ const Route4Me = require("../src/route4me")
 
 const testApiKey = "11111111111111111111111111111111"
 
-
 describe(helper.toSuiteName(__filename), () => {
-	it("should run with new", () => {
-		const route4me = new Route4Me(testApiKey)
-
-		expect(route4me).to.be.an("object")
-		expect(route4me).to.be.an.instanceof(Route4Me)
-
-		// expect(route4me.url_base).to.equal("http://route4me.com")
-	})
-
 	describe("call constructor with wrong (empty) apiKey", () => {
 		[null, undefined, false, ""].forEach((apiKey) => {
 			it(`should raise when apiKey=${apiKey}`, () => {

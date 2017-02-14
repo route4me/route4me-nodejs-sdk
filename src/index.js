@@ -1,13 +1,20 @@
 "use strict"
 
+/**
+ * @module route4me-node
+ */
+
 const errors = require("./errors")
 const Route4Me = require("./route4me")
 
-/**
- * @module route4me-node
- * @type {Route4Me}
- */
-module.exports = Route4Me
+
+module.exports = function route4meModule(...args) {
+	return new Route4Me(...args)
+}
+
+//  * @type {Route4Me}
+
+module.exports.version = Route4Me.version
 
 /**
  * API-response callback
