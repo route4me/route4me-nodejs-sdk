@@ -276,6 +276,10 @@ function toOptimizationStatesSafe(states) {
 	return arr.join(",")
 }
 
+function toIsoDateString(d) {
+	return d.toISOString().substring(0, 10)
+}
+
 exports.noopLogger = new ILogger()
 exports.ResponseHandler = ResponseHandler
 exports.CustomInternalPostProcessing = CustomInternalPostProcessing
@@ -287,3 +291,4 @@ exports.mapObject = mapObject
 exports.toStringArray = toStringArray
 exports.toIntArray = toIntArray
 exports.toOptimizationStatesSafe = toOptimizationStatesSafe
+exports.toIsoDateString = toIsoDateString

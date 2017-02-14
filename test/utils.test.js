@@ -161,4 +161,18 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 	})
+
+	describe("toIsoDateString", () => {
+		const testCases = [
+			{ in: new Date(Date.UTC(2014, 2, 11)), exp: "2014-03-11" },
+		]
+
+		testCases.forEach(tc => {
+			it("should convert date", () => {
+				const act = utils.toIsoDateString(tc.in)
+				expect(act).to.equal(tc.exp)
+			})
+		})
+	})
+
 })
