@@ -118,7 +118,7 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
-		describe("updateParameters", () => {
+		describe("update", () => {
 			const id = "5C15E83A4BE005BCD1537955D28D51D7"
 			const data = {
 				"parameters": {
@@ -130,7 +130,7 @@ describe(helper.toSuiteName(__filename), () => {
 			}
 
 			it("should call route4me", (done) => {
-				resource.updateParameters(id, data, (err, res) => {
+				resource.update(id, data, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,

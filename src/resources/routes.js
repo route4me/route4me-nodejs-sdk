@@ -248,7 +248,7 @@ class Routes {
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>}
 	 * [callback]
 	 */
-	updateParameters(id, data, callback) {
+	update(id, data, callback) {
 		const qs = {
 			"route_id": id
 		}
