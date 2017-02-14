@@ -7,9 +7,15 @@
 const errors = require("./errors")
 const Route4Me = require("./route4me")
 
-
+/*
+after BABEL enabled
 module.exports = function route4meModule(...args) {
 	return new Route4Me(...args)
+}
+*/
+
+module.exports = function route4meModule(apiKey, options) {
+	return new Route4Me(apiKey, options)
 }
 
 //  * @type {Route4Me}

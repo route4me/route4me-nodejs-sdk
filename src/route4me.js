@@ -4,6 +4,7 @@
 const debug    = require("debug")("route4me")
 const platform = require("platform")
 
+const ActivityFeed    = require("./resources/activity-feed")
 const Addresses       = require("./resources/addresses")
 const AddressBook     = require("./resources/address-book")
 const AvoidanceZones  = require("./resources/avoidance-zones")
@@ -70,6 +71,12 @@ class Route4Me {
 
 		this._logger = opt["logger"]
 
+		/**
+		 * **ActivityFeed** related API calls
+		 * @type {ActivityFeed}
+		 * @since 0.1.12
+		 */
+		this.ActivityFeed = new ActivityFeed(req)
 		/**
 		 * **AddressBook** related API calls
 		 * @type {AddressBook}
