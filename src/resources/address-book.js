@@ -97,6 +97,8 @@ class AddressBook {
 	 *
 	 * @todo TODO: Parse response
 	 * @todo TODO: Describe ALL options (in one place, list+search)
+	 * @todo TODO: Handle the diffrerent format of the output (when fields are set,
+	 * see https://github.com/route4me/route4me-nodejs-sdk/issues/38)
 	 *
 	 * @param {string} query            - Searched text
 	 * @param {Object} options          - List-parameters

@@ -125,20 +125,35 @@ class Orders {
 	 * @category Orders
 	 * @since 0.1.11
 	 *
-	 * @param {number|string|Array<number>|Array<string>} ids - Order IDs (as number,
+	 * @param {number|string|Array<number>|Array<string>} [ids] - Order IDs (as number,
 	 * string, CSV-separated string, or an array of numbers, or an array of strings).
+	 * **Don't pass** this parameter, if you want to load all Orders
+	 *
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Orders>} [callback]
 	 * [callback]
 	 */
 	list(ids, callback) {
-		const pureIds = utils.toIntArray(ids)
+		let pureIds = ids
+		let cb = callback
+
+		if (undefined === cb
+			&& "function" === typeof pureIds
+		) {
+			cb = pureIds
+			pureIds = undefined
+		}
+
+		const qs = {}
+
+		if (pureIds || pureIds === 0) {
+			pureIds = utils.toIntArray(pureIds)
+			qs["order_id"] = pureIds
+		}
 
 		return this.r._makeRequest({
 			method: "GET",
 			path: "/api.v4/order.php",
-			qs: {
-				"order_id": pureIds,
-			},
+			qs,
 			validationContext: CustomInternalPostProcessing.list,
 		}, callback)
 	}
@@ -206,6 +221,93 @@ class Orders {
 		}, callback)
 	}
 
+	/**
+	 * Search Orders
+	 *
+	 * @see {@link https://route4me.io/docs/#search-orders}
+	 * @category Orders
+	 * @since 0.1.11
+	 *
+	 * @todo TODO: Parse response
+	 * @todo TODO: Describe ALL options (in one place, list+search)
+	 * @todo TODO: Handle the diffrerent format of the output (when fields are set,
+	 * see https://github.com/route4me/route4me-nodejs-sdk/issues/38)
+	 *
+	 * @param {string|Object} criteria            - Searched text or searching criteria
+	 * @param {Date}         [criteria.byAddDate]       - Date order was inserted
+	 * @param {Date}         [criteria.byScheduledDate] - Date order was scheduled for
+	 * @param {string}       [criteria.query]           - The text searched for
+	 *
+	 * @param {Object} [options]        - List-parameters
+	 * @param {number} [options.limit]  - List limit
+	 * @param {number} [options.offset] - List offset
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Orders>} [callback]
+	 */
+	search(criteria, options, callback) {
+		const qs = {
+			"redirect": 0,
+		}
+		let cri = criteria
+		let opt = options
+		let cb = callback
+
+		if ("string" === typeof cri) {
+			cri = {
+				"query": cri
+			}
+		}
+		if (!utils.isObject(cri)) {
+			cri = {}
+		}
+
+		if (undefined === cb
+			&& "function" === typeof opt
+		) {
+			cb = opt
+			opt = {}
+		}
+		if (!utils.isObject(opt)) {
+			opt = {}
+		}
+
+
+		// OPTIONS
+
+		if ("offset" in opt) {
+			qs["offset"] = opt.offset
+		}
+
+		if ("limit" in opt) {
+			qs["limit"] = opt.limit
+		}
+
+		if ("fields" in opt) {
+			qs["fields"] = opt.fields
+		}
+
+		// CRITERIA
+
+		if ("query" in cri) {
+			qs["query"] = cri["query"]
+		}
+
+		if ("byAddDate" in cri) {
+			const d = cri["byAddDate"]
+			qs["day_added_YYMMDD"] = utils.toIsoDateString(d)
+		}
+
+		if ("byScheduledDate" in cri) {
+			const d = cri["byScheduledDate"]
+			qs["scheduled_for_YYMMDD"] = utils.toIsoDateString(d)
+		}
+
+		return this.r._makeRequest({
+			method: "GET",
+			path: "/api.v4/order.php",
+			qs,
+			validationContext: CustomInternalPostProcessing.list,
+		}, callback)
+	}
 }
 
 module.exports = Orders

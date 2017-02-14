@@ -175,6 +175,43 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
+		describe("search", () => {
+			beforeEach(() => {
+				saMock.get("*",  (r) => {
+					req = r
+					req.method = "GET"
+					return { body: { "order_id": 7205711 } }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
+			const criteria = "Tbilisi"
+			const options = {
+				"limit": 25
+			}
+
+			it("should call route4me", (done) => {
+				resource.search(criteria, options, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"GET", "https://route4me.com/api.v4/order.php", {
+							"query": "Tbilisi",
+							"limit": "25",
+							"redirect": "0",
+						},
+						null
+					)
+
+					done()
+				})
+			})
+		})
+
 		describe("update", () => {
 			beforeEach(() => {
 				saMock.put("*",  (r) => {
