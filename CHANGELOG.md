@@ -7,7 +7,17 @@ This is the history of changes of the `route4me-node` package
 
 ## unreleased // ???
 
-* Can return `Promise` instead of callbacks (option `promise`)
+## 2015-02-16 // 0.2.0
+
+* Completely rewritten SDK, all methods splitted to namespaces:
+    * AddressBook
+    * Routes
+    * ActivityFeed
+    * Vehicles
+    * ...
+* **Promisified** version exists: just pass an appropriate config.option
+* Less NPM-dependencies
+* Self documented with JSDoc
 
 ## 2015-08-28 // 0.1.1
 

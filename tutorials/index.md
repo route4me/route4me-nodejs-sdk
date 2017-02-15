@@ -5,6 +5,9 @@ NPM package: `route4me-node`
 [![Build Status](https://travis-ci.org/route4me/route4me-nodejs-sdk.svg?branch=master)](https://travis-ci.org/route4me/route4me-nodejs-sdk)
 [![Build status](https://ci.appveyor.com/api/projects/status/t292y0ywsri2x4el?svg=true)](https://ci.appveyor.com/project/maxkoryukov/route4me-nodejs-sdk-oga5i)
 
+[![npm version](https://img.shields.io/npm/v/route4me-node.svg)](https://www.npmjs.com/package/route4me-node)
+[![npm downloads](https://img.shields.io/npm/dm/route4me-node.svg)](https://www.npmjs.com/package/route4me-node)
+
 [![bitHound Overall Score](https://www.bithound.io/github/route4me/route4me-nodejs-sdk/badges/score.svg)](https://www.bithound.io/github/route4me/route4me-nodejs-sdk)
 [![bitHound Dependencies](https://www.bithound.io/github/route4me/route4me-nodejs-sdk/badges/dependencies.svg)](https://www.bithound.io/github/route4me/route4me-nodejs-sdk/master/dependencies/npm)
 [![codecov](https://codecov.io/gh/route4me/route4me-nodejs-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/route4me/route4me-nodejs-sdk)
@@ -21,65 +24,4 @@ This is official NodeJS/javascript SDK for Route4Me API.
 
 ```shell
 npm install --save route4me-node
-```
-
-## Example
-
-### Single Driver Route Optimization
-
-**OBSOLETE**
-
-```javascript
-var api_key = '11111111111111111111111111111111'
-  , route4me = require('..')(api_key)
-  , addresses = require('./addresses.json');
-
-var params = {
-  addresses: addresses
-, parameters:{
-    algorithm_type: 1
-  , distance_unit: 'mi'
-  , device_type: 'web'
-  , optimize: 'Distance'
-  , travel_mode: 'Driving'
-  , route_max_duration: 86400
-  , vehicle_capacity: 1
-  , vehicle_max_distance_mi: 10000
-  , rt: true
-  }
-};
-
-route4me.OptimizationProblem.optimize(params, function(err, problem) {
-  console.log(err, problem);
-});
-```
-
-### Multiple Depot Multiple driver route optimization
-
-**OBSOLETE**
-
-
-```javascript
-var api_key = '11111111111111111111111111111111'
-  , route4me = require('..')(api_key)
-  , addresses = require('./addresses.json');
-
-var params = {
-  addresses: addresses
-, parameters:{
-    algorithm_type: 4
-  , distance_unit: 'mi'
-  , device_type: 'web'
-  , optimize: 'Distance'
-  , travel_mode: 'Driving'
-  , route_max_duration: 86400
-  , vehicle_capacity: 50
-  , vehicle_max_distance_mi: 10000
-  , parts: 50
-  }
-};
-
-route4me.OptimizationProblem.optimize(params, function(err, problem) {
-  console.log(err, problem);
-});
 ```
