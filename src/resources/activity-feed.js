@@ -7,12 +7,62 @@ const utils           = require("./../utils")
 
 // ===================================
 
-const activityTypeEnum = Object.freeze({
-	"MarkDestinationDeparted": "mark-destination-departed",
-	"MarkDestinationVisited": "mark-destination-visited",
-})
+/**
+ * Enum for all known **activity type**.
+ * @readonly
+ * @enum {string}
+ */
+const activityTypeEnum = {
+	/* eslint-disable key-spacing */
+	AreaAdded:               "area-added",
+	AreaRemoved:             "area-removed",
+	AreaUpdated:             "area-updated",
 
-const aliasedActivityTypeEnum = activityTypeEnum
+	GeofenceEntered:         "geofence-entered",
+	GeofenceLeft:            "geofence-left",
+
+	RouteDelete:             "route-delete",
+	RouteOptimized:          "route-optimized",
+	RouteOwnerChanged:       "route-owner-changed",
+
+	DeleteDestination:       "delete-destination",
+	DestinationOutSequence:  "destination-out-sequence",
+	InsertDestination:       "insert-destination",
+	MarkDestinationDeparted: "mark-destination-departed",
+	MarkDestinationVisited:  "mark-destination-visited",
+	MoveDestination:         "move-destination",
+	UpdateDestinations:      "update-destinations",
+
+	/**
+	 * Get driver arrived early activities
+	 *
+	 * {@link https://route4me.io/docs/#driver-arrived-early}
+	 *
+	 * @type {string}
+	 */
+	DriverArrivedEarly:      "driver-arrived-early",
+	DriverArrivedLate:       "driver-arrived-late",
+	DriverArrivedOnTime:     "driver-arrived-on-time",
+
+	MemberCreated:           "member-created",
+	MemberDeleted:           "member-deleted",
+	MemberModified:          "member-modified",
+
+	NoteInsert:              "note-insert",
+
+	UserMessage:             "user_message",
+	/* eslint-enable key-spacing */
+}
+
+const _aliases = {}
+Object.keys(activityTypeEnum)
+	.forEach((key) => {
+		const v = activityTypeEnum[key]
+		_aliases[key] = v
+		_aliases[v] = v
+	})
+
+const aliasedActivityTypeEnum = Object.freeze(_aliases)
 
 /**
  * @namespace
@@ -41,6 +91,8 @@ class ActivityFeed {
 	 * directly to the activity feed. For example, this can be used for one or
 	 * two-way chat.
 	 *
+	 * **The created activity will have `activityType === "user_message"`**
+	 *
 	 * @see {@link https://route4me.io/docs/#log-a-specific-message}
 	 * @category ActivityFeed
 	 * @since 0.1.12
@@ -67,7 +119,7 @@ class ActivityFeed {
 
 	/**
 	 * Enumerable of all known activity type
-	 * @todo TODO: move to PACKAGE level (to make it easier for usage) see https://github.com/route4me/route4me-nodejs-sdk/issues/40
+	 * @todo TODO: move to PACKAGE level (to make it easier for usage) see {@link https://github.com/route4me/route4me-nodejs-sdk/issues/40}
 	 */
 	get ActivityTypeEnum() {
 		return this.__activityTypeEnum
@@ -86,7 +138,7 @@ class ActivityFeed {
 	 *
 	 * @param {string|Object}   criteria - Criteria for event filter. Depending on type will be
 	 * considered as:
-	 * * `string` - criteria = [Activity type]{@linkcode ActivityTypeEnum}
+	 * * `string` - criteria is a string representation of [Activity type]{@linkcode ActivityTypeEnum}
 	 * * `Object` - criteria is a set of filters, see below
 	 *
 	 * @param {string}  [criteria.activityType] - [Activity type]{@linkcode ActivityTypeEnum}
