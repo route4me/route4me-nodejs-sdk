@@ -49,6 +49,7 @@ class AddressBook {
 	 * @since 0.1.8
 	 *
 	 * @todo TODO: Parse response
+	 * @todo TODO: Remove this method in favor of `list` {@link https://github.com/route4me/route4me-nodejs-sdk/issues/41}
 	 *
 	 * @param {number|string|Array<number>|Array<string>} ids - Address IDs (as number,
 	 * string, CSV-separated string, or an array of numbers, or an array of strings).

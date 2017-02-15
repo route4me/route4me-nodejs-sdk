@@ -9,6 +9,7 @@ const errors          = require("./errors")
 
 /**
  * Route4Me main SDK class
+ * @protected
  */
 class RequestManager {
 	/**
@@ -152,9 +153,8 @@ class RequestManager {
 	 * @todo TODO: rename this method!!!
 	 * @todo TODO: write documentation
 	 *
-	 * @param  {[type]}   error    [description]
-	 * @param  {Function} callback [description]
-	 * @return {[type]}            [description]
+	 * @param {Error}   error    The reason the request was cancelled.
+	 * @param {module:route4me-node~RequestCallback}    [callback]
 	 */
 	_makeError(error, callback) {
 		const resHandler = new utils.ResponseHandler(

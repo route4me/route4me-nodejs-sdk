@@ -125,9 +125,18 @@ class Orders {
 	 * @category Orders
 	 * @since 0.1.11
 	 *
-	 * @param {number|string|Array<number>|Array<string>} [ids] - Order IDs (as number,
-	 * string, CSV-separated string, or an array of numbers, or an array of strings).
-	 * **Don't pass** this parameter, if you want to load all Orders
+	 * @param {number|string|Array<number>|Array<string>} [ids] - Order IDs in one
+	 * of the following form:
+	 * * CSV-string
+	 * * one ID as string
+	 * * one ID as number
+	 * * array of strings
+	 * * array of numbers
+	 *
+	 * If you want to load all Orders:
+	 * * **Don't pass** this parameter
+	 * * **OR** pass `ids=undefined`
+	 * * **OR** pass `ids=false`
 	 *
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Orders>} [callback]
 	 * [callback]
@@ -229,7 +238,7 @@ class Orders {
 	 * @since 0.1.11
 	 *
 	 * @todo TODO: Parse response
-	 * @todo TODO: Describe ALL options (in one place, list+search)
+	 * @todo TODO: Test timezone for this method {@link https://github.com/route4me/route4me-nodejs-sdk/issues/42}
 	 * @todo TODO: Handle the diffrerent format of the output (when fields are set,
 	 * see https://github.com/route4me/route4me-nodejs-sdk/issues/38)
 	 *
