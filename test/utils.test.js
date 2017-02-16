@@ -53,6 +53,20 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 		})
+
+		describe("idempotent", () => {
+			const testCases = [
+				{ msg: "null",      obj: null },
+				{ msg: "undefined", obj: undefined },
+			]
+
+			testCases.forEach((tc) => {
+				it(`${tc.msg}`, () => {
+					const act = utils.mapObject(tc.obj, { "name": "NAME" })
+					expect(act).is.deep.equal(tc.obj)
+				})
+			})
+		})
 	})
 
 	describe("toStringArray", () => {

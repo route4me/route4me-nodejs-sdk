@@ -4,33 +4,90 @@
 const debug    = require("debug")("route4me")
 const request  = require("superagent")
 
-const utils           = require("./utils")
 const errors          = require("./errors")
 
+class ResponseHandler {
+	constructor(PromiseConstructor, logger, validate, validateContext, callback) {
+		const cb = "function" !== typeof callback ? x => x : callback
+		this._logger = logger
+
+		this._validate = validate
+		this._validateContext = validateContext
+
+		if (PromiseConstructor) {
+			const self = this
+			this._p = new PromiseConstructor((res, rej) => {
+				self._res = res
+				self._rej = rej
+			})
+		} else {
+			this._p = undefined
+			this._res = res => cb(null, res)
+			this._rej = err => cb(err)
+		}
+	}
+
+	callback(err, res) {
+		if (err) {
+			return this._handleError(err, res)
+		}
+		return this._handleOk(res)
+	}
+
+	fail(err) {
+		return this._rej(err)
+	}
+
+	getPromise() {
+		return this._p
+	}
+
+	_handleOk(res) {
+		debug("response ok")
+
+		const data = this._validate(res.body, this._validateContext, res)
+
+		if (data instanceof errors.Route4MeError) {
+			// TODO: include url and method to the log message
+			this._logger.warn({ "msg": "response validation error", "err": data })
+			return this.fail(data)
+		} else if (data instanceof Error) {
+			// TODO: include url and method to the log message
+			this._logger.error({ "msg": "Unhandled error during validation", "err": data, "fatal": true })
+			return this.fail(data)
+		}
+
+		// TODO: include url and method to the log message
+		this._logger.info({ "msg": "response ok" })
+		return this._res(data)
+	}
+
+	_handleError(err, res) {
+		debug("response error")
+		const e = new errors.Route4MeApiError(err.message, res, err)
+
+		// TODO: include url and method to the log message
+		this._logger.warn({ "msg": "response error", "err": e })
+		return this.fail(e)
+	}
+}
+
 /**
- * Route4Me main SDK class
+ * Request manager, provides
+ * * simple API for sending HTTP requests
+ * * a way to handle HTTP responses
+ *
+ * @since 0.1.0
+ *
  * @protected
  */
 class RequestManager {
 	/**
-	 * Create new API client
+	 * Query API. All parameters are inherited from {Route4Me}
 	 *
-	 * @param  {string}  apiKey API KEY
-	 * @param  {object}  [options] Additional options for new instance
-	 * @param  {string}  [options.baseUrl="https://route4me.com"] Base URL for sending requests
-	 * @param  {ILogger} [options.logger=null]   Logger facility
-	 * @param  {boolean|function} [options.promise=false] Use promises instead of
-	 * callbacks. Usage:
-	 * * `false` means _no promises, use callbacks_;
-	 * * `true` means _use global `Promise`_ as promises' constructor;
-	 * * `constructor (function)` forces to use explicit Promise library.
-	 * See also Examples section of this documentation.
-	 *
-	 * @param  {module:route4me-node~ValidationCallback} [options.validate=false]
-	 * Validator for input and output parameters of the API methods. Set **falsey**
-	 * value to skip autovalidation (in favor of manual check).
-	 *
-	 * @return {Route4Me}                  New API client
+	 * @param {object} apiKey  - see {Route4Me}
+	 * @param {object} options - see {Route4Me}
+	 * @return {RequestManager} - New Request Manager
 	 */
 	constructor(apiKey, options) {
 		const opt = options
@@ -115,7 +172,7 @@ class RequestManager {
 			queryString: qs,
 		})
 
-		const resHandler = new utils.ResponseHandler(
+		const resHandler = new ResponseHandler(
 			this._promiseConstructor,
 			this._logger,
 			v,
@@ -157,7 +214,7 @@ class RequestManager {
 	 * @param {module:route4me-node~RequestCallback}    [callback]
 	 */
 	_makeError(error, callback) {
-		const resHandler = new utils.ResponseHandler(
+		const resHandler = new ResponseHandler(
 			this._promiseConstructor,
 			this._logger,
 			this._validate,
