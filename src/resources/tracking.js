@@ -30,11 +30,11 @@ class Tracking {
 	 * @private
 	 * @category Tracking
 	 *
-	 * @param  {Route4Me}      route4me - Route4Me manager
-	 * @return {Tracking}               - Tracking facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {Tracking}                      - Tracking facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**

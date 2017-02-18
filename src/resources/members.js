@@ -104,11 +104,11 @@ class Members {
 	 * @private
 	 * @category Members
 	 *
-	 * @param  {Route4Me} route4me - Route4Me manager
-	 * @return {Members}           - Members facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {Members}                       - Members facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**

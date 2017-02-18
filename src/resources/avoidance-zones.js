@@ -12,11 +12,11 @@ class AvoidanceZones {
 	 * @private
 	 * @category AvoidanceZones
 	 *
-	 * @param  {Route4Me}      route4me - Route4Me manager
-	 * @return {AvoidanceZones}         - AvoidanceZones facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {AvoidanceZones}                - AvoidanceZones facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**

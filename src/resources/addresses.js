@@ -22,11 +22,11 @@ class Addresses {
 	 * @since 0.1.8
 	 * @private
 	 *
-	 * @param  {Route4Me}  route4me - Route4Me manager
-	 * @return {Addresses}          - Addresses facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {Addresses}                     - Addresses facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**

@@ -14,11 +14,11 @@ class Territories {
 	 * @private
 	 * @category Territories
 	 *
-	 * @param  {Route4Me}      route4me - Route4Me manager
-	 * @return {Territories}            - Territories facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {Territories}                   - Territories facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**

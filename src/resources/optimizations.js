@@ -14,11 +14,11 @@ class Optimizations {
 	 * @since 0.1.3
 	 * @private
 	 *
-	 * @param  {Route4Me}      route4me - Route4Me main class
-	 * @return {Optimizations}          - Optimizations facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {Optimizations}                 - Optimizations facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**

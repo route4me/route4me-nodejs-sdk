@@ -14,11 +14,11 @@ class Notes {
 	 * @private
 	 * @category Notes
 	 *
-	 * @param  {Route4Me} route4me - Route4Me manager
-	 * @return {Notes}             - Notes facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {Notes}                         - Notes facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**

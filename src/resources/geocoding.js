@@ -11,11 +11,11 @@ class Geocoding {
 	 * @since 0.1.9
 	 * @private
 	 *
-	 * @param  {Route4Me}      route4me - Route4Me manager
-	 * @return {Geocoding}              - Geocoding facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {Geocoding}                     - Geocoding facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**

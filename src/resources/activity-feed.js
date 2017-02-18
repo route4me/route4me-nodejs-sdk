@@ -76,11 +76,11 @@ class ActivityFeed {
 	 * @since 0.1.12
 	 * @private
 	 *
-	 * @param  {Route4Me}      route4me - Route4Me manager
-	 * @return {ActivityFeed}           - ActivityFeed facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {ActivityFeed}                  - ActivityFeed facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 		this.__activityTypeEnum = activityTypeEnum
 	}
 

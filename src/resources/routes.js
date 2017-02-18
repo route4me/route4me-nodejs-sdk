@@ -117,11 +117,11 @@ class Routes {
 	 * @since 0.1.8
 	 * @private
 	 *
-	 * @param  {Route4Me}      route4me - Route4Me manager
-	 * @return {Routes}                 - Routes facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {Routes}                        - Routes facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**
