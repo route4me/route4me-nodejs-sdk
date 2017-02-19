@@ -1,24 +1,6 @@
-## Modules
-
-<dl>
-<dt><a href="#module_route4me-node">route4me-node</a></dt>
-<dd></dd>
-<dt><a href="#module_route4me-node/utils">route4me-node/utils</a></dt>
-<dd></dd>
-</dl>
-
 ## Classes
 
 <dl>
-<dt><a href="#Route4MeError">Route4MeError</a></dt>
-<dd><p>The base type for all error-objects of this SDK</p>
-</dd>
-<dt><a href="#Route4MeApiError">Route4MeApiError</a></dt>
-<dd><p>Error received from the API-server</p>
-</dd>
-<dt><a href="#Route4MeValidationError">Route4MeValidationError</a></dt>
-<dd><p>Error occured during internal validation</p>
-</dd>
 <dt><a href="#RequestManager">RequestManager</a></dt>
 <dd><p>Request manager, provides</p>
 <ul>
@@ -28,6 +10,15 @@
 </dd>
 <dt><a href="#Route4Me">Route4Me</a></dt>
 <dd><p>Route4Me main SDK class</p>
+</dd>
+<dt><a href="#Route4MeError">Route4MeError</a></dt>
+<dd><p>The base type for all error-objects of this SDK</p>
+</dd>
+<dt><a href="#Route4MeApiError">Route4MeApiError</a></dt>
+<dd><p>Error received from the API-server</p>
+</dd>
+<dt><a href="#Route4MeValidationError">Route4MeValidationError</a></dt>
+<dd><p>Error occured during internal validation</p>
 </dd>
 </dl>
 
@@ -185,70 +176,6 @@ Deep clone an object
 | --- | --- | --- |
 | obj | <code>any</code> | Original object |
 
-<a name="Route4MeError"></a>
-
-## Route4MeError
-The base type for all error-objects of this SDK
-
-**Kind**: global class  
-<a name="new_Route4MeError_new"></a>
-
-### new Route4MeError(msg, innerError)
-Create Route4MeError
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| msg | <code>string</code> | [description] |
-| innerError | <code>Error</code> | [description] |
-
-<a name="Route4MeApiError"></a>
-
-## Route4MeApiError
-Error received from the API-server
-
-**Kind**: global class  
-<a name="new_Route4MeApiError_new"></a>
-
-### new Route4MeApiError(msg, res, innerError)
-Create Route4MeApiError
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| msg | <code>string</code> | [description] |
-| res | <code>Object</code> | [description] |
-| innerError | <code>Error</code> | [description] |
-
-<a name="Route4MeValidationError"></a>
-
-## Route4MeValidationError
-Error occured during internal validation
-
-**Kind**: global class  
-
-* [Route4MeValidationError](#Route4MeValidationError)
-    * [new Route4MeValidationError(msg, data, innerError)](#new_Route4MeValidationError_new)
-    * [.data](#Route4MeValidationError+data) : <code>\*</code>
-
-<a name="new_Route4MeValidationError_new"></a>
-
-### new Route4MeValidationError(msg, data, innerError)
-Create Route4MeValidationError
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| msg | <code>string</code> | Message |
-| data | <code>\*</code> | Data under consideration |
-| innerError | <code>Error</code> | Error, caused this error |
-
-<a name="Route4MeValidationError+data"></a>
-
-### route4MeValidationError.data : <code>\*</code>
-Data under consideration
-
-**Kind**: instance property of <code>[Route4MeValidationError](#Route4MeValidationError)</code>  
 <a name="RequestManager"></a>
 
 ## RequestManager
@@ -452,7 +379,7 @@ ActivityFeed facility
 
 | Param | Type | Description |
 | --- | --- | --- |
-| route4me | <code>[RequestManager](#RequestManager)</code> | Request Manager |
+| requestManager | <code>[RequestManager](#RequestManager)</code> | Request Manager |
 
 
 * [ActivityFeed](#ActivityFeed) : <code>object</code>
@@ -510,8 +437,8 @@ two-way chat.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| criteria | <code>string</code> &#124; <code>Object</code> |  | Criteria for event filter. Depending on type will be considered as: * `string` - criteria is a string representation of [Activity type]{@linkcode ActivityTypeEnum} * `Object` - criteria is a set of filters, see below |
-| [criteria.activityType] | <code>string</code> |  | [Activity type]{@linkcode ActivityTypeEnum} |
+| criteria | <code>string</code> &#124; <code>Object</code> |  | Criteria for event filter. Depending on type will be considered as: * `string` - criteria is a string representation of [Activity type](ActivityTypeEnum) * `Object` - criteria is a set of filters, see below |
+| [criteria.activityType] | <code>string</code> |  | [Activity type](ActivityTypeEnum) |
 | [criteria.routeId] | <code>string</code> |  | Route ID |
 | options | <code>Object</code> |  | Options for activity search |
 | [options.limit] | <code>number</code> |  | List limit |
@@ -528,7 +455,7 @@ AddressBook facility
 
 | Param | Type | Description |
 | --- | --- | --- |
-| route4me | <code>[Route4Me](#Route4Me)</code> | Route4Me manager |
+| requestManager | <code>[RequestManager](#RequestManager)</code> | Request Manager |
 
 
 * [AddressBook](#AddressBook) : <code>object</code>
@@ -673,7 +600,7 @@ Addresses facility
 
 | Param | Type | Description |
 | --- | --- | --- |
-| route4me | <code>[Route4Me](#Route4Me)</code> | Route4Me manager |
+| requestManager | <code>[RequestManager](#RequestManager)</code> | Request Manager |
 
 
 * [Addresses](#Addresses) : <code>object</code>
@@ -836,7 +763,7 @@ AvoidanceZones facility
 
 | Param | Type | Description |
 | --- | --- | --- |
-| route4me | <code>[Route4Me](#Route4Me)</code> | Route4Me manager |
+| requestManager | <code>[RequestManager](#RequestManager)</code> | Request Manager |
 
 
 * [AvoidanceZones](#AvoidanceZones) : <code>object</code>
@@ -943,7 +870,7 @@ Geocoding facility
 
 | Param | Type | Description |
 | --- | --- | --- |
-| route4me | <code>[Route4Me](#Route4Me)</code> | Route4Me manager |
+| requestManager | <code>[RequestManager](#RequestManager)</code> | Request Manager |
 
 
 * [Geocoding](#Geocoding) : <code>object</code>
@@ -1051,7 +978,7 @@ Members facility
 
 | Param | Type | Description |
 | --- | --- | --- |
-| route4me | <code>[Route4Me](#Route4Me)</code> | Route4Me manager |
+| requestManager | <code>[RequestManager](#RequestManager)</code> | Request Manager |
 
 
 * [Members](#Members) : <code>object</code>
@@ -1303,7 +1230,7 @@ Notes facility
 
 | Param | Type | Description |
 | --- | --- | --- |
-| route4me | <code>[Route4Me](#Route4Me)</code> | Route4Me manager |
+| requestManager | <code>[RequestManager](#RequestManager)</code> | Request Manager |
 
 <a name="Notes+create"></a>
 
@@ -1349,7 +1276,7 @@ Optimizations facility
 
 | Param | Type | Description |
 | --- | --- | --- |
-| route4me | <code>[Route4Me](#Route4Me)</code> | Route4Me main class |
+| requestManager | <code>[RequestManager](#RequestManager)</code> | Request Manager |
 
 
 * [Optimizations](#Optimizations) : <code>object</code>
@@ -1378,7 +1305,7 @@ Create a new optimization
 
 ### optimizations.get(id, [callback])
 GET a single optimization by
-[optimization_problem_id]{@linkcode Optimizations#get~id} parameter.
+[optimization_problem_id](Optimizations#get~id) parameter.
 
 **Kind**: instance method of <code>[Optimizations](#Optimizations)</code>  
 **Category**: Optimizations  
@@ -1494,7 +1421,7 @@ Orders facility
 
 | Param | Type | Description |
 | --- | --- | --- |
-| route4me | <code>[Route4Me](#Route4Me)</code> | Route4Me manager |
+| requestManager | <code>[RequestManager](#RequestManager)</code> | Request Manager |
 
 
 * [Orders](#Orders) : <code>object</code>
@@ -1643,7 +1570,7 @@ Routes facility
 
 | Param | Type | Description |
 | --- | --- | --- |
-| route4me | <code>[Route4Me](#Route4Me)</code> | Route4Me manager |
+| requestManager | <code>[RequestManager](#RequestManager)</code> | Request Manager |
 
 
 * [Routes](#Routes) : <code>object</code>
@@ -1914,7 +1841,7 @@ Territories facility
 
 | Param | Type | Description |
 | --- | --- | --- |
-| route4me | <code>[Route4Me](#Route4Me)</code> | Route4Me manager |
+| requestManager | <code>[RequestManager](#RequestManager)</code> | Request Manager |
 
 
 * [Territories](#Territories) : <code>object</code>
@@ -2014,7 +1941,7 @@ Tracking facility
 
 | Param | Type | Description |
 | --- | --- | --- |
-| route4me | <code>[Route4Me](#Route4Me)</code> | Route4Me manager |
+| requestManager | <code>[RequestManager](#RequestManager)</code> | Request Manager |
 
 
 * [Tracking](#Tracking) : <code>object</code>
@@ -2092,7 +2019,7 @@ Vehicles facility
 
 | Param | Type | Description |
 | --- | --- | --- |
-| route4me | <code>[Route4Me](#Route4Me)</code> | Route4Me manager |
+| requestManager | <code>[RequestManager](#RequestManager)</code> | Request Manager |
 
 <a name="Vehicles+list"></a>
 
@@ -2146,3 +2073,70 @@ Enum for all known **activity type**.
 | NoteInsert | <code>string</code> | <code>&quot;note-insert&quot;</code> |  |
 | UserMessage | <code>string</code> | <code>&quot;user_message&quot;</code> |  |
 
+<a name="Route4MeError"></a>
+
+## Route4MeError
+The base type for all error-objects of this SDK
+
+**Kind**: global class  
+**Category**: Errors  
+<a name="new_Route4MeError_new"></a>
+
+### new Route4MeError(msg, innerError)
+Create Route4MeError
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| msg | <code>string</code> | [description] |
+| innerError | <code>Error</code> | [description] |
+
+<a name="Route4MeApiError"></a>
+
+## Route4MeApiError
+Error received from the API-server
+
+**Kind**: global class  
+**Category**: Errors  
+<a name="new_Route4MeApiError_new"></a>
+
+### new Route4MeApiError(msg, res, innerError)
+Create Route4MeApiError
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| msg | <code>string</code> | [description] |
+| res | <code>Object</code> | [description] |
+| innerError | <code>Error</code> | [description] |
+
+<a name="Route4MeValidationError"></a>
+
+## Route4MeValidationError
+Error occured during internal validation
+
+**Kind**: global class  
+**Category**: Errors  
+
+* [Route4MeValidationError](#Route4MeValidationError)
+    * [new Route4MeValidationError(msg, data, innerError)](#new_Route4MeValidationError_new)
+    * [.data](#Route4MeValidationError+data) : <code>\*</code>
+
+<a name="new_Route4MeValidationError_new"></a>
+
+### new Route4MeValidationError(msg, data, innerError)
+Create Route4MeValidationError
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| msg | <code>string</code> | Message |
+| data | <code>\*</code> | Data under consideration |
+| innerError | <code>Error</code> | Error, caused this error |
+
+<a name="Route4MeValidationError+data"></a>
+
+### route4MeValidationError.data : <code>\*</code>
+Data under consideration
+
+**Kind**: instance property of <code>[Route4MeValidationError](#Route4MeValidationError)</code>  

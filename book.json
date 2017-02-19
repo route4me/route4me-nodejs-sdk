@@ -1,3 +1,14 @@
 {
-    "root": "./book"
+    "root": "./book",
+	"plugins": [
+		"summary-extend@git+https://github.com/maxkoryukov/gitbook-plugin-summary-extend.git"
+	],
+	"pluginsConfig": {
+		"summary-extend": {
+			"shortName": "XXXXXXX"
+		},
+		"sharing": {
+			"vk": true
+		}
+	}
 }

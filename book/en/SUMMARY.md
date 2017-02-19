@@ -1,9 +1,11 @@
 # Summary
 
-## Intro
+![Route4Me SDK: JavaScript](https://route4me.io/docs/images/logo.png "Route4Me SDK: JavaScript")
 
-* [About](part1/writing.md)
-* [GitBook is nice](part1/gitbook.md)
+## About
+
+* [Install and use](intro/install.md)
+* [Authors](intro/authors.md)
 
 ## Tutorials
 
@@ -12,9 +14,14 @@
 
 ## Code
 
-* [Route4Me](code/Route4Me.md)
-  * [AddressBook](code/AddressBook.md)
-  * [Optimizations](code/Optimizations.md)
-* [All together](code/api.md)
+* [Route4Me](code/api.md#Route4Me)
+  * [AddressBook](code/api.md#AddressBook)
+* Errors
+  * [Route4MeError](code/api.md#Route4MeError)
+  * [Route4MeApiError](code/api.md#Route4MeApiError)
+  * [Route4MeValidationError](code/api.md#Route4MeValidationError)
+* [All In One](code/api.md)
+
+{% include "code/index.md" %}
 
 ## Examples
