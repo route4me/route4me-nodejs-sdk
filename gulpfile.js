@@ -1,14 +1,17 @@
 "use strict"
 
-const argv = require("yargs").argv
+const fs       = require("fs")
+const path     = require("path")
+const argv     = require("yargs").argv
+const mkdirp   = require("mkdirp-bluebird")
 
-const gulp = require("gulp")
-const gulpIf = require("gulp-if")
+const gulp     = require("gulp")
+const gulpIf   = require("gulp-if")
+const eslint   = require("gulp-eslint")
+const mocha    = require("gulp-mocha")
+const size     = require("gulp-size")
 
-const eslint = require("gulp-eslint")
-const mocha = require("gulp-mocha")
-const jsdoc = require("gulp-jsdoc3")
-const size = require("gulp-size")
+const jsdoc    = require("gulp-jsdoc3")
 
 const fix = !!argv.fix
 const grep = argv.grep
@@ -27,7 +30,29 @@ const paths = {
 	],
 }
 
-gulp.task("doc", function D() {           // eslint-disable-line prefer-arrow-callback
+gulp.task("doc", function X() {
+	const jsdoc2md = require('jsdoc-to-markdown')
+	const docDir = path.join(__dirname, "book", "en", "code")
+
+	return mkdirp(docDir)
+		.then( () => {
+			return jsdoc2md.render({
+				files: 'src/**/*.js',
+				"name-format": false,
+				"module-index-format": "none",
+				"global-index-format": "table",
+				//"configure": ".jsdocrc.json",
+				"plugin": "dmd-gitbook",
+				"no-scope": false,
+			})
+		})
+		.then(output => {
+			return fs.writeFile(path.join(docDir, 'api.md'), output)
+		})
+})
+
+gulp.task("docold", function D() {           // eslint-disable-line prefer-arrow-callback
+	// TODO: remove this task
 	return gulp.src(
 		"README.md", {
 			read: false,
