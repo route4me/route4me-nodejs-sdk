@@ -2,6 +2,7 @@
 
 /**
  * @namespace
+ * @category Geocoding
  */
 class Geocoding {
 	/**
@@ -28,7 +29,6 @@ class Geocoding {
 	 *
 	 * @see {@link https://route4me.io/docs/#forward-geocode-address}
 	 * @since 0.1.9
-	 * @category Geocoding
 	 *
 	 * @param {string} address - Address to `geocode`
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Geocoding.Forward>}
@@ -60,7 +60,6 @@ class Geocoding {
 	 *
 	 * @see {@link https://route4me.io/docs/#reverse-geocode-address}
 	 * @since 0.1.9
-	 * @category Geocoding
 	 *
 	 * @param {number} latitude - Latitude of the geographic location
 	 * @param {number} longitude - Longitude of the geographic location
@@ -88,7 +87,6 @@ class Geocoding {
 	 *
 	 * @see {@link https://route4me.io/docs/#rapid-address-search}
 	 * @since 0.1.9
-	 * @category Geocoding
 	 *
 	 * @deprecated This is very strange, vague API method..
 	 *
@@ -115,7 +113,6 @@ class Geocoding {
 	 *
 	 * @see {@link https://route4me.io/docs/#rapid-address-search}
 	 * @since 0.1.9
-	 * @category Geocoding
 	 *
 	 * @deprecated This is very strange, vague API method..
 	 *

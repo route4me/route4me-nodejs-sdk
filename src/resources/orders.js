@@ -36,6 +36,7 @@ class CustomInternalPostProcessing {
 
 /**
  * @namespace
+ * @category Orders
  */
 class Orders {
 	/**
@@ -76,7 +77,6 @@ class Orders {
 	 * }
 	 *
 	 * @see {@link https://route4me.io/docs/#create-an-order}
-	 * @category Orders
 	 * @since 0.1.11
 	 *
 	 * @todo TODO: use custom input format (well formatted)
@@ -99,7 +99,6 @@ class Orders {
 	 * Get an Order Details
 	 *
 	 * @see {@link https://route4me.io/docs/#get-an-order-details}
-	 * @category Orders
 	 * @since 0.1.11
 	 *
 	 * @param {number} id - Order ID
@@ -122,7 +121,6 @@ class Orders {
 	 * Get all the orders created under the specific Route4Me account
 	 *
 	 * @see {@link https://route4me.io/docs/#get-orders-with-details}
-	 * @category Orders
 	 * @since 0.1.11
 	 *
 	 * @param {number|string|Array<number>|Array<string>} [ids] - Order IDs in one
@@ -171,7 +169,6 @@ class Orders {
 	 * Remove an Order
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-an-order}
-	 * @category Orders
 	 * @since 0.1.11
 	 *
 	 * @param {number|string|Array<number>|Array<string>}  ids - Order ID/IDs to remove in one
@@ -207,7 +204,6 @@ class Orders {
 	 * Update an Order
 	 *
 	 * @see {@link https://route4me.io/docs/#update-an-order}
-	 * @category Orders
 	 * @since 0.1.11
 	 *
 	 * @param {number}                  id   - Order ID
@@ -234,7 +230,6 @@ class Orders {
 	 * Search Orders
 	 *
 	 * @see {@link https://route4me.io/docs/#search-orders}
-	 * @category Orders
 	 * @since 0.1.11
 	 *
 	 * @todo TODO: Parse response

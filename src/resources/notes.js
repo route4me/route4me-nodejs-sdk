@@ -4,6 +4,7 @@ const utils           = require("./../utils")
 
 /**
  * @namespace
+ * @category Notes
  */
 class Notes {
 	/**
@@ -12,7 +13,6 @@ class Notes {
 	 * @see {@link https://route4me.io/docs/#tracking}
 	 * @since 0.1.9
 	 * @private
-	 * @category Notes
 	 *
 	 * @param  {RequestManager} requestManager - Request Manager
 	 * @return {Notes}                         - Notes facility
@@ -29,7 +29,6 @@ class Notes {
 	 *
 	 * @see {@link https://route4me.io/docs/#add-route-notes}
 	 * @see {@link https://route4me.io/docs/#add-a-note-file}
-	 * @category Notes
 	 * @since 0.1.9
 	 *
 	 * @todo TODO: improve documentation about file attaching

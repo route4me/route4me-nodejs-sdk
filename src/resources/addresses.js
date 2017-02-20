@@ -13,6 +13,7 @@ const _markDepartedValidate = _markVisitedValidate
 
 /**
  * @namespace
+ * @category Addresses
  */
 class Addresses {
 	/**
@@ -36,7 +37,6 @@ class Addresses {
 	 *
 	 * @see {@link https://route4me.io/docs/#get-an-address-from-a-route}
 	 * @see {@link https://route4me.io/docs/#get-notes}
-	 * @category Addresses
 	 * @tag Addresses
 	 * @tag Notes
 	 * @since 0.1.9
@@ -79,7 +79,6 @@ class Addresses {
 	 * Update custom data of the address (as a route destination).
 	 *
 	 * @see {@link https://route4me.io/docs/#update-a-route}
-	 * @category Addresses
 	 * @tag Routes
 	 * @tag Addresses
 	 * @since 0.1.8
@@ -112,7 +111,6 @@ class Addresses {
 	 * * ++ **`timestamp_last_departed`**
 	 *
 	 * @see {@link https://route4me.io/docs/#mark-as-detected-as-departed}
-	 * @category Addresses
 	 * @since 0.1.9
 	 *
 	 * @param {number} id       - Address ID
@@ -147,7 +145,6 @@ class Addresses {
 	 * * ++ **`timestamp_last_visited`**
 	 *
 	 * @see {@link https://route4me.io/docs/#mark-as-detected-as-visited}
-	 * @category Addresses
 	 * @since 0.1.9
 	 *
 	 * @param {number} id       - Address ID
@@ -180,7 +177,6 @@ class Addresses {
 	 * * -- `is_visited`
 	 *
 	 * @see {@link https://route4me.io/docs/#mark-as-visited}
-	 * @category Addresses
 	 * @since 0.1.9
 	 *
 	 * @todo HACK: method-conflict. API suggest to use "GET", SDK uses "PUT"
@@ -216,7 +212,6 @@ class Addresses {
 	 * * -- `is_departed`
 	 *
 	 * @see {@link https://route4me.io/docs/#mark-as-departed}
-	 * @category Addresses
 	 * @since 0.1.9
 	 *
 	 * @todo HACK: method-conflict. API suggest to use "GET", SDK uses "PUT"

@@ -2,6 +2,8 @@
 
 /**
  * The base type for all error-objects of this SDK
+ *
+ * @category Errors
  */
 class Route4MeError extends Error {
 	/**
@@ -22,6 +24,8 @@ class Route4MeError extends Error {
 
 /**
  * Error received from the API-server
+ *
+ * @category Errors
  */
 class Route4MeApiError extends Route4MeError {
 	/**
@@ -45,6 +49,8 @@ class Route4MeApiError extends Route4MeError {
 
 /**
  * Error occured during internal validation
+ *
+ * @category Errors
  */
 class Route4MeValidationError extends Route4MeError {
 	/**

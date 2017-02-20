@@ -13,6 +13,7 @@ const errors  = require("./errors")
  * ILogger interface
  *
  * @interface ILogger
+ * @category Route4Me
  * @public
  */
 class ILogger {

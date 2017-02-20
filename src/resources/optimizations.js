@@ -4,13 +4,13 @@ const utils = require("../utils")
 
 /**
  * @namespace
+ * @category Optimizations
  */
 class Optimizations {
 	/**
 	 * Optimizations facility
 	 *
 	 * @see {@link https://route4me.io/docs/#optimizations}
-	 * @category Optimizations
 	 * @since 0.1.3
 	 * @private
 	 *
@@ -25,7 +25,6 @@ class Optimizations {
 	 * Create a new optimization
 	 *
 	 * @see {@link https://route4me.io/docs/#create-an-optimization Route4Me API}
-	 * @category Optimizations
 	 *
 	 * @param  {jsonschema:Optimizations.CreateRequest} optimization - Parameters for new optimization
 	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>}
@@ -42,10 +41,9 @@ class Optimizations {
 
 	/**
 	 * GET a single optimization by
-	 * [optimization_problem_id]{@linkcode Optimizations#get~id} parameter.
+	 * [optimization_problem_id]{@link Optimizations#get~id} parameter.
 	 *
 	 * @see  {@link https://route4me.io/docs/#get-an-optimization  Route4Me API}
-	 * @category Optimizations
 	 *
 	 * @param  {string} id - Optimization Problem ID
 	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimizations.Optimization>}
@@ -66,7 +64,6 @@ class Optimizations {
 	 * GET all optimizations belonging to an user.
 	 *
 	 * @see {@link https://route4me.io/docs/#get-optimizations  Route4Me API}
-	 * @category Optimizations
 	 *
 	 * @todo TODO: there is no JSON-schema for the response
 	 *
@@ -109,7 +106,6 @@ class Optimizations {
 	 * Re-optimize existing optimizations by changing some parameters or addresses.
 	 *
 	 * @see {@link https://route4me.io/docs/#re-optimize-an-optimization Route4Me API}
-	 * @category Optimizations
 	 * @since 0.1.7
 	 *
 	 * @param {string} id - Optimization Problem ID
@@ -147,7 +143,6 @@ class Optimizations {
 	 * Remove an existing optimization belonging to an user.
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-an-optimization  Route4Me API}
-	 * @category Optimizations
 	 * @since 0.1.7
 	 *
 	 * @todo TODO: There is no schema for validation an output
@@ -177,7 +172,6 @@ class Optimizations {
 	 * Insert an address into an optimization, resulting in the recalculation of optimal routes.
 	 *
 	 * @see {@link https://route4me.io/docs/#insert-an-address-into-an-optimization Route4Me API}
-	 * @category Optimizations
 	 * @tag Optimizations
 	 * @tag Addresses
 	 * @since 0.1.7
@@ -218,7 +212,6 @@ class Optimizations {
 	 * from an optimization problem with specified optimization_problem_id.
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-an-address-from-an-optimization Route4Me API}
-	 * @category Optimizations
 	 * @tag Optimizations
 	 * @tag Addresses
 	 * @since 0.1.7

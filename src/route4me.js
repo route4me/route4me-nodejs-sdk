@@ -25,6 +25,7 @@ const RequestManager  = require("./request-manager")
 
 /**
  * Route4Me main SDK class
+ * @category Route4Me
  */
 class Route4Me {
 	/**
