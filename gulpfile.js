@@ -94,7 +94,7 @@ gulp.task("watch:doc", ["doc:pre"], function D() { // eslint-disable-line prefer
 
 
 	return cmd.exec([
-			path.join(__dirname)
+			path.join(__dirname),
 			path.join(__dirname, "tmp", "gitbook")
 		], {
 			log: "info",
