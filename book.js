@@ -1,5 +1,15 @@
+"use strict"
+
+const pkg = require('./package.json')
+
 module.exports = {
-    "root": "./book",
+	"root": "./book",
+	"title": 'Route4Me Javascript SDK',
+
+    "variables": {
+        version: pkg.version
+    },
+
 	"plugins": [
 		"summary-extend@git+https://github.com/maxkoryukov/gitbook-plugin-summary-extend.git",
 		{
@@ -41,9 +51,4 @@ module.exports = {
         }
     }
 };
-
-
-
-
-
 */

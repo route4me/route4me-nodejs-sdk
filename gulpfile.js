@@ -16,14 +16,12 @@ const size     = require("gulp-size")
 const jsdoc    = require("gulp-jsdoc3")
 
 const jsdoc2md = require("jsdoc-to-markdown")
+const gitbook  = require('gitbook')
 
 const fix = !!argv.fix
 const grep = argv.grep
 
 const jsdocConfig = require("./.jsdocrc.js")
-
-gulp.task("default", ["lint", "test"])
-gulp.task("build", ["build:node"])
 
 const paths = {
 	"test": [
@@ -34,7 +32,7 @@ const paths = {
 	],
 }
 
-gulp.task("doc", function X() {
+gulp.task("doc:pre", function DG() {     // eslint-disable-line prefer-arrow-callback
 	const docDir = path.join(__dirname, "book", "en", "code")
 
 	const parentsTree = {}
@@ -91,6 +89,25 @@ gulp.task("doc", function X() {
 		})
 })
 
+gulp.task("watch:doc", ["doc:pre"], function D() { // eslint-disable-line prefer-arrow-callback
+	const cmd = gitbook.commands.filter(c => c.name.match(/^serve\s/i))[0]
+
+
+	return cmd.exec([
+			path.join(__dirname)
+			path.join(__dirname, "tmp", "gitbook")
+		], {
+			log: "info",
+			format: "website",
+			open: false,
+			port: 4000,
+			live: true,
+			//lrport: typeof options.livereload === 'object' ? options.livereload.port : undefined,
+			watch: true, //typeof options.livereload === 'object' ? options.livereload.watch : undefined,
+			//browser: options.browser
+		})
+})
+
 gulp.task("docold", function D() {           // eslint-disable-line prefer-arrow-callback
 	// TODO: remove this task
 	return gulp.src(
@@ -130,3 +147,10 @@ gulp.task("build:node", function BN() {      // eslint-disable-line prefer-arrow
 		.pipe(size({ title: "build:node", showFiles: true }))
 		.pipe(gulp.dest("dist/"))
 })
+
+
+// SUPERTASKS
+
+gulp.task("default", ["lint", "test"])
+gulp.task("build", ["build:node"])
+gulp.task("doc", ["watch:doc"])
