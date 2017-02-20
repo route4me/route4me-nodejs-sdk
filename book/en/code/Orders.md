@@ -1,9 +1,9 @@
-<a name="Orders"></a>
+<a id="Orders" name="Orders"></a>
 
 ## Orders
+
 Orders facility
 
-**Kind**: global class  
 **Category**: Orders  
 
 * [Orders](#Orders)
@@ -15,9 +15,10 @@ Orders facility
     * [.update(id, data, [callback])](#Orders+update)
     * [.search(criteria, [options], [callback])](#Orders+search)
 
-<a name="new_Orders_new"></a>
+<a id="new_Orders_new" name="new_Orders_new"></a>
 
 ### new Orders(requestManager)
+
 Constructor
 
 
@@ -25,12 +26,12 @@ Constructor
 | --- | --- | --- |
 | requestManager | <code>RequestManager</code> | Request Manager |
 
-<a name="Orders+create"></a>
+<a id="Orders+create" name="Orders+create"></a>
 
 ### orders.create(data, [callback])
+
 Create an Order
 
-**Kind**: instance method of <code>[Orders](#Orders)</code>  
 **See**: [https://route4me.io/docs/#create-an-order](https://route4me.io/docs/#create-an-order)  
 **Since**: 0.1.11  
 **Todo**
@@ -64,12 +65,12 @@ Create an Order
 	]
 }
 ```
-<a name="Orders+get"></a>
+<a id="Orders+get" name="Orders+get"></a>
 
 ### orders.get(id, [callback])
+
 Get an Order Details
 
-**Kind**: instance method of <code>[Orders](#Orders)</code>  
 **See**: [https://route4me.io/docs/#get-an-order-details](https://route4me.io/docs/#get-an-order-details)  
 **Since**: 0.1.11  
 
@@ -78,12 +79,12 @@ Get an Order Details
 | id | <code>number</code> | Order ID |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Order&gt;</code> |  |
 
-<a name="Orders+list"></a>
+<a id="Orders+list" name="Orders+list"></a>
 
 ### orders.list([ids], [callback])
+
 Get all the orders created under the specific Route4Me account
 
-**Kind**: instance method of <code>[Orders](#Orders)</code>  
 **See**: [https://route4me.io/docs/#get-orders-with-details](https://route4me.io/docs/#get-orders-with-details)  
 **Since**: 0.1.11  
 
@@ -92,12 +93,12 @@ Get all the orders created under the specific Route4Me account
 | [ids] | <code>number</code> &#124; <code>string</code> &#124; <code>Array.&lt;number&gt;</code> &#124; <code>Array.&lt;string&gt;</code> | Order IDs in one of the following form: * CSV-string * one ID as string * one ID as number * array of strings * array of numbers If you want to load all Orders: * **Don't pass** this parameter * **OR** pass `ids=undefined` * **OR** pass `ids=false` |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Orders&gt;</code> | [callback] |
 
-<a name="Orders+remove"></a>
+<a id="Orders+remove" name="Orders+remove"></a>
 
 ### orders.remove(ids, [callback])
+
 Remove an Order
 
-**Kind**: instance method of <code>[Orders](#Orders)</code>  
 **See**: [https://route4me.io/docs/#remove-an-order](https://route4me.io/docs/#remove-an-order)  
 **Since**: 0.1.11  
 
@@ -106,12 +107,12 @@ Remove an Order
 | ids | <code>number</code> &#124; <code>string</code> &#124; <code>Array.&lt;number&gt;</code> &#124; <code>Array.&lt;string&gt;</code> | Order ID/IDs to remove in one of the following form: * CSV-string * one ID as string * one ID as number * array of strings * array of numbers |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 
-<a name="Orders+update"></a>
+<a id="Orders+update" name="Orders+update"></a>
 
 ### orders.update(id, data, [callback])
+
 Update an Order
 
-**Kind**: instance method of <code>[Orders](#Orders)</code>  
 **See**: [https://route4me.io/docs/#update-an-order](https://route4me.io/docs/#update-an-order)  
 **Since**: 0.1.11  
 
@@ -121,12 +122,12 @@ Update an Order
 | data | <code>jsonschema:Orders.Order</code> | Order data |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Order&gt;</code> |  |
 
-<a name="Orders+search"></a>
+<a id="Orders+search" name="Orders+search"></a>
 
 ### orders.search(criteria, [options], [callback])
+
 Search Orders
 
-**Kind**: instance method of <code>[Orders](#Orders)</code>  
 **See**: [https://route4me.io/docs/#search-orders](https://route4me.io/docs/#search-orders)  
 **Since**: 0.1.11  
 **Todo**
@@ -148,4 +149,3 @@ see https://github.com/route4me/route4me-nodejs-sdk/issues/38)
 | [options.offset] | <code>number</code> | List offset |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Orders&gt;</code> |  |
 
-**documentation generated on Mon, 20 Feb 2017 22:25:17 GMT**

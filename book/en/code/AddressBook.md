@@ -1,9 +1,9 @@
-<a name="AddressBook"></a>
+<a id="AddressBook" name="AddressBook"></a>
 
 ## AddressBook
+
 AddressBook facility
 
-**Kind**: global class  
 **Category**: AddressBook  
 
 * [AddressBook](#AddressBook)
@@ -15,9 +15,10 @@ AddressBook facility
     * [.update(id, data, [callback])](#AddressBook+update)
     * [.remove(ids, [callback])](#AddressBook+remove)
 
-<a name="new_AddressBook_new"></a>
+<a id="new_AddressBook_new" name="new_AddressBook_new"></a>
 
 ### new AddressBook(requestManager)
+
 Constructor
 
 
@@ -25,12 +26,12 @@ Constructor
 | --- | --- | --- |
 | requestManager | <code>RequestManager</code> | Request Manager |
 
-<a name="AddressBook+create"></a>
+<a id="AddressBook+create" name="AddressBook+create"></a>
 
 ### addressBook.create(data, [callback])
+
 Create a new AddressBook.
 
-**Kind**: instance method of <code>[AddressBook](#AddressBook)</code>  
 **See**: [https://route4me.io/docs/#create-a-location](https://route4me.io/docs/#create-a-location)  
 **Since**: 0.1.8  
 
@@ -39,12 +40,12 @@ Create a new AddressBook.
 | data | <code>jsonschema:AddressBook.AddressBook</code> | Valid AddressBook data. |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBook.AddressBook&gt;</code> |  |
 
-<a name="AddressBook+getMany"></a>
+<a id="AddressBook+getMany" name="AddressBook+getMany"></a>
 
 ### addressBook.getMany(ids, [callback])
+
 GET locations from an address book by a specified list of locations IDs.
 
-**Kind**: instance method of <code>[AddressBook](#AddressBook)</code>  
 **See**: [https://route4me.io/docs/#get-locations-by-ids](https://route4me.io/docs/#get-locations-by-ids)  
 **Since**: 0.1.8  
 **Todo**
@@ -58,12 +59,12 @@ GET locations from an address book by a specified list of locations IDs.
 | ids | <code>number</code> &#124; <code>string</code> &#124; <code>Array.&lt;number&gt;</code> &#124; <code>Array.&lt;string&gt;</code> | Address IDs (as number, string, CSV-separated string, or an array of numbers, or an array of strings). |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBook.AddressBookSearchResult&gt;</code> |  |
 
-<a name="AddressBook+list"></a>
+<a id="AddressBook+list" name="AddressBook+list"></a>
 
 ### addressBook.list(options, [callback])
+
 GET all locations from a user’s address book.
 
-**Kind**: instance method of <code>[AddressBook](#AddressBook)</code>  
 **See**: [https://route4me.io/docs/#get-locations](https://route4me.io/docs/#get-locations)  
 **Since**: 0.1.8  
 **Todo**
@@ -77,13 +78,13 @@ GET all locations from a user’s address book.
 | options | <code>Object</code> | List-parameters |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBook.AddressBookSearchResult&gt;</code> |  |
 
-<a name="AddressBook+search"></a>
+<a id="AddressBook+search" name="AddressBook+search"></a>
 
 ### addressBook.search(query, options, [callback])
+
 Search an address book location by containing specified text in any
 field/defined fields.
 
-**Kind**: instance method of <code>[AddressBook](#AddressBook)</code>  
 **See**
 
 - [https://route4me.io/docs/#get-a-location](https://route4me.io/docs/#get-a-location)
@@ -106,12 +107,12 @@ see https://github.com/route4me/route4me-nodejs-sdk/issues/38)
 | [options.offset] | <code>number</code> | List offset |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBook.AddressBookSearchResult&gt;</code> |  |
 
-<a name="AddressBook+update"></a>
+<a id="AddressBook+update" name="AddressBook+update"></a>
 
 ### addressBook.update(id, data, [callback])
+
 UPDATE existing address book location parameters.
 
-**Kind**: instance method of <code>[AddressBook](#AddressBook)</code>  
 **See**: [https://route4me.io/docs/#update-a-location](https://route4me.io/docs/#update-a-location)  
 **Since**: 0.1.8  
 
@@ -121,12 +122,12 @@ UPDATE existing address book location parameters.
 | data | <code>jsonschema:AddressBook.AddressBook</code> | Valid AddressBook data. |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBook.AddressBook&gt;</code> |  |
 
-<a name="AddressBook+remove"></a>
+<a id="AddressBook+remove" name="AddressBook+remove"></a>
 
 ### addressBook.remove(ids, [callback])
+
 REMOVE locations from an address book.
 
-**Kind**: instance method of <code>[AddressBook](#AddressBook)</code>  
 **See**: [https://route4me.io/docs/#remove-locations](https://route4me.io/docs/#remove-locations)  
 **Since**: 0.1.8  
 **Todo**
@@ -144,4 +145,3 @@ REMOVE locations from an address book.
 ```js
 SampleResponse = {"status":true}
 ```
-**documentation generated on Mon, 20 Feb 2017 22:25:16 GMT**

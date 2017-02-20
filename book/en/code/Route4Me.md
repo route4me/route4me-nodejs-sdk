@@ -15,12 +15,12 @@
 </tbody>
 </table>
 
-<a name="Route4Me"></a>
+<a id="Route4Me" name="Route4Me"></a>
 
 ## Route4Me
+
 Route4Me main SDK class
 
-**Kind**: global class  
 **Category**: Route4Me  
 
 * [Route4Me](#Route4Me)
@@ -41,9 +41,10 @@ Route4Me main SDK class
     * _static_
         * [.version](#Route4Me.version) ⇒ <code>string</code>
 
-<a name="new_Route4Me_new"></a>
+<a id="new_Route4Me_new" name="new_Route4Me_new"></a>
 
 ### new Route4Me(apiKey, [options])
+
 Create new API client
 
 
@@ -56,100 +57,100 @@ Create new API client
 | [options.promise] | <code>boolean</code> &#124; <code>function</code> | <code>false</code> | Use promises instead of callbacks. Usage: * `false` means _no promises, use callbacks_; * `true` means _use global `Promise`_ as promises' constructor; * `constructor (function)` forces to use explicit Promise library. See also Examples section of this documentation. |
 | [options.validate] | <code>module:route4me-node~ValidationCallback</code> | <code>false</code> | Validator for input and output parameters of the API methods. Set **falsey** value to skip autovalidation (in favor of manual check). |
 
-<a name="Route4Me+ActivityFeed"></a>
+<a id="Route4Me+ActivityFeed" name="Route4Me+ActivityFeed"></a>
 
 ### route4Me.ActivityFeed : <code>ActivityFeed</code>
+
 **ActivityFeed** related API calls
 
-**Kind**: instance property of <code>[Route4Me](#Route4Me)</code>  
 **Since**: 0.1.12  
-<a name="Route4Me+AddressBook"></a>
+<a id="Route4Me+AddressBook" name="Route4Me+AddressBook"></a>
 
 ### route4Me.AddressBook : <code>AddressBook</code>
+
 **AddressBook** related API calls
 
-**Kind**: instance property of <code>[Route4Me](#Route4Me)</code>  
 **Since**: 0.1.8  
-<a name="Route4Me+Addresses"></a>
+<a id="Route4Me+Addresses" name="Route4Me+Addresses"></a>
 
 ### route4Me.Addresses : <code>Addresses</code>
+
 **Addresses** related API calls
 
-**Kind**: instance property of <code>[Route4Me](#Route4Me)</code>  
 **Since**: 0.1.8  
-<a name="Route4Me+AvoidanceZones"></a>
+<a id="Route4Me+AvoidanceZones" name="Route4Me+AvoidanceZones"></a>
 
 ### route4Me.AvoidanceZones : <code>AvoidanceZones</code>
+
 **AvoidanceZones** related API calls
 
-**Kind**: instance property of <code>[Route4Me](#Route4Me)</code>  
 **Since**: 0.1.8  
-<a name="Route4Me+Geocoding"></a>
+<a id="Route4Me+Geocoding" name="Route4Me+Geocoding"></a>
 
 ### route4Me.Geocoding : <code>Geocoding</code>
+
 **Geocoding** related API calls
 
-**Kind**: instance property of <code>[Route4Me](#Route4Me)</code>  
 **Since**: 0.1.9  
-<a name="Route4Me+Notes"></a>
+<a id="Route4Me+Notes" name="Route4Me+Notes"></a>
 
 ### route4Me.Notes : <code>Notes</code>
+
 **Notes** related API calls
 
-**Kind**: instance property of <code>[Route4Me](#Route4Me)</code>  
 **Since**: 0.1.9  
-<a name="Route4Me+Optimizations"></a>
+<a id="Route4Me+Optimizations" name="Route4Me+Optimizations"></a>
 
 ### route4Me.Optimizations : <code>Optimizations</code>
+
 **Optimizations** related API calls
 
-**Kind**: instance property of <code>[Route4Me](#Route4Me)</code>  
-<a name="Route4Me+Orders"></a>
+<a id="Route4Me+Orders" name="Route4Me+Orders"></a>
 
 ### route4Me.Orders : <code>Orders</code>
+
 **Orders** related API calls
 
-**Kind**: instance property of <code>[Route4Me](#Route4Me)</code>  
-<a name="Route4Me+Routes"></a>
+<a id="Route4Me+Routes" name="Route4Me+Routes"></a>
 
 ### route4Me.Routes : <code>Routes</code>
+
 **Routes** related API calls
 
-**Kind**: instance property of <code>[Route4Me](#Route4Me)</code>  
 **Since**: 0.1.8  
-<a name="Route4Me+Territories"></a>
+<a id="Route4Me+Territories" name="Route4Me+Territories"></a>
 
 ### route4Me.Territories : <code>Territories</code>
+
 **Territories** related API calls
 
-**Kind**: instance property of <code>[Route4Me](#Route4Me)</code>  
-<a name="Route4Me+Tracking"></a>
+<a id="Route4Me+Tracking" name="Route4Me+Tracking"></a>
 
 ### route4Me.Tracking : <code>Tracking</code>
+
 **Tracking** related API calls
 
-**Kind**: instance property of <code>[Route4Me](#Route4Me)</code>  
-<a name="Route4Me+Vehicles"></a>
+<a id="Route4Me+Vehicles" name="Route4Me+Vehicles"></a>
 
 ### route4Me.Vehicles : <code>Vehicles</code>
+
 **Vehicles** related API calls
 
-**Kind**: instance property of <code>[Route4Me](#Route4Me)</code>  
-<a name="Route4Me.version"></a>
+<a id="Route4Me.version" name="Route4Me.version"></a>
 
 ### Route4Me.version ⇒ <code>string</code>
+
 Version of this API client
 
-**Kind**: static property of <code>[Route4Me](#Route4Me)</code>  
 **Returns**: <code>string</code> - Version  
 **Read only**: true  
 **Since**: 0.1.3  
-<a name="ActivityTypeEnum"></a>
+<a id="ActivityTypeEnum" name="ActivityTypeEnum"></a>
 
 ## ActivityTypeEnum : <code>enum</code>
+
 Enum for all known **activity type**.
 
-**Kind**: global enum  
 **Category**: Route4Me  
 **Read only**: true  
 **Properties**
@@ -180,4 +181,3 @@ Enum for all known **activity type**.
 | NoteInsert | <code>string</code> | <code>&quot;note-insert&quot;</code> |  |
 | UserMessage | <code>string</code> | <code>&quot;user_message&quot;</code> |  |
 
-**documentation generated on Mon, 20 Feb 2017 22:25:17 GMT**

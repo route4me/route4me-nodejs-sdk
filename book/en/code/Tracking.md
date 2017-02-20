@@ -1,9 +1,9 @@
-<a name="Tracking"></a>
+<a id="Tracking" name="Tracking"></a>
 
 ## Tracking
+
 Tracking facility
 
-**Kind**: global class  
 **Category**: Tracking  
 
 * [Tracking](#Tracking)
@@ -12,9 +12,10 @@ Tracking facility
     * [.getRouteTrackingHistory(routeId, period, [callback])](#Tracking+getRouteTrackingHistory)
     * [.createRouteTracking(trackingData, [callback])](#Tracking+createRouteTracking)
 
-<a name="new_Tracking_new"></a>
+<a id="new_Tracking_new" name="new_Tracking_new"></a>
 
 ### new Tracking(requestManager)
+
 Constructor
 
 
@@ -22,12 +23,12 @@ Constructor
 | --- | --- | --- |
 | requestManager | <code>RequestManager</code> | Request Manager |
 
-<a name="Tracking+getAssetTracking"></a>
+<a id="Tracking+getAssetTracking" name="Tracking+getAssetTracking"></a>
 
 ### tracking.getAssetTracking(tracking, [callback])
+
 Get Asset Tracking Data
 
-**Kind**: instance method of <code>[Tracking](#Tracking)</code>  
 **See**: [https://route4me.io/docs/#get-asset-tracking-data](https://route4me.io/docs/#get-asset-tracking-data)  
 **Since**: 0.1.8  
 
@@ -36,14 +37,14 @@ Get Asset Tracking Data
 | tracking | <code>string</code> | Tracking number |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Tracking.AssetTracking&gt;</code> |  |
 
-<a name="Tracking+getRouteTrackingHistory"></a>
+<a id="Tracking+getRouteTrackingHistory" name="Tracking+getRouteTrackingHistory"></a>
 
 ### tracking.getRouteTrackingHistory(routeId, period, [callback])
+
 Get a device’s location history from a time range.
 
 **Be carefull:** custom dates are considered as in local timezone!
 
-**Kind**: instance method of <code>[Tracking](#Tracking)</code>  
 **See**: [https://route4me.io/docs/#get-route-tracking-data](https://route4me.io/docs/#get-route-tracking-data)  
 **Since**: 0.1.8  
 
@@ -56,14 +57,14 @@ Get a device’s location history from a time range.
 | period.trim | <code>Date</code> |  | Custom end date |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Tracking.TrackingHistory&gt;</code> |  |  |
 
-<a name="Tracking+createRouteTracking"></a>
+<a id="Tracking+createRouteTracking" name="Tracking+createRouteTracking"></a>
 
 ### tracking.createRouteTracking(trackingData, [callback])
+
 Insert Route Tracking Data
 
 Set GPS position of a device.
 
-**Kind**: instance method of <code>[Tracking](#Tracking)</code>  
 **See**: [https://route4me.io/docs/#insert-route-tracking-data](https://route4me.io/docs/#insert-route-tracking-data)  
 **Since**: 0.1.8  
 
@@ -80,4 +81,3 @@ Set GPS position of a device.
 | trackingData.deviceGuid | <code>string</code> | Device GUID |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 
-**documentation generated on Mon, 20 Feb 2017 22:25:17 GMT**

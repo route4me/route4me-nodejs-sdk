@@ -1,9 +1,9 @@
-<a name="Routes"></a>
+<a id="Routes" name="Routes"></a>
 
 ## Routes
+
 Routes facility
 
-**Kind**: global class  
 **Category**: Routes  
 
 * [Routes](#Routes)
@@ -22,9 +22,10 @@ Routes facility
     * [.resequence(id, order, [callback])](#Routes+resequence)
     * [.optimize(id, criteria, [callback])](#Routes+optimize)
 
-<a name="new_Routes_new"></a>
+<a id="new_Routes_new" name="new_Routes_new"></a>
 
 ### new Routes(requestManager)
+
 Constructor
 
 
@@ -32,12 +33,12 @@ Constructor
 | --- | --- | --- |
 | requestManager | <code>RequestManager</code> | Request Manager |
 
-<a name="Routes+get"></a>
+<a id="Routes+get" name="Routes+get"></a>
 
 ### routes.get(id, [options], [callback])
+
 Get a single route.
 
-**Kind**: instance method of <code>[Routes](#Routes)</code>  
 **Tag**: Routes  
 **Tag**: Tracking  
 **See**
@@ -56,12 +57,12 @@ Get a single route.
 | [options.includeRoutePath] | <code>boolean</code> | if `true` - include route path |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.Route&gt;</code> |  |
 
-<a name="Routes+list"></a>
+<a id="Routes+list" name="Routes+list"></a>
 
 ### routes.list(options, [callback])
+
 Get a limited number of the routes belonging to the user.
 
-**Kind**: instance method of <code>[Routes](#Routes)</code>  
 **See**: [https://route4me.io/docs/#get-multiple-routes](https://route4me.io/docs/#get-multiple-routes)  
 **Since**: 0.1.8  
 
@@ -72,14 +73,14 @@ Get a limited number of the routes belonging to the user.
 | [options.offset] | <code>number</code> | List offset |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.Routes&gt;</code> |  |
 
-<a name="Routes+search"></a>
+<a id="Routes+search" name="Routes+search"></a>
 
 ### routes.search(query, [callback])
+
 Search the Routes for a Specified Text.
 
 Search for the specified text throughout all routes belonging to the user’s account.
 
-**Kind**: instance method of <code>[Routes](#Routes)</code>  
 **See**: [https://route4me.io/docs/#search-routes](https://route4me.io/docs/#search-routes)  
 **Since**: 0.1.10  
 
@@ -88,12 +89,12 @@ Search for the specified text throughout all routes belonging to the user’s ac
 | query | <code>string</code> | A text to be searched for |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.Routes&gt;</code> |  |
 
-<a name="Routes+update"></a>
+<a id="Routes+update" name="Routes+update"></a>
 
 ### routes.update(id, data, [callback])
+
 Update a route’s specified parameters.
 
-**Kind**: instance method of <code>[Routes](#Routes)</code>  
 **See**: [https://route4me.io/docs/#update-a-route](https://route4me.io/docs/#update-a-route)  
 **Since**: 0.1.10  
 
@@ -103,12 +104,12 @@ Update a route’s specified parameters.
 | data | <code>jsonschema:Routes.Route</code> | New route data |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.Route&gt;</code> |  |
 
-<a name="Routes+remove"></a>
+<a id="Routes+remove" name="Routes+remove"></a>
 
 ### routes.remove(ids, [callback])
+
 Given multiple route ID’s, remove all routes at the same time.
 
-**Kind**: instance method of <code>[Routes](#Routes)</code>  
 **See**: [https://route4me.io/docs/#remove-routes](https://route4me.io/docs/#remove-routes)  
 **Since**: 0.1.8  
 **Todo**
@@ -134,12 +135,12 @@ SampleResponse = {
 	]
 }
 ```
-<a name="Routes+linkAddress"></a>
+<a id="Routes+linkAddress" name="Routes+linkAddress"></a>
 
 ### routes.linkAddress(id, addresses, [options], [callback])
+
 Add Addresses to Routes
 
-**Kind**: instance method of <code>[Routes](#Routes)</code>  
 **Tag**: Routes  
 **Tag**: Addresses  
 **See**: [https://route4me.io/docs/#add-addresses-to-routes](https://route4me.io/docs/#add-addresses-to-routes)  
@@ -153,12 +154,12 @@ Add Addresses to Routes
 | [options.optimalPosition] | <code>boolean</code> | <code>true</code> | If true, an address will be inserted at optimal position of a route |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.Route&gt;</code> |  |  |
 
-<a name="Routes+unlinkAddress"></a>
+<a id="Routes+unlinkAddress" name="Routes+unlinkAddress"></a>
 
 ### routes.unlinkAddress(id, addressId, [callback])
+
 REMOVE an address from a route.
 
-**Kind**: instance method of <code>[Routes](#Routes)</code>  
 **Tag**: Routes  
 **Tag**: Addresses  
 **See**: [https://route4me.io/docs/#remove-addresses-from-routes](https://route4me.io/docs/#remove-addresses-from-routes)  
@@ -170,12 +171,12 @@ REMOVE an address from a route.
 | addressId | <code>number</code> | Address ID |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 
-<a name="Routes+duplicate"></a>
+<a id="Routes+duplicate" name="Routes+duplicate"></a>
 
 ### routes.duplicate(id, [callback])
+
 Duplicates the route. More information - on Route4Me API-doc site (see links section).
 
-**Kind**: instance method of <code>[Routes](#Routes)</code>  
 **See**: [https://route4me.io/docs/#duplicate-a-route](https://route4me.io/docs/#duplicate-a-route)  
 **Since**: 0.1.8  
 
@@ -184,12 +185,12 @@ Duplicates the route. More information - on Route4Me API-doc site (see links sec
 | id | <code>string</code> | Route ID |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;string&gt;</code> | callback, will be called with the ID (<string>) of the new created Route |
 
-<a name="Routes+merge"></a>
+<a id="Routes+merge" name="Routes+merge"></a>
 
 ### routes.merge(ids, [callback])
+
 Merges the list of routes. More information - on Route4Me API-doc site (see links section).
 
-**Kind**: instance method of <code>[Routes](#Routes)</code>  
 **See**: [https://route4me.io/docs/#merge-routes](https://route4me.io/docs/#merge-routes)  
 **Since**: 0.1.8  
 
@@ -198,14 +199,14 @@ Merges the list of routes. More information - on Route4Me API-doc site (see link
 | ids | <code>string</code> &#124; <code>Array.&lt;string&gt;</code> | Array of the Route IDs to be merged. |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;string&gt;</code> |  |
 
-<a name="Routes+share"></a>
+<a id="Routes+share" name="Routes+share"></a>
 
 ### routes.share(id, email, [callback])
+
 Share Routes
 
 Share a route via email.
 
-**Kind**: instance method of <code>[Routes](#Routes)</code>  
 **See**: [https://route4me.io/docs/#share-routes](https://route4me.io/docs/#share-routes)  
 **Since**: 0.1.10  
 
@@ -215,14 +216,14 @@ Share a route via email.
 | email | <code>string</code> | Recipient email |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 
-<a name="Routes+pullAddress"></a>
+<a id="Routes+pullAddress" name="Routes+pullAddress"></a>
 
 ### routes.pullAddress(id, addressId, afterAddressId, [callback])
+
 Move a Destination Into a Route
 
 _ID of the source route **is not required**_
 
-**Kind**: instance method of <code>[Routes](#Routes)</code>  
 **See**: [https://route4me.io/docs/#move-a-destination-into-a-route](https://route4me.io/docs/#move-a-destination-into-a-route)  
 **Since**: 0.1.10  
 
@@ -233,12 +234,12 @@ _ID of the source route **is not required**_
 | afterAddressId | <code>number</code> | An address ID in a destination route after which the moved destination will be inserted |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 
-<a name="Routes+resequence"></a>
+<a id="Routes+resequence" name="Routes+resequence"></a>
 
 ### routes.resequence(id, order, [callback])
+
 Manually Re-sequence a Route
 
-**Kind**: instance method of <code>[Routes](#Routes)</code>  
 **See**: [https://route4me.io/docs/#manually-re-sequence-a-route](https://route4me.io/docs/#manually-re-sequence-a-route)  
 **Since**: 0.1.10  
 
@@ -248,12 +249,12 @@ Manually Re-sequence a Route
 | order | <code>Object.&lt;number, number&gt;</code> | Resequence rules: * **keys**: ID of an address * **values**: new sequence order of the address (counting from `1`) |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.Route&gt;</code> |  |
 
-<a name="Routes+optimize"></a>
+<a id="Routes+optimize" name="Routes+optimize"></a>
 
 ### routes.optimize(id, criteria, [callback])
+
 Optimize and re-sequence all destinations
 
-**Kind**: instance method of <code>[Routes](#Routes)</code>  
 **See**: [https://route4me.io/docs/#manually-re-sequence-a-route](https://route4me.io/docs/#manually-re-sequence-a-route)  
 **Since**: 0.1.10  
 
@@ -263,4 +264,3 @@ Optimize and re-sequence all destinations
 | criteria | <code>string</code> | Optimization type, possible values: * `Distance` - optimize for distance * `Time` * `TimeWithTraffic` * `NoneOptimize` |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 
-**documentation generated on Mon, 20 Feb 2017 22:25:17 GMT**

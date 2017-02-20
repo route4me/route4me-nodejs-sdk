@@ -1,9 +1,9 @@
-<a name="Territories"></a>
+<a id="Territories" name="Territories"></a>
 
 ## Territories
+
 Territories facility
 
-**Kind**: global class  
 **Category**: Territories  
 
 * [Territories](#Territories)
@@ -14,9 +14,10 @@ Territories facility
     * [.update(id, data, [callback])](#Territories+update)
     * [.remove(id, [callback])](#Territories+remove)
 
-<a name="new_Territories_new"></a>
+<a id="new_Territories_new" name="new_Territories_new"></a>
 
 ### new Territories(requestManager)
+
 Constructor
 
 
@@ -24,12 +25,12 @@ Constructor
 | --- | --- | --- |
 | requestManager | <code>RequestManager</code> | Request Manager |
 
-<a name="Territories+create"></a>
+<a id="Territories+create" name="Territories+create"></a>
 
 ### territories.create(data, [callback])
+
 Create a new Territory.
 
-**Kind**: instance method of <code>[Territories](#Territories)</code>  
 **See**: [https://route4me.io/docs/#create-a-territory](https://route4me.io/docs/#create-a-territory)  
 **Since**: 0.1.8  
 
@@ -38,12 +39,12 @@ Create a new Territory.
 | data | <code>jsonschema:Territories.Territory</code> | Valid Territory data. |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Territories.Territory&gt;</code> |  |
 
-<a name="Territories+get"></a>
+<a id="Territories+get" name="Territories+get"></a>
 
 ### territories.get(id, [options], [callback])
+
 Get a specified Territory by ID.
 
-**Kind**: instance method of <code>[Territories](#Territories)</code>  
 **See**: [https://route4me.io/docs/#get-a-territory](https://route4me.io/docs/#get-a-territory)  
 **Since**: 0.1.8  
 
@@ -54,12 +55,12 @@ Get a specified Territory by ID.
 | [options.includeAddresses] | <code>boolean</code> | <code>false</code> | If true, enclosed addresses will be included in a response |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Territories.Territory&gt;</code> |  |  |
 
-<a name="Territories+list"></a>
+<a id="Territories+list" name="Territories+list"></a>
 
 ### territories.list([callback])
+
 GET all of the Territories defined by a user.
 
-**Kind**: instance method of <code>[Territories](#Territories)</code>  
 **See**: [https://route4me.io/docs/#get-multiple-territories](https://route4me.io/docs/#get-multiple-territories)  
 **Since**: 0.1.8  
 **Todo**
@@ -71,12 +72,12 @@ GET all of the Territories defined by a user.
 | --- | --- |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Territories.Territories&gt;</code> | 
 
-<a name="Territories+update"></a>
+<a id="Territories+update" name="Territories+update"></a>
 
 ### territories.update(id, data, [callback])
+
 UPDATE a specified Territory.
 
-**Kind**: instance method of <code>[Territories](#Territories)</code>  
 **See**: [https://route4me.io/docs/#update-a-territory](https://route4me.io/docs/#update-a-territory)  
 **Since**: 0.1.8  
 
@@ -86,12 +87,12 @@ UPDATE a specified Territory.
 | data | <code>jsonschema:Territories.Territory</code> | Valid Territory data. |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Territories.Territory&gt;</code> |  |
 
-<a name="Territories+remove"></a>
+<a id="Territories+remove" name="Territories+remove"></a>
 
 ### territories.remove(id, [callback])
+
 DELETE a specified Territory.
 
-**Kind**: instance method of <code>[Territories](#Territories)</code>  
 **See**: [https://route4me.io/docs/#remove-a-territory](https://route4me.io/docs/#remove-a-territory)  
 **Since**: 0.1.8  
 
@@ -100,4 +101,3 @@ DELETE a specified Territory.
 | id | <code>string</code> | Territory ID |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;boolean&gt;</code> |  |
 
-**documentation generated on Mon, 20 Feb 2017 22:25:17 GMT**
