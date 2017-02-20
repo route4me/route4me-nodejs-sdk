@@ -23,6 +23,7 @@ module.exports = {
 			version: ">=1.0.6",
 		},
 		"ga",
+		"todo",
 	],
 	"pluginsConfig": {
 		"summary-extend": {
