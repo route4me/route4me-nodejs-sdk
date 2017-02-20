@@ -13,10 +13,6 @@ table td, table th {
 }
 </style>
 
-{% tag1 %}
-IN DOC
-{% endtag1 %}
-
 There are several differences between Node JS SDK and API methods: several
 methods are moved among section. This is a list of such differences.
 

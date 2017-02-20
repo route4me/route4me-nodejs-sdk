@@ -15,12 +15,24 @@
 ## Code
 
 * [Route4Me](code/api.md#Route4Me)
+  * [ActivityFeed](code/api.md#ActivityFeed)
+    * [ActivityTypeEnum](code/api.md#ActivityTypeEnum)
   * [AddressBook](code/api.md#AddressBook)
+  * [Addresses](code/api.md#Addresses)
+  * [AvoidanceZones](code/api.md#AvoidanceZones)
+  * [Geocoding](code/api.md#Geocoding)
+  * [Members](code/api.md#Members)
+  * [Notes](code/api.md#Notes)
+  * [Optimizations](code/api.md#Optimizations)
+  * [Orders](code/api.md#Orders)
+  * [Routes](code/api.md#Routes)
+  * [Territories](code/api.md#Territories)
+  * [Tracking](code/api.md#Tracking)
+  * [Vehicles](code/api.md#Vehicles)
 * Errors
   * [Route4MeError](code/api.md#Route4MeError)
   * [Route4MeApiError](code/api.md#Route4MeApiError)
   * [Route4MeValidationError](code/api.md#Route4MeValidationError)
-* [All In One](code/api.md)
 
 {% include "code/index.md" %}
 
