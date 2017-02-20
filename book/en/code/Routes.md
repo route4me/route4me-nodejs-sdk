@@ -263,4 +263,4 @@ Optimize and re-sequence all destinations
 | criteria | <code>string</code> | Optimization type, possible values: * `Distance` - optimize for distance * `Time` * `TimeWithTraffic` * `NoneOptimize` |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 
-**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**
+**documentation generated on Mon, 20 Feb 2017 22:25:17 GMT**

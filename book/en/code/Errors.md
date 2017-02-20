@@ -92,4 +92,4 @@ Create Route4MeValidationError
 Data under consideration
 
 **Kind**: instance property of <code>[Route4MeValidationError](#Route4MeValidationError)</code>  
-**documentation generated on Mon, 20 Feb 2017 21:17:16 GMT**
+**documentation generated on Mon, 20 Feb 2017 22:25:16 GMT**

@@ -54,4 +54,4 @@ Add Route Notes
 | data.type | <code>string</code> | FILE/NOTE type. One of `DRIVER_IMG`, `VEHICLE_IMG`, `ADDRESS_IMG`, `CSV_FILE`, `XLS_FILE`, `ANY_FILE` |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Notes.NoteCreateResponse&gt;</code> |  |
 
-**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**
+**documentation generated on Mon, 20 Feb 2017 22:25:16 GMT**

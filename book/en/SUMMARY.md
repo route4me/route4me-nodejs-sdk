@@ -37,3 +37,5 @@
 {% include "code/index.md" %}
 
 ## Examples
+
+* [All in one page](examples/all.md)

@@ -24,10 +24,14 @@
 ## route4me-node
 
 * [route4me-node](#module_route4me-node)
-    * [.Route4Me](#module_route4me-node.Route4Me) : <code>Route4Me</code>
-    * [.Route4MeError](#module_route4me-node.Route4MeError) : <code>Route4MeError</code>
-    * [.Route4MeApiError](#module_route4me-node.Route4MeApiError) : <code>Route4MeApiError</code>
-    * [.Route4MeValidationError](#module_route4me-node.Route4MeValidationError) : <code>Route4MeValidationError</code>
+    * _static_
+        * [.Route4Me](#module_route4me-node.Route4Me) : <code>Route4Me</code>
+        * [.Route4MeError](#module_route4me-node.Route4MeError) : <code>Route4MeError</code>
+        * [.Route4MeApiError](#module_route4me-node.Route4MeApiError) : <code>Route4MeApiError</code>
+        * [.Route4MeValidationError](#module_route4me-node.Route4MeValidationError) : <code>Route4MeValidationError</code>
+    * _inner_
+        * _Route4Me_
+            * [~RequestCallback](#module_route4me-node..RequestCallback) : <code>function</code>
 
 <a name="module_route4me-node.Route4Me"></a>
 
@@ -45,6 +49,19 @@
 
 ### route4me-node.Route4MeValidationError : <code>Route4MeValidationError</code>
 **Kind**: static property of <code>[route4me-node](#module_route4me-node)</code>  
+<a name="module_route4me-node..RequestCallback"></a>
+
+### route4me-node~RequestCallback : <code>function</code>
+API-response callback
+
+**Kind**: inner typedef of <code>[route4me-node](#module_route4me-node)</code>  
+**Category**: Route4Me  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| err | <code>Error</code> | Error (if ocurred) |
+| [res] | <code>Object</code> | Value returned by API (on success) |
+
 <a name="module_route4me-node/utils"></a>
 
 ## route4me-node/utils
@@ -150,7 +167,7 @@ Request manager, provides
 <a name="new_RequestManager_new"></a>
 
 ### new RequestManager(apiKey, options)
-Query API. All parameters are inherited from {Route4Me}
+Creates new RequestManager. All parameters are inherited from {Route4Me}
 
 
 | Param | Type | Description |
@@ -178,7 +195,7 @@ Wrapper around [external:superagent](external:superagent) with all options appli
 | [options.qs] | <code>object</code> |  | Query string |
 | [options.body] | <code>object</code> |  | Body |
 | [options.validationContext] | <code>null</code> &#124; <code>string</code> &#124; <code>function</code> | <code></code> | * `null` cause validation disabled (TODO: test this case) * `string` is threated as the name of JSON Schema * `function` will be used for validation. |
-| [callback] | <code>module:route4me-node~RequestCallback</code> |  |  |
+| [callback] | <code>[RequestCallback](#module_route4me-node..RequestCallback)</code> |  |  |
 
 <a name="RequestManager+_makeError"></a>
 
@@ -195,6 +212,6 @@ Early cancel request
 | Param | Type | Description |
 | --- | --- | --- |
 | error | <code>Error</code> | The reason the request was cancelled. |
-| [callback] | <code>module:route4me-node~RequestCallback</code> |  |
+| [callback] | <code>[RequestCallback](#module_route4me-node..RequestCallback)</code> |  |
 
-**documentation generated on Mon, 20 Feb 2017 21:17:16 GMT**
+**documentation generated on Mon, 20 Feb 2017 22:25:16 GMT**

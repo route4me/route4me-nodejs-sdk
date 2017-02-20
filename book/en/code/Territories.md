@@ -100,4 +100,4 @@ DELETE a specified Territory.
 | id | <code>string</code> | Territory ID |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;boolean&gt;</code> |  |
 
-**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**
+**documentation generated on Mon, 20 Feb 2017 22:25:17 GMT**

@@ -25,7 +25,7 @@ module.exports.version = Route4Me.version
  * API-response callback
  *
  * @callback RequestCallback
- * @private
+ * @category Route4Me
  * @param {Error}  err              - Error (if ocurred)
  * @param {Object} [res=undefined]  - Value returned by API (on success)
  */

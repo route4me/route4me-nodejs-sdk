@@ -249,4 +249,4 @@ Registration of a new account.
 | data.password | <code>string</code> | Account parameter |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Members.Account&gt;</code> |  |
 
-**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**
+**documentation generated on Mon, 20 Feb 2017 22:25:16 GMT**

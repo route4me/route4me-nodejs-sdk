@@ -180,4 +180,4 @@ Enum for all known **activity type**.
 | NoteInsert | <code>string</code> | <code>&quot;note-insert&quot;</code> |  |
 | UserMessage | <code>string</code> | <code>&quot;user_message&quot;</code> |  |
 
-**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**
+**documentation generated on Mon, 20 Feb 2017 22:25:17 GMT**

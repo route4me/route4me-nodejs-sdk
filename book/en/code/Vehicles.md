@@ -36,4 +36,4 @@ Get vehicles that belong to the Route4Me account
 | --- | --- |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Vehicles.ResponseMany&gt;</code> | 
 
-**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**
+**documentation generated on Mon, 20 Feb 2017 22:25:17 GMT**

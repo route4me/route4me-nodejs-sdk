@@ -148,4 +148,4 @@ see https://github.com/route4me/route4me-nodejs-sdk/issues/38)
 | [options.offset] | <code>number</code> | List offset |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Orders&gt;</code> |  |
 
-**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**
+**documentation generated on Mon, 20 Feb 2017 22:25:17 GMT**

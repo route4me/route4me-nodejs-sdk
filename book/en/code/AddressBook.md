@@ -144,4 +144,4 @@ REMOVE locations from an address book.
 ```js
 SampleResponse = {"status":true}
 ```
-**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**
+**documentation generated on Mon, 20 Feb 2017 22:25:16 GMT**
