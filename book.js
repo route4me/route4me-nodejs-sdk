@@ -2,6 +2,12 @@
 
 const pkg = require('./package.json')
 
+let gatoken = process.env["GA_TOKEN"]
+if (!gatoken) {
+	console.warn("Environment key: GA_TOKEN is not defined")
+	gatoken =  gatoken || "UA-UNDEFINED-01"
+}
+
 module.exports = {
 	"root": "./book",
 	"title": 'Route4Me Javascript SDK',
@@ -16,6 +22,7 @@ module.exports = {
 			name: "theme-i-want-be-scoped-but-gitbook-wont",
 			version: ">=1.0.6",
 		},
+		"ga",
 	],
 	"pluginsConfig": {
 		"summary-extend": {
@@ -23,7 +30,10 @@ module.exports = {
 		},
 		"sharing": {
 			"vk": true
-		}
+		},
+		"ga": {
+			"token": gatoken
+		},
 	}
 }
 

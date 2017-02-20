@@ -89,9 +89,13 @@ gulp.task("doc:pre", function DG() {     // eslint-disable-line prefer-arrow-cal
 		})
 })
 
+gulp.task("doc:install", function DI() { // eslint-disable-line prefer-arrow-callback
+	const cmd = gitbook.commands.filter(c => c.name.match(/^install\s/i))[0]
+	return cmd.exec([__dirname], {})
+})
+
 gulp.task("watch:doc", ["doc:pre"], function D() { // eslint-disable-line prefer-arrow-callback
 	const cmd = gitbook.commands.filter(c => c.name.match(/^serve\s/i))[0]
-
 
 	return cmd.exec([
 			path.join(__dirname),
