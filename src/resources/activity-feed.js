@@ -67,12 +67,13 @@ Object.keys(activityTypeEnum)
 const aliasedActivityTypeEnum = Object.freeze(_aliases)
 
 /**
- * @namespace
+ * ActivityFeed facility
+ *
  * @category ActivityFeed
  */
 class ActivityFeed {
 	/**
-	 * ActivityFeed facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#activity-feed}
 	 * @since 0.1.12

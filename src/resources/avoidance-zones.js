@@ -22,7 +22,7 @@ class AvoidanceZones {
 	/**
 	 * Create an Avoidance Zone.
 	 *
-	 * @see {@link https://route4me.io/docs/#duplicate-a-route Route4Me API}
+	 * @see {@link https://route4me.io/docs/#duplicate-a-route}
 	 * @since 0.1.8
 	 *
 	 * @param {jsonschema:AvoidanceZones.AvoidanceZone}  data       - Valid Avoidance Zone data.
@@ -41,7 +41,7 @@ class AvoidanceZones {
 	/**
 	 * GET a specified Avoidance Zone by ID.
 	 *
-	 * @see {@link https://route4me.io/docs/#get-an-avoidance-zone Route4Me API}
+	 * @see {@link https://route4me.io/docs/#get-an-avoidance-zone}
 	 * @since 0.1.8
 	 *
 	 * @param {string}  id       - Avoidance zone ID
@@ -62,7 +62,7 @@ class AvoidanceZones {
 	/**
 	 * GET all of the Avoidance Zones defined by a user.
 	 *
-	 * @see {@link https://route4me.io/docs/#get-multiple-avoidance-zones Route4Me API}
+	 * @see {@link https://route4me.io/docs/#get-multiple-avoidance-zones}
 	 * @since 0.1.8
 	 *
 	 * @todo TODO: There is no schema for the response, but it is just an array of known schema
@@ -81,7 +81,7 @@ class AvoidanceZones {
 	/**
 	 * UPDATE a specified Avoidance Zone.
 	 *
-	 * @see {@link https://route4me.io/docs/#update-an-avoidance-zone Route4Me API}
+	 * @see {@link https://route4me.io/docs/#update-an-avoidance-zone}
 	 * @since 0.1.8
 	 *
 	 * @param {string}  id       - Avoidance zone ID
@@ -104,7 +104,7 @@ class AvoidanceZones {
 	/**
 	 * DELETE a specified Avoidance Zone.
 	 *
-	 * @see {@link https://route4me.io/docs/#remove-an-avoidance-zone Route4Me API}
+	 * @see {@link https://route4me.io/docs/#remove-an-avoidance-zone}
 	 * @since 0.1.8
 	 *
 	 * @todo TODO: There is no schema for the response
