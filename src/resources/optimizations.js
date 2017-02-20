@@ -3,12 +3,13 @@
 const utils = require("../utils")
 
 /**
- * @namespace
+ * Optimizations facility
+ *
  * @category Optimizations
  */
 class Optimizations {
 	/**
-	 * Optimizations facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#optimizations}
 	 * @since 0.1.3

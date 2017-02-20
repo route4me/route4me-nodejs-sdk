@@ -1,17 +1,13 @@
-<a id="Members" name="Members"></a>
+<a name="Members"></a>
 
-## Members : <code>object</code>
-
+## Members
 Members facility
 
+**Kind**: global class  
 **Category**: Members  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| requestManager | <code>RequestManager</code> | Request Manager |
-
-
-* [Members](#Members) : <code>object</code>
+* [Members](#Members)
+    * [new Members(requestManager)](#new_Members_new)
     * [.create(data, [callback])](#Members+create)
     * [.list([callback])](#Members+list)
     * [.get(id, [callback])](#Members+get)
@@ -21,12 +17,22 @@ Members facility
     * [.validateSession(id, sessionId, [callback])](#Members+validateSession)
     * [.registerAccount(data, [callback])](#Members+registerAccount)
 
-<a id="Members+create" name="Members+create"></a>
+<a name="new_Members_new"></a>
+
+### new Members(requestManager)
+Constructor
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| requestManager | <code>RequestManager</code> | Request Manager |
+
+<a name="Members+create"></a>
 
 ### members.create(data, [callback])
-
 Create an User
 
+**Kind**: instance method of <code>[Members](#Members)</code>  
 **See**: [https://route4me.io/docs/#create-an-user](https://route4me.io/docs/#create-an-user)  
 **Since**: 0.1.9  
 **Todo**
@@ -75,14 +81,14 @@ Create an User
 	"showAllDrivers": false,
 }
 ```
-<a id="Members+list" name="Members+list"></a>
+<a name="Members+list"></a>
 
 ### members.list([callback])
-
 Member’s Sub-users
 
 View existing sub-users in a member’s account.
 
+**Kind**: instance method of <code>[Members](#Members)</code>  
 **See**: [https://route4me.io/docs/#members-sub-users](https://route4me.io/docs/#members-sub-users)  
 **Since**: 0.1.9  
 **Todo**
@@ -94,12 +100,12 @@ View existing sub-users in a member’s account.
 | --- | --- |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Members.Members&gt;</code> | 
 
-<a id="Members+get" name="Members+get"></a>
+<a name="Members+get"></a>
 
 ### members.get(id, [callback])
-
 Get an User Details
 
+**Kind**: instance method of <code>[Members](#Members)</code>  
 **See**: [https://route4me.io/docs/#get-an-user-details](https://route4me.io/docs/#get-an-user-details)  
 **Since**: 0.1.9  
 **Todo**
@@ -112,12 +118,12 @@ Get an User Details
 | id | <code>number</code> | Member ID |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Members.Member&gt;</code> |  |
 
-<a id="Members+update" name="Members+update"></a>
+<a name="Members+update"></a>
 
 ### members.update(id, data, [callback])
-
 Update an existing user.
 
+**Kind**: instance method of <code>[Members](#Members)</code>  
 **See**: [https://route4me.io/docs/#update-an-user](https://route4me.io/docs/#update-an-user)  
 **Since**: 0.1.9  
 **Todo**
@@ -168,12 +174,12 @@ Update an existing user.
 	"showAllDrivers": false,
 }
 ```
-<a id="Members+remove" name="Members+remove"></a>
+<a name="Members+remove"></a>
 
 ### members.remove(id, [callback])
-
 Remove existing user from a member’s account.
 
+**Kind**: instance method of <code>[Members](#Members)</code>  
 **See**: [https://route4me.io/docs/#remove-an-user](https://route4me.io/docs/#remove-an-user)  
 **Since**: 0.1.9  
 
@@ -182,12 +188,12 @@ Remove existing user from a member’s account.
 | id | <code>number</code> | Member ID |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Members.Member&gt;</code> |  |
 
-<a id="Members+authenticate" name="Members+authenticate"></a>
+<a name="Members+authenticate"></a>
 
 ### members.authenticate(email, password, [callback])
-
 Authentication of a user with an email and password.
 
+**Kind**: instance method of <code>[Members](#Members)</code>  
 **See**: [https://route4me.io/docs/#authentication-aa](https://route4me.io/docs/#authentication-aa)  
 **Since**: 0.1.9  
 **Todo**
@@ -201,14 +207,14 @@ Authentication of a user with an email and password.
 | password | <code>string</code> | Password |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Members.Member&gt;</code> |  |
 
-<a id="Members+validateSession" name="Members+validateSession"></a>
+<a name="Members+validateSession"></a>
 
 ### members.validateSession(id, sessionId, [callback])
-
 Validate a Session
 
 Check if a session is valid.
 
+**Kind**: instance method of <code>[Members](#Members)</code>  
 **See**: [https://route4me.io/docs/#validate-a-session](https://route4me.io/docs/#validate-a-session)  
 **Since**: 0.1.9  
 
@@ -218,12 +224,12 @@ Check if a session is valid.
 | sessionId | <code>string</code> | Session ID |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;number&gt;</code> |  |
 
-<a id="Members+registerAccount" name="Members+registerAccount"></a>
+<a name="Members+registerAccount"></a>
 
 ### members.registerAccount(data, [callback])
-
 Registration of a new account.
 
+**Kind**: instance method of <code>[Members](#Members)</code>  
 **See**: [https://route4me.io/docs/#register-an-account](https://route4me.io/docs/#register-an-account)  
 **Since**: 0.1.9  
 **Todo**
@@ -243,3 +249,4 @@ Registration of a new account.
 | data.password | <code>string</code> | Account parameter |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Members.Account&gt;</code> |  |
 
+**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**

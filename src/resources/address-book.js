@@ -3,12 +3,13 @@
 const utils           = require("./../utils")
 
 /**
- * @namespace
+ * AddressBook facility
+ *
  * @category AddressBook
  */
 class AddressBook {
 	/**
-	 * AddressBook facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#address-book}
 	 * @since 0.1.8

@@ -1,29 +1,35 @@
-<a id="AvoidanceZones" name="AvoidanceZones"></a>
+<a name="AvoidanceZones"></a>
 
-## AvoidanceZones : <code>object</code>
-
+## AvoidanceZones
 AvoidanceZones facility
 
+**Kind**: global class  
 **Category**: AvoidanceZones  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| requestManager | <code>RequestManager</code> | Request Manager |
-
-
-* [AvoidanceZones](#AvoidanceZones) : <code>object</code>
+* [AvoidanceZones](#AvoidanceZones)
+    * [new AvoidanceZones(requestManager)](#new_AvoidanceZones_new)
     * [.create(data, [callback])](#AvoidanceZones+create)
     * [.get(id, [callback])](#AvoidanceZones+get)
     * [.list([callback])](#AvoidanceZones+list)
     * [.update(id, data, [callback])](#AvoidanceZones+update)
     * [.remove(id, [callback])](#AvoidanceZones+remove)
 
-<a id="AvoidanceZones+create" name="AvoidanceZones+create"></a>
+<a name="new_AvoidanceZones_new"></a>
+
+### new AvoidanceZones(requestManager)
+Constructor
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| requestManager | <code>RequestManager</code> | Request Manager |
+
+<a name="AvoidanceZones+create"></a>
 
 ### avoidanceZones.create(data, [callback])
-
 Create an Avoidance Zone.
 
+**Kind**: instance method of <code>[AvoidanceZones](#AvoidanceZones)</code>  
 **See**: [https://route4me.io/docs/#duplicate-a-route](https://route4me.io/docs/#duplicate-a-route)  
 **Since**: 0.1.8  
 
@@ -32,12 +38,12 @@ Create an Avoidance Zone.
 | data | <code>jsonschema:AvoidanceZones.AvoidanceZone</code> | Valid Avoidance Zone data. |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AvoidanceZones.AvoidanceZone&gt;</code> |  |
 
-<a id="AvoidanceZones+get" name="AvoidanceZones+get"></a>
+<a name="AvoidanceZones+get"></a>
 
 ### avoidanceZones.get(id, [callback])
-
 GET a specified Avoidance Zone by ID.
 
+**Kind**: instance method of <code>[AvoidanceZones](#AvoidanceZones)</code>  
 **See**: [https://route4me.io/docs/#get-an-avoidance-zone](https://route4me.io/docs/#get-an-avoidance-zone)  
 **Since**: 0.1.8  
 
@@ -46,12 +52,12 @@ GET a specified Avoidance Zone by ID.
 | id | <code>string</code> | Avoidance zone ID |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AvoidanceZones.AvoidanceZone&gt;</code> |  |
 
-<a id="AvoidanceZones+list" name="AvoidanceZones+list"></a>
+<a name="AvoidanceZones+list"></a>
 
 ### avoidanceZones.list([callback])
-
 GET all of the Avoidance Zones defined by a user.
 
+**Kind**: instance method of <code>[AvoidanceZones](#AvoidanceZones)</code>  
 **See**: [https://route4me.io/docs/#get-multiple-avoidance-zones](https://route4me.io/docs/#get-multiple-avoidance-zones)  
 **Since**: 0.1.8  
 **Todo**
@@ -63,12 +69,12 @@ GET all of the Avoidance Zones defined by a user.
 | --- | --- |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AvoidanceZones.AvoidanceZones&gt;</code> | 
 
-<a id="AvoidanceZones+update" name="AvoidanceZones+update"></a>
+<a name="AvoidanceZones+update"></a>
 
 ### avoidanceZones.update(id, data, [callback])
-
 UPDATE a specified Avoidance Zone.
 
+**Kind**: instance method of <code>[AvoidanceZones](#AvoidanceZones)</code>  
 **See**: [https://route4me.io/docs/#update-an-avoidance-zone](https://route4me.io/docs/#update-an-avoidance-zone)  
 **Since**: 0.1.8  
 
@@ -78,12 +84,12 @@ UPDATE a specified Avoidance Zone.
 | data | <code>jsonschema:AvoidanceZones.AvoidanceZone</code> | Valid Avoidance Zone data. |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AvoidanceZones.AvoidanceZone&gt;</code> |  |
 
-<a id="AvoidanceZones+remove" name="AvoidanceZones+remove"></a>
+<a name="AvoidanceZones+remove"></a>
 
 ### avoidanceZones.remove(id, [callback])
-
 DELETE a specified Avoidance Zone.
 
+**Kind**: instance method of <code>[AvoidanceZones](#AvoidanceZones)</code>  
 **See**: [https://route4me.io/docs/#remove-an-avoidance-zone](https://route4me.io/docs/#remove-an-avoidance-zone)  
 **Since**: 0.1.8  
 **Todo**
@@ -101,3 +107,4 @@ DELETE a specified Avoidance Zone.
 ```js
 SampleResponse = {"status":true}
 ```
+**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**

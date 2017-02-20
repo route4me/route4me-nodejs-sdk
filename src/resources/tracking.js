@@ -19,12 +19,13 @@ function _createRouteTrackingValidate(data, ctx, res) {
 }
 
 /**
- * @namespace
+ * Tracking facility
+ *
  * @category Tracking
  */
 class Tracking {
 	/**
-	 * Tracking facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#tracking}
 	 * @since 0.1.8

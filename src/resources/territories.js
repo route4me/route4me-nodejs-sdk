@@ -3,12 +3,13 @@
 const utils           = require("./../utils")
 
 /**
- * @namespace
+ * Territories facility
+ *
  * @category Territories
  */
 class Territories {
 	/**
-	 * Territories facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#territories}
 	 * @since 0.1.8

@@ -12,12 +12,13 @@ function _markVisitedValidate(data) {
 const _markDepartedValidate = _markVisitedValidate
 
 /**
- * @namespace
+ * Addresses facility
+ *
  * @category Addresses
  */
 class Addresses {
 	/**
-	 * Addresses facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#addresses}
 	 * @since 0.1.8

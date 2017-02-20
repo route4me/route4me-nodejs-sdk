@@ -93,12 +93,13 @@ function _validateSessionValidate(data, ctx, res) {
 }
 
 /**
- * @namespace
+ * Members facility
+ *
  * @category Members
  */
 class Members {
 	/**
-	 * Members facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#territories}
 	 * @since 0.1.8

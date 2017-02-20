@@ -35,12 +35,13 @@ class CustomInternalPostProcessing {
 // ===================================
 
 /**
- * @namespace
+ * Orders facility
+ *
  * @category Orders
  */
 class Orders {
 	/**
-	 * Orders facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#orders}
 	 * @since 0.1.11

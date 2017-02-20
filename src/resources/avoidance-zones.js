@@ -1,12 +1,13 @@
 "use strict"
 
 /**
- * @namespace
+ * AvoidanceZones facility
+ *
  * @category AvoidanceZones
  */
 class AvoidanceZones {
 	/**
-	 * AvoidanceZones facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#avoidance-zones}
 	 * @since 0.1.8

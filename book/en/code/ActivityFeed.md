@@ -1,9 +1,9 @@
-<a id="ActivityFeed" name="ActivityFeed"></a>
+<a name="ActivityFeed"></a>
 
 ## ActivityFeed
-
 ActivityFeed facility
 
+**Kind**: global class  
 **Category**: ActivityFeed  
 
 * [ActivityFeed](#ActivityFeed)
@@ -12,10 +12,9 @@ ActivityFeed facility
     * [.create(data, [callback])](#ActivityFeed+create)
     * [.list(criteria, options, [callback])](#ActivityFeed+list)
 
-<a id="new_ActivityFeed_new" name="new_ActivityFeed_new"></a>
+<a name="new_ActivityFeed_new"></a>
 
 ### new ActivityFeed(requestManager)
-
 Constructor
 
 
@@ -23,20 +22,19 @@ Constructor
 | --- | --- | --- |
 | requestManager | <code>RequestManager</code> | Request Manager |
 
-<a id="ActivityFeed+ActivityTypeEnum" name="ActivityFeed+ActivityTypeEnum"></a>
+<a name="ActivityFeed+ActivityTypeEnum"></a>
 
 ### activityFeed.ActivityTypeEnum
-
 Enumerable of all known activity type
 
+**Kind**: instance property of <code>[ActivityFeed](#ActivityFeed)</code>  
 **Todo**
 
 - [ ] TODO: move to PACKAGE level (to make it easier for usage) see [https://github.com/route4me/route4me-nodejs-sdk/issues/40](https://github.com/route4me/route4me-nodejs-sdk/issues/40)
 
-<a id="ActivityFeed+create" name="ActivityFeed+create"></a>
+<a name="ActivityFeed+create"></a>
 
 ### activityFeed.create(data, [callback])
-
 Log a Specific Message
 
 This example demonstrates how to permanently store a specific message
@@ -45,6 +43,7 @@ two-way chat.
 
 **The created activity will have `activityType === "user_message"`**
 
+**Kind**: instance method of <code>[ActivityFeed](#ActivityFeed)</code>  
 **See**: [https://route4me.io/docs/#log-a-specific-message](https://route4me.io/docs/#log-a-specific-message)  
 **Since**: 0.1.12  
 
@@ -55,16 +54,16 @@ two-way chat.
 | data.message | <code>string</code> | A message text for logging into the activity feed |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 
-<a id="ActivityFeed+list" name="ActivityFeed+list"></a>
+<a name="ActivityFeed+list"></a>
 
 ### activityFeed.list(criteria, options, [callback])
-
 Log a Specific Message
 
 This example demonstrates how to permanently store a specific message
 directly to the activity feed. For example, this can be used for one or
 two-way chat.
 
+**Kind**: instance method of <code>[ActivityFeed](#ActivityFeed)</code>  
 **See**: [https://route4me.io/docs/#log-a-specific-message](https://route4me.io/docs/#log-a-specific-message)  
 **Since**: 0.1.12  
 
@@ -79,3 +78,4 @@ two-way chat.
 | [options.includeTeamActivities] | <code>boolean</code> | <code>false</code> | Indicate, whether team activities should be included |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:ActivityFeed.ActivityFeedResult&gt;</code> |  |  |
 
+**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**

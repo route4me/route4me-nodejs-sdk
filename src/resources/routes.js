@@ -107,12 +107,13 @@ class CustomInternalPostProcessing {
 // ===================================
 
 /**
- * @namespace
+ * Routes facility
+ *
  * @category Routes
  */
 class Routes {
 	/**
-	 * Routes facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#routes}
 	 * @since 0.1.8

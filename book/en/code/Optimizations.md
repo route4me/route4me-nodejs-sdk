@@ -1,17 +1,13 @@
-<a id="Optimizations" name="Optimizations"></a>
+<a name="Optimizations"></a>
 
-## Optimizations : <code>object</code>
-
+## Optimizations
 Optimizations facility
 
+**Kind**: global class  
 **Category**: Optimizations  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| requestManager | <code>RequestManager</code> | Request Manager |
-
-
-* [Optimizations](#Optimizations) : <code>object</code>
+* [Optimizations](#Optimizations)
+    * [new Optimizations(requestManager)](#new_Optimizations_new)
     * [.create(optimization, [callback])](#Optimizations+create)
     * [.get(id, [callback])](#Optimizations+get)
     * [.list(states, options, [callback])](#Optimizations+list)
@@ -19,12 +15,22 @@ Optimizations facility
     * [.linkAddress(id, addresses, [reoptimize], [callback])](#Optimizations+linkAddress)
     * [.unlinkAddress(id, addressId, [callback])](#Optimizations+unlinkAddress)
 
-<a id="Optimizations+create" name="Optimizations+create"></a>
+<a name="new_Optimizations_new"></a>
+
+### new Optimizations(requestManager)
+Constructor
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| requestManager | <code>RequestManager</code> | Request Manager |
+
+<a name="Optimizations+create"></a>
 
 ### optimizations.create(optimization, [callback])
-
 Create a new optimization
 
+**Kind**: instance method of <code>[Optimizations](#Optimizations)</code>  
 **See**: [https://route4me.io/docs/#create-an-optimization](https://route4me.io/docs/#create-an-optimization)  
 
 | Param | Type | Description |
@@ -32,13 +38,13 @@ Create a new optimization
 | optimization | <code>jsonschema:Optimizations.CreateRequest</code> | Parameters for new optimization |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Optimizations.Response&gt;</code> |  |
 
-<a id="Optimizations+get" name="Optimizations+get"></a>
+<a name="Optimizations+get"></a>
 
 ### optimizations.get(id, [callback])
-
 GET a single optimization by
 [optimization_problem_id](Optimizations#get~id) parameter.
 
+**Kind**: instance method of <code>[Optimizations](#Optimizations)</code>  
 **See**: [https://route4me.io/docs/#get-an-optimization](https://route4me.io/docs/#get-an-optimization)  
 
 | Param | Type | Description |
@@ -46,12 +52,12 @@ GET a single optimization by
 | id | <code>string</code> | Optimization Problem ID |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Optimizations.Optimization&gt;</code> |  |
 
-<a id="Optimizations+list" name="Optimizations+list"></a>
+<a name="Optimizations+list"></a>
 
 ### optimizations.list(states, options, [callback])
-
 GET all optimizations belonging to an user.
 
+**Kind**: instance method of <code>[Optimizations](#Optimizations)</code>  
 **See**: [https://route4me.io/docs/#get-optimizations](https://route4me.io/docs/#get-optimizations)  
 **Todo**
 
@@ -66,12 +72,12 @@ GET all optimizations belonging to an user.
 | [options.offset] | <code>number</code> | List offset |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Optimizations.Optimizations&gt;</code> |  |
 
-<a id="Optimizations+remove" name="Optimizations+remove"></a>
+<a name="Optimizations+remove"></a>
 
 ### optimizations.remove(id, [callback])
-
 Remove an existing optimization belonging to an user.
 
+**Kind**: instance method of <code>[Optimizations](#Optimizations)</code>  
 **See**: [https://route4me.io/docs/#remove-an-optimization](https://route4me.io/docs/#remove-an-optimization)  
 **Since**: 0.1.7  
 **Todo**
@@ -91,12 +97,12 @@ const response = {
 	"removed":1
 }
 ```
-<a id="Optimizations+linkAddress" name="Optimizations+linkAddress"></a>
+<a name="Optimizations+linkAddress"></a>
 
 ### optimizations.linkAddress(id, addresses, [reoptimize], [callback])
-
 Insert an address into an optimization, resulting in the recalculation of optimal routes.
 
+**Kind**: instance method of <code>[Optimizations](#Optimizations)</code>  
 **Tag**: Optimizations  
 **Tag**: Addresses  
 **See**: [https://route4me.io/docs/#insert-an-address-into-an-optimization](https://route4me.io/docs/#insert-an-address-into-an-optimization)  
@@ -109,13 +115,13 @@ Insert an address into an optimization, resulting in the recalculation of optima
 | [reoptimize] | <code>boolean</code> | <code>false</code> | Determine, whether the `Optimization` should be reoptimized |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Addresses.Addresses&gt;</code> |  |  |
 
-<a id="Optimizations+unlinkAddress" name="Optimizations+unlinkAddress"></a>
+<a name="Optimizations+unlinkAddress"></a>
 
 ### optimizations.unlinkAddress(id, addressId, [callback])
-
 Remove a destination (an address) with specified route_destination_id
 from an optimization problem with specified optimization_problem_id.
 
+**Kind**: instance method of <code>[Optimizations](#Optimizations)</code>  
 **Tag**: Optimizations  
 **Tag**: Addresses  
 **See**: [https://route4me.io/docs/#remove-an-address-from-an-optimization](https://route4me.io/docs/#remove-an-address-from-an-optimization)  
@@ -138,3 +144,4 @@ const response = {
 	"route_destination_id":1
 }
 ```
+**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**

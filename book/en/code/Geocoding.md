@@ -1,31 +1,37 @@
-<a id="Geocoding" name="Geocoding"></a>
+<a name="Geocoding"></a>
 
-## Geocoding : <code>object</code>
-
+## Geocoding
 Geocoding facility
 
+**Kind**: global class  
 **Category**: Geocoding  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| requestManager | <code>RequestManager</code> | Request Manager |
-
-
-* [Geocoding](#Geocoding) : <code>object</code>
+* [Geocoding](#Geocoding)
+    * [new Geocoding(requestManager)](#new_Geocoding_new)
     * [.forward(address, [callback])](#Geocoding+forward)
     * [.reverse(latitude, longitude, [callback])](#Geocoding+reverse)
     * ~~[.rapidGet(id, [callback])](#Geocoding+rapidGet)~~
     * ~~[.rapidSearch(criteria, options, [callback])](#Geocoding+rapidSearch)~~
 
-<a id="Geocoding+forward" name="Geocoding+forward"></a>
+<a name="new_Geocoding_new"></a>
+
+### new Geocoding(requestManager)
+Constructor
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| requestManager | <code>RequestManager</code> | Request Manager |
+
+<a name="Geocoding+forward"></a>
 
 ### geocoding.forward(address, [callback])
-
 Forward Geocode Address
 
 Forward geocoding is the process of converting place name information
 into latitude and longitude values.
 
+**Kind**: instance method of <code>[Geocoding](#Geocoding)</code>  
 **See**: [https://route4me.io/docs/#forward-geocode-address](https://route4me.io/docs/#forward-geocode-address)  
 **Since**: 0.1.9  
 **Todo**
@@ -38,10 +44,9 @@ into latitude and longitude values.
 | address | <code>string</code> | Address to `geocode` |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Geocoding.Forward&gt;</code> |  |
 
-<a id="Geocoding+reverse" name="Geocoding+reverse"></a>
+<a name="Geocoding+reverse"></a>
 
 ### geocoding.reverse(latitude, longitude, [callback])
-
 Reverse Geocode Address
 
 With the reverse geocoding you can retrieve an address name from a geographical location
@@ -50,6 +55,7 @@ to a specific address name. You can also get the larger scale objects (such as s
 addresses, places, neighbourhoods, county, state or country) which include a specified
 address.
 
+**Kind**: instance method of <code>[Geocoding](#Geocoding)</code>  
 **See**: [https://route4me.io/docs/#reverse-geocode-address](https://route4me.io/docs/#reverse-geocode-address)  
 **Since**: 0.1.9  
 **Todo**
@@ -63,10 +69,9 @@ address.
 | longitude | <code>number</code> | Longitude of the geographic location |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Geocoding.Reverse&gt;</code> |  |
 
-<a id="Geocoding+rapidGet" name="Geocoding+rapidGet"></a>
+<a name="Geocoding+rapidGet"></a>
 
 ### ~~geocoding.rapidGet(id, [callback])~~
-
 ***Deprecated***
 
 Rapid Address Search by ID
@@ -74,6 +79,7 @@ Rapid Address Search by ID
 Single address geocoding refers to the process of getting a geographic
 address by address name sent with HTTP GET data.
 
+**Kind**: instance method of <code>[Geocoding](#Geocoding)</code>  
 **See**: [https://route4me.io/docs/#rapid-address-search](https://route4me.io/docs/#rapid-address-search)  
 **Since**: 0.1.9  
 
@@ -82,14 +88,14 @@ address by address name sent with HTTP GET data.
 | id | <code>number</code> | Sequential number in addresses list. |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Geocoding.Rapid&gt;</code> |  |
 
-<a id="Geocoding+rapidSearch" name="Geocoding+rapidSearch"></a>
+<a name="Geocoding+rapidSearch"></a>
 
 ### ~~geocoding.rapidSearch(criteria, options, [callback])~~
-
 ***Deprecated***
 
 Rapid Address Search
 
+**Kind**: instance method of <code>[Geocoding](#Geocoding)</code>  
 **See**: [https://route4me.io/docs/#rapid-address-search](https://route4me.io/docs/#rapid-address-search)  
 **Since**: 0.1.9  
 
@@ -103,3 +109,4 @@ Rapid Address Search
 | [options.limit] | <code>number</code> | Search results limitation |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Geocoding.Rapid&gt;</code> |  |
 
+**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**

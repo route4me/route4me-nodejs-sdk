@@ -3,12 +3,13 @@
 const utils           = require("./../utils")
 
 /**
- * @namespace
+ * Notes facility
+ *
  * @category Notes
  */
 class Notes {
 	/**
-	 * Notes facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#tracking}
 	 * @since 0.1.9

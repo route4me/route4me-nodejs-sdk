@@ -1,12 +1,13 @@
 "use strict"
 
 /**
- * @namespace
+ * Geocoding facility
+ *
  * @category Geocoding
  */
 class Geocoding {
 	/**
-	 * Geocoding facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#geocoding}
 	 * @since 0.1.9

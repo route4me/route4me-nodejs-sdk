@@ -1,24 +1,34 @@
-<a id="Notes" name="Notes"></a>
+<a name="Notes"></a>
 
-## Notes : <code>object</code>
-
+## Notes
 Notes facility
 
+**Kind**: global class  
 **Category**: Notes  
+
+* [Notes](#Notes)
+    * [new Notes(requestManager)](#new_Notes_new)
+    * [.create(data, [callback])](#Notes+create)
+
+<a name="new_Notes_new"></a>
+
+### new Notes(requestManager)
+Constructor
+
 
 | Param | Type | Description |
 | --- | --- | --- |
 | requestManager | <code>RequestManager</code> | Request Manager |
 
-<a id="Notes+create" name="Notes+create"></a>
+<a name="Notes+create"></a>
 
 ### notes.create(data, [callback])
-
 Add Route Notes
 
 * ADD Notes to a route.
 * ADD Notes to a route using file uploading.
 
+**Kind**: instance method of <code>[Notes](#Notes)</code>  
 **See**
 
 - [https://route4me.io/docs/#add-route-notes](https://route4me.io/docs/#add-route-notes)
@@ -44,3 +54,4 @@ Add Route Notes
 | data.type | <code>string</code> | FILE/NOTE type. One of `DRIVER_IMG`, `VEHICLE_IMG`, `ADDRESS_IMG`, `CSV_FILE`, `XLS_FILE`, `ANY_FILE` |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Notes.NoteCreateResponse&gt;</code> |  |
 
+**documentation generated on Mon, 20 Feb 2017 21:17:17 GMT**
