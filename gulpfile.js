@@ -4,14 +4,18 @@ const fs       = require("fs")
 const path     = require("path")
 const argv     = require("yargs").argv
 const mkdirp   = require("mkdirp-bluebird")
-
+const Promise  = require("bluebird")
 const gulp     = require("gulp")
+const util     = require("gulp-util")
 const gulpIf   = require("gulp-if")
 const eslint   = require("gulp-eslint")
 const mocha    = require("gulp-mocha")
 const size     = require("gulp-size")
 
+// TODO: disable:
 const jsdoc    = require("gulp-jsdoc3")
+
+const jsdoc2md = require("jsdoc-to-markdown")
 
 const fix = !!argv.fix
 const grep = argv.grep
@@ -31,23 +35,59 @@ const paths = {
 }
 
 gulp.task("doc", function X() {
-	const jsdoc2md = require('jsdoc-to-markdown')
 	const docDir = path.join(__dirname, "book", "en", "code")
 
+	const parentsTree = {}
+
 	return mkdirp(docDir)
-		.then( () => {
-			return jsdoc2md.render({
-				files: 'src/**/*.js',
-				"name-format": false,
-				"module-index-format": "none",
-				"global-index-format": "table",
-				//"configure": ".jsdocrc.json",
-				"plugin": "dmd-gitbook",
-				"no-scope": false,
+		.then(() => jsdoc2md.getTemplateData({
+			files: "src/**/*.js",
+		}))
+		.each((item) => {
+			parentsTree[item.id] = item
+		})
+		.reduce((acc, item) => {
+			let ancestor = item
+			while (ancestor && "undefined" !== typeof ancestor.memberof) {
+				ancestor = parentsTree[ancestor.memberof]
+			}
+			let category = ancestor && ancestor.category
+
+			if ("undefined" === typeof category) {
+				category = "Uncategorized"
+			}
+			if (!acc.has(category)) {
+				acc.set(category, [])
+			}
+
+			acc.get(category).push(item)
+
+			return acc
+		}, new Map())
+
+		// render all categories:
+		.map((item) => {
+			const category = item[0]
+			const data = item[1]
+
+			return Promise.props({
+				category,
+				output: jsdoc2md.render({
+					data,
+					"name-format": false,
+					"module-index-format": "none",
+					"global-index-format": "table",
+					// "configure": ".jsdocrc.json",
+					"plugin": "dmd-gitbook",
+					"no-scope": false,
+				})
 			})
 		})
-		.then(output => {
-			return fs.writeFile(path.join(docDir, 'api.md'), output)
+		// write to file:
+		.map((item) => {
+			const fn = path.join(docDir, `${item.category}.md`)
+			util.log("DOC, saving to file", fn)
+			return fs.writeFile(fn, item.output)
 		})
 })
 
