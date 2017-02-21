@@ -16,9 +16,9 @@ class Vehicles {
      * @param  {RequestManager} requestManager - Request Manager
      * @return {Vehicles}                      - Vehicles facility
      */
-    constructor(requestManager) {
-        this.r = requestManager
-    }
+	constructor(requestManager) {
+		this.r = requestManager
+	}
 
     /**
      * Get vehicles that belong to the Route4Me account
@@ -29,13 +29,13 @@ class Vehicles {
      *
      * @param {module:route4me-node~RequestCallback<jsonschema:Vehicles.ResponseMany>} [callback]
      */
-    list(callback) {
-        return this.r._makeRequest({
-            method: "GET",
-            path: "/api.v4/vehicle.php",
-            validationContext: "Vehicles.ResponseMany",
-        }, callback)
-    }
+	list(callback) {
+		return this.r._makeRequest({
+			method: "GET",
+			path: "/api.v4/vehicle.php",
+			validationContext: "Vehicles.ResponseMany",
+		}, callback)
+	}
 }
 
 module.exports = Vehicles
