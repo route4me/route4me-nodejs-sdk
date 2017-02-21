@@ -17,13 +17,12 @@ module.exports = {
     },
 
 	"plugins": [
-		"summary-extend@git+https://github.com/maxkoryukov/gitbook-plugin-summary-extend.git",
-		{
-			name: "theme-i-want-be-scoped-but-gitbook-wont",
-			version: ">=1.0.6",
-		},
+		// "summary-extend@git+https://github.com/maxkoryukov/gitbook-plugin-summary-extend.git",
+		"theme-i-want-be-scoped-but-gitbook-wont",
 		"ga",
 		"todo",
+		"splitter",
+		"-githubcontributors",
 	],
 	"pluginsConfig": {
 		"summary-extend": {
@@ -35,6 +34,10 @@ module.exports = {
 		"ga": {
 			"token": gatoken
 		},
+		"githubcontributors": {
+			"githubOwner": "route4me",      // GitHub user name e.g. sta-szek
+			"githubRepository": "route4me-nodejs-sdk" // GitHub repo name e.g. pojo-tester
+		}
 	}
 }
 

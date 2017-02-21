@@ -74,10 +74,15 @@ gulp.task("doc:pre", function DG() {     // eslint-disable-line prefer-arrow-cal
 					data,
 					"name-format": false,
 					"module-index-format": "none",
-					"global-index-format": "table",
+					"global-index-format": "none",
+
+					"member-index-format": "grouped", // grouped, list
+					"property-list-format": "table", // list, table - works for enums
+					"param-list-format": "table", // list, table - only table, or replace template!
 					// "configure": ".jsdocrc.json",
 					"plugin": "dmd-gitbook",
 					"no-scope": false,
+					"example-lang": "javascript",
 				})
 			})
 		})
@@ -155,6 +160,6 @@ gulp.task("build:node", function BN() {      // eslint-disable-line prefer-arrow
 
 // SUPERTASKS
 
-gulp.task("default", ["lint", "test"])
-gulp.task("build", ["build:node"])
 gulp.task("doc", ["watch:doc"])
+gulp.task("build", ["build:node"])
+gulp.task("default", ["build", "lint", "test"])
