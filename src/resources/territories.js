@@ -3,29 +3,29 @@
 const utils           = require("./../utils")
 
 /**
- * @namespace
+ * Territories facility
+ *
+ * @category Territories
  */
 class Territories {
 	/**
-	 * Territories facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#territories}
 	 * @since 0.1.8
 	 * @private
-	 * @category Territories
 	 *
-	 * @param  {Route4Me}      route4me - Route4Me manager
-	 * @return {Territories}            - Territories facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {Territories}                   - Territories facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**
 	 * Create a new Territory.
 	 *
-	 * @see {@link https://route4me.io/docs/#create-a-territory Route4Me API}
-	 * @category Territories
+	 * @see {@link https://route4me.io/docs/#create-a-territory}
 	 * @since 0.1.8
 	 *
 	 * @param {jsonschema:Territories.Territory}  data       - Valid Territory data.
@@ -44,8 +44,7 @@ class Territories {
 	/**
 	 * Get a specified Territory by ID.
 	 *
-	 * @see {@link https://route4me.io/docs/#get-a-territory Route4Me API}
-	 * @category Territories
+	 * @see {@link https://route4me.io/docs/#get-a-territory}
 	 * @since 0.1.8
 	 *
 	 * @param {string}   id        - Territory ID
@@ -84,8 +83,7 @@ class Territories {
 	/**
 	 * GET all of the Territories defined by a user.
 	 *
-	 * @see {@link https://route4me.io/docs/#get-multiple-territories Route4Me API}
-	 * @category Territories
+	 * @see {@link https://route4me.io/docs/#get-multiple-territories}
 	 * @since 0.1.8
 	 *
 	 * @todo TODO: There is no schema for the response, but it is just an array of known schema
@@ -103,8 +101,7 @@ class Territories {
 	/**
 	 * UPDATE a specified Territory.
 	 *
-	 * @see {@link https://route4me.io/docs/#update-a-territory Route4Me API}
-	 * @category Territories
+	 * @see {@link https://route4me.io/docs/#update-a-territory}
 	 * @since 0.1.8
 	 *
 	 * @param {string}  id       - Territory ID
@@ -127,8 +124,7 @@ class Territories {
 	/**
 	 * DELETE a specified Territory.
 	 *
-	 * @see {@link https://route4me.io/docs/#remove-a-territory Route4Me API}
-	 * @category Territories
+	 * @see {@link https://route4me.io/docs/#remove-a-territory}
 	 * @since 0.1.8
 	 *
 	 * @param {string}  id       - Territory ID

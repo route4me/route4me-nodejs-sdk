@@ -107,21 +107,23 @@ class CustomInternalPostProcessing {
 // ===================================
 
 /**
- * @namespace
+ * Routes facility
+ *
+ * @category Routes
  */
 class Routes {
 	/**
-	 * Routes facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#routes}
 	 * @since 0.1.8
 	 * @private
 	 *
-	 * @param  {Route4Me}      route4me - Route4Me manager
-	 * @return {Routes}                 - Routes facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {Routes}                        - Routes facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**
@@ -129,7 +131,6 @@ class Routes {
 	 *
 	 * @see {@link https://route4me.io/docs/#get-a-route}
 	 * @see {@link https://route4me.io/docs/#get-route-tracking-data}
-	 * @category Routes
 	 * @tag Routes
 	 * @tag Tracking
 	 * @since 0.1.8
@@ -184,7 +185,6 @@ class Routes {
 	 * Get a limited number of the routes belonging to the user.
 	 *
 	 * @see {@link https://route4me.io/docs/#get-multiple-routes}
-	 * @category Routes
 	 * @since 0.1.8
 	 *
 	 * @param {Object} options          - List-parameters
@@ -217,7 +217,6 @@ class Routes {
 	 * Search for the specified text throughout all routes belonging to the user’s account.
 	 *
 	 * @see {@link https://route4me.io/docs/#search-routes}
-	 * @category Routes
 	 * @since 0.1.10
 	 *
 	 * @param {string} query          - A text to be searched for
@@ -240,7 +239,6 @@ class Routes {
 	 * Update a route’s specified parameters.
 	 *
 	 * @see {@link https://route4me.io/docs/#update-a-route}
-	 * @category Routes
 	 * @since 0.1.10
 	 *
 	 * @param {string}                  id    - Route ID
@@ -268,7 +266,6 @@ class Routes {
 	 * Given multiple route ID’s, remove all routes at the same time.
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-routes}
-	 * @category Routes
 	 * @since 0.1.8
 	 *
 	 * @todo TODO: There is no schema for the response
@@ -307,7 +304,6 @@ class Routes {
 	 * Add Addresses to Routes
 	 *
 	 * @see {@link https://route4me.io/docs/#add-addresses-to-routes}
-	 * @category Routes
 	 * @tag Routes
 	 * @tag Addresses
 	 * @since 0.1.10
@@ -355,7 +351,6 @@ class Routes {
 	 * REMOVE an address from a route.
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-addresses-from-routes}
-	 * @category Routes
 	 * @tag Routes
 	 * @tag Addresses
 	 * @since 0.1.10
@@ -380,7 +375,6 @@ class Routes {
 	 * Duplicates the route. More information - on Route4Me API-doc site (see links section).
 	 *
 	 * @see {@link https://route4me.io/docs/#duplicate-a-route}
-	 * @category Routes
 	 * @since 0.1.8
 	 *
 	 * @param {string}  id       - Route ID
@@ -403,7 +397,6 @@ class Routes {
 	 * Merges the list of routes. More information - on Route4Me API-doc site (see links section).
 	 *
 	 * @see {@link https://route4me.io/docs/#merge-routes}
-	 * @category Routes
 	 * @since 0.1.8
 	 *
 	 * @param {string|Array<string>}  ids       - Array of the Route IDs to be merged.
@@ -426,7 +419,6 @@ class Routes {
 	 * Share a route via email.
 	 *
 	 * @see {@link https://route4me.io/docs/#share-routes}
-	 * @category Routes
 	 * @since 0.1.10
 	 *
 	 * @param {string} id     - Route ID
@@ -458,7 +450,6 @@ class Routes {
 	 * _ID of the source route **is not required**_
 	 *
 	 * @see {@link https://route4me.io/docs/#move-a-destination-into-a-route}
-	 * @category Routes
 	 * @since 0.1.10
 	 *
 	 * @param {string} id       - Destination route ID
@@ -486,7 +477,6 @@ class Routes {
 	 * Manually Re-sequence a Route
 	 *
 	 * @see {@link https://route4me.io/docs/#manually-re-sequence-a-route}
-	 * @category Routes
 	 * @since 0.1.10
 	 *
 	 * @param {string}                 id     - Route ID
@@ -527,7 +517,6 @@ class Routes {
 	 * Optimize and re-sequence all destinations
 	 *
 	 * @see {@link https://route4me.io/docs/#manually-re-sequence-a-route}
-	 * @category Routes
 	 * @since 0.1.10
 	 *
 	 * @param {string} id       - Route ID

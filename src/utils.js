@@ -1,6 +1,6 @@
 "use strict"
 
-/**
+/*
  * @module route4me-node/utils
  * @protected
  */
@@ -13,6 +13,7 @@ const errors  = require("./errors")
  * ILogger interface
  *
  * @interface ILogger
+ * @category Route4Me
  * @public
  */
 class ILogger {

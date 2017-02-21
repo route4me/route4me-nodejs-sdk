@@ -11,6 +11,8 @@ const utils           = require("./../utils")
  * Enum for all known **activity type**.
  * @readonly
  * @enum {string}
+ * @alias ActivityTypeEnum
+ * @category Route4Me
  */
 const activityTypeEnum = {
 	/* eslint-disable key-spacing */
@@ -65,22 +67,23 @@ Object.keys(activityTypeEnum)
 const aliasedActivityTypeEnum = Object.freeze(_aliases)
 
 /**
- * @namespace
+ * ActivityFeed facility
+ *
+ * @category ActivityFeed
  */
 class ActivityFeed {
 	/**
-	 * ActivityFeed facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#activity-feed}
-	 * @category ActivityFeed
 	 * @since 0.1.12
 	 * @private
 	 *
-	 * @param  {Route4Me}      route4me - Route4Me manager
-	 * @return {ActivityFeed}           - ActivityFeed facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {ActivityFeed}                  - ActivityFeed facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 		this.__activityTypeEnum = activityTypeEnum
 	}
 
@@ -94,7 +97,6 @@ class ActivityFeed {
 	 * **The created activity will have `activityType === "user_message"`**
 	 *
 	 * @see {@link https://route4me.io/docs/#log-a-specific-message}
-	 * @category ActivityFeed
 	 * @since 0.1.12
 	 *
 	 * @param {Object} data          - Activity Feed item
@@ -133,15 +135,14 @@ class ActivityFeed {
 	 * two-way chat.
 	 *
 	 * @see {@link https://route4me.io/docs/#log-a-specific-message}
-	 * @category ActivityFeed
 	 * @since 0.1.12
 	 *
 	 * @param {string|Object}   criteria - Criteria for event filter. Depending on type will be
 	 * considered as:
-	 * * `string` - criteria is a string representation of [Activity type]{@linkcode ActivityTypeEnum}
+	 * * `string` - criteria is a string representation of [Activity type]{@link ActivityTypeEnum}
 	 * * `Object` - criteria is a set of filters, see below
 	 *
-	 * @param {string}  [criteria.activityType] - [Activity type]{@linkcode ActivityTypeEnum}
+	 * @param {string}  [criteria.activityType] - [Activity type]{@link ActivityTypeEnum}
 	 * @param {string}  [criteria.routeId]      - Route ID
 	 *
 	 * @param {Object}          options  - Options for activity search

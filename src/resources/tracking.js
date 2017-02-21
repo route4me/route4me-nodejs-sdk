@@ -19,29 +19,29 @@ function _createRouteTrackingValidate(data, ctx, res) {
 }
 
 /**
- * @namespace
+ * Tracking facility
+ *
+ * @category Tracking
  */
 class Tracking {
 	/**
-	 * Tracking facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#tracking}
 	 * @since 0.1.8
 	 * @private
-	 * @category Tracking
 	 *
-	 * @param  {Route4Me}      route4me - Route4Me manager
-	 * @return {Tracking}               - Tracking facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {Tracking}                      - Tracking facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**
 	 * Get Asset Tracking Data
 	 *
 	 * @see {@link https://route4me.io/docs/#get-asset-tracking-data}
-	 * @category Tracking
 	 * @since 0.1.8
 	 *
 	 * @param {string}  tracking       - Tracking number
@@ -65,7 +65,6 @@ class Tracking {
 	 * **Be carefull:** custom dates are considered as in local timezone!
 	 *
 	 * @see {@link https://route4me.io/docs/#get-route-tracking-data}
-	 * @category Tracking
 	 * @since 0.1.8
 	 *
 	 * @param {string}  routeId           - Route ID
@@ -120,7 +119,6 @@ class Tracking {
 	 * Set GPS position of a device.
 	 *
 	 * @see {@link https://route4me.io/docs/#insert-route-tracking-data}
-	 * @category Tracking
 	 * @since 0.1.8
 	 *
 	 * @param {int}   trackingData - Route Tracking Data

@@ -3,29 +3,29 @@
 const utils           = require("./../utils")
 
 /**
- * @namespace
+ * AddressBook facility
+ *
+ * @category AddressBook
  */
 class AddressBook {
 	/**
-	 * AddressBook facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#address-book}
 	 * @since 0.1.8
 	 * @private
-	 * @category AddressBook
 	 *
-	 * @param  {Route4Me}      route4me - Route4Me manager
-	 * @return {AddressBook}            - AddressBook facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {AddressBook}                   - AddressBook facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**
 	 * Create a new AddressBook.
 	 *
 	 * @see {@link https://route4me.io/docs/#create-a-location}
-	 * @category AddressBook
 	 * @since 0.1.8
 	 *
 	 * @param {jsonschema:AddressBook.AddressBook}  data       - Valid AddressBook data.
@@ -45,7 +45,6 @@ class AddressBook {
 	 * GET locations from an address book by a specified list of locations IDs.
 	 *
 	 * @see {@link https://route4me.io/docs/#get-locations-by-ids}
-	 * @category AddressBook
 	 * @since 0.1.8
 	 *
 	 * @todo TODO: Parse response
@@ -73,7 +72,6 @@ class AddressBook {
 	 * GET all locations from a user’s address book.
 	 *
 	 * @see {@link https://route4me.io/docs/#get-locations}
-	 * @category AddressBook
 	 * @since 0.1.8
 	 *
 	 * @todo TODO: Parse response
@@ -93,7 +91,6 @@ class AddressBook {
 	 *
 	 * @see {@link https://route4me.io/docs/#get-a-location}
 	 * @see {@link https://route4me.io/docs/#location-search}
-	 * @category AddressBook
 	 * @since 0.1.8
 	 *
 	 * @todo TODO: Parse response
@@ -147,7 +144,6 @@ class AddressBook {
 	 * UPDATE existing address book location parameters.
 	 *
 	 * @see {@link https://route4me.io/docs/#update-a-location}
-	 * @category AddressBook
 	 * @since 0.1.8
 	 *
 	 * @param {string}  id       - AddressBook item ID
@@ -171,7 +167,6 @@ class AddressBook {
 	 * REMOVE locations from an address book.
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-locations}
-	 * @category AddressBook
 	 * @since 0.1.8
 	 *
 	 * @todo TODO: There is no schema for the response

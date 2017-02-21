@@ -93,29 +93,29 @@ function _validateSessionValidate(data, ctx, res) {
 }
 
 /**
- * @namespace
+ * Members facility
+ *
+ * @category Members
  */
 class Members {
 	/**
-	 * Members facility
+	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#territories}
 	 * @since 0.1.8
 	 * @private
-	 * @category Members
 	 *
-	 * @param  {Route4Me} route4me - Route4Me manager
-	 * @return {Members}           - Members facility
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {Members}                       - Members facility
 	 */
-	constructor(route4me) {
-		this.r = route4me
+	constructor(requestManager) {
+		this.r = requestManager
 	}
 
 	/**
 	 * Create an User
 	 *
 	 * @see {@link https://route4me.io/docs/#create-an-user}
-	 * @category Members
 	 * @since 0.1.9
 	 *
 	 * @todo TODO: validate INPUT parameter with **custom** schema
@@ -176,7 +176,6 @@ class Members {
 	 * View existing sub-users in a member’s account.
 	 *
 	 * @see {@link https://route4me.io/docs/#members-sub-users}
-	 * @category Members
 	 * @since 0.1.9
 	 *
 	 * @todo TODO: there is no schema for response
@@ -196,7 +195,6 @@ class Members {
 	 * Get an User Details
 	 *
 	 * @see {@link https://route4me.io/docs/#get-an-user-details}
-	 * @category Members
 	 * @since 0.1.9
 	 *
 	 * @todo TODO: reformat output
@@ -220,7 +218,6 @@ class Members {
 	 * Update an existing user.
 	 *
 	 * @see {@link https://route4me.io/docs/#update-an-user}
-	 * @category Members
 	 * @since 0.1.9
 	 *
 	 * @todo TODO: validate INPUT parameter with **custom** schema
@@ -283,7 +280,6 @@ class Members {
 	 * Remove existing user from a member’s account.
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-an-user}
-	 * @category Members
 	 * @since 0.1.9
 	 *
 	 * @param {number}  id - Member ID
@@ -307,7 +303,6 @@ class Members {
 	 * Authentication of a user with an email and password.
 	 *
 	 * @see {@link https://route4me.io/docs/#authentication-aa}
-	 * @category Members
 	 * @since 0.1.9
 	 *
 	 * @todo TODO: reformat output
@@ -336,7 +331,6 @@ class Members {
 	 * Check if a session is valid.
 	 *
 	 * @see {@link https://route4me.io/docs/#validate-a-session}
-	 * @category Members
 	 * @since 0.1.9
 	 *
 	 * @param {number}  id        - Member ID
@@ -361,7 +355,6 @@ class Members {
 	 * Registration of a new account.
 	 *
 	 * @see {@link https://route4me.io/docs/#register-an-account}
-	 * @category Members
 	 * @since 0.1.9
 	 *
 	 * @todo TODO: reformat output

@@ -25,6 +25,48 @@ const RequestManager  = require("./request-manager")
 
 /**
  * Route4Me main SDK class
+ *
+ * The main purpose of this class: to provide an access to API-methods and to keep
+ * chore and routine in the shadow as long as possible.
+ *
+ * With `route4me` instance you should get responses from API easy-peasy.
+ *
+ * Main members of the instanse of `Route4Me` class:
+ *
+ * * [ActivityFeed  ]{@link ActivityFeed}
+ * * [Addresses     ]{@link Addresses}
+ * * [AddressBook   ]{@link AddressBook}
+ * * [AvoidanceZones]{@link AvoidanceZones}
+ * * [Geocoding     ]{@link Geocoding}
+ * * [Members       ]{@link Members}
+ * * [Notes         ]{@link Notes}
+ * * [Optimizations ]{@link Optimizations}
+ * * [Orders        ]{@link Orders}
+ * * [Routes        ]{@link Routes}
+ * * [Territories   ]{@link Territories}
+ * * [Tracking      ]{@link Tracking}
+ * * [Vehicles      ]{@link Vehicles}
+ *
+ * Each member corresponds to an bunch of methods, described in API-documentation,
+ * but the most methods in this SDK have unified names:
+ *
+ * * `create` - to create new entity
+ * * `get` - to get **one** entity (usually, by ID)
+ * * `list` - returns a list of **all** entities (sometimes with `limit` and `offset`)
+ * * `update` - allows to edit entity
+ * * `remove` - removes/deletes the entity
+ * * `search` - obviously: allows to search items by a set of criteria
+ *
+ * For most use cases it is necessary:
+ *
+ * 1. Create `route4me` instance (with your API-key)
+ * 2. Call the appropriate method
+ * 3. Get the result (as JSON object)
+ * 4. **PROFIT**
+ *
+ * @summary Route4Me main SDK class
+ *
+ * @category Route4Me
  */
 class Route4Me {
 	/**

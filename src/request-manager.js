@@ -83,7 +83,7 @@ class ResponseHandler {
  */
 class RequestManager {
 	/**
-	 * Query API. All parameters are inherited from {Route4Me}
+	 * Creates new RequestManager. All parameters are inherited from {Route4Me}
 	 *
 	 * @param {object} apiKey  - see {Route4Me}
 	 * @param {object} options - see {Route4Me}
