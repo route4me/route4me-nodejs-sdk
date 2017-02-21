@@ -5,12 +5,11 @@
 ## About
 
 * [Install and use](intro/install.md)
-* [Authors](intro/authors.md)
+* [Authors and License](intro/authors.md)
 
 ## Tutorials
 
 * [API vs SDK](tutorials/api-vs-sdk.md)
-* [Maintainer Guide](tutorials/maintainer-guide.md)
 
 ## Code
 
@@ -39,3 +38,7 @@
 ## Examples
 
 * [All in one page](examples/all.md)
+
+----
+
+* [Maintainer Guide](tutorials/maintainer-guide.md)

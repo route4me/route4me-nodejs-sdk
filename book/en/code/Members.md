@@ -63,7 +63,7 @@ Create an User
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Members.Member&gt;</code> |  |
 
 **Example** *(Sample input)*  
-```js
+```javascript
 {
 	"firstName": "Clay",
 	"lastName": "Abraham",
@@ -156,7 +156,7 @@ Update an existing user.
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Members.Member&gt;</code> |  |
 
 **Example** *(Sample input)*  
-```js
+```javascript
 {
 	"firstName": "Clay",
 	"lastName": "Abraham",

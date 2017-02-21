@@ -45,7 +45,7 @@ Create an Order
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Order&gt;</code> |  |
 
 **Example** *(Sample input)*  
-```js
+```javascript
 
 {
 	"address_1": "1358 E Luzerne St, Philadelphia, PA 19124, US",

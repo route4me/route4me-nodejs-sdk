@@ -1,19 +1,75 @@
-## Classes
+<a id="ILogger" name="ILogger"></a>
 
-<table>
-  <thead>
-    <tr>
-      <th>Global</th><th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-<tr>
-    <td><a href="#Route4Me">Route4Me</a></td>
-    <td><p>Route4Me main SDK class</p>
-</td>
-    </tr>
-</tbody>
-</table>
+## ILogger
+
+ILogger interface
+
+**Category**: Route4Me  
+**Access:** public  
+
+* [ILogger](#ILogger)
+    * _instance_
+        * [.debug([arg])](#ILogger+debug)
+        * [.info([arg])](#ILogger+info)
+        * [.warn([arg])](#ILogger+warn)
+        * [.error([arg])](#ILogger+error)
+    * _inner_
+        * [~LoggerParams](#ILogger..LoggerParams)
+
+<a id="ILogger+debug" name="ILogger+debug"></a>
+
+### iLogger.debug([arg])
+
+Debug
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [arg] | <code>[LoggerParams](#ILogger..LoggerParams)</code> &#124; <code>Error</code> &#124; <code>string</code> | Something to log |
+
+<a id="ILogger+info" name="ILogger+info"></a>
+
+### iLogger.info([arg])
+
+Info
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [arg] | <code>[LoggerParams](#ILogger..LoggerParams)</code> &#124; <code>Error</code> &#124; <code>string</code> | Something to log |
+
+<a id="ILogger+warn" name="ILogger+warn"></a>
+
+### iLogger.warn([arg])
+
+Warning
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [arg] | <code>[LoggerParams](#ILogger..LoggerParams)</code> &#124; <code>Error</code> &#124; <code>string</code> | Something to log |
+
+<a id="ILogger+error" name="ILogger+error"></a>
+
+### iLogger.error([arg])
+
+Error
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [arg] | <code>[LoggerParams](#ILogger..LoggerParams)</code> &#124; <code>Error</code> &#124; <code>string</code> | Something to log |
+
+<a id="ILogger..LoggerParams" name="ILogger..LoggerParams"></a>
+
+### ILogger~LoggerParams
+
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| msg | <code>string</code> | Message to log |
+| err | <code>Error</code> | Error object, if error occured |
 
 <a id="Route4Me" name="Route4Me"></a>
 
@@ -21,6 +77,45 @@
 
 Route4Me main SDK class
 
+The main purpose of this class: to provide an access to API-methods and to keep
+chore and routine in the shadow as long as possible.
+
+With `route4me` instance you should get responses from API easy-peasy.
+
+Main members of the instanse of `Route4Me` class:
+
+* [ActivityFeed  ](ActivityFeed)
+* [Addresses     ](Addresses)
+* [AddressBook   ](AddressBook)
+* [AvoidanceZones](AvoidanceZones)
+* [Geocoding     ](Geocoding)
+* [Members       ](Members)
+* [Notes         ](Notes)
+* [Optimizations ](Optimizations)
+* [Orders        ](Orders)
+* [Routes        ](Routes)
+* [Territories   ](Territories)
+* [Tracking      ](Tracking)
+* [Vehicles      ](Vehicles)
+
+Each member corresponds to an bunch of methods, described in API-documentation,
+but the most methods in this SDK have unified names:
+
+* `create` - to create new entity
+* `get` - to get **one** entity (usually, by ID)
+* `list` - returns a list of **all** entities (sometimes with `limit` and `offset`)
+* `update` - allows to edit entity
+* `remove` - removes/deletes the entity
+* `search` - obviously: allows to search items by a set of criteria
+
+For most use cases it is necessary:
+
+1. Create `route4me` instance (with your API-key)
+2. Call the appropriate method
+3. Get the result (as JSON object)
+4. **PROFIT**
+
+**Summary**: Route4Me main SDK class  
 **Category**: Route4Me  
 
 * [Route4Me](#Route4Me)
@@ -53,7 +148,7 @@ Create new API client
 | apiKey | <code>string</code> |  | API KEY |
 | [options] | <code>object</code> |  | Additional options for new instance |
 | [options.baseUrl] | <code>string</code> | <code>&quot;\&quot;https://route4me.com\&quot;&quot;</code> | Base URL for sending requests |
-| [options.logger] | <code>ILogger</code> | <code></code> | Logger facility |
+| [options.logger] | <code>[ILogger](#ILogger)</code> | <code></code> | Logger facility |
 | [options.promise] | <code>boolean</code> &#124; <code>function</code> | <code>false</code> | Use promises instead of callbacks. Usage: * `false` means _no promises, use callbacks_; * `true` means _use global `Promise`_ as promises' constructor; * `constructor (function)` forces to use explicit Promise library. See also Examples section of this documentation. |
 | [options.validate] | <code>module:route4me-node~ValidationCallback</code> | <code>false</code> | Validator for input and output parameters of the API methods. Set **falsey** value to skip autovalidation (in favor of manual check). |
 

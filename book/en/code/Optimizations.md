@@ -92,7 +92,7 @@ Remove an existing optimization belonging to an user.
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Optimizations.RemoveResponse&gt;</code> |  |
 
 **Example**  
-```js
+```javascript
 const response = {
 	"status":true,
 	"removed":1
@@ -139,7 +139,7 @@ from an optimization problem with specified optimization_problem_id.
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Optimizations.UnlinkAddressResponse&gt;</code> |  |
 
 **Example**  
-```js
+```javascript
 const response = {
 	"deleted":true,
 	"route_destination_id":1

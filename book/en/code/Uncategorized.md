@@ -1,24 +1,3 @@
-## Classes
-
-<table>
-  <thead>
-    <tr>
-      <th>Global</th><th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-<tr>
-    <td><a href="#RequestManager">RequestManager</a></td>
-    <td><p>Request manager, provides</p>
-<ul>
-<li>simple API for sending HTTP requests</li>
-<li>a way to handle HTTP responses</li>
-</ul>
-</td>
-    </tr>
-</tbody>
-</table>
-
 <a id="module_route4me-node" name="module_route4me-node"></a>
 
 ## route4me-node
@@ -62,93 +41,6 @@ API-response callback
 | --- | --- | --- |
 | err | <code>Error</code> | Error (if ocurred) |
 | [res] | <code>Object</code> | Value returned by API (on success) |
-
-<a id="module_route4me-node/utils" name="module_route4me-node/utils"></a>
-
-## route4me-node/utils
-
-**Access:** protected  
-
-* [route4me-node/utils](#module_route4me-node/utils)
-    * [~clone(obj)](#module_route4me-node/utils..clone) ⇒ <code>any</code>
-    * _Route4Me_
-        * [~ILogger](#module_route4me-node/utils..ILogger)
-            * [.debug([arg])](#module_route4me-node/utils..ILogger+debug)
-            * [.info([arg])](#module_route4me-node/utils..ILogger+info)
-            * [.warn([arg])](#module_route4me-node/utils..ILogger+warn)
-            * [.error([arg])](#module_route4me-node/utils..ILogger+error)
-
-<a id="module_route4me-node/utils..clone" name="module_route4me-node/utils..clone"></a>
-
-### route4me-node/utils~clone(obj) ⇒ <code>any</code>
-
-Deep clone an object
-
-**Returns**: <code>any</code> - - The deep copy of an object  
-**Access:** protected  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| obj | <code>any</code> | Original object |
-
-<a id="module_route4me-node/utils..ILogger" name="module_route4me-node/utils..ILogger"></a>
-
-### route4me-node/utils~ILogger
-
-ILogger interface
-
-**Category**: Route4Me  
-**Access:** public  
-
-* [~ILogger](#module_route4me-node/utils..ILogger)
-    * [.debug([arg])](#module_route4me-node/utils..ILogger+debug)
-    * [.info([arg])](#module_route4me-node/utils..ILogger+info)
-    * [.warn([arg])](#module_route4me-node/utils..ILogger+warn)
-    * [.error([arg])](#module_route4me-node/utils..ILogger+error)
-
-<a id="module_route4me-node/utils..ILogger+debug" name="module_route4me-node/utils..ILogger+debug"></a>
-
-#### iLogger.debug([arg])
-
-Debug
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| [arg] | <code>[LoggerParams](#ILogger..LoggerParams)</code> &#124; <code>Error</code> &#124; <code>string</code> | Something to log |
-
-<a id="module_route4me-node/utils..ILogger+info" name="module_route4me-node/utils..ILogger+info"></a>
-
-#### iLogger.info([arg])
-
-Info
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| [arg] | <code>[LoggerParams](#ILogger..LoggerParams)</code> &#124; <code>Error</code> &#124; <code>string</code> | Something to log |
-
-<a id="module_route4me-node/utils..ILogger+warn" name="module_route4me-node/utils..ILogger+warn"></a>
-
-#### iLogger.warn([arg])
-
-Warning
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| [arg] | <code>[LoggerParams](#ILogger..LoggerParams)</code> &#124; <code>Error</code> &#124; <code>string</code> | Something to log |
-
-<a id="module_route4me-node/utils..ILogger+error" name="module_route4me-node/utils..ILogger+error"></a>
-
-#### iLogger.error([arg])
-
-Error
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| [arg] | <code>[LoggerParams](#ILogger..LoggerParams)</code> &#124; <code>Error</code> &#124; <code>string</code> | Something to log |
 
 <a id="RequestManager" name="RequestManager"></a>
 
@@ -216,4 +108,17 @@ Early cancel request
 | --- | --- | --- |
 | error | <code>Error</code> | The reason the request was cancelled. |
 | [callback] | <code>[RequestCallback](#module_route4me-node..RequestCallback)</code> |  |
+
+<a id="clone" name="clone"></a>
+
+## clone(obj) ⇒ <code>any</code>
+
+Deep clone an object
+
+**Returns**: <code>any</code> - - The deep copy of an object  
+**Access:** protected  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| obj | <code>any</code> | Original object |
 

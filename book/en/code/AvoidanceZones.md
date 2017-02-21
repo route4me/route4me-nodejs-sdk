@@ -105,6 +105,6 @@ DELETE a specified Avoidance Zone.
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AvoidanceZones.RemoveResponse&gt;</code> |  |
 
 **Example**  
-```js
+```javascript
 SampleResponse = {"status":true}
 ```

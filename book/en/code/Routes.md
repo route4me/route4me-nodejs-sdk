@@ -124,7 +124,7 @@ Given multiple route ID’s, remove all routes at the same time.
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.RemoveResponse&gt;</code> |  |
 
 **Example**  
-```js
+```javascript
 SampleResponse = {
 {
 	"deleted": true,

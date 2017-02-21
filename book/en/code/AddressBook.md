@@ -142,6 +142,6 @@ REMOVE locations from an address book.
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;boolean&gt;</code> |  |
 
 **Example**  
-```js
+```javascript
 SampleResponse = {"status":true}
 ```

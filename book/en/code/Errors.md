@@ -1,30 +1,3 @@
-## Classes
-
-<table>
-  <thead>
-    <tr>
-      <th>Global</th><th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-<tr>
-    <td><a href="#Route4MeError">Route4MeError</a></td>
-    <td><p>The base type for all error-objects of this SDK</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#Route4MeApiError">Route4MeApiError</a></td>
-    <td><p>Error received from the API-server</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#Route4MeValidationError">Route4MeValidationError</a></td>
-    <td><p>Error occured during internal validation</p>
-</td>
-    </tr>
-</tbody>
-</table>
-
 <a id="Route4MeError" name="Route4MeError"></a>
 
 ## Route4MeError
