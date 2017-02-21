@@ -1,6 +1,6 @@
 "use strict"
 
-/**
+/*
  * @module route4me-node/utils
  * @protected
  */
