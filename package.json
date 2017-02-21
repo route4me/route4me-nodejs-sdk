@@ -73,7 +73,7 @@
     "gulp-eslint": "^3.0.1",
     "gulp-if": "^2.0.2",
     "gulp-jsdoc3": "^1.0.1",
-    "gulp-mocha": "^3.0.1",
+    "gulp-mocha": "^4.0.1",
     "gulp-size": "^2.1.0",
     "gulp-util": "^3.0.8",
     "istanbul": "^0.4.5",
