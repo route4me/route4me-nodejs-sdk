@@ -63,6 +63,7 @@ GET all optimizations belonging to an user.
 **Todo**
 
 - [ ] TODO: there is no JSON-schema for the response
+- [ ] TODO: convert options to optional parameter
 
 
 | Param | Type | Description |

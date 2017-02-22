@@ -99,6 +99,10 @@ Rapid Address Search
 
 **See**: [https://route4me.io/docs/#rapid-address-search](https://route4me.io/docs/#rapid-address-search)  
 **Since**: 0.1.9  
+**Todo**
+
+- [ ] TODO: make options optional
+
 
 | Param | Type | Description |
 | --- | --- | --- |

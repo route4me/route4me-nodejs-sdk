@@ -67,6 +67,10 @@ two-way chat.
 
 **See**: [https://route4me.io/docs/#log-a-specific-message](https://route4me.io/docs/#log-a-specific-message)  
 **Since**: 0.1.12  
+**Todo**
+
+- [ ] TODO: convert options to optional
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |

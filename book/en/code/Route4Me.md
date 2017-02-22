@@ -133,6 +133,7 @@ For most use cases it is necessary:
         * [.Territories](#Route4Me+Territories) : <code>Territories</code>
         * [.Tracking](#Route4Me+Tracking) : <code>Tracking</code>
         * [.Vehicles](#Route4Me+Vehicles) : <code>Vehicles</code>
+        * [.version](#Route4Me+version) ⇒ <code>string</code>
     * _static_
         * [.version](#Route4Me.version) ⇒ <code>string</code>
 
@@ -231,6 +232,15 @@ Create new API client
 
 **Vehicles** related API calls
 
+<a id="Route4Me+version" name="Route4Me+version"></a>
+
+### route4Me.version ⇒ <code>string</code>
+
+Version of this API client
+
+**Returns**: <code>string</code> - Version  
+**Read only**: true  
+**Since**: 0.2.0  
 <a id="Route4Me.version" name="Route4Me.version"></a>
 
 ### Route4Me.version ⇒ <code>string</code>
