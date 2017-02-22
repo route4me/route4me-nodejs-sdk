@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
   "main": "src/",
+  "browser": "./dist/browser/route4me.js",
   "scripts": {
     "build": "gulp build",
     "lint": "gulp lint",
@@ -56,6 +57,9 @@
   },
   "devDependencies": {
     "ajv": "^4.11.2",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
     "bluebird": "^3.4.7",
     "chai": "^3.5.0",
     "chai-json-schema": "^1.4.0",
@@ -70,6 +74,8 @@
     "gitbook": "^3.2.2",
     "gitbook-cli": "^2.3.0",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-cached": "^1.1.1",
     "gulp-eslint": "^3.0.1",
     "gulp-if": "^2.0.2",
     "gulp-jsdoc3": "^1.0.1",
@@ -78,11 +84,15 @@
     "gulp-util": "^3.0.8",
     "istanbul": "^0.4.5",
     "jsdoc-to-markdown": "^3.0.0",
+    "json-string-loader": "https://github.com/volebo/json-string-loader/tarball/v1.0.0-custom.0",
     "lodash": "^4.17.4",
     "mkdirp-bluebird": "^1.2.1",
     "mocha": "^3.2.0",
+    "run-sequence": "^1.2.2",
     "sinon": "^1.17.7",
     "superagent-mocker": "https://github.com/maxkoryukov/superagent-mocker/tarball/v0.5.2-beta.2",
+    "webpack": "^2.2.1",
+    "webpack-stream": "^3.2.0",
     "yargs": "^6.6.0"
   },
   "publishConfig": {

@@ -1,10 +1,10 @@
 "use strict"
 
-const debug       = require("debug")("route4me-dev:webpack")
-const _           = require("lodash")
-const path        = require("path")
-const webpack     = require("webpack")
-const packageJson = require("./package.json")
+const debug        = require("debug")("route4me-dev:webpack")
+const _            = require("lodash")
+const path         = require("path")
+const webpack      = require("webpack")
+const packageJson  = require("./package.json")
 
 const distDir = path.join(__dirname, "dist")
 

@@ -1,35 +1,54 @@
 "use strict"
 
-const fs       = require("fs")
-const path     = require("path")
-const argv     = require("yargs").argv
-const mkdirp   = require("mkdirp-bluebird")
-const Promise  = require("bluebird")
-const gulp     = require("gulp")
-const util     = require("gulp-util")
-const gulpIf   = require("gulp-if")
-const eslint   = require("gulp-eslint")
-const mocha    = require("gulp-mocha")
-const size     = require("gulp-size")
+const argv         = require("yargs").argv
+
+const fs           = require("fs")
+const path         = require("path")
+const mkdirp       = require("mkdirp-bluebird")
+const Promise      = require("bluebird")
+const named        = require("vinyl-named")
+const _            = require("lodash")
+
+const gulp         = require("gulp")
+const util         = require("gulp-util")
+const gulpIf       = require("gulp-if")
+const eslint       = require("gulp-eslint")
+const mocha        = require("gulp-mocha")
+const size         = require("gulp-size")
+const gulpWebpack  = require("webpack-stream")
+const babel        = require("gulp-babel")
+const gulpSequence = require("run-sequence")
+const cache        = require("gulp-cached")
 
 // TODO: disable:
 const jsdoc    = require("gulp-jsdoc3")
 
 const jsdoc2md = require("jsdoc-to-markdown")
-const gitbook  = require('gitbook')
+const gitbook  = require("gitbook")
+
+const webpack  = require("webpack")
 
 const fix = !!argv.fix
 const grep = argv.grep
 
-const jsdocConfig = require("./.jsdocrc.js")
+const jsdocConfig   = require("./.jsdocrc.js")
+const webpackConfig = require("./webpack.config.js")
 
-const paths = {
+const PATHS = {
 	"test": [
 		"test/**/*.test.js",
 		"test/**/*.spec.js",
 		"test/**/*.integration.js",
 		"examples/**/*.js",
 	],
+
+	"src": [
+		"src/**/*.js",
+	],
+
+	"entry": {
+		"browser": "./src/index.js",
+	},
 }
 
 gulp.task("doc:pre", function DG() {     // eslint-disable-line prefer-arrow-callback
@@ -39,7 +58,7 @@ gulp.task("doc:pre", function DG() {     // eslint-disable-line prefer-arrow-cal
 
 	return mkdirp(docDir)
 		.then(() => jsdoc2md.getTemplateData({
-			files: "src/**/*.js",
+			files: PATHS.src,
 		}))
 		.each((item) => {
 			parentsTree[item.id] = item
@@ -117,8 +136,8 @@ gulp.task("watch:doc", ["doc:pre"], function D() { // eslint-disable-line prefer
 		})
 })
 
+// TODO: remove this task
 gulp.task("docold", function D() {           // eslint-disable-line prefer-arrow-callback
-	// TODO: remove this task
 	return gulp.src(
 		"README.md", {
 			read: false,
@@ -127,11 +146,11 @@ gulp.task("docold", function D() {           // eslint-disable-line prefer-arrow
 })
 
 gulp.task("lint", function L() {          // eslint-disable-line prefer-arrow-callback
-	return gulp.src([
-		"./src/**/*.js",
-		"./test/**/*.js",
-		"./examples/**/*.js",
-	], { "base": "./" })
+	return gulp.src(_.flattenDeep([
+		PATHS.src,
+		PATHS.test,
+	]), { "base": "./" })
+		.pipe(cache('lint', { optimizeMemory: true }))
 		.pipe(eslint({
 			fix,
 		}))
@@ -141,7 +160,7 @@ gulp.task("lint", function L() {          // eslint-disable-line prefer-arrow-ca
 })
 
 gulp.task("test", function T() {          // eslint-disable-line prefer-arrow-callback
-	return gulp.src(paths.test, { read: false })
+	return gulp.src(PATHS.test, { read: false })
 		.pipe(mocha({
 			// reporter: "list",
 			ignoreLeaks: false,
@@ -152,14 +171,25 @@ gulp.task("test", function T() {          // eslint-disable-line prefer-arrow-ca
 })
 
 gulp.task("build:node", function BN() {      // eslint-disable-line prefer-arrow-callback
-	return gulp.src("./src/**/*.js")
+	return gulp.src(PATHS.src)
+		.pipe(babel())
 		.pipe(size({ title: "build:node", showFiles: true }))
 		.pipe(gulp.dest("dist/"))
 })
 
+gulp.task("build:browser", function BB() {  // eslint-disable-line prefer-arrow-callback
+	return gulp.src(PATHS.entry.browser)
+		.pipe(named())
+		.pipe(gulpWebpack(webpackConfig, webpack))
+		.pipe(size({ title: "build:browser", showFiles: true }))
+		.pipe(gulp.dest("dist/browser/"))
+})
 
 // SUPERTASKS
 
 gulp.task("doc", ["watch:doc"])
-gulp.task("build", ["build:node"])
-gulp.task("default", ["build", "lint", "test"])
+gulp.task("build", ["build:node", "build:browser"])
+gulp.task("default", (done) => {
+	gulpSequence("lint", "build", "test", done)
+	return undefined
+})
