@@ -15,6 +15,7 @@ const packageJsonReplacement = _.pick(packageJson, [
 ])
 
 const commonRules = {
+	profile: true,
 	module: {
 		loaders: [
 			{
@@ -50,18 +51,21 @@ const commonRules = {
 }
 
 const configs = [{
+	target: "web",
 	output: {
 		path: path.resolve(distDir),
 		library: "route4me",
 		libraryTarget: "umd2",
 	},
 }, {
+	target: "web",
 	output: {
 		path: path.resolve(distDir, "commonjs"),
 		library: "route4me",
 		libraryTarget: "commonjs2",
 	},
 }, {
+	target: "web",
 	output: {
 		path: path.resolve(distDir, "amd"),
 		library: "route4me",
