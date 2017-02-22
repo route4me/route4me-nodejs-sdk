@@ -1,6 +1,5 @@
 "use strict"
 
-// const path     = require("path")
 const debug    = require("debug")("route4me")
 const platform = require("platform")
 
