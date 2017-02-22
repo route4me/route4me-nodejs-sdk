@@ -137,6 +137,8 @@ class ActivityFeed {
 	 * @see {@link https://route4me.io/docs/#log-a-specific-message}
 	 * @since 0.1.12
 	 *
+	 * @todo TODO: convert options to optional
+	 *
 	 * @param {string|Object}   criteria - Criteria for event filter. Depending on type will be
 	 * considered as:
 	 * * `string` - criteria is a string representation of [Activity type]{@link ActivityTypeEnum}
@@ -145,7 +147,7 @@ class ActivityFeed {
 	 * @param {string}  [criteria.activityType] - [Activity type]{@link ActivityTypeEnum}
 	 * @param {string}  [criteria.routeId]      - Route ID
 	 *
-	 * @param {Object}          options  - Options for activity search
+	 * @param {Object}   options          - Options for activity search
 	 * @param {number}  [options.limit]   - List limit
 	 * @param {number}  [options.offset]  - List offset
 	 * @param {boolean} [options.includeTeamActivities=false] - Indicate, whether team
@@ -187,15 +189,15 @@ class ActivityFeed {
 			opt = {}
 		}
 
-		if ("offset" in options) {
-			qs["offset"] = options["offset"]
+		if ("offset" in opt) {
+			qs["offset"] = opt["offset"]
 		}
 
-		if ("limit" in options) {
-			qs["limit"] = options["limit"]
+		if ("limit" in opt) {
+			qs["limit"] = opt["limit"]
 		}
 
-		if (options["includeTeamActivities"]) {
+		if (opt["includeTeamActivities"]) {
 			qs["team"] = "true"
 		}
 

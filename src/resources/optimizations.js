@@ -67,6 +67,7 @@ class Optimizations {
 	 * @see {@link https://route4me.io/docs/#get-optimizations}
 	 *
 	 * @todo TODO: there is no JSON-schema for the response
+	 * @todo TODO: convert options to optional parameter
 	 *
 	 * @param {(number|string|Array<string>|Array<number>)} states   - List of states [1..6]
 	 * @param {Object} options          - List-parameters

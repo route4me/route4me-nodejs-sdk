@@ -107,6 +107,21 @@ describe(helper.toSuiteName(__filename), () => {
 					done()
 				})
 			})
+
+			it("without options should call route4me", (done)=>{
+				resource.list(criteria, undefined, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"GET", "https://route4me.com/api/get_activities.php",
+						{
+							"route_id": "5C15E83A4BE005BCD1537955D28D51D7",
+						},
+						null
+					)
+					done()
+				})
+			})
 		})
 	})
 })

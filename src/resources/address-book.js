@@ -76,6 +76,7 @@ class AddressBook {
 	 *
 	 * @todo TODO: Parse response
 	 * @todo TODO: Describe ALL options (in one place, list+search)
+	 * @todo TODO: convert options to optional
 	 *
 	 * @param {Object} options - List-parameters
 	 * @param {module:route4me-node~RequestCallback<jsonschema:AddressBook.AddressBookSearchResult>}
@@ -93,6 +94,7 @@ class AddressBook {
 	 * @see {@link https://route4me.io/docs/#location-search}
 	 * @since 0.1.8
 	 *
+	 * @todo TODO: convert options to optional
 	 * @todo TODO: Parse response
 	 * @todo TODO: Describe ALL options (in one place, list+search)
 	 * @todo TODO: Handle the diffrerent format of the output (when fields are set,
