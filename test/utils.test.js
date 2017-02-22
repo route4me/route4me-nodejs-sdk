@@ -6,6 +6,34 @@ const errors   = require("../src/errors")
 const helper  = require("./helper")
 
 describe(helper.toSuiteName(__filename), () => {
+	describe("ILogger", () => {
+		let log
+
+		before(() => {
+			log = utils.noopLogger
+		})
+
+		it("should have debug method", () => {
+			const act = log.debug()
+			expect(act).is.undefined
+		})
+
+		it("should have info method", () => {
+			const act = log.info()
+			expect(act).is.undefined
+		})
+
+		it("should have warn method", () => {
+			const act = log.warn()
+			expect(act).is.undefined
+		})
+
+		it("should have error method", () => {
+			const act = log.error()
+			expect(act).is.undefined
+		})
+	})
+
 	describe("get", () => {
 		describe("without default value", () => {
 			const testCases = [
