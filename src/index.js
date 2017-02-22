@@ -8,7 +8,7 @@ const errors = require("./errors")
 const Route4Me = require("./route4me")
 
 module.exports = function route4meModule(...args) {
-	return new oute4Me(...args)
+	return new Route4Me(...args)
 }
 
 module.exports.version = Route4Me.version

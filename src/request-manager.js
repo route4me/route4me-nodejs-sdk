@@ -185,7 +185,7 @@ class RequestManager {
 		// apiUrl = "https://httpbin.org/post"
 
 		const req = request[method](apiUrl)
-			.set("User-Agent", this._userAgent)
+			.set("Route4Me-User-Agent", this._userAgent)
 			.timeout(timeouts)
 			.redirects(1000)	// unlimited number of redirects
 			.accept("application/json")

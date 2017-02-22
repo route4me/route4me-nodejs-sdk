@@ -201,6 +201,18 @@ class Route4Me {
 	static get version() {
 		return packageJson.version
 	}
+
+	/**
+	 * Version of this API client
+	 *
+	 * @since 0.2.0
+	 *
+	 * @return {string} Version
+	 * @readonly
+	 */
+	get version() {
+		return packageJson.version
+	}
 }
 
 module.exports = Route4Me
