@@ -210,7 +210,7 @@ class Route4Me {
 	 * @return {string} Version
 	 * @readonly
 	 */
-	get version() {
+	get version() {		// eslint-disable-line  class-methods-use-this
 		return packageJson.version
 	}
 }

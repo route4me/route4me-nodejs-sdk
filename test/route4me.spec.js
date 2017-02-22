@@ -11,7 +11,7 @@ describe(helper.toSuiteName(__filename), () => {
 	describe("instance API", () => {
 		let route4me
 
-		before(()=>{
+		before(() => {
 			route4me = new Route4Me(testApiKey)
 		})
 

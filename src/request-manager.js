@@ -182,7 +182,7 @@ class RequestManager {
 
 		// debug only!
 		// qs["oldUrl"] = apiUrl
-		// apiUrl = "https://httpbin.org/post"
+		// apiUrl = "https://httpbin.org/get"
 
 		const req = request[method](apiUrl)
 			.set("Route4Me-User-Agent", this._userAgent)

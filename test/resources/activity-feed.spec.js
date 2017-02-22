@@ -108,7 +108,7 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 
-			it("without options should call route4me", (done)=>{
+			it("without options should call route4me", (done) => {
 				resource.list(criteria, undefined, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
