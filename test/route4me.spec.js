@@ -47,7 +47,7 @@ describe(helper.toSuiteName(__filename), () => {
 
 				expect(route4me).is.not.null
 				expect(spy.calledWith("debug")).is.true
-				expect(spy.callCount).is.equal(1)
+				expect(spy.callCount).is.above(1)
 			})
 		})
 	})
