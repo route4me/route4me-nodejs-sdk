@@ -4,9 +4,9 @@ Access Route4Me's logistics-as-a-service API using our Node.js SDK
 [![Build Status](https://travis-ci.org/route4me/route4me-nodejs-sdk.svg?branch=master)](https://travis-ci.org/route4me/route4me-nodejs-sdk)
 [![Build status](https://ci.appveyor.com/api/projects/status/t292y0ywsri2x4el?svg=true)](https://ci.appveyor.com/project/maxkoryukov/route4me-nodejs-sdk-oga5i)
 
-[![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Star)](https://github.com/route4me/route4me-node-sdk)
 [![npm version](https://img.shields.io/npm/v/route4me-node.svg)][NPM]
 [![npm downloads](https://img.shields.io/npm/dm/route4me-node.svg)][NPM]
+[![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Star)](https://github.com/route4me/route4me-node-sdk)
 
 [![codebeat badge](https://codebeat.co/badges/79f229c5-27f7-4ab9-8503-2d6fc95052f9)](https://codebeat.co/projects/github-com-route4me-route4me-nodejs-sdk)
 [![bitHound Overall Score](https://www.bithound.io/github/route4me/route4me-nodejs-sdk/badges/score.svg)](https://www.bithound.io/github/route4me/route4me-nodejs-sdk)
