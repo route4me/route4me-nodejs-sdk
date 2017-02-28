@@ -48,8 +48,9 @@ script:
 
 deploy:
   provider: npm
-  api_key: $NPM_API_KEY
-  email: igor@route4me.com
+  api_key:
+    secure: RAPxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxZP/8=
+  email: npm@route4me.com
   on:
     tags: true                            # published only for tags
     node_js: 6                            # published only for one NPM version
