@@ -1,7 +1,5 @@
 "use strict"
 
-const debug           = require("debug")("route4me:activity-feed")
-
 const utils           = require("./../utils")
 // const errors          = require("./../errors")
 
@@ -147,7 +145,7 @@ class ActivityFeed {
 	 * @param {string}  [criteria.activityType] - [Activity type]{@link ActivityTypeEnum}
 	 * @param {string}  [criteria.routeId]      - Route ID
 	 *
-	 * @param {Object}   options          - Options for activity search
+	 * @param {Object}  [options]          - Options for activity search
 	 * @param {number}  [options.limit]   - List limit
 	 * @param {number}  [options.offset]  - List offset
 	 * @param {boolean} [options.includeTeamActivities=false] - Indicate, whether team
@@ -160,7 +158,17 @@ class ActivityFeed {
 
 		let cri = criteria
 		let opt = options
+		let cb = callback
 
+		// ARITY
+		if (typeof cb === "undefined"
+			&& typeof opt === "function") {
+			// there are two params, and the second is CALLBACK
+			cb = opt
+			opt = undefined
+		}
+
+		// CRITERIA
 		if ("string" === typeof cri) {
 			cri = {
 				"activityType": cri,
@@ -176,7 +184,10 @@ class ActivityFeed {
 		) {
 			qs["activity_type"] = aliasedActivityTypeEnum[cri["activityType"]]
 		} else {
-			debug("list: ignore `activity_type` filter")
+			this.r.logger.debug({
+				src: "route4me:activity-feed:list",
+				msg: "ignore 'activity_type' filter"
+			})
 		}
 
 		if ("routeId" in cri) {
@@ -206,7 +217,7 @@ class ActivityFeed {
 			path: "/api/get_activities.php",
 			qs,
 			validationContext: "ActivityFeed.ActivityFeedResult",
-		}, callback)
+		}, cb)
 	}
 }
 

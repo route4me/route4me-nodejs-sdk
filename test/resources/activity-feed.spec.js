@@ -81,26 +81,106 @@ describe(helper.toSuiteName(__filename), () => {
 				saMock.clearRoutes()
 			})
 
-			const criteria = {
-				routeId: "5C15E83A4BE005BCD1537955D28D51D7",
-			}
+			describe("3 arguments are passed", () => {
+				const criteria = {
+					routeId: "5C15E83A4BE005BCD1537955D28D51D7",
+				}
 
-			const options = {
-				includeTeamActivities: true,
-				limit: 10,
-			}
+				const options = {
+					includeTeamActivities: true,
+					limit: 10,
+				}
+				it("should call route4me", (done) => {
+					resource.list(criteria, options, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+						helper.expectRequest(req,
+							"GET", "https://route4me.com/api/get_activities.php",
+							{
+								"route_id": "5C15E83A4BE005BCD1537955D28D51D7",
 
-			it("should call route4me", (done) => {
-				resource.list(criteria, options, (err, res) => {
+								"team": "true",
+								"limit": "10",
+							},
+							null
+						)
+						done()
+					})
+				})
+			})
+
+			describe("3 arguments, but options are undefined", () => {
+				const criteria = {
+					routeId: "5C15E83A4BE005BCD1537955D28D51D7",
+				}
+
+				it("should call route4me", (done) => {
+					resource.list(criteria, undefined, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+						helper.expectRequest(req,
+							"GET", "https://route4me.com/api/get_activities.php",
+							{
+								"route_id": "5C15E83A4BE005BCD1537955D28D51D7",
+							},
+							null
+						)
+						done()
+					})
+				})
+			})
+
+			describe("3 arguments, with 'offset' among options", () => {
+				const options = {
+					includeTeamActivities: false,
+					offset: 743,
+				}
+
+				it("with undefined criteria should call route4me", (done) => {
+					resource.list(undefined, options, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+						helper.expectRequest(req,
+							"GET", "https://route4me.com/api/get_activities.php",
+							{
+								"offset": "743",
+							},
+							null
+						)
+						done()
+					})
+				})
+			})
+
+			describe("2 arguments, no options, but with callback", () => {
+				const criteria = {
+					routeId: "5C15E83A4BE005BCD1537955D28D51D7",
+				}
+
+				it("should call route4me", (done) => {
+					resource.list(criteria, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+						helper.expectRequest(req,
+							"GET", "https://route4me.com/api/get_activities.php",
+							{
+								"route_id": "5C15E83A4BE005BCD1537955D28D51D7",
+							},
+							null
+						)
+						done()
+					})
+				})
+			})
+
+			it("with text criteria should call route4me", (done) => {
+				resource.list("RouteOptimized", (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
 						"GET", "https://route4me.com/api/get_activities.php",
 						{
-							"route_id": "5C15E83A4BE005BCD1537955D28D51D7",
-
-							"team": "true",
-							"limit": "10",
+							"activity_type": "route-optimized",
 						},
 						null
 					)
@@ -108,20 +188,20 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 
-			it("without options should call route4me", (done) => {
-				resource.list(criteria, undefined, (err, res) => {
+			it("with undefined criteria should call route4me", (done) => {
+				resource.list(undefined, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
 						"GET", "https://route4me.com/api/get_activities.php",
 						{
-							"route_id": "5C15E83A4BE005BCD1537955D28D51D7",
 						},
 						null
 					)
 					done()
 				})
 			})
+
 		})
 	})
 })
