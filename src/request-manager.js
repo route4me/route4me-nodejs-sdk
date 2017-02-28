@@ -46,7 +46,7 @@ class ResponseHandler {
 
 	_handleOk(res) {
 		this.logger.debug({
-			src:"route4me:request-manager:ResponseHandler:_handleOk",
+			src: "route4me:request-manager:ResponseHandler:_handleOk",
 			msg: "response ok"
 		})
 
@@ -69,7 +69,7 @@ class ResponseHandler {
 
 	_handleError(err, res) {
 		this.logger.debug({
-			src:"route4me:request-manager:ResponseHandler:_handleError",
+			src: "route4me:request-manager:ResponseHandler:_handleError",
 			msg: "response error"
 		})
 		const e = new errors.Route4MeApiError(err.message, res, err)
@@ -109,19 +109,19 @@ class RequestManager {
 
 		if (true === opt["promise"]) {
 			this.logger.debug({
-				src:"route4me:request-manager:RequestManager",
+				src: "route4me:request-manager:RequestManager",
 				msg: "promises: global Promise"
 			})
 			this._promiseConstructor = Promise
 		} else if ("function" === typeof opt["promise"]) {
 			this.logger.debug({
-				src:"route4me:request-manager:RequestManager",
+				src: "route4me:request-manager:RequestManager",
 				msg: "promises: explicitly defined promise-lib"
 			})
 			this._promiseConstructor = opt["promise"]
 		} else {
 			this.logger.debug({
-				src:"route4me:request-manager:RequestManager",
+				src: "route4me:request-manager:RequestManager",
 				msg: "promises: off"
 			})
 			this._promiseConstructor = null
@@ -165,7 +165,7 @@ class RequestManager {
 		let apiUrl
 		if (options.url) {
 			this.logger.debug({
-				src:"route4me:request-manager:RequestManager:_makeRequest",
+				src: "route4me:request-manager:RequestManager:_makeRequest",
 				msg: "WARNING: _makeRequest called with FULL url, but MUST be called only for partial path",
 				url: options.url,
 			})
@@ -190,7 +190,7 @@ class RequestManager {
 		}
 
 		this.logger.info({
-			src:"route4me:request-manager:RequestManager:_makeRequest",
+			src: "route4me:request-manager:RequestManager:_makeRequest",
 			msg: "sending request",
 			method,
 			url: apiUrl,

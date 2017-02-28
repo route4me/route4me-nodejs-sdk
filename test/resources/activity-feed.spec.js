@@ -201,7 +201,6 @@ describe(helper.toSuiteName(__filename), () => {
 					done()
 				})
 			})
-
 		})
 	})
 })

@@ -161,8 +161,8 @@ class ActivityFeed {
 		let cb = callback
 
 		// ARITY
-		if (typeof cb === "undefined"
-			&& typeof opt === "function") {
+		if ("undefined" === typeof cb
+			&& "function" === typeof opt) {
 			// there are two params, and the second is CALLBACK
 			cb = opt
 			opt = undefined
