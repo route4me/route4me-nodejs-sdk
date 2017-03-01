@@ -1,6 +1,5 @@
 "use strict"
 
-// const path     = require("path")
 const debug    = require("debug")("route4me")
 const platform = require("platform")
 
@@ -200,6 +199,18 @@ class Route4Me {
 	 * @readonly
 	 */
 	static get version() {
+		return packageJson.version
+	}
+
+	/**
+	 * Version of this API client
+	 *
+	 * @since 0.2.0
+	 *
+	 * @return {string} Version
+	 * @readonly
+	 */
+	get version() {		// eslint-disable-line  class-methods-use-this
 		return packageJson.version
 	}
 }

@@ -65,6 +65,10 @@ Get a limited number of the routes belonging to the user.
 
 **See**: [https://route4me.io/docs/#get-multiple-routes](https://route4me.io/docs/#get-multiple-routes)  
 **Since**: 0.1.8  
+**Todo**
+
+- [ ] TODO: make options optional param
+
 
 | Param | Type | Description |
 | --- | --- | --- |

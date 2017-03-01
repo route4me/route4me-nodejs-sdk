@@ -71,6 +71,7 @@ GET all locations from a user’s address book.
 
 - [ ] TODO: Parse response
 - [ ] TODO: Describe ALL options (in one place, list+search)
+- [ ] TODO: convert options to optional
 
 
 | Param | Type | Description |
@@ -93,6 +94,7 @@ field/defined fields.
 **Since**: 0.1.8  
 **Todo**
 
+- [ ] TODO: convert options to optional
 - [ ] TODO: Parse response
 - [ ] TODO: Describe ALL options (in one place, list+search)
 - [ ] TODO: Handle the diffrerent format of the output (when fields are set,

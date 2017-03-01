@@ -1,7 +1,5 @@
 "use strict"
 
-const debug           = require("debug")("route4me:activity-feed")
-
 const utils           = require("./../utils")
 // const errors          = require("./../errors")
 
@@ -137,6 +135,8 @@ class ActivityFeed {
 	 * @see {@link https://route4me.io/docs/#log-a-specific-message}
 	 * @since 0.1.12
 	 *
+	 * @todo TODO: convert options to optional
+	 *
 	 * @param {string|Object}   criteria - Criteria for event filter. Depending on type will be
 	 * considered as:
 	 * * `string` - criteria is a string representation of [Activity type]{@link ActivityTypeEnum}
@@ -145,7 +145,7 @@ class ActivityFeed {
 	 * @param {string}  [criteria.activityType] - [Activity type]{@link ActivityTypeEnum}
 	 * @param {string}  [criteria.routeId]      - Route ID
 	 *
-	 * @param {Object}          options  - Options for activity search
+	 * @param {Object}  [options]          - Options for activity search
 	 * @param {number}  [options.limit]   - List limit
 	 * @param {number}  [options.offset]  - List offset
 	 * @param {boolean} [options.includeTeamActivities=false] - Indicate, whether team
@@ -158,7 +158,17 @@ class ActivityFeed {
 
 		let cri = criteria
 		let opt = options
+		let cb = callback
 
+		// ARITY
+		if ("undefined" === typeof cb
+			&& "function" === typeof opt) {
+			// there are two params, and the second is CALLBACK
+			cb = opt
+			opt = undefined
+		}
+
+		// CRITERIA
 		if ("string" === typeof cri) {
 			cri = {
 				"activityType": cri,
@@ -174,7 +184,10 @@ class ActivityFeed {
 		) {
 			qs["activity_type"] = aliasedActivityTypeEnum[cri["activityType"]]
 		} else {
-			debug("list: ignore `activity_type` filter")
+			this.r.logger.debug({
+				src: "route4me:activity-feed:list",
+				msg: "ignore 'activity_type' filter"
+			})
 		}
 
 		if ("routeId" in cri) {
@@ -187,15 +200,15 @@ class ActivityFeed {
 			opt = {}
 		}
 
-		if ("offset" in options) {
-			qs["offset"] = options["offset"]
+		if ("offset" in opt) {
+			qs["offset"] = opt["offset"]
 		}
 
-		if ("limit" in options) {
-			qs["limit"] = options["limit"]
+		if ("limit" in opt) {
+			qs["limit"] = opt["limit"]
 		}
 
-		if (options["includeTeamActivities"]) {
+		if (opt["includeTeamActivities"]) {
 			qs["team"] = "true"
 		}
 
@@ -204,7 +217,7 @@ class ActivityFeed {
 			path: "/api/get_activities.php",
 			qs,
 			validationContext: "ActivityFeed.ActivityFeedResult",
-		}, callback)
+		}, cb)
 	}
 }
 

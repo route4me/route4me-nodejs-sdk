@@ -1,7 +1,5 @@
 "use strict"
 
-// const path     = require("path")
-const debug    = require("debug")("route4me")
 const request  = require("superagent")
 
 const errors          = require("./errors")
@@ -27,6 +25,10 @@ class ResponseHandler {
 		}
 	}
 
+	get logger() {
+		return this._logger
+	}
+
 	callback(err, res) {
 		if (err) {
 			return this._handleError(err, res)
@@ -43,7 +45,10 @@ class ResponseHandler {
 	}
 
 	_handleOk(res) {
-		debug("response ok")
+		this.logger.debug({
+			src: "route4me:request-manager:ResponseHandler:_handleOk",
+			msg: "response ok"
+		})
 
 		const data = this._validate(res.body, this._validateContext, res)
 
@@ -63,7 +68,10 @@ class ResponseHandler {
 	}
 
 	_handleError(err, res) {
-		debug("response error")
+		this.logger.debug({
+			src: "route4me:request-manager:ResponseHandler:_handleError",
+			msg: "response error"
+		})
 		const e = new errors.Route4MeApiError(err.message, res, err)
 
 		// TODO: include url and method to the log message
@@ -100,15 +108,28 @@ class RequestManager {
 		this._validate = "function" === typeof opt["validate"] ? opt["validate"] : ix => ix
 
 		if (true === opt["promise"]) {
-			debug("promises: global Promise")
+			this.logger.debug({
+				src: "route4me:request-manager:RequestManager",
+				msg: "promises: global Promise"
+			})
 			this._promiseConstructor = Promise
 		} else if ("function" === typeof opt["promise"]) {
-			debug("promises: explicitly defined promise-lib")
+			this.logger.debug({
+				src: "route4me:request-manager:RequestManager",
+				msg: "promises: explicitly defined promise-lib"
+			})
 			this._promiseConstructor = opt["promise"]
 		} else {
-			debug("promises: off")
+			this.logger.debug({
+				src: "route4me:request-manager:RequestManager",
+				msg: "promises: off"
+			})
 			this._promiseConstructor = null
 		}
+	}
+
+	get logger() {
+		return this._logger
 	}
 
 	/**
@@ -143,8 +164,12 @@ class RequestManager {
 
 		let apiUrl
 		if (options.url) {
-			debug("WARNING: _makeRequest called with FULL url, but MUST be called only for partial path",
-				options.url)
+			this.logger.debug({
+				src: "route4me:request-manager:RequestManager:_makeRequest",
+				msg: "WARNING: _makeRequest called with FULL url, but MUST be called only for partial path",
+				url: options.url,
+			})
+
 			apiUrl = options.url
 		} else {
 			apiUrl = `${this._baseUrl}${options.path}`
@@ -164,8 +189,8 @@ class RequestManager {
 			c = null
 		}
 
-		debug("sending request", method, apiUrl, qs)
-		this._logger.info({
+		this.logger.info({
+			src: "route4me:request-manager:RequestManager:_makeRequest",
 			msg: "sending request",
 			method,
 			url: apiUrl,
@@ -182,10 +207,10 @@ class RequestManager {
 
 		// debug only!
 		// qs["oldUrl"] = apiUrl
-		// apiUrl = "https://httpbin.org/post"
+		// apiUrl = "https://httpbin.org/get"
 
 		const req = request[method](apiUrl)
-			.set("User-Agent", this._userAgent)
+			.set("Route4Me-User-Agent", this._userAgent)
 			.timeout(timeouts)
 			.redirects(1000)	// unlimited number of redirects
 			.accept("application/json")

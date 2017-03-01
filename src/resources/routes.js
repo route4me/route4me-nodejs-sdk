@@ -186,6 +186,7 @@ class Routes {
 	 *
 	 * @see {@link https://route4me.io/docs/#get-multiple-routes}
 	 * @since 0.1.8
+	 * @todo TODO: make options optional param
 	 *
 	 * @param {Object} options          - List-parameters
 	 * @param {number} [options.limit]  - List limit

@@ -116,6 +116,7 @@ class Geocoding {
 	 * @since 0.1.9
 	 *
 	 * @deprecated This is very strange, vague API method..
+	 * @todo TODO: make options optional
 	 *
 	 * @param {Object} criteria - Search criterias, such as `zipcode`, `house number` and other
 	 * @param {number|string} [criteria.zipCode]     - Zip code of the area

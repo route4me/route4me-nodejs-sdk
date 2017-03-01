@@ -27,7 +27,9 @@ class ILogger {
 	 * Debug
 	 * @param {ILogger~LoggerParams|Error|string} [arg]    Something to log
 	 */
-	debug(arg) {}    // eslint-disable-line class-methods-use-this, no-unused-vars
+	// eslint-disable-next-line class-methods-use-this, no-unused-vars
+	debug(arg) {
+	}
 	/**
 	 * Info
 	 * @param {ILogger~LoggerParams|Error|string} [arg]    Something to log
@@ -201,10 +203,7 @@ function toOptimizationStatesSafe(states) {
 	try {
 		arr = toIntArray(states)
 	} catch (err) {
-		if (err instanceof errors.Route4MeError) {
-			return err
-		}
-		throw err
+		return err
 	}
 
 	arr = uniq(arr.filter(_isInStateRange))
