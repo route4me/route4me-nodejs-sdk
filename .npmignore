@@ -3,6 +3,7 @@
 # =========================================
 
 # place per-project settings here
+/book/
 /docs/
 /examples/
 /tutorials/
