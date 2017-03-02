@@ -8,6 +8,7 @@ const mkdirp       = require("mkdirp-bluebird")
 const Promise      = require("bluebird")
 const named        = require("vinyl-named")
 const _            = require("lodash")
+const debug        = require("debug")("route4me:gulpfile")
 
 const gulp         = require("gulp")
 const util         = require("gulp-util")
@@ -15,6 +16,7 @@ const gulpIf       = require("gulp-if")
 const eslint       = require("gulp-eslint")
 const mocha        = require("gulp-mocha")
 const size         = require("gulp-size")
+// const gulpUglify   = require("gulp-uglify")
 const gulpWebpack  = require("webpack-stream")
 const babel        = require("gulp-babel")
 const gulpSequence = require("run-sequence")
@@ -28,11 +30,31 @@ const gitbook  = require("gitbook")
 
 const webpack  = require("webpack")
 
+const jsdocConfig   = require("./.jsdocrc.js")
+const webpackConfigs = {
+	"browser": require("./webpack/browser.config.js"),
+	"test": require("./webpack/test.config.js"),
+}
+
 const fix = !!argv.fix
 const grep = argv.grep
 
-const jsdocConfig   = require("./.jsdocrc.js")
-const webpackConfig = require("./webpack.config.js")
+
+/*
+ ======================================
+ MONKEY PATCH
+ ======================================
+ */
+gulp.Gulp.prototype.__runTask = gulp.Gulp.prototype._runTask
+gulp.Gulp.prototype._runTask = function monkeyPatchGulpRunTask(task) {
+	this.currentTask = task
+	this.__runTask(task)
+}
+/*
+ ======================================
+ MONKEY PATCH
+ ======================================
+ */
 
 const PATHS = {
 	"test": [
@@ -122,18 +144,18 @@ gulp.task("watch:doc", ["doc:pre"], function D() { // eslint-disable-line prefer
 	const cmd = gitbook.commands.filter(c => c.name.match(/^serve\s/i))[0]
 
 	return cmd.exec([
-			path.join(__dirname),
-			path.join(__dirname, "tmp", "gitbook")
-		], {
-			log: "info",
-			format: "website",
-			open: false,
-			port: 4000,
-			live: true,
-			//lrport: typeof options.livereload === 'object' ? options.livereload.port : undefined,
-			watch: true, //typeof options.livereload === 'object' ? options.livereload.watch : undefined,
+		path.join(__dirname),
+		path.join(__dirname, "tmp", "gitbook")
+	], {
+		log: "info",
+		format: "website",
+		open: false,
+		port: 4000,
+		live: true,
+			// lrport: typeof options.livereload === 'object' ? options.livereload.port : undefined,
+		watch: true, //typeof options.livereload === 'object' ? options.livereload.watch : undefined,
 			//browser: options.browser
-		})
+	})
 })
 
 // TODO: remove this task
@@ -150,7 +172,7 @@ gulp.task("lint", function L() {          // eslint-disable-line prefer-arrow-ca
 		PATHS.src,
 		PATHS.test,
 	]), { "base": "./" })
-		.pipe(cache('lint', { optimizeMemory: true }))
+		.pipe(cache("lint", { optimizeMemory: true }))
 		.pipe(eslint({
 			fix,
 		}))
@@ -173,22 +195,38 @@ gulp.task("test", function T() {          // eslint-disable-line prefer-arrow-ca
 gulp.task("build:node", function BN() {      // eslint-disable-line prefer-arrow-callback
 	return gulp.src(PATHS.src)
 		.pipe(babel())
-		.pipe(size({ title: "build:node", showFiles: true }))
+		.pipe(size({ title: this.currentTask.name, showFiles: true }))
 		.pipe(gulp.dest("dist/"))
 })
 
-gulp.task("build:browser", function BB() {  // eslint-disable-line prefer-arrow-callback
+gulp.task("build:browser", function taskBuildBrowser() {  // eslint-disable-line prefer-arrow-callback
+	const config = webpackConfigs.browser
+
+	debug("WebPack config:", config)
+
 	return gulp.src(PATHS.entry.browser)
 		.pipe(named())
-		.pipe(gulpWebpack(webpackConfig, webpack))
-		.pipe(size({ title: "build:browser", showFiles: true }))
+		.pipe(gulpWebpack(config, webpack))
+		.pipe(size({ title: this.currentTask.name, showFiles: true }))
 		.pipe(gulp.dest("dist/browser/"))
+})
+
+gulp.task("build:browser:test", function taskBuildBrowserTest() {  // eslint-disable-line prefer-arrow-callback
+	const config = webpackConfigs.test
+
+	debug("WebPack config:", config)
+
+	return gulp.src(PATHS.entry.browser)
+		.pipe(named())
+		.pipe(gulpWebpack(config, webpack))
+		.pipe(size({ title: this.currentTask.name, showFiles: true }))
+		.pipe(gulp.dest("tmp/browser/"))
 })
 
 // SUPERTASKS
 
 gulp.task("doc", ["watch:doc"])
-gulp.task("build", ["build:node", "build:browser"])
+gulp.task("build", ["build:node", "build:browser", "build:browser:test"])
 gulp.task("default", (done) => {
 	gulpSequence("lint", "build", "test", done)
 	return undefined
