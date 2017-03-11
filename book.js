@@ -1,9 +1,10 @@
 "use strict"
 
-const pkg = require('./package.json')
+const pkg = require("./package.json")
 
 let gatoken = process.env["GA_TOKEN"]
 if (!gatoken) {
+	// eslint-disable-next-line no-console
 	console.warn("Environment key: GA_TOKEN is not defined")
 	gatoken =  gatoken || "UA-UNDEFINED-01"
 }
@@ -12,9 +13,9 @@ module.exports = {
 	"root": "./book",
 	"title": 'Route4Me Javascript SDK',
 
-    "variables": {
-        version: pkg.version
-    },
+	"variables": {
+		version: pkg.version
+	},
 
 	"plugins": [
 		// "summary-extend@git+https://github.com/maxkoryukov/gitbook-plugin-summary-extend.git",

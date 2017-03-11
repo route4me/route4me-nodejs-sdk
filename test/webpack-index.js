@@ -6,6 +6,7 @@
  * This is just an index for all tests and test suites
  */
 
+// eslint-disable-next-line
 import './bootstrap'
 
 /*

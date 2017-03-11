@@ -9,7 +9,7 @@ const config = _.merge({
 	module: {
 	},
 	entry: {
-		"route4me": "./src/index.js",
+		"route4me": ["babel-polyfill", "./src/index.js"],
 	},
 	plugins: [
 		new webpack.optimize.UglifyJsPlugin({
