@@ -7,7 +7,15 @@ This is the history of changes of the `route4me-node` package
 
 ## unreleased // ???
 
-## 2015-02-16 // 0.2.0
+## 2017-03-11 // 0.2.1
+
+* alpha-version for browser
+* fix babel built (troubles with `instanceof` solved)
+* distribution improvements (NPM fine-tuning)
+* update license
+* new documentation builder
+
+## 2017-02-16 // 0.2.0
 
 * Completely rewritten SDK, all methods splitted to namespaces:
     * AddressBook
