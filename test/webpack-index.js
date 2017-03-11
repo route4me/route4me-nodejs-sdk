@@ -7,7 +7,7 @@
  */
 
 // eslint-disable-next-line
-import './bootstrap'
+require("./bootstrap")
 
 /*
 https://webpack.github.io/docs/context.html
@@ -18,10 +18,10 @@ https://webpack.github.io/docs/context.html
 
 */
 
-const ctx = require.context('../test/', true, /^().+\.(spec|test)\.js$/)
+const ctx = require.context("../test/", true, /^().+\.(spec|test)\.js$/)
 ctx.keys().forEach(ctx)
 
-const contextExamples = require.context('../examples/', true, /^().+\.(spec|test)\.js$/)
+const contextExamples = require.context("../examples/", true, /^().+\.(spec|test)\.js$/)
 contextExamples.keys().forEach(contextExamples)
 
 module.exports = ctx

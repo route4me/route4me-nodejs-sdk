@@ -33,7 +33,7 @@ const config = _.mergeWith({
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: "Custom template using Handlebars",
-			template: "./etc/templates/test.hbs",
+			template: "./build-config/templates/test.hbs",
 			filename: "test.html",
 			inject: false, // BECAUSE this plugin includes the same shit twice...
 			//chunks: [],
