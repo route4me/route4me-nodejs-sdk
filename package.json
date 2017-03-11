@@ -2,7 +2,7 @@
   "name": "route4me-node",
   "version": "0.2.0",
   "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
-  "main": "src/",
+  "main": "./dist/",
   "browser": "./dist/browser/route4me.js",
   "scripts": {
     "build": "gulp build",
@@ -21,6 +21,7 @@
     "routing",
     "path",
     "route optimization",
+    "optimization",
     "API",
     "route planner",
     "courier",
@@ -39,6 +40,10 @@
     {
       "name": "Igor S.",
       "email": "igor@route4me.com"
+    },
+    {
+      "name": "Dan Khasis",
+      "email": "dan@route4me.com"
     }
   ],
   "engines": {
