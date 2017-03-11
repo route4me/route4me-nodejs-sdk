@@ -5,13 +5,12 @@
 # place per-project settings here
 /book/
 /docs/
+/etc/
 /examples/
 /tutorials/
 /src/
-/webpack/
 book.js
 .istanbul.yml
-.babelrc
 
 # =========================================
 # common part

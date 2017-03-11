@@ -20,10 +20,6 @@ const config = {
 
 		loaders: [
 			{
-				test: /\.js$/,
-				exclude: /(node_modules|bower_components)/,
-				loader: "babel-loader",
-			}, {
 				test: /[/\\]package\.json$/,
 				loader: "json-string-loader",
 				options: {
@@ -47,4 +43,11 @@ const config = {
 	},
 }
 
-module.exports = config
+function mergeCustomizer(objValue, srcValue) {
+	if (_.isArray(objValue)) {
+		return objValue.concat(srcValue);
+	}
+}
+
+module.exports.config = config
+module.exports.mergeCustomizer = mergeCustomizer
