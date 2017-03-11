@@ -5,7 +5,6 @@ exports = module.exports = {
 	"globals": {
 		"expect": true,
 		"Route4Me": true,
-		"packageRoot": true,
 	},
 
 	"rules": {
