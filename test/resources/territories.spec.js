@@ -154,7 +154,12 @@ describe(helper.toSuiteName(__filename), () => {
 							{ "territory_id": "AAAAAAAAAAAAAAA9D5CA2EA375E08B97" },
 							null
 						)
-						expect(err).is.instanceof(route4me.Route4MeValidationError)
+
+						// // TODO: use this code!!
+						// expect(err).is.instanceof(route4me.Route4MeValidationError)
+						expect(err).to.be.an.instanceof(Error)
+							.and.have.property("name", "Route4MeValidationError")
+
 						expect(err).has.property("message")
 							.that.match(/valid/i)
 						done()
