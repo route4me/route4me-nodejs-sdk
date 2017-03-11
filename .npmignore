@@ -5,7 +5,7 @@
 # place per-project settings here
 /book/
 /docs/
-/etc/
+/build-config/
 /examples/
 /tutorials/
 /src/
