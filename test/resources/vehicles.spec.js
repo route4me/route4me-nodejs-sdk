@@ -5,7 +5,8 @@ const saMock  = require("superagent-mocker")(request)
 
 const helper  = require("../helper")
 
-const Route4Me = require("../../src/route4me")
+// eslint-disable-next-line import/no-dynamic-require
+const Route4Me = require(`${packageRoot}/route4me`)
 
 const testApiKey = "11111111111111111111111111111111"
 

@@ -3,7 +3,8 @@ exports = module.exports = {
 		"mocha": true,
 	},
 	"globals": {
-		"expect": true
+		"expect": true,
+		"packageRoot": true,
 	},
 
 	"rules": {

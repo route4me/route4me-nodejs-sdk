@@ -1,3 +1,4 @@
 "use strict"
 
-global.Route4Me = require("..")
+// eslint-disable-next-line import/no-dynamic-require
+global.Route4Me = require(`${packageRoot}`)

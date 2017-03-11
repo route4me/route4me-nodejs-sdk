@@ -5,16 +5,15 @@ const saMock  = require("superagent-mocker")(request)
 
 const helper  = require("./../helper")
 
-const Route4Me = require("../../src/route4me")
-const errors   = require("../../src/errors")
+// eslint-disable-next-line import/no-dynamic-require
+const route4me = require(`${packageRoot}`)
 
 const testApiKey = "11111111111111111111111111111111"
 
-
 describe(helper.toSuiteName(__filename), () => {
 	describe("SDK methods", () => {
-		const route4me = new Route4Me(testApiKey)
-		const resource = route4me.Territories
+		const route4meClient = new route4me.Route4Me(testApiKey)
+		const resource = route4meClient.Territories
 		let req
 
 		beforeEach(() => {
@@ -155,10 +154,11 @@ describe(helper.toSuiteName(__filename), () => {
 							{ "territory_id": "AAAAAAAAAAAAAAA9D5CA2EA375E08B97" },
 							null
 						)
-
-						expect(err).is.instanceof(errors.Route4MeValidationError)
+console.log(route4me.Route4MeValidationError)
+console.log(err)
 						expect(err).has.property("message")
 							.that.match(/valid/i)
+						expect(err).is.instanceof(route4me.Route4MeValidationError)
 						done()
 					})
 				})
