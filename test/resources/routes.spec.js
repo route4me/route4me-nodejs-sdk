@@ -5,16 +5,15 @@ const saMock  = require("superagent-mocker")(request)
 
 const helper  = require("./../helper")
 
-// eslint-disable-next-line import/no-dynamic-require
-const Route4Me = require(`${packageRoot}/route4me`)
+const route4me = require("./../../dist")
 
 const testApiKey = "11111111111111111111111111111111"
 
 
 describe(helper.toSuiteName(__filename), () => {
 	describe("SDK methods", () => {
-		const route4me = new Route4Me(testApiKey)
-		const resource = route4me.Routes
+		const route4meClient = new route4me.Route4Me(testApiKey)
+		const resource = route4meClient.Routes
 		let req
 
 		beforeEach(() => {

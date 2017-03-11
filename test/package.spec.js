@@ -1,6 +1,6 @@
 "use strict"
 
-const pkg = require("../")
+const pkg = require("./../dist")
 const helper  = require("./helper")
 
 const testApiKey = "11111111111111111111111111111111"
