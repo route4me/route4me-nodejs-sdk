@@ -3,7 +3,7 @@
 const sinon = require("sinon")
 const helper  = require("./helper")
 
-const Route4Me = require("../src/route4me")
+const Route4Me = require("../dist").Route4Me
 
 const testApiKey = "11111111111111111111111111111111"
 

@@ -2,7 +2,7 @@
 
 const Ajv = require("ajv")
 
-const Route4Me = require("../src/route4me")
+const Route4Me = require("../dist").Route4Me
 
 const helper = require("./helper")
 

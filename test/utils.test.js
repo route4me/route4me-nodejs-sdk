@@ -1,7 +1,7 @@
 "use strict"
 
-const utils = require("../src/utils")
-const errors   = require("../src/errors")
+const utils = require("../dist/utils")
+const errors   = require("../dist/errors")
 
 const helper  = require("./helper")
 
@@ -10,7 +10,7 @@ describe(helper.toSuiteName(__filename), () => {
 		let log
 
 		before(() => {
-			log = utils.noopLogger
+			log = new utils.ILogger()
 		})
 
 		it("should have debug method", () => {

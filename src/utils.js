@@ -215,7 +215,7 @@ function toIsoDateString(d) {
 	return d.toISOString().substring(0, 10)
 }
 
-exports.noopLogger = new ILogger()
+exports.ILogger = ILogger
 exports.CustomInternalPostProcessing = CustomInternalPostProcessing
 
 exports.isObject = isObject

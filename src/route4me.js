@@ -94,7 +94,7 @@ class Route4Me {
 		// check options
 
 		opt["baseUrl"]  = utils.get(options, "baseUrl", "https://route4me.com")
-		opt["logger"]   = utils.get(options, "logger",   utils.noopLogger)
+		opt["logger"]   = utils.get(options, "logger",   new utils.ILogger())
 		opt["promise"]  = utils.get(options, "promise",  false)
 		opt["validate"] = utils.get(options, "validate", false)
 
