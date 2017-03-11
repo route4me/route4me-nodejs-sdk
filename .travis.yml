@@ -49,7 +49,7 @@ script:
 deploy:
   provider: npm
   api_key:
-    secure: RAPxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxZP/8=
+    secure: "FT5Qlcnxz0Gg4i9HIj6vtjdMqYcuyhHs8B4sU6Df0bavMvpVucUNDkMXlcN/H3mPD1xE1/1tYhxZu2YF0n9m9yI89wqGQiywRdBAqT3hyKLrQOsFYkWkF322yviDQaZON2R6eEh43/e/iQH0ejxKDBYG4SF+cLEgR3EBcxBNsTI="
   email: npm@route4me.com
   on:
     tags: true                            # published only for tags

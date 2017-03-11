@@ -95,6 +95,7 @@
     "lodash": "^4.17.4",
     "mkdirp-bluebird": "^1.2.1",
     "mocha": "^3.2.0",
+    "mocha-loader": "^1.1.1",
     "run-sequence": "^1.2.2",
     "sinon": "^1.17.7",
     "superagent-mocker": "https://github.com/maxkoryukov/superagent-mocker/tarball/v0.5.2-beta.2",
