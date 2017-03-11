@@ -17,8 +17,14 @@ class Route4MeError extends Error {
 	constructor(msg, innerError) {
 		super(msg)
 
-		this.name = "Route4MeError"
 		this.innerError = innerError || null
+
+		Object.defineProperty(this, 'name', {
+			configurable: true,
+			enumerable : false,
+			value : this.constructor.name,
+			writable : true,
+		});
 	}
 }
 
@@ -39,8 +45,6 @@ class Route4MeApiError extends Route4MeError {
 	 */
 	constructor(msg, res, innerError) {
 		super(msg, innerError)
-
-		this.name = "Route4MeApiError"
 
 		this.statusCode = res.statusCode
 		this.apiPath = res.request.url
@@ -64,8 +68,6 @@ class Route4MeValidationError extends Route4MeError {
 	 */
 	constructor(msg, data, innerError) {
 		super(msg, innerError)
-
-		this.name = "Route4MeValidationError"
 
 		/**
 		 * Data under consideration
