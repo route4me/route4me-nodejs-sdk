@@ -11,7 +11,7 @@ if (!gatoken) {
 
 module.exports = {
 	"root": "./book",
-	"title": 'Route4Me Javascript SDK',
+	"title": "Route4Me Javascript SDK",
 
 	"variables": {
 		version: pkg.version

@@ -4,7 +4,7 @@ const config = {
 	"presets": [
 		"babel-preset-es2015",
 		"babel-preset-es2016",
-		[ "env", {
+		["env", {
 			"targets": {
 				"browsers": ["> 5%"],
 			},

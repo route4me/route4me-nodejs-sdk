@@ -1,7 +1,9 @@
 "use strict"
 
 const utils = require("../dist/utils")
-const errors   = require("../dist/errors")
+
+// // TODO: this will be required, when babel-error-inheritance will be solved.
+// const errors   = require("../dist/errors")
 
 const helper  = require("./helper")
 

@@ -45,8 +45,10 @@ const config = {
 
 function mergeCustomizer(objValue, srcValue) {
 	if (_.isArray(objValue)) {
-		return objValue.concat(srcValue);
+		return objValue.concat(srcValue)
 	}
+
+	return undefined
 }
 
 module.exports.config = config

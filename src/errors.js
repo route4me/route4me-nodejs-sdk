@@ -53,7 +53,6 @@ class Route4MeApiError extends Route4MeError {
 
 		this.statusCode = res.statusCode
 		this.apiPath = res.request.url
-
 	}
 }
 
