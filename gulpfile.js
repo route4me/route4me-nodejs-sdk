@@ -226,7 +226,11 @@ gulp.task("build:browser:test", function taskBuildBrowserTest() {  // eslint-dis
 // SUPERTASKS
 
 gulp.task("doc", ["watch:doc"])
-gulp.task("build", ["build:node", "build:browser", "build:browser:test"])
+gulp.task("build", (done) => {
+	gulpSequence(["build:node", "build:browser"], "build:browser:test", done)
+	return undefined
+})
+
 gulp.task("default", (done) => {
 	gulpSequence("lint", "build", "test", done)
 	return undefined

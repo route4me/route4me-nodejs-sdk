@@ -14,7 +14,7 @@ const config = _.merge({
 		sinon: "sinon"
 	},
 	entry: {
-		"test": "./test/index.js",
+		"test": "./test/webpack-index.js",
 	},
 	output: {
 		path: path.join(testDir, "browser"),
