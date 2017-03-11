@@ -154,11 +154,9 @@ describe(helper.toSuiteName(__filename), () => {
 							{ "territory_id": "AAAAAAAAAAAAAAA9D5CA2EA375E08B97" },
 							null
 						)
-console.log(route4me.Route4MeValidationError)
-console.log(err)
+						expect(err).is.instanceof(route4me.Route4MeValidationError)
 						expect(err).has.property("message")
 							.that.match(/valid/i)
-						expect(err).is.instanceof(route4me.Route4MeValidationError)
 						done()
 					})
 				})
