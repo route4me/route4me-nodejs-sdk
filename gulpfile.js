@@ -23,12 +23,13 @@ const gulpSequence = require("run-sequence")
 const cache        = require("gulp-cached")
 
 // TODO: disable:
-const jsdoc    = require("gulp-jsdoc3")
+const jsdoc        = require("gulp-jsdoc3")
 
-const jsdoc2md = require("jsdoc-to-markdown")
-const gitbook  = require("gitbook")
+const jsdoc2md     = require("jsdoc-to-markdown")
+const gitbook      = require("gitbook")
 
-const webpack  = require("webpack")
+const webpack      = require("webpack")
+const del          = require("del")
 
 const jsdocConfig               = require("./.jsdocrc.js")
 const webpackBrowserConfig      = require("./etc/webpack.browser.js")
@@ -223,6 +224,13 @@ gulp.task("build:browser:test", function taskBuildBrowserTest() {  // eslint-dis
 		.pipe(gulpWebpack(config, webpack))
 		.pipe(size({ title: this.currentTask.name, showFiles: true }))
 		.pipe(gulp.dest("tmp/browser/"))
+})
+
+gulp.task("clean", function () {
+	return del([
+		"./dist/",
+		"./tmp/",
+	])
 })
 
 // SUPERTASKS
