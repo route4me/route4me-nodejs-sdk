@@ -30,11 +30,11 @@ const gitbook  = require("gitbook")
 
 const webpack  = require("webpack")
 
-const jsdocConfig   = require("./.jsdocrc.js")
-const webpackConfigs = {
-	"browser": require("./webpack/browser.config.js"),
-	"test": require("./webpack/test.config.js"),
-}
+const jsdocConfig               = require("./.jsdocrc.js")
+const webpackBrowserConfig      = require("./etc/webpack.browser.js")
+const webpackTestConfig         = require("./etc/webpack.test.js")
+const babelBrowserConfig        = require("./etc/babel.browser.js")
+const babelNodeConfig           = require("./etc/babel.node.js")
 
 const fix = !!argv.fix
 const grep = argv.grep
@@ -52,7 +52,7 @@ gulp.Gulp.prototype._runTask = function monkeyPatchGulpRunTask(task) {
 }
 /*
  ======================================
- MONKEY PATCH
+ /MONKEY PATCH
  ======================================
  */
 
@@ -193,14 +193,16 @@ gulp.task("test", function T() {          // eslint-disable-line prefer-arrow-ca
 })
 
 gulp.task("build:node", function BN() {      // eslint-disable-line prefer-arrow-callback
+	const babelConfig = babelNodeConfig
+
 	return gulp.src(PATHS.src)
-		.pipe(babel())
+		.pipe(babel(babelConfig))
 		.pipe(size({ title: this.currentTask.name, showFiles: true }))
 		.pipe(gulp.dest("dist/"))
 })
 
 gulp.task("build:browser", function taskBuildBrowser() {  // eslint-disable-line prefer-arrow-callback
-	const config = webpackConfigs.browser
+	const config = webpackBrowserConfig
 
 	debug("WebPack config:", config)
 
@@ -212,7 +214,7 @@ gulp.task("build:browser", function taskBuildBrowser() {  // eslint-disable-line
 })
 
 gulp.task("build:browser:test", function taskBuildBrowserTest() {  // eslint-disable-line prefer-arrow-callback
-	const config = webpackConfigs.test
+	const config = webpackTestConfig
 
 	debug("WebPack config:", config)
 
