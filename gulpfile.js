@@ -31,11 +31,11 @@ const gitbook      = require("gitbook")
 const webpack      = require("webpack")
 const del          = require("del")
 
-const jsdocConfig               = require("./.jsdocrc.js")
-const webpackBrowserConfig      = require("./etc/webpack.browser.js")
-const webpackTestConfig         = require("./etc/webpack.test.js")
-const babelBrowserConfig        = require("./etc/babel.browser.js")
-const babelNodeConfig           = require("./etc/babel.node.js")
+const jsdocConfig          = require("./.jsdocrc.js")
+const webpackBrowserConfig = require("./build-config/webpack.browser.js")
+const webpackTestConfig    = require("./build-config/webpack.test.js")
+const babelBrowserConfig   = require("./build-config/babel.browser.js")
+const babelNodeConfig      = require("./build-config/babel.node.js")
 
 const fix = !!argv.fix
 const grep = argv.grep

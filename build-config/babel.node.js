@@ -12,9 +12,9 @@ const config = {
 		}],
 	],
 	"plugins": [
-		["babel-plugin-transform-builtin-extend", {
-			globals: ["Error"]
-		}]
+		// ["babel-plugin-transform-builtin-extend", {
+		// 	globals: ["Error"]
+		// }]
 	]
 }
 
