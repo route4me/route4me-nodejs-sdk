@@ -49,7 +49,7 @@ script:
 deploy:
   provider: npm
   api_key:
-    secure: "FT5Qlcnxz0Gg4i9HIj6vtjdMqYcuyhHs8B4sU6Df0bavMvpVucUNDkMXlcN/H3mPD1xE1/1tYhxZu2YF0n9m9yI89wqGQiywRdBAqT3hyKLrQOsFYkWkF322yviDQaZON2R6eEh43/e/iQH0ejxKDBYG4SF+cLEgR3EBcxBNsTI="
+    secure: "PIb/s2Sfz8VksAE5ctpfoyyzdXUBR+M9s3mb22l97sFgZ8enIiH96x9dowyHpMAGd0r3DHBDjGV6l9O6uqNc23A/i7ayQHhbc7Hu7L5uKjv9R6nrzsX3i9SOWFqoUzZb6sVqxP5iVsnevY2YbRx7citip5M6InFyiAiTrH5c4eI="
   email: npm@route4me.com
   on:
     tags: true                            # published only for tags

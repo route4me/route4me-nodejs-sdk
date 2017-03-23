@@ -16,6 +16,7 @@ const packageJsonReplacement = _.pick(packageJson, [
 const config = {
 	profile: true,
 	target: "web",
+	bail: true,
 	module: {
 
 		loaders: [
