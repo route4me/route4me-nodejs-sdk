@@ -10,7 +10,7 @@ ActivityFeed facility
     * [new ActivityFeed(requestManager)](#new_ActivityFeed_new)
     * [.ActivityTypeEnum](#ActivityFeed+ActivityTypeEnum)
     * [.create(data, [callback])](#ActivityFeed+create)
-    * [.list(criteria, options, [callback])](#ActivityFeed+list)
+    * [.list(criteria, [options], [callback])](#ActivityFeed+list)
 
 <a id="new_ActivityFeed_new" name="new_ActivityFeed_new"></a>
 
@@ -57,7 +57,7 @@ two-way chat.
 
 <a id="ActivityFeed+list" name="ActivityFeed+list"></a>
 
-### activityFeed.list(criteria, options, [callback])
+### activityFeed.list(criteria, [options], [callback])
 
 Log a Specific Message
 
@@ -77,7 +77,7 @@ two-way chat.
 | criteria | <code>string</code> &#124; <code>Object</code> |  | Criteria for event filter. Depending on type will be considered as: * `string` - criteria is a string representation of [Activity type](ActivityTypeEnum) * `Object` - criteria is a set of filters, see below |
 | [criteria.activityType] | <code>string</code> |  | [Activity type](ActivityTypeEnum) |
 | [criteria.routeId] | <code>string</code> |  | Route ID |
-| options | <code>Object</code> |  | Options for activity search |
+| [options] | <code>Object</code> |  | Options for activity search |
 | [options.limit] | <code>number</code> |  | List limit |
 | [options.offset] | <code>number</code> |  | List offset |
 | [options.includeTeamActivities] | <code>boolean</code> | <code>false</code> | Indicate, whether team activities should be included |

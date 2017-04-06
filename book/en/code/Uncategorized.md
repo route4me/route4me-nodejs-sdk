@@ -50,7 +50,7 @@ Request manager, provides
 * simple API for sending HTTP requests
 * a way to handle HTTP responses
 
-**Access:** protected  
+**Access**: protected  
 **Since**: 0.1.0  
 
 * [RequestManager](#RequestManager)
@@ -76,7 +76,7 @@ Creates new RequestManager. All parameters are inherited from {Route4Me}
 
 Wrapper around [external:superagent](external:superagent) with all options applied.
 
-**Access:** protected  
+**Access**: protected  
 **Todo**
 
 - [ ] TODO: rename this method!!!
@@ -116,7 +116,7 @@ Early cancel request
 Deep clone an object
 
 **Returns**: <code>any</code> - - The deep copy of an object  
-**Access:** protected  
+**Access**: protected  
 
 | Param | Type | Description |
 | --- | --- | --- |

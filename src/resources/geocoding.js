@@ -89,8 +89,6 @@ class Geocoding {
 	 * @see {@link https://route4me.io/docs/#rapid-address-search}
 	 * @since 0.1.9
 	 *
-	 * @deprecated This is very strange, vague API method..
-	 *
 	 * @param {number} id  - Sequential number in addresses list.
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Geocoding.Rapid>}
 	 * [callback]
@@ -115,7 +113,6 @@ class Geocoding {
 	 * @see {@link https://route4me.io/docs/#rapid-address-search}
 	 * @since 0.1.9
 	 *
-	 * @deprecated This is very strange, vague API method..
 	 * @todo TODO: make options optional
 	 *
 	 * @param {Object} criteria - Search criterias, such as `zipcode`, `house number` and other

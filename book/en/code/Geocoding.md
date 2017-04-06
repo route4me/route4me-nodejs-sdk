@@ -10,8 +10,8 @@ Geocoding facility
     * [new Geocoding(requestManager)](#new_Geocoding_new)
     * [.forward(address, [callback])](#Geocoding+forward)
     * [.reverse(latitude, longitude, [callback])](#Geocoding+reverse)
-    * ~~[.rapidGet(id, [callback])](#Geocoding+rapidGet)~~
-    * ~~[.rapidSearch(criteria, options, [callback])](#Geocoding+rapidSearch)~~
+    * [.rapidGet(id, [callback])](#Geocoding+rapidGet)
+    * [.rapidSearch(criteria, options, [callback])](#Geocoding+rapidSearch)
 
 <a id="new_Geocoding_new" name="new_Geocoding_new"></a>
 
@@ -72,9 +72,7 @@ address.
 
 <a id="Geocoding+rapidGet" name="Geocoding+rapidGet"></a>
 
-### ~~geocoding.rapidGet(id, [callback])~~
-
-***Deprecated***
+### geocoding.rapidGet(id, [callback])
 
 Rapid Address Search by ID
 
@@ -91,9 +89,7 @@ address by address name sent with HTTP GET data.
 
 <a id="Geocoding+rapidSearch" name="Geocoding+rapidSearch"></a>
 
-### ~~geocoding.rapidSearch(criteria, options, [callback])~~
-
-***Deprecated***
+### geocoding.rapidSearch(criteria, options, [callback])
 
 Rapid Address Search
 

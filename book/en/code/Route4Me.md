@@ -5,7 +5,7 @@
 ILogger interface
 
 **Category**: Route4Me  
-**Access:** public  
+**Access**: public  
 
 * [ILogger](#ILogger)
     * _instance_
