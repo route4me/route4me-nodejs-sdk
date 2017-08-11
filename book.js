@@ -24,6 +24,7 @@ module.exports = {
 		"todo",
 		"splitter",
 		"-githubcontributors",
+		"lunr",
 	],
 	"pluginsConfig": {
 		"summary-extend": {
