@@ -334,7 +334,7 @@ class Orders {
 	 * Get all the user-defined order fields
 	 * @since
 	 * @param {Object} [options]        - Reserved
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Order_custom_field[]>} [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:OrderCustomFields>} [callback]
 	 * @return {*}
 	 */
 	customFieldsList(options, callback) {
