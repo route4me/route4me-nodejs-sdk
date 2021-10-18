@@ -30,6 +30,22 @@ class CustomInternalPostProcessing {
 		// TODO: parse real error
 		return new errors.Route4MeApiError("Failed", res)
 	}
+	static customFields(data, ctx, res) {
+		if (!data
+			|| !Array.isArray(data)
+		) {
+			return new errors.Route4MeValidationError("Invalid response", data)
+		}
+
+		if (Array.isArray(data)) {
+			debug("Orders:customFields:pp received a response with an array")
+			// the response is an array of Custom Fields
+			return data
+		}
+
+		// TODO: parse real error
+		return new errors.Route4MeApiError("Failed", res)
+	}
 }
 
 // ===================================
@@ -311,6 +327,21 @@ class Orders {
 			path: "/api.v4/order.php",
 			qs,
 			validationContext: CustomInternalPostProcessing.list,
+		}, callback)
+	}
+
+	/**
+	 * Get all the user-defined order fields
+	 * @since
+	 * @param {Object} [options]        - Reserved
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Order_custom_field[]>} [callback]
+	 * @return {*}
+	 */
+	customFieldsList(options, callback) {
+		return this.r._makeRequest({
+			method: "GET",
+			path: "/api.v4/order_custom_user_fields.php",
+			validationContext: CustomInternalPostProcessing.customFields,
 		}, callback)
 	}
 }
