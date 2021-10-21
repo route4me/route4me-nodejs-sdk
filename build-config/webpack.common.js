@@ -19,18 +19,19 @@ const config = {
 	bail: true,
 	module: {
 
-		loaders: [
+		rules: [
 			{
-				test: /[/\\]package\.json$/,
-				loader: "json-string-loader",
-				options: {
-					json: packageJsonReplacement
-				},
-			}, {
 				test: /\.(test|spec)\.js$/,
-				loader: "mocha-loader",
+				use: {
+					loader : "mocha-loader"
+				}
 			},
-			{ test: /\.hbs$/, loader: "handlebars-loader" }
+			{ 
+				test: /\.hbs$/, 
+				use : {
+					loader: "handlebars-loader" 
+				}
+			}
 		],
 	},
 	externals: {

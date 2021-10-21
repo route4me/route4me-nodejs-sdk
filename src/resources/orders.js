@@ -329,21 +329,6 @@ class Orders {
 			validationContext: CustomInternalPostProcessing.list,
 		}, callback)
 	}
-
-	/**
-	 * Get all the user-defined order fields
-	 * @since
-	 * @param {Object} [options]        - Reserved
-	 * @param {module:route4me-node~RequestCallback<jsonschema:OrderCustomFields>} [callback]
-	 * @return {*}
-	 */
-	customFieldsList(options, callback) {
-		return this.r._makeRequest({
-			method: "GET",
-			path: "/api.v4/order_custom_user_fields.php",
-			validationContext: CustomInternalPostProcessing.customFields,
-		}, callback)
-	}
 }
 
 module.exports = Orders

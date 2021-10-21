@@ -19,7 +19,7 @@ const size         = require("gulp-size")
 // const gulpUglify   = require("gulp-uglify")
 const gulpWebpack  = require("webpack-stream")
 const babel        = require("gulp-babel")
-const gulpSequence = require("run-sequence")
+const gulpSequence = require("gulp4-run-sequence")
 const cache        = require("gulp-cached")
 
 // TODO: disable:
@@ -39,7 +39,6 @@ const babelNodeConfig      = require("./build-config/babel.node.js")
 
 const fix = !!argv.fix
 const grep = argv.grep
-
 
 /*
  ======================================
@@ -74,7 +73,7 @@ const PATHS = {
 	},
 }
 
-gulp.task("doc:pre", function DG() {     // eslint-disable-line prefer-arrow-callback
+gulp.task("doc:pre", gulp.series(function DG() {     // eslint-disable-line prefer-arrow-callback
 	const docDir = path.join(__dirname, "book", "en", "code")
 
 	const parentsTree = {}
@@ -134,14 +133,14 @@ gulp.task("doc:pre", function DG() {     // eslint-disable-line prefer-arrow-cal
 			util.log("DOC, saving to file", fn)
 			return fs.writeFile(fn, item.output)
 		})
-})
+}))
 
-gulp.task("doc:install", function DI() { // eslint-disable-line prefer-arrow-callback
+gulp.task("doc:install", gulp.series(function DI() { // eslint-disable-line prefer-arrow-callback
 	const cmd = gitbook.commands.filter(c => c.name.match(/^install\s/i))[0]
 	return cmd.exec([__dirname], {})
-})
+}))
 
-gulp.task("watch:doc", ["doc:pre"], function D() { // eslint-disable-line prefer-arrow-callback
+gulp.task("watch:doc",gulp.series( ["doc:pre"], function D() { // eslint-disable-line prefer-arrow-callback
 	const cmd = gitbook.commands.filter(c => c.name.match(/^serve\s/i))[0]
 
 	return cmd.exec([
@@ -157,18 +156,18 @@ gulp.task("watch:doc", ["doc:pre"], function D() { // eslint-disable-line prefer
 		watch: true, //typeof options.livereload === 'object' ? options.livereload.watch : undefined,
 			//browser: options.browser
 	})
-})
+}))
 
 // TODO: remove this task
-gulp.task("docold", function D() {           // eslint-disable-line prefer-arrow-callback
+gulp.task("docold", gulp.series(function D() {           // eslint-disable-line prefer-arrow-callback
 	return gulp.src(
 		"README.md", {
 			read: false,
 		})
 		.pipe(jsdoc(jsdocConfig))
-})
+}))
 
-gulp.task("lint", function L() {          // eslint-disable-line prefer-arrow-callback
+gulp.task("lint", gulp.series(function L() {          // eslint-disable-line prefer-arrow-callback
 	return gulp.src(_.flattenDeep([
 		PATHS.src,
 		PATHS.test,
@@ -180,9 +179,9 @@ gulp.task("lint", function L() {          // eslint-disable-line prefer-arrow-ca
 		.pipe(eslint.format())
 		.pipe(gulpIf(fix, gulp.dest("./")))
 		.pipe(eslint.failAfterError())
-})
+}))
 
-gulp.task("test", function T() {          // eslint-disable-line prefer-arrow-callback
+gulp.task("test", gulp.series(function T() {          // eslint-disable-line prefer-arrow-callback
 	return gulp.src(PATHS.test, { read: false })
 		.pipe(mocha({
 			// reporter: "list",
@@ -191,57 +190,63 @@ gulp.task("test", function T() {          // eslint-disable-line prefer-arrow-ca
 			require: ["./test/bootstrap"],
 			grep,
 		}))
-})
+}))
 
-gulp.task("build:node", function BN() {      // eslint-disable-line prefer-arrow-callback
+gulp.task("build:node", gulp.series(function BN() {      // eslint-disable-line prefer-arrow-callback
 	const babelConfig = babelNodeConfig
 
 	return gulp.src(PATHS.src)
 		.pipe(babel(babelConfig))
-		.pipe(size({ title: this.currentTask.name, showFiles: true }))
+		.pipe(size({ title: "build:node", showFiles: true }))
 		.pipe(gulp.dest("dist/"))
-})
+}))
 
-gulp.task("build:browser", function taskBuildBrowser() {  // eslint-disable-line prefer-arrow-callback
-	const config = webpackBrowserConfig
-
-	debug("WebPack config:", config)
-
-	return gulp.src(PATHS.entry.browser)
+gulp.task("build:browser",function taskBuildBrowser(done) {  // eslint-disable-line prefer-arrow-callback	
+	try {
+		const config = webpackBrowserConfig		
+		debug("WebPack config:", config)
+				
+		gulp.src(PATHS.entry.browser)
 		.pipe(named())
 		.pipe(gulpWebpack(config, webpack))
-		.pipe(size({ title: this.currentTask.name, showFiles: true }))
+		.pipe(size({ title: "build:browser", showFiles: true }))
 		.pipe(gulp.dest("dist/browser/"))
+		return done()
+	} catch(err) {
+		console.log(err);
+	}
+	
 })
 
-gulp.task("build:browser:test", function taskBuildBrowserTest() {  // eslint-disable-line prefer-arrow-callback
-	const config = webpackTestConfig
-
+gulp.task("build:browser:test",function taskBuildBrowserTest(done) {  // eslint-disable-line prefer-arrow-callback
+	
+	const config = webpackTestConfig	
 	debug("WebPack config:", config)
-
-	return gulp.src(PATHS.entry.browser)
+	
+	gulp.src(PATHS.entry.browser)
 		.pipe(named())
 		.pipe(gulpWebpack(config, webpack))
-		.pipe(size({ title: this.currentTask.name, showFiles: true }))
-		.pipe(gulp.dest("tmp/browser/"))
+		.pipe(size({ title: "build:browser:test", showFiles: true }))
+		.pipe(gulp.dest("tmp/browser/"))	
+	return done()	
 })
 
-gulp.task("clean", function () {
+gulp.task("clean", gulp.series(function () {	
 	return del([
 		"./dist/",
 		"./tmp/",
 	])
-})
+}))
 
 // SUPERTASKS
 
-gulp.task("doc", ["watch:doc"])
+gulp.task("doc", gulp.series("watch:doc"))
 gulp.task("build", (done) => {
-	gulpSequence(["build:node", "build:browser"], "build:browser:test", done)
+	gulpSequence("build:node", "build:browser","build:browser:test", done)
 	return undefined
 })
 
-gulp.task("default", (done) => {
+gulp.task("default", gulp.series((done) => {
 	gulpSequence("lint", "build", "test", done)
 	return undefined
-})
+}))

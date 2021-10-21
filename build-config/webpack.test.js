@@ -11,15 +11,31 @@ const babelConfig = require("./babel.browser.js")
 const testDir = path.resolve(path.join(__dirname, "..", "tmp"))
 
 const config = _.mergeWith({
+	mode : 'production',
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /\.js$/,
-				exclude: /(node_modules|bower_components)/,
-				loader: "babel-loader",
-				query: babelConfig,
+				exclude: /(node_modules|bower_components)/,	
+				use: {
+					loader: 'babel-loader',
+					query: babelConfig
+				}		
+			},
+			{
+				test: /\.html$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'file-loader',
+					query: {
+						name: '[name].[ext]'
+					},
+				},
 			},
 		],
+	},
+	performance: {
+		hints: false
 	},
 	externals: {
 		sinon: "sinon"
@@ -35,7 +51,7 @@ const config = _.mergeWith({
 			title: "Custom template using Handlebars",
 			template: "./build-config/templates/test.hbs",
 			filename: "test.html",
-			inject: false, // BECAUSE this plugin includes the same shit twice...
+			inject: true, // BECAUSE this plugin includes the same shit twice...
 			//chunks: [],
 		}),
 		new webpack.LoaderOptionsPlugin({
