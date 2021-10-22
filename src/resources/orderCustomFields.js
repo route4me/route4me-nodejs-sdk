@@ -139,7 +139,7 @@ class OrderCustomFields {
 			"redirect": 0,
 		}
 		const body = utils.clone(data)
-		body["order_id"] = Number(id)
+		body["order_custom_field_id"] = Number(id)
 
 		return this.r._makeRequest({
 			method: "PUT",

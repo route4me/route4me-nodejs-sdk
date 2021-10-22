@@ -12,37 +12,24 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 	var expect = chai.expect;
 		const apiKey   = "11111111111111111111111111111111"
 		const route4me = new Route4Me(apiKey)		
-		/*const data = {
-			"order_custom_field_name": "CustomField4",
-			"order_custom_field_label": "Custom Field 4",
-			"order_custom_field_type": "checkbox",
-			"order_custom_field_type_info": {
-				"short_label": "cFl4"
-			}			
-		}*/
 		const data = {
-			"order_custom_field_name": "TEST",
-			"order_custom_field_label": "MENU",
-			"order_custom_field_type": "dropdown",
-			"order_custom_field_short_caption": "MENU",
-			"order_custom_field_type_info":
-			{
-				"short_caption": "MENU",
-				"allowed_values":
-				[
-					"10",
-					"20",
-					"30",
-					"40",
-					"50",
-					"70",
-					"80",
-					"90",
-					"100"
-				]
-			}
-		}
-		route4me.OrderCustomFields.create(data, (err, orderResult) => {
+			 	"address_1": "1358 E Luzerne St, Philadelphia, PA 19124, US",
+			 	"cached_lat"            : 48.335991,
+				"cached_lng"            : 31.18287,
+			 	"address_alias"         : "Auto test address",
+			 	"address_city"          : "Philadelphia",
+			 	"EXT_FIELD_first_name"  : "Igor",
+			 	"EXT_FIELD_last_name"   : "Progman",
+			 	"EXT_FIELD_email"       : "progman@gmail.com",
+				"EXT_FIELD_phone"       : "380380380380",
+			 	"EXT_FIELD_custom_data" : [
+			 		{
+			 			"order_id" : "10",
+			 			"name"     : "Bill Soul"
+					}
+			 	]
+		}		
+		route4me.Orders.create(data, (err, orderResult) => {
 			debug("error  ", err)
 			debug("result ", orderResult)
 
