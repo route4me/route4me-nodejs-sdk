@@ -12,7 +12,6 @@ const Members         = require("./resources/members")
 const Notes           = require("./resources/notes")
 const Optimizations   = require("./resources/optimizations")
 const Orders          = require("./resources/orders")
-const OrderCustomFields = require("./resources/orderCustomFields")
 const Routes          = require("./resources/routes")
 const Territories     = require("./resources/territories")
 const Tracking        = require("./resources/tracking")
@@ -166,11 +165,6 @@ class Route4Me {
 		 * @type {Orders}
 		 */
 		this.Orders = new Orders(req)
-		/**
-		 * **OrderCustomFields** related API calls
-		 * @type {OrderCustomFields}
-		 */
-		 this.OrderCustomFields = new OrderCustomFields(req)
 		/**
 		 * **Routes** related API calls
 		 * @type {Routes}

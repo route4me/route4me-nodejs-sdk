@@ -222,7 +222,7 @@ gulp.task("build:browser:test",function taskBuildBrowserTest(done) {  // eslint-
 	
 	const config = webpackTestConfig	
 	debug("WebPack config:", config)
-	
+
 	gulp.src(PATHS.entry.browser)
 		.pipe(named())
 		.pipe(gulpWebpack(config, webpack))

@@ -10,6 +10,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 	this.timeout(5000)
 	this.slow(3000)
 	var expect = chai.expect;
+	it(path.basename(__filename), (done) => {
 		const apiKey   = "11111111111111111111111111111111"
 		const route4me = new Route4Me(apiKey)		
 		/*const data = {
@@ -42,7 +43,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 				]
 			}
 		}
-		route4me.OrderCustomFields.create(data, (err, orderResult) => {
+		route4me.Orders.create(data, (err, orderResult) => {
 			debug("error  ", err)
 			debug("result ", orderResult)
 
@@ -53,4 +54,6 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			//expect(noteResult).has.property("order")
 
 		})
+		done()
+	})
 })
