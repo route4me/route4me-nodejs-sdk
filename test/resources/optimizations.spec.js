@@ -92,10 +92,9 @@ describe(helper.toSuiteName(__filename), () => {
 
 		describe("update", () => {
 			it("should call route4me", (done) => {
-				const opt_id = 179
+				const opt_id = "0613EF353999F43E17B17DD07DDED59E"
 				const opt_data = {
 					"parameters": [],
-					"hello": false,
 				}
 				const reoptimize = true
 
@@ -103,10 +102,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req, "PUT", "https://route4me.com/api.v4/optimization_problem.php", {
-						"optimization_problem_id": "179",
+						"optimization_problem_id": "0613EF353999F43E17B17DD07DDED59E",
 						"reoptimize": "1",
 					}, {
-						"hello": false,
 						"parameters": [],
 					})
 					done()
@@ -116,11 +114,11 @@ describe(helper.toSuiteName(__filename), () => {
 
 		describe("remove", () => {
 			it("should call route4me", (done) => {
-				resource.remove(300, (err, res) => {
+				resource.remove(["0613EF353999F43E17B17DD07DDED59E"], (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/optimization_problem.php", {
-						"optimization_problem_id": "300",
+						"optimization_problem_ids": "0613EF353999F43E17B17DD07DDED59E",
 					}, null
 					)
 					done()

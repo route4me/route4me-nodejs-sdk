@@ -159,12 +159,12 @@ class Optimizations {
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.RemoveResponse>}
 	 * [callback]
 	 */
-	remove(id, callback) {
+	remove(ids, callback) {
 		return this.r._makeRequest({
 			method: "DELETE",
 			path: "/api.v4/optimization_problem.php",
 			qs: {
-				"optimization_problem_id": id,
+				"optimization_problem_ids": ids,
 			},
 			validationContext: "Optimizations.RemoveResponse",
 		}, callback)
