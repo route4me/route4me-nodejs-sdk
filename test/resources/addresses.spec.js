@@ -36,7 +36,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"GET", "https://route4me.com/api.v4/address.php",
+						"GET", "https://api.route4me.com/api.v4/address.php",
 						{
 							"route_id": "241466F15515D67D3F951E2DA38DE76D",
 							"route_destination_id": "167899269",
@@ -65,7 +65,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.updateCustomData(31, 41, customFields, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "PUT", "https://route4me.com/api.v4/address.php", {
+					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/address.php", {
 						"route_id": "41",
 						"route_destination_id": "31" },
 						{ "banana": false }
@@ -90,7 +90,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"PUT", "https://route4me.com/api.v4/address.php",
+						"PUT", "https://api.route4me.com/api.v4/address.php",
 						{
 							"route_destination_id": "31",
 							"route_id": "41",
@@ -119,7 +119,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"PUT", "https://route4me.com/api.v4/address.php",
+						"PUT", "https://api.route4me.com/api.v4/address.php",
 						{
 							"route_destination_id": "12",
 							"route_id": "13",
@@ -148,7 +148,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"PUT", "https://route4me.com/actions/address/update_address_visited.php",
+						"PUT", "https://api.route4me.com/actions/address/update_address_visited.php",
 						{
 							"address_id": "31",
 							"route_id": "41",
@@ -177,7 +177,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"PUT", "https://route4me.com/api/route/mark_address_departed.php",
+						"PUT", "https://api.route4me.com/api/route/mark_address_departed.php",
 						{
 							"address_id": "12",
 							"route_id": "13",

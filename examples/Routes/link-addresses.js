@@ -39,9 +39,9 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			// Expectations about result
 			expect(err).is.null
 			expect(routes).exist
-
-			// TODO: remove `done` call from examples
-			done()
+			
 		})
+		// TODO: remove `done` call from examples
+		done()
 	})
 })

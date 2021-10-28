@@ -36,7 +36,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.not.exist
 					expect(res).is.exist
 					helper.expectRequest(req,
-						"GET", "https://route4me.com/api.v4/status.php",
+						"GET", "https://api.route4me.com/api.v4/status.php",
 						{
 							"tracking": "Q7G9P1L9",
 						},
@@ -77,7 +77,7 @@ describe(helper.toSuiteName(__filename), () => {
 							expect(err).is.not.exist
 							expect(res).is.exist
 							helper.expectRequest(req,
-								"GET", "https://route4me.com/get_device_location.php",
+								"GET", "https://api.route4me.com/get_device_location.php",
 								{
 									"route_id": "814FB49CEA8188D134E9D4D4B8B0DAF7",
 									"time_period": "custom",
@@ -105,7 +105,7 @@ describe(helper.toSuiteName(__filename), () => {
 							expect(err).is.not.exist
 							expect(res).is.exist
 							helper.expectRequest(req,
-								"GET", "https://route4me.com/get_device_location.php",
+								"GET", "https://api.route4me.com/get_device_location.php",
 								{
 									"route_id": "814FB49CEA8188D134E9D4D4B8B0DAF7",
 									"time_period": "today",
@@ -158,7 +158,7 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(err).is.not.exist
 						expect(res).is.exist
 						helper.expectRequest(req,
-							"POST", "https://route4me.com/track/set.php",
+							"POST", "https://api.route4me.com/track/set.php",
 							{
 								"frm": "JSON",
 								"member_id": "1",

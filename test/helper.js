@@ -4,8 +4,8 @@ const path    = require("path")
 const _       = require("lodash")
 
 const runIntegrationTests = "1" === process.env["TEST_INTEGRATION"]
-const describeIntegration = runIntegrationTests ? describe : describe.skip
-
+//const describeIntegration = runIntegrationTests ? describe : describe.skip
+const describeIntegration = describe
 function expectRequest(req, method, url, query, body, contentType /* , form */) {
 	const ct = contentType || "application/json"
 

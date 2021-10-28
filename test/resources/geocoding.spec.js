@@ -38,7 +38,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).to.exist
 
 					helper.expectRequest(req, "GET",
-						"https://route4me.com/api/geocoder.php",
+						"https://api.route4me.com/api/geocoder.php",
 						{
 							addresses: "Los Angeles International Airport, CA",
 							format: "json",
@@ -61,7 +61,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).to.exist
 
 					helper.expectRequest(req, "GET",
-						"https://route4me.com/api/geocoder.php",
+						"https://api.route4me.com/api/geocoder.php",
 						{
 							addresses: "33.945705,-118.391105",
 							format: "json",

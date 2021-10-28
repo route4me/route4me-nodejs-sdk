@@ -45,7 +45,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req, "POST",
-						"https://route4me.com/api.v4/avoidance.php", {},
+						"https://api.route4me.com/api.v4/avoidance.php", {},
 						data
 					)
 					done()
@@ -59,7 +59,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"GET", "https://route4me.com/api.v4/avoidance.php",
+						"GET", "https://api.route4me.com/api.v4/avoidance.php",
 						{ "territory_id": "adf123ADEDB" },
 						null
 					)
@@ -74,7 +74,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"GET", "https://route4me.com/api.v4/avoidance.php",
+						"GET", "https://api.route4me.com/api.v4/avoidance.php",
 						{},
 						null
 					)
@@ -99,7 +99,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req, "PUT",
-						"https://route4me.com/api.v4/avoidance.php",
+						"https://api.route4me.com/api.v4/avoidance.php",
 						{ "territory_id": "1234567" },
 						data
 					)
@@ -114,7 +114,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"DELETE", "https://route4me.com/api.v4/avoidance.php",
+						"DELETE", "https://api.route4me.com/api.v4/avoidance.php",
 						{ "territory_id": "67adadada0" },
 						null
 					)

@@ -74,7 +74,7 @@ class Route4Me {
 	 *
 	 * @param  {string}  apiKey API KEY
 	 * @param  {object}  [options] Additional options for new instance
-	 * @param  {string}  [options.baseUrl="https://route4me.com"] Base URL for sending requests
+	 * @param  {string}  [options.baseUrl="https://api.route4me.com"] Base URL for sending requests
 	 * @param  {ILogger} [options.logger=null]   Logger facility
 	 * @param  {boolean|function} [options.promise=false] Use promises instead of
 	 * callbacks. Usage:
@@ -94,7 +94,7 @@ class Route4Me {
 
 		// check options
 
-		opt["baseUrl"]  = utils.get(options, "baseUrl", "https://route4me.com")
+		opt["baseUrl"]  = utils.get(options, "baseUrl", "https://api.route4me.com")
 		opt["logger"]   = utils.get(options, "logger",   new utils.ILogger())
 		opt["promise"]  = utils.get(options, "promise",  false)
 		opt["validate"] = utils.get(options, "validate", false)

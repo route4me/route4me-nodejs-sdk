@@ -34,7 +34,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.get(3, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/optimization_problem.php", {
+					helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/optimization_problem.php", {
 						"optimization_problem_id": "3" },
 						null
 					)
@@ -53,7 +53,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.list([1, 2, 3], options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "GET", "https://route4me.com/api.v4/optimization_problem.php", {
+					helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/optimization_problem.php", {
 						"states": "1,2,3", "limit": "100" },
 						null
 					)
@@ -84,7 +84,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.create({ "param": 1 }, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "POST", "https://route4me.com/api.v4/optimization_problem.php", null, { "param": 1 })
+					helper.expectRequest(req, "POST", "https://api.route4me.com/api.v4/optimization_problem.php", null, { "param": 1 })
 					done()
 				})
 			})
@@ -101,7 +101,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.update(opt_id, opt_data, reoptimize, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "PUT", "https://route4me.com/api.v4/optimization_problem.php", {
+					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/optimization_problem.php", {
 						"optimization_problem_id": "0613EF353999F43E17B17DD07DDED59E",
 						"reoptimize": "1",
 					}, {
@@ -117,7 +117,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.remove(["0613EF353999F43E17B17DD07DDED59E"], (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/optimization_problem.php", {
+					helper.expectRequest(req, "DELETE", "https://api.route4me.com/api.v4/optimization_problem.php", {
 						"optimization_problem_ids": "0613EF353999F43E17B17DD07DDED59E",
 					}, null
 					)
@@ -135,7 +135,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.linkAddress(id, addresses, reoptimize, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "PUT", "https://route4me.com/api.v4/optimization_problem.php", {
+					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/optimization_problem.php", {
 						"optimization_problem_id": "123",
 						"reoptimize": "0",
 					}, {
@@ -155,7 +155,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.unlinkAddress(opt_id, route_id, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "DELETE", "https://route4me.com/api.v4/address.php", {
+					helper.expectRequest(req, "DELETE", "https://api.route4me.com/api.v4/address.php", {
 						"optimization_problem_id": "987",
 						"route_destination_id": "543",
 					}, null)

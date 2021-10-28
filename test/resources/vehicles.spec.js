@@ -36,7 +36,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).to.exist
 
 					helper.expectRequest(req,
-						"GET", "https://route4me.com/api.v4/vehicle.php",
+						"GET", "https://api.route4me.com/api.v4/vehicle.php",
 						{},
 						null
 					)

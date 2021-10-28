@@ -25,8 +25,8 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 
 			expect(optimization).has.property("optimization_problem_id", "0613EF353999F43E17B17DD07DDED59E")
 			console.log(optimization)
-			// TODO: remove `done` call from examples
-			done()
 		})
+		// TODO: remove `done` call from examples
+		done()
 	})
 })

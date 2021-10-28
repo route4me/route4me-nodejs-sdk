@@ -27,8 +27,8 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 
 			expect(nothing).true
 
-			// TODO: remove `done` call from examples
-			done()
 		})
+		// TODO: remove `done` call from examples
+		done()
 	})
 })

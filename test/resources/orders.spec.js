@@ -51,7 +51,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"POST", "https://route4me.com/api.v4/order.php",
+						"POST", "https://api.route4me.com/api.v4/order.php",
 						{ },
 						{
 							"address_1": "1358 E Luzerne St, Philadelphia, PA 19124, US",
@@ -96,7 +96,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"GET", "https://route4me.com/api.v4/order.php", {
+						"GET", "https://api.route4me.com/api.v4/order.php", {
 							"order_id": "7205711",
 						},
 						null
@@ -129,7 +129,7 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(res).exist
 
 						helper.expectRequest(req,
-							"GET", "https://route4me.com/api.v4/order.php", {
+							"GET", "https://api.route4me.com/api.v4/order.php", {
 								"order_id": "7205711",
 							},
 							null
@@ -162,7 +162,7 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(res).exist
 
 						helper.expectRequest(req,
-							"GET", "https://route4me.com/api.v4/order.php", {
+							"GET", "https://api.route4me.com/api.v4/order.php", {
 								"order_id": "7205711,7205712",
 							},
 							null
@@ -199,7 +199,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"GET", "https://route4me.com/api.v4/order.php", {
+						"GET", "https://api.route4me.com/api.v4/order.php", {
 							"query": "Tbilisi",
 							"limit": "25",
 							"redirect": "0",
@@ -243,7 +243,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"PUT", "https://route4me.com/api.v4/order.php", {
+						"PUT", "https://api.route4me.com/api.v4/order.php", {
 							"redirect": "0",
 						}, {
 							"order_id": 7205711,
@@ -283,7 +283,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"DELETE", "https://route4me.com/api.v4/order.php", {
+						"DELETE", "https://api.route4me.com/api.v4/order.php", {
 							"redirect": "0",
 						}, {
 							"order_ids": [7205711, 7205713]
@@ -324,7 +324,7 @@ describe(helper.toSuiteName(__filename), () => {
 					console.log(res);
 
 					helper.expectRequest(req,
-						"POST", "https://route4me.com/api.v4/order_custom_user_fields.php",
+						"POST", "https://api.route4me.com/api.v4/order_custom_user_fields.php",
 						{ },
 						{
 							"order_custom_field_name": "CustomField4",
@@ -363,7 +363,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"GET", "https://route4me.com/api.v4/order_custom_user_fields.php", {
+						"GET", "https://api.route4me.com/api.v4/order_custom_user_fields.php", {
 							"order_id": "7205711",
 						},
 						null
@@ -402,7 +402,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"PUT", "https://route4me.com/api.v4/order_custom_user_fields.php", {
+						"PUT", "https://api.route4me.com/api.v4/order_custom_user_fields.php", {
 							"redirect": "0",
 						}, {
 							"order_id": 507516,

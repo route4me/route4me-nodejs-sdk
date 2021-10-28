@@ -24,9 +24,9 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			expect(err).is.null
 
 			expect(route).has.property("route_id", "C896D0DB99C57B483D9F51B97260DCB5")
-
-			// TODO: remove `done` call from examples
-			done()
+			
 		})
+		// TODO: remove `done` call from examples
+		done()
 	})
 })

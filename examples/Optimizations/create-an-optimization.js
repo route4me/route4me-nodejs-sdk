@@ -88,8 +88,9 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			expect(err).is.null
 			expect(optimization).exist
 			console.log(optimization)
-			// TODO: remove `done` call from examples
-			done()
+
 		})
+		// TODO: remove `done` call from examples
+		done()
 	})
 })

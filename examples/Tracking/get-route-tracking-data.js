@@ -30,8 +30,8 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			expect(route).has.property("tracking_history")
 				.that.is.an("array")
 
-			// TODO: remove `done` call from examples
-			done()
 		})
+		// TODO: remove `done` call from examples
+		done()
 	})
 })

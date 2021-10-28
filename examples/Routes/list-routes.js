@@ -28,8 +28,9 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 
 			expect(routes).is.not.null
 			console.log(routes)
-			// TODO: remove `done` call from examples
-			done()
+			
 		})
+		// TODO: remove `done` call from examples
+		done()
 	})
 })

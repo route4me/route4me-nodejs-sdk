@@ -148,7 +148,7 @@ Create new API client
 | --- | --- | --- | --- |
 | apiKey | <code>string</code> |  | API KEY |
 | [options] | <code>object</code> |  | Additional options for new instance |
-| [options.baseUrl] | <code>string</code> | <code>&quot;\&quot;https://route4me.com\&quot;&quot;</code> | Base URL for sending requests |
+| [options.baseUrl] | <code>string</code> | <code>&quot;\&quot;https://api.route4me.com\&quot;&quot;</code> | Base URL for sending requests |
 | [options.logger] | <code>[ILogger](#ILogger)</code> | <code></code> | Logger facility |
 | [options.promise] | <code>boolean</code> &#124; <code>function</code> | <code>false</code> | Use promises instead of callbacks. Usage: * `false` means _no promises, use callbacks_; * `true` means _use global `Promise`_ as promises' constructor; * `constructor (function)` forces to use explicit Promise library. See also Examples section of this documentation. |
 | [options.validate] | <code>module:route4me-node~ValidationCallback</code> | <code>false</code> | Validator for input and output parameters of the API methods. Set **falsey** value to skip autovalidation (in favor of manual check). |

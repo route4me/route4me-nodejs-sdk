@@ -16,7 +16,19 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 		const route4me = new Route4Me(apiKey)
 		const opt_id = "0613EF353999F43E17B17DD07DDED59E"
 		const opt_data = {
-			"parameters": [],
+			"parameters": {
+				"algorithm_type": 1,
+				"member_id" : 2126837,
+				"device_type": "web",
+				"distance_unit": "mi",
+				"optimize": "Distance",
+				"route_max_duration": 86400,
+				"route_time": 0,
+				"store_route": "true",
+				"travel_mode": "Driving",
+				"vehicle_capacity": 1,
+				"vehicle_max_distance_mi": 10000
+			}
 		}
 		route4me.Optimizations.update(opt_id, opt_data, (err, optimization) => {
 			debug("error  ", err)
@@ -29,8 +41,8 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 
 			console.log(optimization)
 
-			// TODO: remove `done` call from examples
-			done()
 		})
+		// TODO: remove `done` call from examples
+		done()
 	})
 })
