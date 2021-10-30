@@ -16,6 +16,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 		const apiKey   = "11111111111111111111111111111111"
 		const route4me = new Route4Me(apiKey)
 		const optParam = {
+			"redirect" : 0,
 			"addresses": [
 				{
 				"lng": -85.786514,
@@ -68,7 +69,6 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			],
 			"parameters": {
 				"algorithm_type": 1,
-				"member_id" : 2126837,
 				"device_type": "web",
 				"distance_unit": "mi",
 				"optimize": "Distance",
