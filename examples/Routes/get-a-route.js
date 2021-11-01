@@ -15,7 +15,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 		const apiKey   = "11111111111111111111111111111111"
 		const route4me = new Route4Me(apiKey)
 
-		const routeId = "C896D0DB99C57B483D9F51B97260DCB5"
+		const routeId = "8E20987CCC7CC8943FB279BBD8E5D226"
 		route4me.Routes.get(routeId, (err, route) => {
 			debug("error  ", err)
 			debug("result ", route)
@@ -23,7 +23,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			// Expectations about result
 			expect(err).is.null
 
-			expect(route).has.property("route_id", "C896D0DB99C57B483D9F51B97260DCB5")
+			expect(route).has.property("route_id", "8E20987CCC7CC8943FB279BBD8E5D226")
 
 			// TODO: remove `done` call from examples
 		})

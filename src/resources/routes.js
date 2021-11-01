@@ -531,14 +531,17 @@ class Routes {
 	optimize(id, criteria, callback) {
 		const qs = {
 			"route_id": id,
+		}
+		const body = {			
 			"disable_optimization": "0",
 			"optimize": criteria,
 		}
 
 		return this.r._makeRequest({
-			method: "POST",
-			path: "/api.v3/route/reoptimize_2.php",
+			method: "PUT",
+			path: "/api.v4/route.php",
 			qs,
+			body,
 			validationContext: utils.CustomInternalPostProcessing.fromJsonWithStatus,
 		}, callback)
 	}

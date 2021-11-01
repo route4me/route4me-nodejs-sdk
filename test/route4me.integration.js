@@ -23,13 +23,14 @@ const jsonschemaTrackingHistory = require("./REMOVE.TrackingHistory.jsonschema")
 const testApiKey = "11111111111111111111111111111111"
 
 describe(helper.toSuiteName(__filename), () => {
+	//const optimizationIds = ["0613EF353999F43E17B17DD07DDED59E"]
 	const optimizationIds = ["0613EF353999F43E17B17DD07DDED59E"]
 	const options = {
 		limit: 100,
-		//offset: 0,
+		offset: 0,
 	}
 	const expect = chai.expect
-	helper.describeIntegration("UNMOCKED Access to `Optimizations` list", function a() {
+	describe("UNMOCKED Access to `Optimizations` list", function a() {
 		this.timeout(5000)
 		this.slow(4000)
 		this.retries(3)
@@ -44,8 +45,7 @@ describe(helper.toSuiteName(__filename), () => {
 			it("should return a list of optimizations", (done) => {
 				route4me.Optimizations.list(optimizationIds, options, (err, res) => {
 					expect(err).is.null
-					expect(res).is.not.empty
-
+					expect(res).exist
 					expect(res)
 						.is.an("object")
 						.that.has.property("optimizations")
@@ -58,8 +58,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(opt).to.be.jsonSchema(jsonschemaOptimization)
 					})
 					*/
-					done()
 				})
+				done()
 			})
 		})
 
@@ -111,15 +111,15 @@ describe(helper.toSuiteName(__filename), () => {
 
 			it("should return a list of optimizations", (done) => {
 				route4me.Optimizations.list(optimizationIds, options, (err, res) => {
-					expect(err).is.not.exist
+					expect(err).is.null
 					expect(res).exist
 					expect(res)
 
 					// errors will be detected on validation!
 
 					//expect(validationCallCount, "Uncaught AssertionError: expected validationCallCount to equal 1").to.equal(1)
-					done()
 				})
+				done()
 			})
 		})
 	})

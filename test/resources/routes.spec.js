@@ -411,7 +411,7 @@ describe(helper.toSuiteName(__filename), () => {
 		})
 
 		describe("resequence", () => {
-			const routeId = "241466F15515D67D3F951E2DA38DE76D"
+			const routeId = "8E20987CCC7CC8943FB279BBD8E5D226"
 			const order = {
 				167899269: 9
 			}
@@ -423,7 +423,7 @@ describe(helper.toSuiteName(__filename), () => {
 
 					helper.expectRequest(req,
 						"PUT", "https://api.route4me.com/api.v4/route.php", {
-							"route_id": "241466F15515D67D3F951E2DA38DE76D",
+							"route_id": "8E20987CCC7CC8943FB279BBD8E5D226",
 						}, {
 							"addresses": [
 								{
@@ -440,9 +440,9 @@ describe(helper.toSuiteName(__filename), () => {
 
 		describe("optimize", () => {
 			beforeEach(() => {
-				saMock.post("*",  (r) => {
+				saMock.put("*",  (r) => {
 					req = r
-					req.method = "POST"
+					req.method = "PUT"
 					return { body: { "status": true } }
 				})
 			})
@@ -451,17 +451,20 @@ describe(helper.toSuiteName(__filename), () => {
 				saMock.clearRoutes()
 			})
 
-			const routeId = "241466F15515D67D3F951E2DA38DE76D"
+			const routeId = "8E20987CCC7CC8943FB279BBD8E5D226"
 			const criteria = "Distance"
 
 			it("should call route4me", (done) => {
 				resource.optimize(routeId, criteria, (err, res) => {
-					expect(err).not.exist
+					// Expectations about result
+					expect(err).is.null
 					expect(res).exist
+		
 
 					helper.expectRequest(req,
-						"POST", "https://api.route4me.com/api.v3/route/reoptimize_2.php", {
-							"route_id": "241466F15515D67D3F951E2DA38DE76D",
+						"PUT", "https://api.route4me.com/api.v4/route.php", {
+							"route_id": "8E20987CCC7CC8943FB279BBD8E5D226",
+						},{
 							"disable_optimization": "0",
 							"optimize": "Distance",
 						},

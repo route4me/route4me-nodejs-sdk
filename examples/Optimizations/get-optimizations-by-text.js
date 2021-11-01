@@ -4,7 +4,7 @@ const path = require("path")
 const debug = require("debug")("route4me-node:examples")
 const chai = require("chai")
 require("../init-examples-suite")
-const helper  = require("../../test/helper")
+const helper  = require("./../../test/helper")
 
 helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 	this.timeout(5000)
@@ -14,18 +14,22 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 		const expect = chai.expect
 		const apiKey   = "11111111111111111111111111111111"
 		const route4me = new Route4Me(apiKey)
-		const query = "Tbilisi"
-
-		route4me.Routes.search(query, (err, routes) => {
+		//const optimizationIds = ["0613EF353999F43E17B17DD07DDED59E"]
+		const states = []
+		const options = {
+			offset: 0,
+			limit: 10,
+			query: "SD Route 10 Stops Test"
+		}
+		route4me.Optimizations.list(states, options, (err, result) => {
 			debug("error  ", err)
-			debug("result ", routes)
+			debug("result ", result)
 
 			// Expectations about result
 			expect(err).is.null
-			expect(routes).exist
-
+			expect(result.optimizations).is.an("array")
+			
 		})
-		// TODO: remove `done` call from examples
 		done()
 	})
 })

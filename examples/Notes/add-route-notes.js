@@ -17,21 +17,19 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 		const route4me = new Route4Me(apiKey)
 		const noteData = {
 			addressId: 167899269,
-			routeId: "241466F15515D67D3F951E2DA38DE76D",
-			deviceLatitude: 55.6884868,
-			deviceLongitude: 12.5366426,
-			deviceType: "android_phone",
-			note: "Just a test note",
-			type: "web",
+            routeId: "D4D0C169F5E628CE31A49765F1FFF17E",
+            deviceLatitude: 55.6884868,
+            deviceLongitude: 12.5366426,
+            deviceType: "android_phone",
+            note: "Just a test note",
+            type: "web",
 		}
 
 		route4me.Notes.create(noteData, (err, noteResult) => {
 			debug("error  ", err)
 			debug("result ", noteResult)
-			console.log(noteResult);
 			// Expectations about result
 			expect(err).is.null
-
 			expect(noteResult).has.property("optimization_problem_id", "07372F2CF3814EC6DFFAFE92E22771AA")
 		
 		})

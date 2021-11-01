@@ -16,7 +16,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 		const route4me = new Route4Me(apiKey)
 		const options = {
 			limit: 17,
-			offset: 19,
+			offset: 0,
 		}
 
 		route4me.Routes.list(options, (err, routes) => {
