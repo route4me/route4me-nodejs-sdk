@@ -15,8 +15,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 		const expect = chai.expect
 		const apiKey   = "11111111111111111111111111111111"
 		const route4me = new Route4Me(apiKey)
-		const optParam = {
-			"redirect" : 0,
+		const optParam = {			
 			"addresses": [
 				{
 				"lng": -85.786514,
@@ -81,7 +80,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			}
 		}
 		
-		route4me.Optimizations.create(optParam, (err, optimization) => {
+		route4me.Optimizations.create(optParam, false, (err, optimization) => {
 			debug("error  ", err)
 			debug("result ", optimization)
 			

@@ -31,13 +31,26 @@ class Optimizations {
 	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>}
 	 * [callback]
 	 */
-	create(optimization, callback) {
-		return this.r._makeRequest({
-			method: "POST",
-			path: "/api.v4/optimization_problem.php",
-			body: optimization,
-			validationContext: "Optimizations.Response",
-		}, callback)
+	create(optimization,isRedirect, callback) {
+		if(!isRedirect) {
+			const qs = {}
+			qs["redirect"] = 0
+			return this.r._makeRequest({
+				method: "POST",
+				path: "/api.v4/optimization_problem.php",
+				qs,
+				body: optimization,
+				validationContext: "Optimizations.Response",
+			}, callback)
+		}
+		else {
+			return this.r._makeRequest({
+				method: "POST",
+				path: "/api.v4/optimization_problem.php",
+				body: optimization,
+				validationContext: "Optimizations.Response",
+			}, callback)
+		}		
 	}
 
 	/**
