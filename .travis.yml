@@ -10,10 +10,8 @@ sudo: false
 language: node_js
 
 node_js:
-  - 4
-  - 6
-  # - iojs # version 3.3, unsupported...
-  - 7
+  - 14
+  - 16
 
 env:
   global:
@@ -21,8 +19,7 @@ env:
 
 matrix:
   allow_failures:
-    - node_js: 7  # unstable upstream
-    - node_js: 8  # not on travis
+    - node_js: 16  # unstable upstream
 
 cache:
   directories:
@@ -53,5 +50,5 @@ deploy:
   email: npm@route4me.com
   on:
     tags: true                            # published only for tags
-    node_js: 4                            # published only for one NPM version
+    node_js: 14                            # published only for one NPM version
     repo: route4me/route4me-nodejs-sdk    # published only from ONE repo
