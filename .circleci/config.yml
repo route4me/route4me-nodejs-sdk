@@ -1,0 +1,11 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.7
+
+workflows:
+  route4me-nodejs-sdk: 
+    jobs:
+      - node/test:
+          version: '14.18'
+          pkg-manager: npm
