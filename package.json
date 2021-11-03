@@ -1,6 +1,6 @@
 {
   "name": "route4me-node",
-  "version": "0.2.4",
+  "version": "1.0.2",
   "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
   "main": "./dist/",
   "browser": "./dist/browser/route4me.js",
@@ -40,6 +40,10 @@
     {
       "name": "Igor S.",
       "email": "igor@route4me.com"
+    },
+    {
+      "name": "Juan",
+      "email": "juan@route4me.com"
     },
     {
       "name": "Dan Khasis",
