@@ -52,6 +52,15 @@ const activityTypeEnum = {
 
 	UserMessage:             "user_message",
 	/* eslint-enable key-spacing */
+	
+	ApprovedToExecute:		 "approved-to-execute",
+	RouteDuplicate:			 "route-duplicate",
+	RouteMerge:				 "route-merge",
+	OrderCreated:			 "order-created",
+	OrderUpdated:			 "order-updated",
+	OrderDeleted:  			 "order-deleted",
+	UnapprovedToExecute:	 "unapproved-to-execute",
+	RouteUpdate:			 "route-update"
 }
 
 const _aliases = {}
@@ -219,6 +228,51 @@ class ActivityFeed {
 			validationContext: "ActivityFeed.ActivityFeedResult",
 		}, cb)
 	}
+
+	 /**
+	 * Log a Specific Message
+	 *
+	 * This example demonstrates how to permanently store a specific message
+	 * directly to the activity feed. For example, this can be used for one or
+	 * two-way chat.
+	 *
+	 * **The created activity will have `activityType === "user_message"`**
+	 *
+	 * @see {@link https://route4me.io/docs/#activity-feed}
+	 *
+	 * @param {Object} data          - Activity Feed parameter
+	 */
+	getactivities_example(data, callback) {
+		return this.r._makeRequest({
+			method: "GET",
+			path: "/api/get_activities.php",
+			body: data,
+			validationContext: "ActivityFeed.getactivities_examplesResult",
+		}, callback)
+	}
+
+	 /**
+	 * Log a Specific Message
+	 *
+	 * This example demonstrates how to permanently store a specific message
+	 * directly to the activity feed. For example, this can be used for one or
+	 * two-way chat.
+	 *
+	 * **The created activity will have `activityType === "user_message"`**
+	 *
+	 * @see {@link https://route4me.io/docs/#activity-feed}
+	 *
+	 * @param {Object} data          - Activity Feed parameter
+	 */
+	logcustomactivity(data, callback) {
+		return this.r._makeRequest({
+			method: "POST",
+			path: "/api.v4/activity_feed.php",
+			body: data,
+			validationContext: "ActivityFeed.logcustomactivity",
+		}, callback)
+	}
+
 }
 
 module.exports = ActivityFeed

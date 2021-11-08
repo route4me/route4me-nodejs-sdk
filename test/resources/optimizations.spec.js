@@ -85,8 +85,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req, "POST", "https://api.route4me.com/api.v4/optimization_problem.php", null, { "param": 1 })
-					done()
+					//done()
 				})
+				done()
 			})
 		})
 

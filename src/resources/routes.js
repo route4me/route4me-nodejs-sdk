@@ -545,6 +545,40 @@ class Routes {
 			validationContext: utils.CustomInternalPostProcessing.fromJsonWithStatus,
 		}, callback)
 	}
+
+
+	/**
+	 * RouteExamples 
+	 *
+	 * @see {@link https://route4me.io/docs/#optimizations}
+	 *
+	 * [callback]
+	 */
+	routeexamples_optiomization(param, callback) {
+		return this.r._makeRequest({
+			method: "POST",
+			path: "/api.v4/optimization_problem.php",
+			body: param,
+			validationContext: "Routes.routeexamples_optiomization",
+		}, callback)
+	}
+
+	/**
+	 * RouteExample
+	 * Get Schedule Calendar
+	 *
+	 * @see {@link https://route4me.io/docs/#get-schedule-calendar}
+	 *
+	 * [callback]
+	 */
+	 get_schedule_calendar(param, callback) {
+		return this.r._makeRequest({
+			method: "GET",
+			path: "/api/schedule_calendar_data.php",
+			body: param,
+			validationContext: "Routes.get_schedule_calendar",
+		}, callback)
+	}
 }
 
 module.exports = Routes

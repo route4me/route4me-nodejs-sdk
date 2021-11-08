@@ -89,7 +89,7 @@
     "gulp-eslint": "^6.0.0",
     "gulp-if": "^3.0.0",
     "gulp-jsdoc3": "^3.0.0",
-    "gulp-mocha": "^8.0.0",
+    "gulp-mocha": "^3.0.1",
     "gulp-size": "^4.0.1",
     "gulp-util": "^3.0.8",
     "gulp4-run-sequence": "^1.0.0",
