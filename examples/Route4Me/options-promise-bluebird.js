@@ -24,16 +24,12 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 
 		route4me.Geocoding.forward(address)
 			.then((coordinates) => {
+				debug("error  ", err)
 				debug("result ", coordinates)
-
+				expect(err).is.null
 				expect(coordinates).is.not.empty
 				expect(coordinates).to.have.length.at.least(1)				
-			})
-			.catch((err) => {
-				// should never be called!
-				expect(err).is.null
-				debug("error  ", err)
-			})
-		done()	
+			})			
+		done()		
 	})
 })
