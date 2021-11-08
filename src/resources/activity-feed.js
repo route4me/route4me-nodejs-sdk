@@ -14,7 +14,7 @@ const utils           = require("./../utils")
  */
 const activityTypeEnum = {
 	/* eslint-disable key-spacing */
-	"" :					"",
+	"Undefined": 			 "",
 	AreaAdded:               "area-added",
 	AreaRemoved:             "area-removed",
 	AreaUpdated:             "area-updated",
