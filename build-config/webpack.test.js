@@ -57,8 +57,7 @@ const config = _.mergeWith({
 		new webpack.LoaderOptionsPlugin({
 			debug: true
 		}),
-	],
-
+	]
 }, commonConfig.config, commonConfig.mergeCustomizer)
 
 module.exports = config

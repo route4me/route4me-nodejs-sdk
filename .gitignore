@@ -26,6 +26,8 @@
 /build
 
 # Coverage directory used by tools like istanbul
+.coverdata
+.coverrun
 /coverage
 /lib-cov
 
@@ -33,5 +35,6 @@ npm-debug.log*
 /logs
 *.log
 testem.log
+.nyc_output
 
 # =========================================

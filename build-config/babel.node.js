@@ -13,7 +13,8 @@ const config = {
 		// ["babel-plugin-transform-builtin-extend", {
 		// 	globals: ["Error"]
 		// }]
-	]
+		"require-context-hook"
+	],
 }
 
 module.exports = config

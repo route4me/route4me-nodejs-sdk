@@ -4,7 +4,6 @@ const request = require("superagent")
 const saMock  = require("superagent-mocker")(request)
 
 const helper  = require("./../helper")
-
 const route4me = require("./../../dist")
 
 const testApiKey = "11111111111111111111111111111111"
@@ -202,6 +201,69 @@ describe(helper.toSuiteName(__filename), () => {
 						"GET", "https://api.route4me.com/api.v4/order.php", {
 							"query": "Tbilisi",
 							"limit": "25",
+							"redirect": "0",
+						},
+						null
+					)
+
+					done()
+				})
+			})
+
+			it("should call route4me wihtout criteria", (done) => {
+				resource.search(null, options, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"GET", "https://api.route4me.com/api.v4/order.php", {
+							"limit": "25",
+							"redirect": "0",
+						},
+						null
+					)
+
+					done()
+				})
+			})
+
+			it("should call route4me with byAddDate, byScheduledDate", (done) => {
+				let criteria = {
+					byAddDate: new Date(1900, 0, 1),
+					byScheduledDate: new Date(1900, 0, 1)
+				};
+
+				resource.search(criteria, options, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"GET", "https://api.route4me.com/api.v4/order.php", {
+							"day_added_YYMMDD": "1899-12-31",
+							"scheduled_for_YYMMDD": "1899-12-31",
+							"limit": "25",
+							"redirect": "0",
+						},
+						null
+					)
+
+					done()
+				})
+			})
+
+			it("should call route4me with offset, fields", (done) => {
+				options.offset = 0;
+				options.fields = "";
+
+				resource.search(null, options, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"GET", "https://api.route4me.com/api.v4/order.php", {
+							"fields": "",
+							"limit": "25",
+							"offset": "0",
 							"redirect": "0",
 						},
 						null

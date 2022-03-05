@@ -4,6 +4,8 @@ const sinon = require("sinon")
 const helper  = require("./helper")
 
 const Route4Me = require("../dist").Route4Me
+const RequestManager = require("../dist/request-manager");
+const errors = require("../dist/errors")
 
 const testApiKey = "11111111111111111111111111111111"
 
@@ -51,4 +53,51 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 	})
+
+	describe("ResponseHandler", () => {
+		const spy = sinon.spy();
+		const opt = {
+			"baseUrl": "test.com",
+			"logger": {
+				debug() { spy("debug") },
+				info() { spy("info") },
+				warn() { spy("warn") },
+				error() { spy("error") },
+			},
+			"promise": true,
+			"validate": true,
+			"userAgent": "superagent"
+		};
+
+		describe("RequestManager", () => {
+			it("should be succeed with new and Promise", () => {
+
+				let rm = new RequestManager(testApiKey, opt);
+
+				expect(rm).to.be.an.instanceof(RequestManager);
+			});
+
+			it("should be succeed with new and with function Promise", () => {
+
+				opt.promise = (res, rej) => {};
+				let rm = new RequestManager(testApiKey, opt);
+
+				expect(rm).to.be.an.instanceof(RequestManager);
+			});
+
+			describe("_makeRequest", () => {
+				it("should throw error without validationContext", () => {
+
+					opt.method = "delete";
+					let rm = new RequestManager(testApiKey, opt);
+
+					try {
+						let res = rm._makeRequest(opt, () => {});
+					} catch(e) {
+						expect(e).to.be.an.instanceof(errors.Route4MeError);
+					}
+				});
+			});
+		});
+	});
 })
