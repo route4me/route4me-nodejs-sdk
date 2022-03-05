@@ -1,12 +1,15 @@
 <a id="AvoidanceZones" name="AvoidanceZones"></a>
 
-## AvoidanceZones
+## AvoidanceZones ℗
 
 AvoidanceZones facility
 
 **Category**: AvoidanceZones  
+**Access**: private  
+**See**: [https://route4me.io/docs/#avoidance-zones](https://route4me.io/docs/#avoidance-zones)  
+**Since**: 0.1.8  
 
-* [AvoidanceZones](#AvoidanceZones)
+* [AvoidanceZones](#AvoidanceZones) ℗
     * [new AvoidanceZones(requestManager)](#new_AvoidanceZones_new)
     * [.create(data, [callback])](#AvoidanceZones+create)
     * [.get(id, [callback])](#AvoidanceZones+get)
@@ -20,6 +23,7 @@ AvoidanceZones facility
 
 Constructor
 
+**Returns**: [<code>AvoidanceZones</code>](#AvoidanceZones) - - AvoidanceZones facility  
 
 | Param | Type | Description |
 | --- | --- | --- |

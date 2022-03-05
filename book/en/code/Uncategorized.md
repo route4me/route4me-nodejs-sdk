@@ -10,6 +10,7 @@
         * [.Route4MeApiError](#module_route4me-node.Route4MeApiError) : <code>Route4MeApiError</code>
         * [.Route4MeValidationError](#module_route4me-node.Route4MeValidationError) : <code>Route4MeValidationError</code>
     * _inner_
+        * [~ValidationCallback](#module_route4me-node..ValidationCallback) ⇒ <code>\*</code> \| <code>Error</code> ℗
         * _Route4Me_
             * [~RequestCallback](#module_route4me-node..RequestCallback) : <code>function</code>
 
@@ -28,6 +29,22 @@
 <a id="module_route4me-node.Route4MeValidationError" name="module_route4me-node.Route4MeValidationError"></a>
 
 ### route4me-node.Route4MeValidationError : <code>Route4MeValidationError</code>
+
+<a id="module_route4me-node..ValidationCallback" name="module_route4me-node..ValidationCallback"></a>
+
+### route4me-node~ValidationCallback ⇒ <code>\*</code> \| <code>Error</code> ℗
+
+Validation callback, applied to each API-response
+
+**Returns**: <code>\*</code> \| <code>Error</code> - Returns:
+* [Error](Error) on validation error
+* `obj` argument (modifications allowed)  
+**Access**: private  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| obj | <code>\*</code> | Object to validate. Route4Me will pass API-responses with this argument |
+| schemaName | <code>string</code> | Name of the schema to validate against. Route4Me will pass the name of appropriate schema for validation. |
 
 <a id="module_route4me-node..RequestCallback" name="module_route4me-node..RequestCallback"></a>
 
@@ -64,6 +81,7 @@ Request manager, provides
 
 Creates new RequestManager. All parameters are inherited from {Route4Me}
 
+**Returns**: [<code>RequestManager</code>](#RequestManager) - - New Request Manager  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -72,7 +90,7 @@ Creates new RequestManager. All parameters are inherited from {Route4Me}
 
 <a id="RequestManager+_makeRequest" name="RequestManager+_makeRequest"></a>
 
-### requestManager._makeRequest(options, [callback])
+### requestManager.\_makeRequest(options, [callback])
 
 Wrapper around [external:superagent](external:superagent) with all options applied.
 
@@ -89,12 +107,12 @@ Wrapper around [external:superagent](external:superagent) with all options appli
 | options.path | <code>string</code> |  | Server path |
 | [options.qs] | <code>object</code> |  | Query string |
 | [options.body] | <code>object</code> |  | Body |
-| [options.validationContext] | <code>null</code> &#124; <code>string</code> &#124; <code>function</code> | <code></code> | * `null` cause validation disabled (TODO: test this case) * `string` is threated as the name of JSON Schema * `function` will be used for validation. |
-| [callback] | <code>[RequestCallback](#module_route4me-node..RequestCallback)</code> |  |  |
+| [options.validationContext] | <code>null</code> \| <code>string</code> \| <code>function</code> | <code></code> | * `null` cause validation disabled (TODO: test this case) * `string` is threated as the name of JSON Schema * `function` will be used for validation. |
+| [callback] | [<code>RequestCallback</code>](#module_route4me-node..RequestCallback) |  |  |
 
 <a id="RequestManager+_makeError" name="RequestManager+_makeError"></a>
 
-### requestManager._makeError(error, [callback])
+### requestManager.\_makeError(error, [callback])
 
 Early cancel request
 
@@ -107,7 +125,7 @@ Early cancel request
 | Param | Type | Description |
 | --- | --- | --- |
 | error | <code>Error</code> | The reason the request was cancelled. |
-| [callback] | <code>[RequestCallback](#module_route4me-node..RequestCallback)</code> |  |
+| [callback] | [<code>RequestCallback</code>](#module_route4me-node..RequestCallback) |  |
 
 <a id="clone" name="clone"></a>
 

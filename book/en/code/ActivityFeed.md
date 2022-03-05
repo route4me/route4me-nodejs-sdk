@@ -1,16 +1,21 @@
 <a id="ActivityFeed" name="ActivityFeed"></a>
 
-## ActivityFeed
+## ActivityFeed ℗
 
 ActivityFeed facility
 
 **Category**: ActivityFeed  
+**Access**: private  
+**See**: [https://route4me.io/docs/#activity-feed](https://route4me.io/docs/#activity-feed)  
+**Since**: 0.1.12  
 
-* [ActivityFeed](#ActivityFeed)
+* [ActivityFeed](#ActivityFeed) ℗
     * [new ActivityFeed(requestManager)](#new_ActivityFeed_new)
     * [.ActivityTypeEnum](#ActivityFeed+ActivityTypeEnum)
     * [.create(data, [callback])](#ActivityFeed+create)
     * [.list(criteria, [options], [callback])](#ActivityFeed+list)
+    * [.getactivities_example(data, [callback])](#ActivityFeed+getactivities_example)
+    * [.logcustomactivity(data, [callback])](#ActivityFeed+logcustomactivity)
 
 <a id="new_ActivityFeed_new" name="new_ActivityFeed_new"></a>
 
@@ -18,6 +23,7 @@ ActivityFeed facility
 
 Constructor
 
+**Returns**: [<code>ActivityFeed</code>](#ActivityFeed) - - ActivityFeed facility  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -74,7 +80,7 @@ two-way chat.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| criteria | <code>string</code> &#124; <code>Object</code> |  | Criteria for event filter. Depending on type will be considered as: * `string` - criteria is a string representation of [Activity type](ActivityTypeEnum) * `Object` - criteria is a set of filters, see below |
+| criteria | <code>string</code> \| <code>Object</code> |  | Criteria for event filter. Depending on type will be considered as: * `string` - criteria is a string representation of [Activity type](ActivityTypeEnum) * `Object` - criteria is a set of filters, see below |
 | [criteria.activityType] | <code>string</code> |  | [Activity type](ActivityTypeEnum) |
 | [criteria.routeId] | <code>string</code> |  | Route ID |
 | [options] | <code>Object</code> |  | Options for activity search |
@@ -82,4 +88,42 @@ two-way chat.
 | [options.offset] | <code>number</code> |  | List offset |
 | [options.includeTeamActivities] | <code>boolean</code> | <code>false</code> | Indicate, whether team activities should be included |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:ActivityFeed.ActivityFeedResult&gt;</code> |  |  |
+
+<a id="ActivityFeed+getactivities_example" name="ActivityFeed+getactivities_example"></a>
+
+### activityFeed.getactivities\_example(data, [callback])
+
+Log a Specific Message
+
+This example demonstrates how to permanently store a specific message
+directly to the activity feed. For example, this can be used for one or
+two-way chat.
+
+**The created activity will have `activityType === "user_message"`**
+
+**See**: [https://route4me.io/docs/#activity-feed](https://route4me.io/docs/#activity-feed)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>Object</code> | Activity Feed parameter |
+| [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.Route&gt;</code> |  |
+
+<a id="ActivityFeed+logcustomactivity" name="ActivityFeed+logcustomactivity"></a>
+
+### activityFeed.logcustomactivity(data, [callback])
+
+Log a Specific Message
+
+This example demonstrates how to permanently store a specific message
+directly to the activity feed. For example, this can be used for one or
+two-way chat.
+
+**The created activity will have `activityType === "user_message"`**
+
+**See**: [https://route4me.io/docs/#activity-feed](https://route4me.io/docs/#activity-feed)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>Object</code> | Activity Feed parameter |
+| [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.Route&gt;</code> |  |
 

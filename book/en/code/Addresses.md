@@ -1,12 +1,15 @@
 <a id="Addresses" name="Addresses"></a>
 
-## Addresses
+## Addresses ℗
 
 Addresses facility
 
 **Category**: Addresses  
+**Access**: private  
+**See**: [https://route4me.io/docs/#addresses](https://route4me.io/docs/#addresses)  
+**Since**: 0.1.8  
 
-* [Addresses](#Addresses)
+* [Addresses](#Addresses) ℗
     * [new Addresses(requestManager)](#new_Addresses_new)
     * [.get(id, routeId, [options], [callback])](#Addresses+get)
     * [.updateCustomData(id, routeId, customFields, [callback])](#Addresses+updateCustomData)
@@ -21,6 +24,7 @@ Addresses facility
 
 Constructor
 
+**Returns**: [<code>Addresses</code>](#Addresses) - - Addresses facility  
 
 | Param | Type | Description |
 | --- | --- | --- |

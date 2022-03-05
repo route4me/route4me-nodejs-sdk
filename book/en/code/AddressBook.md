@@ -1,12 +1,15 @@
 <a id="AddressBook" name="AddressBook"></a>
 
-## AddressBook
+## AddressBook ℗
 
 AddressBook facility
 
 **Category**: AddressBook  
+**Access**: private  
+**See**: [https://route4me.io/docs/#address-book](https://route4me.io/docs/#address-book)  
+**Since**: 0.1.8  
 
-* [AddressBook](#AddressBook)
+* [AddressBook](#AddressBook) ℗
     * [new AddressBook(requestManager)](#new_AddressBook_new)
     * [.create(data, [callback])](#AddressBook+create)
     * [.getMany(ids, [callback])](#AddressBook+getMany)
@@ -21,6 +24,7 @@ AddressBook facility
 
 Constructor
 
+**Returns**: [<code>AddressBook</code>](#AddressBook) - - AddressBook facility  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -56,7 +60,7 @@ GET locations from an address book by a specified list of locations IDs.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| ids | <code>number</code> &#124; <code>string</code> &#124; <code>Array.&lt;number&gt;</code> &#124; <code>Array.&lt;string&gt;</code> | Address IDs (as number, string, CSV-separated string, or an array of numbers, or an array of strings). |
+| ids | <code>number</code> \| <code>string</code> \| <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;string&gt;</code> | Address IDs (as number, string, CSV-separated string, or an array of numbers, or an array of strings). |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBook.AddressBookSearchResult&gt;</code> |  |
 
 <a id="AddressBook+list" name="AddressBook+list"></a>
@@ -140,7 +144,7 @@ REMOVE locations from an address book.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| ids | <code>number</code> &#124; <code>string</code> &#124; <code>Array.&lt;number&gt;</code> &#124; <code>Array.&lt;string&gt;</code> | locations IDs, CSV-string OR one ID as string OR one ID as number OR array of strings/numbers |
+| ids | <code>number</code> \| <code>string</code> \| <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;string&gt;</code> | locations IDs, CSV-string OR one ID as string OR one ID as number OR array of strings/numbers |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;boolean&gt;</code> |  |
 
 **Example**  

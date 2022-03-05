@@ -25,7 +25,7 @@ Debug
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [arg] | <code>[LoggerParams](#ILogger..LoggerParams)</code> &#124; <code>Error</code> &#124; <code>string</code> | Something to log |
+| [arg] | [<code>LoggerParams</code>](#ILogger..LoggerParams) \| <code>Error</code> \| <code>string</code> | Something to log |
 
 <a id="ILogger+info" name="ILogger+info"></a>
 
@@ -36,7 +36,7 @@ Info
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [arg] | <code>[LoggerParams](#ILogger..LoggerParams)</code> &#124; <code>Error</code> &#124; <code>string</code> | Something to log |
+| [arg] | [<code>LoggerParams</code>](#ILogger..LoggerParams) \| <code>Error</code> \| <code>string</code> | Something to log |
 
 <a id="ILogger+warn" name="ILogger+warn"></a>
 
@@ -47,7 +47,7 @@ Warning
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [arg] | <code>[LoggerParams](#ILogger..LoggerParams)</code> &#124; <code>Error</code> &#124; <code>string</code> | Something to log |
+| [arg] | [<code>LoggerParams</code>](#ILogger..LoggerParams) \| <code>Error</code> \| <code>string</code> | Something to log |
 
 <a id="ILogger+error" name="ILogger+error"></a>
 
@@ -58,7 +58,7 @@ Error
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [arg] | <code>[LoggerParams](#ILogger..LoggerParams)</code> &#124; <code>Error</code> &#124; <code>string</code> | Something to log |
+| [arg] | [<code>LoggerParams</code>](#ILogger..LoggerParams) \| <code>Error</code> \| <code>string</code> | Something to log |
 
 <a id="ILogger..LoggerParams" name="ILogger..LoggerParams"></a>
 
@@ -68,8 +68,8 @@ Error
 
 | Name | Type | Description |
 | --- | --- | --- |
-| msg | <code>string</code> | Message to log |
-| err | <code>Error</code> | Error object, if error occured |
+| [msg] | <code>string</code> | Message to log |
+| [err] | <code>Error</code> | Error object, if error occured |
 
 <a id="Route4Me" name="Route4Me"></a>
 
@@ -93,6 +93,7 @@ Main members of the instanse of `Route4Me` class:
 * [Notes         ](Notes)
 * [Optimizations ](Optimizations)
 * [Orders        ](Orders)
+* [OrderCustomFields        ](OrderCustomFields)
 * [Routes        ](Routes)
 * [Territories   ](Territories)
 * [Tracking      ](Tracking)
@@ -143,14 +144,15 @@ For most use cases it is necessary:
 
 Create new API client
 
+**Returns**: [<code>Route4Me</code>](#Route4Me) - New API client  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | apiKey | <code>string</code> |  | API KEY |
 | [options] | <code>object</code> |  | Additional options for new instance |
 | [options.baseUrl] | <code>string</code> | <code>&quot;\&quot;https://api.route4me.com\&quot;&quot;</code> | Base URL for sending requests |
-| [options.logger] | <code>[ILogger](#ILogger)</code> | <code></code> | Logger facility |
-| [options.promise] | <code>boolean</code> &#124; <code>function</code> | <code>false</code> | Use promises instead of callbacks. Usage: * `false` means _no promises, use callbacks_; * `true` means _use global `Promise`_ as promises' constructor; * `constructor (function)` forces to use explicit Promise library. See also Examples section of this documentation. |
+| [options.logger] | [<code>ILogger</code>](#ILogger) | <code></code> | Logger facility |
+| [options.promise] | <code>boolean</code> \| <code>function</code> | <code>false</code> | Use promises instead of callbacks. Usage: * `false` means _no promises, use callbacks_; * `true` means _use global `Promise`_ as promises' constructor; * `constructor (function)` forces to use explicit Promise library. See also Examples section of this documentation. |
 | [options.validate] | <code>module:route4me-node~ValidationCallback</code> | <code>false</code> | Validator for input and output parameters of the API methods. Set **falsey** value to skip autovalidation (in favor of manual check). |
 
 <a id="Route4Me+ActivityFeed" name="Route4Me+ActivityFeed"></a>
@@ -262,6 +264,7 @@ Enum for all known **activity type**.
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
+| Undefined | <code>string</code> | <code>&quot;&quot;</code> |  |
 | AreaAdded | <code>string</code> | <code>&quot;area-added&quot;</code> |  |
 | AreaRemoved | <code>string</code> | <code>&quot;area-removed&quot;</code> |  |
 | AreaUpdated | <code>string</code> | <code>&quot;area-updated&quot;</code> |  |
@@ -285,4 +288,12 @@ Enum for all known **activity type**.
 | MemberModified | <code>string</code> | <code>&quot;member-modified&quot;</code> |  |
 | NoteInsert | <code>string</code> | <code>&quot;note-insert&quot;</code> |  |
 | UserMessage | <code>string</code> | <code>&quot;user_message&quot;</code> |  |
+| ApprovedToExecute | <code>string</code> | <code>&quot;approved-to-execute&quot;</code> |  |
+| RouteDuplicate | <code>string</code> | <code>&quot;route-duplicate&quot;</code> |  |
+| RouteMerge | <code>string</code> | <code>&quot;route-merge&quot;</code> |  |
+| OrderCreated | <code>string</code> | <code>&quot;order-created&quot;</code> |  |
+| OrderUpdated | <code>string</code> | <code>&quot;order-updated&quot;</code> |  |
+| OrderDeleted | <code>string</code> | <code>&quot;order-deleted&quot;</code> |  |
+| UnapprovedToExecute | <code>string</code> | <code>&quot;unapproved-to-execute&quot;</code> |  |
+| RouteUpdate | <code>string</code> | <code>&quot;route-update&quot;</code> |  |
 

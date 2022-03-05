@@ -1,12 +1,15 @@
 <a id="Tracking" name="Tracking"></a>
 
-## Tracking
+## Tracking ℗
 
 Tracking facility
 
 **Category**: Tracking  
+**Access**: private  
+**See**: [https://route4me.io/docs/#tracking](https://route4me.io/docs/#tracking)  
+**Since**: 0.1.8  
 
-* [Tracking](#Tracking)
+* [Tracking](#Tracking) ℗
     * [new Tracking(requestManager)](#new_Tracking_new)
     * [.getAssetTracking(tracking, [callback])](#Tracking+getAssetTracking)
     * [.getRouteTrackingHistory(routeId, period, [callback])](#Tracking+getRouteTrackingHistory)
@@ -18,6 +21,7 @@ Tracking facility
 
 Constructor
 
+**Returns**: [<code>Tracking</code>](#Tracking) - - Tracking facility  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -51,7 +55,7 @@ Get a device’s location history from a time range.
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | routeId | <code>string</code> |  | Route ID |
-| period | <code>string</code> &#124; <code>Object</code> |  | Time period. Object with `from` and `trim` dates, or one of predefined strings: * `today` * `yesterday` * `thismonth` * `7days` * `14days` * `30days` * `60days` * `90days` * `all_time` |
+| period | <code>string</code> \| <code>Object</code> |  | Time period. Object with `from` and `trim` dates, or one of predefined strings: * `today` * `yesterday` * `thismonth` * `7days` * `14days` * `30days` * `60days` * `90days` * `all_time` |
 | [period.span] | <code>string</code> | <code>&quot;\&quot;custom\&quot;&quot;</code> | One of predefined strings (this is an another one way to determine it) |
 | period.from | <code>Date</code> |  | Custom start date |
 | period.trim | <code>Date</code> |  | Custom end date |

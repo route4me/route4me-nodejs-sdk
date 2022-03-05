@@ -1,12 +1,15 @@
 <a id="Routes" name="Routes"></a>
 
-## Routes
+## Routes ℗
 
 Routes facility
 
 **Category**: Routes  
+**Access**: private  
+**See**: [https://route4me.io/docs/#routes](https://route4me.io/docs/#routes)  
+**Since**: 0.1.8  
 
-* [Routes](#Routes)
+* [Routes](#Routes) ℗
     * [new Routes(requestManager)](#new_Routes_new)
     * [.get(id, [options], [callback])](#Routes+get)
     * [.list(options, [callback])](#Routes+list)
@@ -21,6 +24,8 @@ Routes facility
     * [.pullAddress(id, addressId, afterAddressId, [callback])](#Routes+pullAddress)
     * [.resequence(id, order, [callback])](#Routes+resequence)
     * [.optimize(id, criteria, [callback])](#Routes+optimize)
+    * [.routeexamples_optiomization(param, [callback])](#Routes+routeexamples_optiomization)
+    * [.get_schedule_calendar(param, [callback])](#Routes+get_schedule_calendar)
 
 <a id="new_Routes_new" name="new_Routes_new"></a>
 
@@ -28,6 +33,7 @@ Routes facility
 
 Constructor
 
+**Returns**: [<code>Routes</code>](#Routes) - - Routes facility  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -124,7 +130,7 @@ Given multiple route ID’s, remove all routes at the same time.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| ids | <code>number</code> &#124; <code>string</code> &#124; <code>Array.&lt;number&gt;</code> &#124; <code>Array.&lt;string&gt;</code> | Route ID **or** comma-separated list of route IDs **or** array of route IDs |
+| ids | <code>number</code> \| <code>string</code> \| <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;string&gt;</code> | Route ID **or** comma-separated list of route IDs **or** array of route IDs |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.RemoveResponse&gt;</code> |  |
 
 **Example**  
@@ -200,7 +206,7 @@ Merges the list of routes. More information - on Route4Me API-doc site (see link
 
 | Param | Type | Description |
 | --- | --- | --- |
-| ids | <code>string</code> &#124; <code>Array.&lt;string&gt;</code> | Array of the Route IDs to be merged. |
+| ids | <code>string</code> \| <code>Array.&lt;string&gt;</code> | Array of the Route IDs to be merged. |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;string&gt;</code> |  |
 
 <a id="Routes+share" name="Routes+share"></a>
@@ -266,5 +272,32 @@ Optimize and re-sequence all destinations
 | --- | --- | --- |
 | id | <code>string</code> | Route ID |
 | criteria | <code>string</code> | Optimization type, possible values: * `Distance` - optimize for distance * `Time` * `TimeWithTraffic` * `NoneOptimize` |
+| [callback] | <code>module:route4me-node~RequestCallback</code> |  |
+
+<a id="Routes+routeexamples_optiomization" name="Routes+routeexamples_optiomization"></a>
+
+### routes.routeexamples\_optiomization(param, [callback])
+
+RouteExamples
+
+**See**: [https://route4me.io/docs/#optimizations](https://route4me.io/docs/#optimizations)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| param | <code>object</code> | Optimization params |
+| [callback] | <code>module:route4me-node~RequestCallback</code> |  |
+
+<a id="Routes+get_schedule_calendar" name="Routes+get_schedule_calendar"></a>
+
+### routes.get\_schedule\_calendar(param, [callback])
+
+RouteExample
+Get Schedule Calendar
+
+**See**: [https://route4me.io/docs/#get-schedule-calendar](https://route4me.io/docs/#get-schedule-calendar)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| param | <code>object</code> | Schedule params |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 

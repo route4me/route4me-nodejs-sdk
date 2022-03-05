@@ -7,15 +7,15 @@
  */
 class Vehicles {
 	/**
-	* Constructor
-	*
-	* @see {@link https://route4me.io/docs/#vehicles}
-	* @since 0.1.4
-	* @private
-	*
-	* @param  {RequestManager} requestManager - Request Manager
-	* @return {Vehicles}					  - Vehicles facility
-	*/
+	 * Constructor
+	 *
+	 * @see {@link https://route4me.io/docs/#vehicles}
+	 * @since 0.1.4
+	 * @private
+	 *
+	 * @param  {RequestManager} requestManager - Request Manager
+	 * @return {Vehicles}					  - Vehicles facility
+	 */
 	constructor(requestManager) {
 		this.r = requestManager
 	}
