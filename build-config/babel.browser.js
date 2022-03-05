@@ -2,13 +2,11 @@
 
 const config = {
 	"presets": [
-		"babel-preset-es2015",
-		"babel-preset-es2016",
 		["env", {
 			"targets": {
 				"browsers": ["> 5%"],
 			},
-			"useBuiltIns": true,
+			"useBuiltIns": true
 		}],
 	],
 	"plugins": [

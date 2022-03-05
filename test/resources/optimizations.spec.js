@@ -68,7 +68,7 @@ describe(helper.toSuiteName(__filename), () => {
 				}
 
 				resource.list(undefined, options, (err, res) => {
-					expect(res).is.empty
+					expect(res).to.be.an('undefined')
 
 					expect(err).is.not.null
 					expect(err).is.instanceof(Error)

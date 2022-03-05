@@ -19,7 +19,7 @@ const config = _.mergeWith({
 				exclude: /(node_modules|bower_components)/,	
 				use: {
 					loader: 'babel-loader',
-					query: babelConfig
+					options: babelConfig
 				}		
 			},
 			{
@@ -27,7 +27,7 @@ const config = _.mergeWith({
 				exclude: /node_modules/,
 				use: {
 					loader: 'file-loader',
-					query: {
+					options: {
 						name: '[name].[ext]'
 					},
 				},

@@ -320,8 +320,6 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.createOrderCustomFields(data, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					console.log("111111111");
-					console.log(res);
 
 					helper.expectRequest(req,
 						"POST", "https://api.route4me.com/api.v4/order_custom_user_fields.php",
