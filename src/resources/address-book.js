@@ -29,8 +29,8 @@ class AddressBook {
 	 * @since 0.1.8
 	 *
 	 * @param {jsonschema:AddressBook.AddressBook}  data       - Valid AddressBook data.
-	 * @param {module:route4me-node~RequestCallback<jsonschema:AddressBook.AddressBook>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * AddressBook.AddressBook>} [callback]
 	 */
 	create(data, callback) {
 		return this.r._makeRequest({
@@ -52,8 +52,8 @@ class AddressBook {
 	 *
 	 * @param {number|string|Array<number>|Array<string>} ids - Address IDs (as number,
 	 * string, CSV-separated string, or an array of numbers, or an array of strings).
-	 * @param {module:route4me-node~RequestCallback<jsonschema:AddressBook.AddressBookSearchResult>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * AddressBook.AddressBookSearchResult>} [callback]
 	 */
 	getMany(ids, callback) {
 		const _ids = utils.toIntArray(ids)
@@ -79,8 +79,8 @@ class AddressBook {
 	 * @todo TODO: convert options to optional
 	 *
 	 * @param {Object} options - List-parameters
-	 * @param {module:route4me-node~RequestCallback<jsonschema:AddressBook.AddressBookSearchResult>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * AddressBook.AddressBookSearchResult>} [callback]
 	 */
 	list(options, callback) {
 		return this.search(undefined, options, callback)
@@ -104,8 +104,8 @@ class AddressBook {
 	 * @param {Object} options          - List-parameters
 	 * @param {number} [options.limit]  - List limit
 	 * @param {number} [options.offset] - List offset
-	 * @param {module:route4me-node~RequestCallback<jsonschema:AddressBook.AddressBookSearchResult>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * AddressBook.AddressBookSearchResult>} [callback]
 	 */
 	search(query, options, callback) {
 		const qs = {}
@@ -150,8 +150,8 @@ class AddressBook {
 	 *
 	 * @param {string}  id       - AddressBook item ID
 	 * @param {jsonschema:AddressBook.AddressBook}  data  - Valid AddressBook data.
-	 * @param {module:route4me-node~RequestCallback<jsonschema:AddressBook.AddressBook>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * AddressBook.AddressBook>} [callback]
 	 */
 	update(id, data, callback) {
 		const d = utils.clone(data)
@@ -179,8 +179,7 @@ class AddressBook {
 	 *
 	 * @param {number|string|Array<number>|Array<string>}  ids - locations IDs,
 	 * CSV-string OR one ID as string OR one ID as number OR array of strings/numbers
-	 * @param {module:route4me-node~RequestCallback<boolean>}
-	 *     [callback]
+	 * @param {module:route4me-node~RequestCallback<boolean>} [callback]
 	 */
 	remove(ids, callback) {
 		const pureIds = utils.toStringArray(ids)

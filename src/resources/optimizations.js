@@ -28,11 +28,12 @@ class Optimizations {
 	 * @see {@link https://route4me.io/docs/#create-an-optimization}
 	 *
 	 * @param  {jsonschema:Optimizations.CreateRequest} optimization - Parameters for new optimization
-	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>}
-	 * [callback]
+	 * @param  {boolean} isRedirect
+	 * @param  {module:route4me-node~RequestCallback<jsonschema:
+	 * Optimizations.Response>} [callback]
 	 */
-	create(optimization,isRedirect, callback) {
-		if(!isRedirect) {
+	create(optimization, isRedirect, callback) {
+		if (!isRedirect) {
 			const qs = {}
 			qs["redirect"] = 0
 			return this.r._makeRequest({
@@ -43,14 +44,12 @@ class Optimizations {
 				validationContext: "Optimizations.Response",
 			}, callback)
 		}
-		else {
-			return this.r._makeRequest({
-				method: "POST",
-				path: "/api.v4/optimization_problem.php",
-				body: optimization,
-				validationContext: "Optimizations.Response",
-			}, callback)
-		}		
+		return this.r._makeRequest({
+			method: "POST",
+			path: "/api.v4/optimization_problem.php",
+			body: optimization,
+			validationContext: "Optimizations.Response",
+		}, callback)
 	}
 
 	/**
@@ -60,8 +59,8 @@ class Optimizations {
 	 * @see  {@link https://route4me.io/docs/#get-an-optimization}
 	 *
 	 * @param  {string} id - Optimization Problem ID
-	 * @param  {module:route4me-node~RequestCallback<jsonschema:Optimizations.Optimization>}
-	 * [callback]
+	 * @param  {module:route4me-node~RequestCallback<jsonschema:
+	 * Optimizations.Optimization>} [callback]
 	 */
 	get(id, callback) {
 		return this.r._makeRequest({
@@ -86,8 +85,8 @@ class Optimizations {
 	 * @param {Object} options          - List-parameters
 	 * @param {number} [options.limit]  - List limit
 	 * @param {number} [options.offset] - List offset
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Optimizations>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * Optimizations.Optimizations>} [callback]
 	 */
 	list(states, options, callback) {
 		const validStates = utils.toOptimizationStatesSafe(states)
@@ -115,7 +114,7 @@ class Optimizations {
 		}, callback)
 	}
 
-	/*
+	/**
 	 * Edit optimization
 	 *
 	 * Re-optimize existing optimizations by changing some parameters or addresses.
@@ -128,8 +127,7 @@ class Optimizations {
 	 * @param {boolean} [reoptimize=false] - Determine, whether the `Optimization`
 	 * should be reoptimized
 	 *
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.Response>} [callback]
 	 */
 	update(id, data, reoptimize, callback) {
 		let cb = callback
@@ -168,9 +166,9 @@ class Optimizations {
 	 *	"removed":1
 	 * }
 	 *
-	 * @param {string}  id       - Optimization Problem ID
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.RemoveResponse>}
-	 * [callback]
+	 * @param {string}  ids       - Optimization Problem IDs
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * Optimizations.RemoveResponse>} [callback]
 	 */
 	remove(ids, callback) {
 		return this.r._makeRequest({
@@ -196,8 +194,7 @@ class Optimizations {
 	 * @param {boolean}                             [reoptimize=false] - Determine, whether the
 	 * `Optimization` should be reoptimized
 	 *
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Addresses.Addresses>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Addresses.Addresses>} [callback]
 	 */
 	linkAddress(id, addresses, reoptimize, callback) {
 		let cb = callback
@@ -241,8 +238,8 @@ class Optimizations {
 	 *
 	 * @param {string}  id         - Optimization Problem ID
 	 * @param {number}  addressId  - Address ID
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Optimizations.UnlinkAddressResponse>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * Optimizations.UnlinkAddressResponse>} [callback]
 	 */
 	unlinkAddress(id, addressId, callback) {
 		return this.r._makeRequest({
@@ -255,7 +252,6 @@ class Optimizations {
 			validationContext: "Optimizations.UnlinkAddressResponse",
 		}, callback)
 	}
-
 }
 
 module.exports = Optimizations

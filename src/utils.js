@@ -30,20 +30,24 @@ class ILogger {
 	// eslint-disable-next-line class-methods-use-this, no-unused-vars
 	debug(arg) {
 	}
+
 	/**
 	 * Info
 	 * @param {ILogger~LoggerParams|Error|string} [arg]    Something to log
 	 */
 	info(arg) {}     // eslint-disable-line class-methods-use-this, no-unused-vars
+
 	/**
 	 * Warning
 	 * @param {ILogger~LoggerParams|Error|string} [arg]    Something to log
 	 */
+
 	warn(arg) {}     // eslint-disable-line class-methods-use-this, no-unused-vars
 	/**
 	 * Error
 	 * @param {ILogger~LoggerParams|Error|string} [arg]    Something to log
 	 */
+
 	error(arg) {}    // eslint-disable-line class-methods-use-this, no-unused-vars
 }
 
@@ -82,7 +86,6 @@ class CustomInternalPostProcessing {
 		// TODO: parse real error
 		return new errors.Route4MeApiError("Failed", res)
 	}
-
 }
 
 /*

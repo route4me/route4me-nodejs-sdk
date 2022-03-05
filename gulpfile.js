@@ -11,9 +11,10 @@ const _            = require("lodash")
 const debug        = require("debug")("route4me:gulpfile")
 
 const gulp         = require("gulp")
+//const util         = require("gulp-util")
 const log          = require("fancy-log")
 const gulpIf       = require("gulp-if")
-const eslint       = require("gulp-eslint")
+const eslint       = require("gulp-eslint-new")
 const mocha        = require("gulp-mocha")
 const size         = require("gulp-size")
 // const gulpUglify   = require("gulp-uglify")
@@ -130,6 +131,7 @@ gulp.task("doc:pre", gulp.series(function DG() {     // eslint-disable-line pref
 		// write to file:
 		.map((item) => {
 			const fn = path.join(docDir, `${item.category}.md`)
+			//util.log("DOC, saving to file", fn)
 			log("DOC, saving to file", fn)
 			return fs.writeFile(fn, item.output)
 		})

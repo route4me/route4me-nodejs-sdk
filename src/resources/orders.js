@@ -30,6 +30,7 @@ class CustomInternalPostProcessing {
 		// TODO: parse real error
 		return new errors.Route4MeApiError("Failed", res)
 	}
+
 	static customFields(data, ctx, res) {
 		if (!data
 			|| !Array.isArray(data)
@@ -291,7 +292,6 @@ class Orders {
 			opt = {}
 		}
 
-
 		// OPTIONS
 
 		if ("offset" in opt) {
@@ -406,7 +406,6 @@ class Orders {
 			validationContext: "Orders.Response",
 		}, callback)
 	}
-
 
 	/**
 	 * Update an OrderCustomFields

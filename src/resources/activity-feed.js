@@ -52,8 +52,7 @@ const activityTypeEnum = {
 	NoteInsert:              "note-insert",
 
 	UserMessage:             "user_message",
-	/* eslint-enable key-spacing */
-	
+
 	ApprovedToExecute:		 "approved-to-execute",
 	RouteDuplicate:			 "route-duplicate",
 	RouteMerge:				 "route-merge",
@@ -160,8 +159,9 @@ class ActivityFeed {
 	 * @param {number}  [options.offset]  - List offset
 	 * @param {boolean} [options.includeTeamActivities=false] - Indicate, whether team
 	 * activities should be included
-	 * @param {module:route4me-node~RequestCallback<jsonschema:ActivityFeed.ActivityFeedResult>}
-	 * [callback]
+	 *
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * ActivityFeed.ActivityFeedResult>}  [callback]
 	 */
 	list(criteria, options, callback) {
 		const qs = {}
@@ -230,7 +230,7 @@ class ActivityFeed {
 		}, cb)
 	}
 
-	 /**
+	/**
 	 * Log a Specific Message
 	 *
 	 * This example demonstrates how to permanently store a specific message
@@ -242,6 +242,7 @@ class ActivityFeed {
 	 * @see {@link https://route4me.io/docs/#activity-feed}
 	 *
 	 * @param {Object} data          - Activity Feed parameter
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
 	 */
 	getactivities_example(data, callback) {
 		return this.r._makeRequest({
@@ -252,7 +253,7 @@ class ActivityFeed {
 		}, callback)
 	}
 
-	 /**
+	/**
 	 * Log a Specific Message
 	 *
 	 * This example demonstrates how to permanently store a specific message
@@ -264,6 +265,7 @@ class ActivityFeed {
 	 * @see {@link https://route4me.io/docs/#activity-feed}
 	 *
 	 * @param {Object} data          - Activity Feed parameter
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
 	 */
 	logcustomactivity(data, callback) {
 		return this.r._makeRequest({
@@ -273,7 +275,6 @@ class ActivityFeed {
 			validationContext: "ActivityFeed.logcustomactivity",
 		}, callback)
 	}
-
 }
 
 module.exports = ActivityFeed
