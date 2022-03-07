@@ -229,8 +229,8 @@ describe(helper.toSuiteName(__filename), () => {
 
 			it("should call route4me with byAddDate, byScheduledDate", (done) => {
 				let criteria = {
-					byAddDate: new Date(1900, 0, 1),
-					byScheduledDate: new Date(1900, 0, 1)
+					byAddDate: new Date(Date.UTC(1970, 0, 1)),
+					byScheduledDate: new Date(Date.UTC(1970, 0, 1))
 				};
 
 				resource.search(criteria, options, (err, res) => {
@@ -239,8 +239,8 @@ describe(helper.toSuiteName(__filename), () => {
 
 					helper.expectRequest(req,
 						"GET", "https://api.route4me.com/api.v4/order.php", {
-							"day_added_YYMMDD": "1899-12-31",
-							"scheduled_for_YYMMDD": "1899-12-31",
+							"day_added_YYMMDD": "1970-01-01",
+							"scheduled_for_YYMMDD": "1970-01-01",
 							"limit": "25",
 							"redirect": "0",
 						},
