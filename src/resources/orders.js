@@ -432,6 +432,59 @@ class Orders {
 			validationContext: "OrderCustomFields.Response",
 		}, callback)
 	}
+
+	/**
+	 * Get all the archive orders created under the specific Route4Me account
+	 *
+	 * @see {@link https://route4me.io/docs}
+	 * @since 1.0.4
+	 *
+	 * @param {Object} [data] - Archive params
+	 * can have next fields
+	 * cursor: string - id of next page of orders, empty string on first call
+	 * per_page: integer - number of orders per page
+	 * filters: object
+	 *
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Orders>} [callback]
+	 * [callback]
+	 */
+	archive(data, callback) {
+		const body = utils.clone(data)
+
+		return this.r._makeRequest5({
+			method: "POST",
+			path: "/api/v5.0/orders/archive",
+			qs: null,
+			body,
+			validationContext: "Orders.archive",
+		}, callback)
+	}
+
+	/**
+	 * Get the orders history created under the specific Route4Me account
+	 *
+	 * @see {@link https://route4me.io/docs}
+	 * @since 1.0.4
+	 *
+	 * @param {number} [orderId] - Order ID
+	 * @param {string} [trackingNumber] - Tracking number
+	 *
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Orders>} [callback]
+	 * [callback]
+	 */
+	history(orderId, trackingNumber, callback) {
+		const qs = {
+			order_id: orderId,
+			tracking_number: trackingNumber
+		}
+
+		return this.r._makeRequest5({
+			method: "GET",
+			path: "/api/v5.0/orders/history",
+			qs,
+			validationContext: "Orders.history",
+		}, callback)
+	}
 }
 
 module.exports = Orders
