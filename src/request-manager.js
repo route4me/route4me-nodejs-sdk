@@ -102,7 +102,6 @@ class RequestManager {
 
 		this._apiKey = apiKey
 		this._baseUrl = opt["baseUrl"]
-		this._baseUrl5 = opt["baseUrl5"]
 		this._userAgent = opt["userAgent"]
 
 		this._logger = opt["logger"]
@@ -135,7 +134,6 @@ class RequestManager {
 
 	/**
 	 * Wrapper around {@link external:superagent} with all options applied.
-	 * Uses base url route4me API v4.0
 	 *
 	 * @todo TODO: rename this method!!!
 	 * @protected
@@ -174,7 +172,7 @@ class RequestManager {
 
 			apiUrl = options.url
 		} else {
-			apiUrl = (options["v5"] ? `${this._baseUrl5}${options.path}` : `${this._baseUrl}${options.path}`)
+			apiUrl = `${this._baseUrl}${options.path}`
 		}
 
 		qs["api_key"] = this._apiKey
@@ -229,31 +227,6 @@ class RequestManager {
 		req.end((err, res) => resHandler.callback(err, res))
 
 		return resHandler.getPromise()
-	}
-
-	/**
-	 * Wrapper around {@link external:superagent} with all options applied.
-	 * Uses base url route4me API v5.0
-	 *
-	 * @todo TODO: rename this method!!!
-	 * @protected
-	 *
-	 * @param {object} options              Request options
-	 * @param {string} options.method       HTTP method
-	 * @param {string} options.path         Server path
-	 * @param {object} [options.qs]         Query string
-	 * @param {object} [options.body]       Body
-	 * @param {null|string|function} [options.validationContext=null]
-	 * * `null` cause validation disabled (TODO: test this case)
-	 * * `string` is threated as the name of JSON Schema
-	 * * `function` will be used for validation.
-	 * @param {module:route4me-node~RequestCallback}    [callback]
-	 */
-	_makeRequest5(options, callback) {
-		options["v5"] = true // eslint-disable-line
-		const res = this._makeRequest(options, callback)
-		options["v5"] = false // eslint-disable-line
-		return res
 	}
 
 	/**
