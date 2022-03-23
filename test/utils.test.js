@@ -1,6 +1,7 @@
 "use strict"
 
 const utils = require("../dist/utils")
+const errors = require("../dist/errors")
 
 // // TODO: this will be required, when babel-error-inheritance will be solved.
 // const errors   = require("../dist/errors")
@@ -33,6 +34,28 @@ describe(helper.toSuiteName(__filename), () => {
 		it("should have error method", () => {
 			const act = log.error()
 			expect(act).is.undefined
+		})
+	})
+
+	describe("CustomInternalPostProcessing", () => {
+		it("should convert JSON status to boolean if status in res", () => {
+			const act = utils.CustomInternalPostProcessing.fromJsonWithStatus(null, null, { text: "{\"status\":true}" })
+			expect(act).is.true
+		})
+
+		it("should return Route4MeValidationError if data is null", () => {
+			const act = utils.CustomInternalPostProcessing.fromJsonWithStatus(null, null, { text: "" })
+			expect(act).to.be.an.instanceof(errors.Route4MeValidationError)
+		})
+
+		it("should convert JSON status to boolean if status in data", () => {
+			const act = utils.CustomInternalPostProcessing.fromJsonWithStatus({ "status": true }, null, { text: "" })
+			expect(act).is.true
+		})
+
+		it("should return Route4MeApiError if status false", () => {
+			const act = utils.CustomInternalPostProcessing.fromJsonWithStatus({ "status": false }, null, { text: "", statusCode: 400, request: { url: "test.com" }})
+			expect(act).to.be.an.instanceof(errors.Route4MeApiError)
 		})
 	})
 

@@ -1,17 +1,21 @@
 <a id="Optimizations" name="Optimizations"></a>
 
-## Optimizations
+## Optimizations ℗
 
 Optimizations facility
 
 **Category**: Optimizations  
+**Access**: private  
+**See**: [https://route4me.io/docs/#optimizations](https://route4me.io/docs/#optimizations)  
+**Since**: 0.1.3  
 
-* [Optimizations](#Optimizations)
+* [Optimizations](#Optimizations) ℗
     * [new Optimizations(requestManager)](#new_Optimizations_new)
-    * [.create(optimization, [callback])](#Optimizations+create)
+    * [.create(optimization, isRedirect, [callback])](#Optimizations+create)
     * [.get(id, [callback])](#Optimizations+get)
     * [.list(states, options, [callback])](#Optimizations+list)
-    * [.remove(id, [callback])](#Optimizations+remove)
+    * [.update(id, data, [reoptimize], [callback])](#Optimizations+update)
+    * [.remove(ids, [callback])](#Optimizations+remove)
     * [.linkAddress(id, addresses, [reoptimize], [callback])](#Optimizations+linkAddress)
     * [.unlinkAddress(id, addressId, [callback])](#Optimizations+unlinkAddress)
 
@@ -21,6 +25,7 @@ Optimizations facility
 
 Constructor
 
+**Returns**: [<code>Optimizations</code>](#Optimizations) - - Optimizations facility  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -28,7 +33,7 @@ Constructor
 
 <a id="Optimizations+create" name="Optimizations+create"></a>
 
-### optimizations.create(optimization, [callback])
+### optimizations.create(optimization, isRedirect, [callback])
 
 Create a new optimization
 
@@ -37,6 +42,7 @@ Create a new optimization
 | Param | Type | Description |
 | --- | --- | --- |
 | optimization | <code>jsonschema:Optimizations.CreateRequest</code> | Parameters for new optimization |
+| isRedirect | <code>boolean</code> |  |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Optimizations.Response&gt;</code> |  |
 
 <a id="Optimizations+get" name="Optimizations+get"></a>
@@ -68,15 +74,33 @@ GET all optimizations belonging to an user.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| states | <code>number</code> &#124; <code>string</code> &#124; <code>Array.&lt;string&gt;</code> &#124; <code>Array.&lt;number&gt;</code> | List of states [1..6] |
+| states | <code>number</code> \| <code>string</code> \| <code>Array.&lt;string&gt;</code> \| <code>Array.&lt;number&gt;</code> | List of states [1..6] |
 | options | <code>Object</code> | List-parameters |
 | [options.limit] | <code>number</code> | List limit |
 | [options.offset] | <code>number</code> | List offset |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Optimizations.Optimizations&gt;</code> |  |
 
+<a id="Optimizations+update" name="Optimizations+update"></a>
+
+### optimizations.update(id, data, [reoptimize], [callback])
+
+Edit optimization
+
+Re-optimize existing optimizations by changing some parameters or addresses.
+
+**See**: [https://route4me.io/docs/#re-optimize-an-optimization](https://route4me.io/docs/#re-optimize-an-optimization)  
+**Since**: 0.1.7  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| id | <code>string</code> |  | Optimization Problem ID |
+| data | <code>jsonschema:Optimizations.CreateRequest</code> |  | New values for `Optimization` |
+| [reoptimize] | <code>boolean</code> | <code>false</code> | Determine, whether the `Optimization` should be reoptimized |
+| [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Optimizations.Response&gt;</code> |  |  |
+
 <a id="Optimizations+remove" name="Optimizations+remove"></a>
 
-### optimizations.remove(id, [callback])
+### optimizations.remove(ids, [callback])
 
 Remove an existing optimization belonging to an user.
 
@@ -89,7 +113,7 @@ Remove an existing optimization belonging to an user.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| id | <code>string</code> | Optimization Problem ID |
+| ids | <code>string</code> | Optimization Problem IDs |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Optimizations.RemoveResponse&gt;</code> |  |
 
 **Example**  

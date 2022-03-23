@@ -32,8 +32,7 @@ class Geocoding {
 	 * @since 0.1.9
 	 *
 	 * @param {string} address - Address to `geocode`
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Geocoding.Forward>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Geocoding.Forward>} [callback]
 	 */
 	forward(address, callback) {
 		return this.r._makeRequest({
@@ -64,8 +63,7 @@ class Geocoding {
 	 *
 	 * @param {number} latitude - Latitude of the geographic location
 	 * @param {number} longitude - Longitude of the geographic location
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Geocoding.Reverse>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Geocoding.Reverse>} [callback]
 	 */
 	reverse(latitude, longitude, callback) {
 		return this.r._makeRequest({
@@ -90,8 +88,7 @@ class Geocoding {
 	 * @since 0.1.9
 	 *
 	 * @param {number} id  - Sequential number in addresses list.
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Geocoding.Rapid>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Geocoding.Rapid>} [callback]
 	 */
 	rapidGet(id, callback) {
 		// ----a
@@ -121,8 +118,7 @@ class Geocoding {
 	 * @param {Object} options  - Search parameters
 	 * @param {number} [options.offset] - Start search position
 	 * @param {number} [options.limit]  - Search results limitation
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Geocoding.Rapid>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Geocoding.Rapid>} [callback]
 	 */
 	rapidSearch(criteria, options, callback) {
 		// ----b
@@ -144,10 +140,8 @@ class Geocoding {
 		let pathservice = ""
 		let pathparams = ""
 
-		if (options &&
-			"number" === typeof options["offset"] &&
-			"number" === typeof options["limit"]
-			) {
+		if (options && "number" === typeof options["offset"]
+				&& "number" === typeof options["limit"]) {
 			pathopts = `${options.offset}/${options.limit}/`
 		}
 

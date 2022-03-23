@@ -1,12 +1,15 @@
 <a id="Members" name="Members"></a>
 
-## Members
+## Members ℗
 
 Members facility
 
 **Category**: Members  
+**Access**: private  
+**See**: [https://route4me.io/docs/#territories](https://route4me.io/docs/#territories)  
+**Since**: 0.1.8  
 
-* [Members](#Members)
+* [Members](#Members) ℗
     * [new Members(requestManager)](#new_Members_new)
     * [.create(data, [callback])](#Members+create)
     * [.list([callback])](#Members+list)
@@ -23,6 +26,7 @@ Members facility
 
 Constructor
 
+**Returns**: [<code>Members</code>](#Members) - - Members facility  
 
 | Param | Type | Description |
 | --- | --- | --- |

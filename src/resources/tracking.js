@@ -45,8 +45,7 @@ class Tracking {
 	 * @since 0.1.8
 	 *
 	 * @param {string}  tracking       - Tracking number
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Tracking.AssetTracking>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Tracking.AssetTracking>} [callback]
 	 */
 	getAssetTracking(tracking, callback) {
 		return this.r._makeRequest({
@@ -83,8 +82,7 @@ class Tracking {
 	 * one way to determine it)
 	 * @param {Date}   period.from   - Custom start date
 	 * @param {Date}   period.trim   - Custom end date
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Tracking.TrackingHistory>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Tracking.TrackingHistory>} [callback]
 	 */
 	getRouteTrackingHistory(routeId, period, callback) {
 		const qs = {
@@ -130,8 +128,7 @@ class Tracking {
 	 * @param {number}   trackingData.longitude - Longitude
 	 * @param {string}   trackingData.deviceType - Device type
 	 * @param {string}   trackingData.deviceGuid - Device GUID
-	 * @param {module:route4me-node~RequestCallback}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback} [callback]
 	 */
 	createRouteTracking(trackingData, callback) {
 		const qs = { "frm": "JSON" }

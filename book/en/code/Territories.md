@@ -1,12 +1,15 @@
 <a id="Territories" name="Territories"></a>
 
-## Territories
+## Territories ℗
 
 Territories facility
 
 **Category**: Territories  
+**Access**: private  
+**See**: [https://route4me.io/docs/#territories](https://route4me.io/docs/#territories)  
+**Since**: 0.1.8  
 
-* [Territories](#Territories)
+* [Territories](#Territories) ℗
     * [new Territories(requestManager)](#new_Territories_new)
     * [.create(data, [callback])](#Territories+create)
     * [.get(id, [options], [callback])](#Territories+get)
@@ -20,6 +23,7 @@ Territories facility
 
 Constructor
 
+**Returns**: [<code>Territories</code>](#Territories) - - Territories facility  
 
 | Param | Type | Description |
 | --- | --- | --- |

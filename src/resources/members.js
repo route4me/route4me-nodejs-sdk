@@ -156,8 +156,7 @@ class Members {
 	 * @param {boolean} data.hideNonfutureRoutes   - user parameter
 	 * @param {boolean} data.showAllVehicles       - user parameter
 	 * @param {boolean} data.showAllDrivers        - user parameter
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Member>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Member>} [callback]
 	 */
 	create(data, callback) {
 		const validData = remapUserData(data)
@@ -180,8 +179,7 @@ class Members {
 	 *
 	 * @todo TODO: there is no schema for response
 	 *
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Members>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Members>} [callback]
 	 */
 	list(callback) {
 		return this.r._makeRequest({
@@ -200,8 +198,7 @@ class Members {
 	 * @todo TODO: reformat output
 	 *
 	 * @param {number}  id - Member ID
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Member>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Member>} [callback]
 	 */
 	get(id, callback) {
 		return this.r._makeRequest({
@@ -260,8 +257,7 @@ class Members {
 	 * @param {boolean} data.hideNonfutureRoutes   - user parameter
 	 * @param {boolean} data.showAllVehicles       - user parameter
 	 * @param {boolean} data.showAllDrivers        - user parameter
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Member>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Member>} [callback]
 	 */
 	update(id, data, callback) {
 		const validData = remapUserData(data)
@@ -283,8 +279,7 @@ class Members {
 	 * @since 0.1.9
 	 *
 	 * @param {number}  id - Member ID
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Member>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Member>} [callback]
 	 */
 	remove(id, callback) {
 		const data = {
@@ -309,8 +304,7 @@ class Members {
 	 *
 	 * @param {string}  email    - Email of an user
 	 * @param {string}  password - Password
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Member>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Member>} [callback]
 	 */
 	authenticate(email, password, callback) {
 		return this.r._makeRequest({
@@ -335,8 +329,7 @@ class Members {
 	 *
 	 * @param {number}  id        - Member ID
 	 * @param {string}  sessionId - Session ID
-	 * @param {module:route4me-node~RequestCallback<number>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<number>} [callback]
 	 */
 	validateSession(id, sessionId, callback) {
 		return this.r._makeRequest({
@@ -367,8 +360,7 @@ class Members {
 	 * @param {string}  data.email       - Account parameter
 	 * @param {string}  data.deviceType  - Account parameter
 	 * @param {string}  data.password    - Account parameter
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Account>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Account>} [callback]
 	 */
 	registerAccount(data, callback) {
 		const validData = remapAccountData(data)

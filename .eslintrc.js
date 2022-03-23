@@ -14,8 +14,12 @@ exports = module.exports = {
 		"dot-notation": "off",
 
 		// code style
+		"arrow-parens": ["error", "as-needed", { "requireForBlockBody": true }],
 		"indent": ["warn", "tab"],
+		"max-classes-per-file": ["error", 15],
+		"no-else-return": ["error", { "allowElseIf": true }],
 		"no-tabs": "off",
+		"import/no-useless-path-segments": "off",
 		"semi": ["error", "never"],
 		"yoda": ["error", "always"],
 		"no-multi-spaces": "off",     // TODO: stop ignoring, set a rule
@@ -36,7 +40,11 @@ exports = module.exports = {
 
 		// TODO: this is LINT rules for DOC. `Use with npm install eslint-plugin-jsdoc`
 		//"jsdoc/check-param-names": 1,
-		"jsdoc/check-tag-names": "warn",
+		//"jsdoc/check-tag-names": "warn",
+		"jsdoc/check-tag-names": [
+			"warn",
+			{ "definedTags": ["category", "tag"] }
+		],
 		// "jsdoc/check-types": 1,
 		// "jsdoc/newline-after-description": 1,
 		// "jsdoc/require-description-complete-sentence": 1,
@@ -51,9 +59,9 @@ exports = module.exports = {
 		"jsdoc": {
 			"tagNamePreference": {
 				"returns": "return"
-			},
-			"additionalTagNames": {
-				"customTags": ["category", "tag"]
+			// },
+			// "additionalTagNames": {
+			// 	"customTags": ["category", "tag"]
 			}
 		}
 	}

@@ -1,12 +1,15 @@
 <a id="Geocoding" name="Geocoding"></a>
 
-## Geocoding
+## Geocoding ℗
 
 Geocoding facility
 
 **Category**: Geocoding  
+**Access**: private  
+**See**: [https://route4me.io/docs/#geocoding](https://route4me.io/docs/#geocoding)  
+**Since**: 0.1.9  
 
-* [Geocoding](#Geocoding)
+* [Geocoding](#Geocoding) ℗
     * [new Geocoding(requestManager)](#new_Geocoding_new)
     * [.forward(address, [callback])](#Geocoding+forward)
     * [.reverse(latitude, longitude, [callback])](#Geocoding+reverse)
@@ -19,6 +22,7 @@ Geocoding facility
 
 Constructor
 
+**Returns**: [<code>Geocoding</code>](#Geocoding) - - Geocoding facility  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -103,8 +107,8 @@ Rapid Address Search
 | Param | Type | Description |
 | --- | --- | --- |
 | criteria | <code>Object</code> | Search criterias, such as `zipcode`, `house number` and other |
-| [criteria.zipCode] | <code>number</code> &#124; <code>string</code> | Zip code of the area |
-| [criteria.houseNumber] | <code>number</code> &#124; <code>string</code> | House number |
+| [criteria.zipCode] | <code>number</code> \| <code>string</code> | Zip code of the area |
+| [criteria.houseNumber] | <code>number</code> \| <code>string</code> | House number |
 | options | <code>Object</code> | Search parameters |
 | [options.offset] | <code>number</code> | Start search position |
 | [options.limit] | <code>number</code> | Search results limitation |

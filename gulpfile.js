@@ -11,9 +11,9 @@ const _            = require("lodash")
 const debug        = require("debug")("route4me:gulpfile")
 
 const gulp         = require("gulp")
-const util         = require("gulp-util")
+const log          = require("fancy-log")
 const gulpIf       = require("gulp-if")
-const eslint       = require("gulp-eslint")
+const eslint       = require("gulp-eslint-new")
 const mocha        = require("gulp-mocha")
 const size         = require("gulp-size")
 // const gulpUglify   = require("gulp-uglify")
@@ -117,20 +117,21 @@ gulp.task("doc:pre", gulp.series(function DG() {     // eslint-disable-line pref
 					"module-index-format": "none",
 					"global-index-format": "none",
 
-					"member-index-format": "grouped", // grouped, list
-					"property-list-format": "table", // list, table - works for enums
-					"param-list-format": "table", // list, table - only table, or replace template!
+					"member-index-format": "grouped",	// grouped, list
+					"property-list-format": "table",	// list, table - works for enums
+					"param-list-format": "table",		// list, table - only table, or replace template!
 					// "configure": ".jsdocrc.json",
 					"plugin": "dmd-gitbook",
 					"no-scope": false,
 					"example-lang": "javascript",
+					"private": true
 				})
 			})
 		})
 		// write to file:
 		.map((item) => {
 			const fn = path.join(docDir, `${item.category}.md`)
-			util.log("DOC, saving to file", fn)
+			log("DOC, saving to file", fn)
 			return fs.writeFile(fn, item.output)
 		})
 }))
@@ -241,6 +242,7 @@ gulp.task("clean", gulp.series(function () {
 // SUPERTASKS
 
 gulp.task("doc", gulp.series("watch:doc"))
+
 gulp.task("build", (done) => {
 	gulpSequence("build:node", "build:browser","build:browser:test", done)
 	return undefined

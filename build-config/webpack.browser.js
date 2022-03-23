@@ -6,6 +6,7 @@ const webpack      = require("webpack")
 const commonConfig = require("./webpack.common.js")
 const babelConfig = require("./babel.browser.js")
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 const config = _.mergeWith({
 	mode : 'production',
 	module: {
@@ -15,7 +16,7 @@ const config = _.mergeWith({
 				exclude: /(node_modules|bower_components)/,
 				use: {
 					loader: "babel-loader",
-					query: babelConfig
+					options: babelConfig
 				}
 			},
 		],
@@ -42,7 +43,7 @@ const config = _.mergeWith({
   			sourceMap: true
 		  })
 		]
-	  },
+	},
 	output: {
 		library: "route4me",
 	}

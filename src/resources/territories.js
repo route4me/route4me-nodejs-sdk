@@ -29,8 +29,7 @@ class Territories {
 	 * @since 0.1.8
 	 *
 	 * @param {jsonschema:Territories.Territory}  data       - Valid Territory data.
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Territories.Territory>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Territories.Territory>} [callback]
 	 */
 	create(data, callback) {
 		return this.r._makeRequest({
@@ -106,8 +105,7 @@ class Territories {
 	 *
 	 * @param {string}  id       - Territory ID
 	 * @param {jsonschema:Territories.Territory}  data       - Valid Territory data.
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Territories.Territory>}
-	 *        [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Territories.Territory>} [callback]
 	 */
 	update(id, data, callback) {
 		return this.r._makeRequest({
@@ -128,8 +126,7 @@ class Territories {
 	 * @since 0.1.8
 	 *
 	 * @param {string}  id       - Territory ID
-	 * @param {module:route4me-node~RequestCallback<boolean>}
-	 *     [callback]
+	 * @param {module:route4me-node~RequestCallback<boolean>} [callback]
 	 */
 	remove(id, callback) {
 		return this.r._makeRequest({

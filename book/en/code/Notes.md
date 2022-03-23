@@ -1,12 +1,15 @@
 <a id="Notes" name="Notes"></a>
 
-## Notes
+## Notes ℗
 
 Notes facility
 
 **Category**: Notes  
+**Access**: private  
+**See**: [https://route4me.io/docs/#tracking](https://route4me.io/docs/#tracking)  
+**Since**: 0.1.9  
 
-* [Notes](#Notes)
+* [Notes](#Notes) ℗
     * [new Notes(requestManager)](#new_Notes_new)
     * [.create(data, [callback])](#Notes+create)
 
@@ -16,6 +19,7 @@ Notes facility
 
 Constructor
 
+**Returns**: [<code>Notes</code>](#Notes) - - Notes facility  
 
 | Param | Type | Description |
 | --- | --- | --- |

@@ -45,8 +45,7 @@ class Notes {
 	 * @param {blob}     data.file      - FILE to use as a note
 	 * @param {string}   data.type      - FILE/NOTE type. One of `DRIVER_IMG`,
 	 * `VEHICLE_IMG`, `ADDRESS_IMG`, `CSV_FILE`, `XLS_FILE`, `ANY_FILE`
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Notes.NoteCreateResponse>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Notes.NoteCreateResponse>} [callback]
 	 */
 	create(data, callback) {
 		const qs = utils.mapObject(data, {
@@ -79,7 +78,6 @@ class Notes {
 			validationContext: "Notes.NoteCreateResponse",
 		}, callback)
 	}
-
 }
 
 module.exports = Notes

@@ -47,14 +47,14 @@ describe(helper.toSuiteName(__filename), () => {
 			it("should call route4me", (done) => {
 				const options = {
 					limit: 100,
-					//offset: 0,
+					offset: 0
 				}
 
 				resource.list([1, 2, 3], options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/optimization_problem.php", {
-						"states": "1,2,3", "limit": "100" },
+						"states": "1,2,3", "limit": "100", "offset": "0" },
 						null
 					)
 					done()
@@ -68,7 +68,7 @@ describe(helper.toSuiteName(__filename), () => {
 				}
 
 				resource.list(undefined, options, (err, res) => {
-					expect(res).is.empty
+					expect(res).to.be.an('undefined')
 
 					expect(err).is.not.null
 					expect(err).is.instanceof(Error)
@@ -111,6 +111,26 @@ describe(helper.toSuiteName(__filename), () => {
 					done()
 				})
 			})
+
+			it("should call route4me when has 2 params", (done) => {
+				const opt_id = "0613EF353999F43E17B17DD07DDED59E"
+				const opt_data = {
+					"parameters": [],
+				}
+				const reoptimize = true
+
+				resource.update(opt_id, opt_data, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/optimization_problem.php", {
+						"optimization_problem_id": "0613EF353999F43E17B17DD07DDED59E",
+						"reoptimize": "0",
+					}, {
+						"parameters": [],
+					})
+					done()
+				})
+			})
 		})
 
 		describe("remove", () => {
@@ -134,6 +154,26 @@ describe(helper.toSuiteName(__filename), () => {
 				const reoptimize = false
 
 				resource.linkAddress(id, addresses, reoptimize, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/optimization_problem.php", {
+						"optimization_problem_id": "123",
+						"reoptimize": "0",
+					}, {
+						"addresses": [
+							{ "route_destination_id": 11, "in-body": true }
+						]
+					})
+					done()
+				})
+			})
+
+			it("should call route4me when has 2 params", (done) => {
+				const id = 123
+				const addresses = [{ "in-body": true, "route_destination_id": 11 }]
+				const reoptimize = false
+
+				resource.linkAddress(id, addresses, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/optimization_problem.php", {

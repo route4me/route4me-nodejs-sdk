@@ -1,12 +1,15 @@
 <a id="Vehicles" name="Vehicles"></a>
 
-## Vehicles
+## Vehicles ℗
 
 Vehicles facility
 
 **Category**: Vehicles  
+**Access**: private  
+**See**: [https://route4me.io/docs/#vehicles](https://route4me.io/docs/#vehicles)  
+**Since**: 0.1.4  
 
-* [Vehicles](#Vehicles)
+* [Vehicles](#Vehicles) ℗
     * [new Vehicles(requestManager)](#new_Vehicles_new)
     * [.list([callback])](#Vehicles+list)
 
@@ -16,6 +19,7 @@ Vehicles facility
 
 Constructor
 
+**Returns**: [<code>Vehicles</code>](#Vehicles) - - Vehicles facility  
 
 | Param | Type | Description |
 | --- | --- | --- |

@@ -244,8 +244,7 @@ class Routes {
 	 *
 	 * @param {string}                  id    - Route ID
 	 * @param {jsonschema:Routes.Route} data  - New route data
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
 	 */
 	update(id, data, callback) {
 		const qs = {
@@ -285,8 +284,7 @@ class Routes {
 	 *
 	 * @param {(number|string|Array<number>|Array<string>)}  ids - Route ID **or** comma-separated
 	 * list of route IDs **or** array of route IDs
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.RemoveResponse>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.RemoveResponse>} [callback]
 	 */
 	remove(ids, callback) {
 		const idsPure = utils.toStringArray(ids)
@@ -314,8 +312,7 @@ class Routes {
 	 * @param {Object}  [options]                      - Insert options
 	 * @param {boolean} [options.optimalPosition=true] - If true, an address will be
 	 * inserted at optimal position of a route
-	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>}
-	 * [callback]
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
 	 */
 	linkAddress(id, addresses, options, callback) {
 		let opt = options
@@ -532,7 +529,7 @@ class Routes {
 		const qs = {
 			"route_id": id,
 		}
-		const body = {			
+		const body = {
 			"disable_optimization": "0",
 			"optimize": criteria,
 		}
@@ -546,13 +543,13 @@ class Routes {
 		}, callback)
 	}
 
-
 	/**
-	 * RouteExamples 
+	 * RouteExamples
 	 *
 	 * @see {@link https://route4me.io/docs/#optimizations}
 	 *
-	 * [callback]
+	 * @param {object} param - Optimization params
+	 * @param {module:route4me-node~RequestCallback}    [callback]
 	 */
 	routeexamples_optiomization(param, callback) {
 		return this.r._makeRequest({
@@ -569,9 +566,10 @@ class Routes {
 	 *
 	 * @see {@link https://route4me.io/docs/#get-schedule-calendar}
 	 *
-	 * [callback]
+	 * @param {object} param - Schedule params
+	 * @param {module:route4me-node~RequestCallback}    [callback]
 	 */
-	 get_schedule_calendar(param, callback) {
+	get_schedule_calendar(param, callback) {
 		return this.r._makeRequest({
 			method: "GET",
 			path: "/api/schedule_calendar_data.php",
