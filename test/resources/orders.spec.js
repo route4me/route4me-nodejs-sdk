@@ -357,6 +357,68 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
+		describe("archive", () => {
+			beforeEach(() => {
+				saMock.post("*",  (r) => {
+					req = r
+					req.method = "POST"
+					return { body: { } }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
+			it("archive should call route4me", (done) => {
+				resource.archive(null, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"POST", "https://wh.route4me.com/modules/api/v5.0/orders/archive", {
+						}
+					)
+
+					done()
+				})
+			})
+		})
+			
+		describe("history", () => {
+			beforeEach(() => {
+				saMock.get("*",  (r) => {
+					req = r
+					req.method = "GET"
+					return { body: { } }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
+			const orderId = 11105107
+			const trackingNumber = "1"
+			
+			it("history should call route4me", (done) => {
+				resource.history(orderId, trackingNumber, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"GET", "https://wh.route4me.com/modules/api/v5.0/orders/history", {
+							"order_id": "11105107",
+							"tracking_number": "1"
+						},
+						null
+					)
+
+					done()
+				})
+			})
+		})
+
 		describe("createOrderCustomFields", () => {
 			beforeEach(() => {
 				saMock.post("*",  (r) => {
@@ -433,6 +495,7 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 		})
+
 		describe("updateOrderCustomFields", () => {
 			beforeEach(() => {
 				saMock.put("*",  (r) => {
