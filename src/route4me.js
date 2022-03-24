@@ -6,6 +6,7 @@ const platform = require("platform")
 const ActivityFeed    = require("./resources/activity-feed")
 const Addresses       = require("./resources/addresses")
 const AddressBook     = require("./resources/address-book")
+const AddressBarcodes = require("./resources/address-barcodes")
 const AvoidanceZones  = require("./resources/avoidance-zones")
 const Geocoding       = require("./resources/geocoding")
 const Members         = require("./resources/members")
@@ -32,20 +33,21 @@ const RequestManager  = require("./request-manager")
  *
  * Main members of the instanse of `Route4Me` class:
  *
- * * [ActivityFeed  ]{@link ActivityFeed}
- * * [Addresses     ]{@link Addresses}
- * * [AddressBook   ]{@link AddressBook}
- * * [AvoidanceZones]{@link AvoidanceZones}
- * * [Geocoding     ]{@link Geocoding}
- * * [Members       ]{@link Members}
- * * [Notes         ]{@link Notes}
- * * [Optimizations ]{@link Optimizations}
- * * [Orders        ]{@link Orders}
- * * [OrderCustomFields        ]{@link OrderCustomFields}
- * * [Routes        ]{@link Routes}
- * * [Territories   ]{@link Territories}
- * * [Tracking      ]{@link Tracking}
- * * [Vehicles      ]{@link Vehicles}
+ * * [ActivityFeed     ]{@link ActivityFeed}
+ * * [Addresses        ]{@link Addresses}
+ * * [AddressBook      ]{@link AddressBook}
+ * * [AddressBarcodes  ]{@link AddressBarcodes}
+ * * [AvoidanceZones   ]{@link AvoidanceZones}
+ * * [Geocoding        ]{@link Geocoding}
+ * * [Members          ]{@link Members}
+ * * [Notes            ]{@link Notes}
+ * * [Optimizations    ]{@link Optimizations}
+ * * [Orders           ]{@link Orders}
+ * * [OrderCustomFields]{@link OrderCustomFields}
+ * * [Routes           ]{@link Routes}
+ * * [Territories      ]{@link Territories}
+ * * [Tracking         ]{@link Tracking}
+ * * [Vehicles         ]{@link Vehicles}
  *
  * Each member corresponds to an bunch of methods, described in API-documentation,
  * but the most methods in this SDK have unified names:
@@ -126,6 +128,12 @@ class Route4Me {
 		 * @since 0.1.8
 		 */
 		this.AddressBook = new AddressBook(req)
+		/**
+		 * **AddressBarcodes** related API calls
+		 * @type {AddressBarcodes}
+		 * @since 1.0.5
+		 */
+		this.AddressBarcodes = new AddressBarcodes(req)
 		/**
 		 * **Addresses** related API calls
 		 * @type {Addresses}

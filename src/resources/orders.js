@@ -440,10 +440,9 @@ class Orders {
 	 * @since 1.0.4
 	 *
 	 * @param {Object} [data] - Archive params
-	 * can have next fields
-	 * cursor: string - id of next page of orders, empty string on first call
-	 * per_page: integer - number of orders per page
-	 * filters: object
+	 * @param {string} [data.cursor] - id of next page of orders, empty string on first call
+	 * @param {number} [datap.er_page] - number of orders per page
+	 * @param {Object} [data.filters]
 	 *
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Orders>} [callback]
 	 * [callback]
