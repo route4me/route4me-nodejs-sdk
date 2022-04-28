@@ -83,7 +83,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api/member/view_users.php",
+						"GET", "https://api.route4me.com/api.v4/user.php",
 						{},
 						null
 					)
@@ -156,6 +156,37 @@ describe(helper.toSuiteName(__filename), () => {
 							"HIDE_NONFUTURE_ROUTES": "FALSE",
 							"SHOW_ALL_VEHICLES": "FALSE",
 							"SHOW_ALL_DRIVERS": "FALSE",
+						}
+					)
+					done()
+				})
+			})
+		})
+
+		describe("addCustomData", () => {
+			const member_id = 2288930
+
+			const data = {
+				custom_data: {
+					CustomKey1: "Custom value 1",
+					CustomKey2: "Custom value 2"
+				}
+			}
+
+			it("should call route4me", (done) => {
+				resource.addCustomData(member_id, data, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"PUT", "https://api.route4me.com/api.v4/user.php",
+						{},
+						{
+							"member_id": 2288930,
+
+							"custom_data": {
+								"CustomKey1": "Custom value 1",
+								"CustomKey2": "Custom value 2"
+							}
 						}
 					)
 					done()

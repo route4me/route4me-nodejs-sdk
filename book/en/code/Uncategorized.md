@@ -73,6 +73,7 @@ Request manager, provides
 * [RequestManager](#RequestManager)
     * [new RequestManager(apiKey, options)](#new_RequestManager_new)
     * [._makeRequest(options, [callback])](#RequestManager+_makeRequest)
+    * [._makeRequest5(options, [callback])](#RequestManager+_makeRequest5)
     * [._makeError(error, [callback])](#RequestManager+_makeError)
 
 <a id="new_RequestManager_new" name="new_RequestManager_new"></a>
@@ -93,6 +94,30 @@ Creates new RequestManager. All parameters are inherited from {Route4Me}
 ### requestManager.\_makeRequest(options, [callback])
 
 Wrapper around [external:superagent](external:superagent) with all options applied.
+Uses base url route4me API v4.0
+
+**Access**: protected  
+**Todo**
+
+- [ ] TODO: rename this method!!!
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| options | <code>object</code> |  | Request options |
+| options.method | <code>string</code> |  | HTTP method |
+| options.path | <code>string</code> |  | Server path |
+| [options.qs] | <code>object</code> |  | Query string |
+| [options.body] | <code>object</code> |  | Body |
+| [options.validationContext] | <code>null</code> \| <code>string</code> \| <code>function</code> | <code></code> | * `null` cause validation disabled (TODO: test this case) * `string` is threated as the name of JSON Schema * `function` will be used for validation. |
+| [callback] | [<code>RequestCallback</code>](#module_route4me-node..RequestCallback) |  |  |
+
+<a id="RequestManager+_makeRequest5" name="RequestManager+_makeRequest5"></a>
+
+### requestManager.\_makeRequest5(options, [callback])
+
+Wrapper around [external:superagent](external:superagent) with all options applied.
+Uses base url route4me API v5.0
 
 **Access**: protected  
 **Todo**

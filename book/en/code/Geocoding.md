@@ -13,6 +13,7 @@ Geocoding facility
     * [new Geocoding(requestManager)](#new_Geocoding_new)
     * [.forward(address, [callback])](#Geocoding+forward)
     * [.reverse(latitude, longitude, [callback])](#Geocoding+reverse)
+    * [.batch(addresses, [callback])](#Geocoding+batch)
     * [.rapidGet(id, [callback])](#Geocoding+rapidGet)
     * [.rapidSearch(criteria, options, [callback])](#Geocoding+rapidSearch)
 
@@ -73,6 +74,25 @@ address.
 | latitude | <code>number</code> | Latitude of the geographic location |
 | longitude | <code>number</code> | Longitude of the geographic location |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Geocoding.Reverse&gt;</code> |  |
+
+<a id="Geocoding+batch" name="Geocoding+batch"></a>
+
+### geocoding.batch(addresses, [callback])
+
+Batch Geocode Address
+
+Batch geocoding is the process of getting geographic addresses by sending
+many address objects simultaneously. For a large number of addresses,
+you can delimit the addresses using the newline character “\n” and send
+HTTP data as form data.
+
+**See**: [https://route4me.io/docs/#batch-geocode-addresses](https://route4me.io/docs/#batch-geocode-addresses)  
+**Since**: 1.0.6  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| addresses | <code>string</code> | Addresses to `geocode` or lat, lng to reverse |
+| [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Geocoding.Forward&gt;</code> |  |
 
 <a id="Geocoding+rapidGet" name="Geocoding+rapidGet"></a>
 

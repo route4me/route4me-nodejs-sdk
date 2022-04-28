@@ -106,8 +106,43 @@ class Tracking {
 		return this.r._makeRequest({
 			method: "GET",
 			path: "/get_device_location.php",
+			// path: "/api/track/get_device_location.php",
 			qs,
 			validationContext: "Tracking.TrackingHistory",
+		}, callback)
+	}
+
+	/**
+	 * Get All User Locations.
+	 *
+	 * @see {@link https://route4me.io/docs/#get-all-user-locations}
+	 * @since 1.0.6
+	 *
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Tracking.Response>} [callback]
+	 */
+	getAllUserLocations(callback) {
+		return this.r._makeRequest({
+			method: "GET",
+			path: "/api/track/view_user_locations.php",
+			validationContext: "Tracking.AssetTracking"
+		}, callback)
+	}
+
+	/**
+	 * Search User Locations.
+	 *
+	 * @see {@link https://route4me.io/docs/#search-user-locations}
+	 * @since 1.0.6
+	 *
+	 * @param {string}   query - search the locations by query text (email, name, memebr ID, etc)
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Tracking.Response>} [callback]
+	 */
+	searchUserLocations(query, callback) {
+		return this.r._makeRequest({
+			method: "GET",
+			path: "/api/track/view_user_locations.php",
+			qs: { query },
+			validationContext: "Tracking.AssetTracking"
 		}, callback)
 	}
 

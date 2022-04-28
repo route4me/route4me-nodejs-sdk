@@ -79,6 +79,32 @@ class Geocoding {
 	}
 
 	/**
+	 * Batch Geocode Address
+	 *
+	 * Batch geocoding is the process of getting geographic addresses by sending
+	 * many address objects simultaneously. For a large number of addresses,
+	 * you can delimit the addresses using the newline character “\n” and send
+	 * HTTP data as form data.
+	 *
+	 * @see {@link https://route4me.io/docs/#batch-geocode-addresses}
+	 * @since 1.0.6
+	 *
+	 * @param {string} addresses - Addresses to `geocode` or lat, lng to reverse
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Geocoding.Forward>} [callback]
+	 */
+	batch(addresses, callback) {
+		return this.r._makeRequest({
+			method: "POST",
+			path: "/api/geocoder.php",
+			form: {
+				strExportFormat: "json",
+				addresses
+			},
+			validationContext: "Geocoding.Forward"
+		}, callback)
+	}
+
+	/**
 	 * Rapid Address Search by ID
 	 *
 	 * Single address geocoding refers to the process of getting a geographic

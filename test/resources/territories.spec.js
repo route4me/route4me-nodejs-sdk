@@ -57,7 +57,23 @@ describe(helper.toSuiteName(__filename), () => {
 
 		describe("get", () => {
 			it("should call route4me", (done) => {
-				const options = { includeAddresses: true }
+				resource.get((err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req,
+						"GET", "https://api.route4me.com/api.v4/territory.php", {},
+						null
+					)
+					done()
+				})
+			})
+
+			it("should call route4me, with options", (done) => {
+				const options = {
+					includeAddresses: true,
+					includeOrders: true
+				}
+
 				resource.get("596A2A44FE9FB19EEB9C3C072BF2D0BE", options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
@@ -65,7 +81,25 @@ describe(helper.toSuiteName(__filename), () => {
 						"GET", "https://api.route4me.com/api.v4/territory.php",
 						{
 							"territory_id": "596A2A44FE9FB19EEB9C3C072BF2D0BE",
-							"addresses": "1"
+							"addresses": "1",
+							"orders": "1"
+						},
+						null
+					)
+					done()
+				})
+			})
+
+			it("should call route4me, without options", (done) => {
+				resource.get("596A2A44FE9FB19EEB9C3C072BF2D0BE", (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req,
+						"GET", "https://api.route4me.com/api.v4/territory.php",
+						{
+							"territory_id": "596A2A44FE9FB19EEB9C3C072BF2D0BE",
+							"addresses": "0",
+							"orders": "0"
 						},
 						null
 					)

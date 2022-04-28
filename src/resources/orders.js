@@ -161,9 +161,7 @@ class Orders {
 		let pureIds = ids
 		let cb = callback
 
-		if (undefined === cb
-			&& "function" === typeof pureIds
-		) {
+		if (undefined === cb && "function" === typeof pureIds) {
 			cb = pureIds
 			pureIds = undefined
 		}
@@ -171,8 +169,12 @@ class Orders {
 		const qs = {}
 
 		if (pureIds || 0 === pureIds) {
-			pureIds = utils.toIntArray(pureIds)
-			qs["order_id"] = pureIds
+			if (pureIds instanceof Array) {
+				qs["order_id"] = pureIds.toString()
+			} else {
+				pureIds = utils.toIntArray(pureIds)
+				qs["order_id"] = pureIds
+			}
 		}
 
 		return this.r._makeRequest({
@@ -180,7 +182,7 @@ class Orders {
 			path: "/api.v4/order.php",
 			qs,
 			validationContext: CustomInternalPostProcessing.list,
-		}, callback)
+		}, cb)
 	}
 
 	/**
@@ -327,7 +329,7 @@ class Orders {
 			path: "/api.v4/order.php",
 			qs,
 			validationContext: CustomInternalPostProcessing.list,
-		}, callback)
+		}, cb)
 	}
 
 	/**
@@ -395,7 +397,15 @@ class Orders {
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Response>} [callback]
 	 */
 	getOrderCustomFields(id, callback) {
-		const pureId = Number(id)
+		let pureId
+		let cb = callback
+
+		if (undefined === cb && "function" === typeof id) {
+			cb = id
+			pureId = 0
+		} else {
+			pureId = Number(id)
+		}
 
 		return this.r._makeRequest({
 			method: "GET",
@@ -404,7 +414,7 @@ class Orders {
 				"order_id": pureId,
 			},
 			validationContext: "Orders.Response",
-		}, callback)
+		}, cb)
 	}
 
 	/**
@@ -413,21 +423,61 @@ class Orders {
 	 * @see {@link https://route4me.io/docs/#update-an-order-custom-fields}
 	 * @since 0.1.11
 	 *
-	 * @param {number}                  id   - OrderCustomFields ID
-	 * @param {jsonschema:Orders.Response} data - OrderCustomFields data
+	 * @param {number} [id]                                - OrderCustomField ID, dummy parameter
+	 * @param {Object} data                                - OrderCustomField data
+	 * @param {number} data.order_custom_field_id          - OrderCustomField ID to change
+	 * @param {string} [data.order_custom_field_label]     - new value of label of OrderCustomField
+	 * @param {string} [data.order_custom_field_type]      - new type of OrderCustomField
+	 * @param {Object} [data.order_custom_field_type_info] - new value of label of OrderCustomField
+	 * @param {string} [data.order_custom_field_type.short_label] - new value of
+	 * short label of OrderCustomField
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Response>} [callback]
 	 */
 	updateOrderCustomFields(id, data, callback) {
 		const qs = {
 			"redirect": 0,
 		}
-		const body = utils.clone(data)
-		body["order_id"] = Number(id)
+
+		let locId = id
+		let locData = data
+		let cb = callback
+
+		if (undefined === cb && "function" === typeof locData) {
+			cb = locData
+			locData = locId
+			locId = -1
+		} else {
+			locId = Number(id)
+		}
+
+		const body = utils.clone(locData)
+
+		if (-1 !== locId) body["order_id"] = locId
 
 		return this.r._makeRequest({
 			method: "PUT",
 			path: "/api.v4/order_custom_user_fields.php",
 			qs,
+			body,
+			validationContext: "OrderCustomFields.Response",
+		}, cb)
+	}
+
+	/**
+	 * Remove an OrderCustomFields
+	 *
+	 * @see {@link https://route4me.io/docs/#remove-user-custom-field}
+	 * @since 1.0.6
+	 *
+	 * @param {number} id - OrderCustomField ID
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Response>} [callback]
+	 */
+	removeOrderCustomFields(id, callback) {
+		const body = { order_custom_field_id: Number(id) }
+
+		return this.r._makeRequest({
+			method: "DELETE",
+			path: "/api.v4/order_custom_user_fields.php",
 			body,
 			validationContext: "OrderCustomFields.Response",
 		}, callback)

@@ -51,8 +51,10 @@ class Route4MeApiError extends Route4MeError {
 		// TODO: remove this line:
 		this.name = "Route4MeApiError"
 
-		this.statusCode = res.statusCode
-		this.apiPath = res.request.url
+		if (res) {
+			this.statusCode = res.statusCode
+			this.apiPath = res.request.url
+		}
 	}
 }
 

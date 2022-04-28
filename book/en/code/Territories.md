@@ -57,6 +57,7 @@ Get a specified Territory by ID.
 | id | <code>string</code> |  | Territory ID |
 | [options] | <code>Object</code> |  | Additional options for `get` |
 | [options.includeAddresses] | <code>boolean</code> | <code>false</code> | If true, enclosed addresses will be included in a response |
+| [options.includeOrders] | <code>boolean</code> | <code>false</code> | If true, enclosed orders will be included in a response |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Territories.Territory&gt;</code> |  |  |
 
 <a id="Territories+list" name="Territories+list"></a>

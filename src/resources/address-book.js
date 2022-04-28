@@ -62,7 +62,7 @@ class AddressBook {
 			method: "GET",
 			path: "/api.v4/address_book.php",
 			qs: {
-				"address_id": _ids,
+				"address_id": _ids.toString(),
 			},
 			validationContext: "AddressBook.AddressBookSearchResult",
 		}, callback)

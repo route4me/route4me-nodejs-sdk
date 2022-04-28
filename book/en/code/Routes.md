@@ -61,6 +61,7 @@ Get a single route.
 | [options.includeTracking] | <code>boolean</code> | if `true` - the route tracking data will be included into the response. See also [https://route4me.io/docs/#get-route-tracking-data](https://route4me.io/docs/#get-route-tracking-data) |
 | [options.includeDirections] | <code>boolean</code> | if `true` - returns directions |
 | [options.includeRoutePath] | <code>boolean</code> | if `true` - include route path |
+| [options.compressPathPoints] | <code>boolean</code> | if `true` - the path points in the response will be compressed |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.Route&gt;</code> |  |
 
 <a id="Routes+list" name="Routes+list"></a>
@@ -81,6 +82,8 @@ Get a limited number of the routes belonging to the user.
 | options | <code>Object</code> | List-parameters |
 | [options.limit] | <code>number</code> | List limit |
 | [options.offset] | <code>number</code> | List offset |
+| [options.startDate] | <code>string</code> | Start date of route as "YYYY-MM-DD" |
+| [options.endDate] | <code>string</code> | End date of route as "YYYY-MM-DD" |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.Routes&gt;</code> |  |
 
 <a id="Routes+search" name="Routes+search"></a>

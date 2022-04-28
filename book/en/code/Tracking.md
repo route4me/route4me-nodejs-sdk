@@ -13,6 +13,8 @@ Tracking facility
     * [new Tracking(requestManager)](#new_Tracking_new)
     * [.getAssetTracking(tracking, [callback])](#Tracking+getAssetTracking)
     * [.getRouteTrackingHistory(routeId, period, [callback])](#Tracking+getRouteTrackingHistory)
+    * [.getAllUserLocations([callback])](#Tracking+getAllUserLocations)
+    * [.searchUserLocations(query, [callback])](#Tracking+searchUserLocations)
     * [.createRouteTracking(trackingData, [callback])](#Tracking+createRouteTracking)
 
 <a id="new_Tracking_new" name="new_Tracking_new"></a>
@@ -60,6 +62,33 @@ Get a device’s location history from a time range.
 | period.from | <code>Date</code> |  | Custom start date |
 | period.trim | <code>Date</code> |  | Custom end date |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Tracking.TrackingHistory&gt;</code> |  |  |
+
+<a id="Tracking+getAllUserLocations" name="Tracking+getAllUserLocations"></a>
+
+### tracking.getAllUserLocations([callback])
+
+Get All User Locations.
+
+**See**: [https://route4me.io/docs/#get-all-user-locations](https://route4me.io/docs/#get-all-user-locations)  
+**Since**: 1.0.6  
+
+| Param | Type |
+| --- | --- |
+| [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Tracking.Response&gt;</code> | 
+
+<a id="Tracking+searchUserLocations" name="Tracking+searchUserLocations"></a>
+
+### tracking.searchUserLocations(query, [callback])
+
+Search User Locations.
+
+**See**: [https://route4me.io/docs/#search-user-locations](https://route4me.io/docs/#search-user-locations)  
+**Since**: 1.0.6  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| query | <code>string</code> | search the locations by query text (email, name, memebr ID, etc) |
+| [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Tracking.Response&gt;</code> |  |
 
 <a id="Tracking+createRouteTracking" name="Tracking+createRouteTracking"></a>
 

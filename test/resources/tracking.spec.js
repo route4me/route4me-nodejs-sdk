@@ -119,6 +119,39 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
+		describe("getAllUserLocations", () => {
+			it("should call route4me", (done) => {
+
+				resource.getAllUserLocations((err, res) => {
+					expect(err).is.not.exist
+					expect(res).is.exist
+					helper.expectRequest(req,
+						"GET", "https://api.route4me.com/api/track/view_user_locations.php", {},
+						null
+					)
+					done()
+				})
+			})
+		})
+
+		describe("searchUserLocations", () => {
+			it("should call route4me", (done) => {
+				const query = "Tony"
+
+				resource.searchUserLocations(query, (err, res) => {
+					expect(err).is.not.exist
+					expect(res).is.exist
+					helper.expectRequest(req,
+						"GET", "https://api.route4me.com/api/track/view_user_locations.php",{
+							"query": "Tony"
+						},
+						null
+					)
+					done()
+				})
+			})
+		})
+
 		describe("createRouteTracking", () => {
 			beforeEach(() => {
 				saMock.post("*", (r) =>  { req = r; req.method = "POST"; return { "body": { "status": true } } })

@@ -10,7 +10,7 @@ class AddressBarcodes {
 	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#address-barcode}
-	 * @since 0.1.8
+	 * @since 1.0.5
 	 * @private
 	 *
 	 * @param  {RequestManager} requestManager - Request Manager

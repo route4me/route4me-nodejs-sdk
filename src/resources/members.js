@@ -184,7 +184,7 @@ class Members {
 	list(callback) {
 		return this.r._makeRequest({
 			method: "GET",
-			path: "/api/member/view_users.php",
+			path: "/api.v4/user.php",
 			validationContext: "Members.Members",
 		}, callback)
 	}
@@ -269,6 +269,39 @@ class Members {
 			path: "/api.v4/user.php",
 			body: validData,
 			validationContext: "Members.Member",
+		}, callback)
+	}
+
+	/**
+	 * Add Custom Data to a User.
+	 *
+	 * @example <caption>Sample input</caption>
+	 * {
+	 * 	custom_data: {
+	 * 		custom_kye_1: "custom value 1",
+	 * 		custom_kye_2: "custom value 2"
+	 * 	}
+	 * }
+	 *
+	 * @see {@link https://route4me.io/docs/#add-custom-data-to-a-user}
+	 * @since 1.0.6
+	 *
+	 * @param {number}  id - Member ID
+	 * @param {Object}  data                       - Parameters of new user
+	 * @param {Object}  data.custom_data           - custom data object
+	 * @param {string}  data.custom_data.key       - custom key
+	 * @param {string}  data.custom_data.value     - custom value
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Members.Member>} [callback]
+	 */
+	addCustomData(id, data, callback) {
+		const validData = utils.clone(data)
+		validData["member_id"] = id
+
+		return this.r._makeRequest({
+			method: "PUT",
+			path: "/api.v4/user.php",
+			body: validData,
+			validationContext: "Members.Member"
 		}, callback)
 	}
 

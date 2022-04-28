@@ -50,15 +50,24 @@ class Territories {
 	 * @param {Object}   [options] - Additional options for `get`
 	 * @param {boolean}  [options.includeAddresses=false] - If true, enclosed
 	 * addresses will be included in a response
+	 * @param {boolean}  [options.includeOrders=false] - If true, enclosed
+	 * orders will be included in a response
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Territories.Territory>} [callback]
 	 */
 	get(id, options, callback) {
 		let cb = callback
 		let opt = options
-		if ("undefined" === typeof cb
-			&& "function" === typeof opt) {
+		if ("undefined" === typeof cb && "function" === typeof opt) {
 			cb = opt
 			opt = {}
+		}
+
+		if ("undefined" === typeof cb && "undefined" === typeof opt && "function" === typeof id) {
+			return this.r._makeRequest({
+				method: "GET",
+				path: "/api.v4/territory.php",
+				validationContext: "Territories.Territory"
+			}, id)
 		}
 
 		opt = opt || {}
@@ -68,12 +77,18 @@ class Territories {
 			includeAddresses = !!opt.includeAddresses
 		}
 
+		let includeOrders = false
+		if (undefined !== opt.includeOrders) {
+			includeOrders = !!opt.includeOrders
+		}
+
 		return this.r._makeRequest({
 			method: "GET",
 			path: "/api.v4/territory.php",
 			qs: {
 				"territory_id": id,
 				"addresses": includeAddresses ? "1" : "0",
+				"orders": includeOrders ? "1" : "0"
 			},
 			validationContext: "Territories.Territory",
 		}, cb)
