@@ -84,20 +84,21 @@ With `route4me` instance you should get responses from API easy-peasy.
 
 Main members of the instanse of `Route4Me` class:
 
-* [ActivityFeed  ](ActivityFeed)
-* [Addresses     ](Addresses)
-* [AddressBook   ](AddressBook)
-* [AvoidanceZones](AvoidanceZones)
-* [Geocoding     ](Geocoding)
-* [Members       ](Members)
-* [Notes         ](Notes)
-* [Optimizations ](Optimizations)
-* [Orders        ](Orders)
-* [OrderCustomFields        ](OrderCustomFields)
-* [Routes        ](Routes)
-* [Territories   ](Territories)
-* [Tracking      ](Tracking)
-* [Vehicles      ](Vehicles)
+* [ActivityFeed     ](ActivityFeed)
+* [Addresses        ](Addresses)
+* [AddressBook      ](AddressBook)
+* [AddressBarcodes  ](AddressBarcodes)
+* [AvoidanceZones   ](AvoidanceZones)
+* [Geocoding        ](Geocoding)
+* [Members          ](Members)
+* [Notes            ](Notes)
+* [Optimizations    ](Optimizations)
+* [Orders           ](Orders)
+* [OrderCustomFields](OrderCustomFields)
+* [Routes           ](Routes)
+* [Territories      ](Territories)
+* [Tracking         ](Tracking)
+* [Vehicles         ](Vehicles)
 
 Each member corresponds to an bunch of methods, described in API-documentation,
 but the most methods in this SDK have unified names:
@@ -124,6 +125,7 @@ For most use cases it is necessary:
     * _instance_
         * [.ActivityFeed](#Route4Me+ActivityFeed) : <code>ActivityFeed</code>
         * [.AddressBook](#Route4Me+AddressBook) : <code>AddressBook</code>
+        * [.AddressBarcodes](#Route4Me+AddressBarcodes) : <code>AddressBarcodes</code>
         * [.Addresses](#Route4Me+Addresses) : <code>Addresses</code>
         * [.AvoidanceZones](#Route4Me+AvoidanceZones) : <code>AvoidanceZones</code>
         * [.Geocoding](#Route4Me+Geocoding) : <code>Geocoding</code>
@@ -169,6 +171,13 @@ Create new API client
 **AddressBook** related API calls
 
 **Since**: 0.1.8  
+<a id="Route4Me+AddressBarcodes" name="Route4Me+AddressBarcodes"></a>
+
+### route4Me.AddressBarcodes : <code>AddressBarcodes</code>
+
+**AddressBarcodes** related API calls
+
+**Since**: 1.0.5  
 <a id="Route4Me+Addresses" name="Route4Me+Addresses"></a>
 
 ### route4Me.Addresses : <code>Addresses</code>

@@ -83,6 +83,7 @@ two-way chat.
 | criteria | <code>string</code> \| <code>Object</code> |  | Criteria for event filter. Depending on type will be considered as: * `string` - criteria is a string representation of [Activity type](ActivityTypeEnum) * `Object` - criteria is a set of filters, see below |
 | [criteria.activityType] | <code>string</code> |  | [Activity type](ActivityTypeEnum) |
 | [criteria.routeId] | <code>string</code> |  | Route ID |
+| [criteria.memberId] | <code>number</code> |  | Member ID |
 | [options] | <code>Object</code> |  | Options for activity search |
 | [options.limit] | <code>number</code> |  | List limit |
 | [options.offset] | <code>number</code> |  | List offset |

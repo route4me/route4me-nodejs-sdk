@@ -73,7 +73,7 @@ class Addresses {
 				"notes": includeNotes ? "1" : "0",
 			},
 			validationContext: "Addresses.Address",
-		}, callback)
+		}, cb)
 	}
 
 	/**

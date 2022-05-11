@@ -79,6 +79,44 @@ describe(helper.toSuiteName(__filename), () => {
 					})
 				})
 			})
+
+			describe("with option `includeDirections`", () => {
+				it("should call route4me", (done) => {
+					const options = {
+						includeDirections: true
+					}
+					resource.get(117, options, (err, res) => {
+						expect(err).is.null
+						expect(res).is.not.null
+						helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/route.php", {
+							"route_id": "117",
+							"directions": "1"
+						},
+							null
+						)
+						done()
+					})
+				})
+			})
+
+			describe("with option `compressPathPoints`", () => {
+				it("should call route4me", (done) => {
+					const options = {
+						compressPathPoints: true
+					}
+					resource.get(117, options, (err, res) => {
+						expect(err).is.null
+						expect(res).is.not.null
+						helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/route.php", {
+							"route_id": "117",
+							"compress_path_points": "1"
+						},
+							null
+						)
+						done()
+					})
+				})
+			})
 		})
 
 		describe("list", () => {
@@ -93,7 +131,31 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).is.not.null
 					helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/route.php", {
 						"limit": "17",
-						"offset": "19" },
+						"offset": "19"
+					},
+						null
+					)
+					done()
+				})
+			})
+
+			it("should call route4me with date period", (done) => {
+				const options = {
+					limit: 17,
+					offset: 19,
+					startDate: "2022-01-01",
+					endDate: "2022-04-30"
+				}
+
+				resource.list(options, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/route.php", {
+						"limit": "17",
+						"offset": "19",
+						"start_date": "2022-01-01",
+						"end_date": "2022-04-30"
+					},
 						null
 					)
 					done()
@@ -191,6 +253,34 @@ describe(helper.toSuiteName(__filename), () => {
 
 			it("should call route4me", (done) => {
 				resource.linkAddress("5C15E83A4BE005BCD1537955D28D51D7", addresses, options, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/route.php", {
+						"route_id": "5C15E83A4BE005BCD1537955D28D51D7" },
+						{
+							"addresses": [
+								{
+									"address": "Cabo Rojo, Cabo Rojo 00623, Puerto Rico",
+									"alias": "",
+									"lat": 18.086627,
+									"lng": -67.145735,
+									"curbside_lat": 18.086627,
+									"curbside_lng": -67.145735,
+									"contact_id": null,
+									"sequence_no": 14,
+									"is_departed": false,
+									"is_visited": false,
+								}
+							],
+							"optimal_position": true
+						}
+					)
+					done()
+				})
+			})
+
+			it("should call route4me without options", (done) => {
+				resource.linkAddress("5C15E83A4BE005BCD1537955D28D51D7", addresses, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/route.php", {

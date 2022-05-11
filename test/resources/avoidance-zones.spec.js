@@ -54,13 +54,27 @@ describe(helper.toSuiteName(__filename), () => {
 		})
 
 		describe("get", () => {
-			it("should call route4me", (done) => {
+			it("should call route4me with optional parameter id", (done) => {
 				resource.get("adf123ADEDB", (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
 						"GET", "https://api.route4me.com/api.v4/avoidance.php",
 						{ "territory_id": "adf123ADEDB" },
+						null
+					)
+					done()
+				})
+			})
+		})
+
+		describe("get", () => {
+			it("should call route4me without optional parameter id", (done) => {
+				resource.get((err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req,
+						"GET", "https://api.route4me.com/api.v4/avoidance.php",
 						null
 					)
 					done()

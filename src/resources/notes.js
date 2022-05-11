@@ -56,25 +56,23 @@ class Notes {
 			"deviceType": "device_type",
 		})
 
-		// ???
-		const noteType = data.type || "dropoff"
-		qs["strUpdateType"] = noteType
+		qs["strUpdateType"] = data.type || "dropoff"
 
-		let body
 		if (data.note) {
-			body = {
-				// "strUpdateType": noteType, // ALREADY passed via QS
-				"strNoteContents": data.note,
-			}
-		} else {
-			body = data.file
+			return this.r._makeRequest({
+				method: "POST",
+				path: "/actions/addRouteNotes.php",
+				qs,
+				form: { "strNoteContents": data.note },
+				validationContext: "Notes.NoteCreateResponse",
+			}, callback)
 		}
 
 		return this.r._makeRequest({
 			method: "POST",
-			path: "/actions/addroutenotes.php",
+			path: "/actions/addRouteNotes.php",
 			qs,
-			body,
+			body: data.file,
 			validationContext: "Notes.NoteCreateResponse",
 		}, callback)
 	}

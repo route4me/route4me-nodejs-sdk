@@ -45,11 +45,19 @@ class AvoidanceZones {
 	 * @see {@link https://route4me.io/docs/#get-an-avoidance-zone}
 	 * @since 0.1.8
 	 *
-	 * @param {string}  id       - Avoidance zone ID
+	 * @param {string}  [id]       - Avoidance zone ID
 	 * @param {module:route4me-node~RequestCallback<jsonschema:
 	 * AvoidanceZones.AvoidanceZone>} [callback]
 	 */
 	get(id, callback) {
+		if (undefined === callback && "function" === typeof id) {
+			return this.r._makeRequest({
+				method: "GET",
+				path: "/api.v4/avoidance.php",
+				validationContext: "AvoidanceZones.AvoidanceZone"
+			}, id)
+		}
+
 		return this.r._makeRequest({
 			method: "GET",
 			path: "/api.v4/avoidance.php",

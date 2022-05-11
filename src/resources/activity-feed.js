@@ -153,8 +153,9 @@ class ActivityFeed {
 	 *
 	 * @param {string}  [criteria.activityType] - [Activity type]{@link ActivityTypeEnum}
 	 * @param {string}  [criteria.routeId]      - Route ID
+	 * @param {number}  [criteria.memberId]     - Member ID
 	 *
-	 * @param {Object}  [options]          - Options for activity search
+	 * @param {Object}  [options]         - Options for activity search
 	 * @param {number}  [options.limit]   - List limit
 	 * @param {number}  [options.offset]  - List offset
 	 * @param {boolean} [options.includeTeamActivities=false] - Indicate, whether team
@@ -202,6 +203,10 @@ class ActivityFeed {
 
 		if ("routeId" in cri) {
 			qs["route_id"] = cri["routeId"]
+		}
+
+		if ("memberId" in cri) {
+			qs["member_id"] = cri["memberId"]
 		}
 
 		// OPTIONS

@@ -19,7 +19,10 @@ Orders facility
     * [.search(criteria, [options], [callback])](#Orders+search)
     * [.createOrderCustomFields(data, [callback])](#Orders+createOrderCustomFields)
     * [.getOrderCustomFields(id, [callback])](#Orders+getOrderCustomFields)
-    * [.updateOrderCustomFields(id, data, [callback])](#Orders+updateOrderCustomFields)
+    * [.updateOrderCustomFields([id], data, [callback])](#Orders+updateOrderCustomFields)
+    * [.removeOrderCustomFields(id, [callback])](#Orders+removeOrderCustomFields)
+    * [.archive([data], [callback])](#Orders+archive)
+    * [.history([orderId], [trackingNumber], [callback])](#Orders+history)
 
 <a id="new_Orders_new" name="new_Orders_new"></a>
 
@@ -224,7 +227,7 @@ Get an Order Custom Fields Details
 
 <a id="Orders+updateOrderCustomFields" name="Orders+updateOrderCustomFields"></a>
 
-### orders.updateOrderCustomFields(id, data, [callback])
+### orders.updateOrderCustomFields([id], data, [callback])
 
 Update an OrderCustomFields
 
@@ -233,7 +236,58 @@ Update an OrderCustomFields
 
 | Param | Type | Description |
 | --- | --- | --- |
-| id | <code>number</code> | OrderCustomFields ID |
-| data | <code>jsonschema:Orders.Response</code> | OrderCustomFields data |
+| [id] | <code>number</code> | OrderCustomField ID, dummy parameter |
+| data | <code>Object</code> | OrderCustomField data |
+| data.order_custom_field_id | <code>number</code> | OrderCustomField ID to change |
+| [data.order_custom_field_label] | <code>string</code> | new value of label of OrderCustomField |
+| [data.order_custom_field_type] | <code>string</code> | new type of OrderCustomField |
+| [data.order_custom_field_type_info] | <code>Object</code> | new value of label of OrderCustomField |
+| [data.order_custom_field_type.short_label] | <code>string</code> | new value of short label of OrderCustomField |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Response&gt;</code> |  |
+
+<a id="Orders+removeOrderCustomFields" name="Orders+removeOrderCustomFields"></a>
+
+### orders.removeOrderCustomFields(id, [callback])
+
+Remove an OrderCustomFields
+
+**See**: [https://route4me.io/docs/#remove-user-custom-field](https://route4me.io/docs/#remove-user-custom-field)  
+**Since**: 1.0.6  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | OrderCustomField ID |
+| [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Response&gt;</code> |  |
+
+<a id="Orders+archive" name="Orders+archive"></a>
+
+### orders.archive([data], [callback])
+
+Get all the archive orders created under the specific Route4Me account
+
+**See**: [https://route4me.io/docs](https://route4me.io/docs)  
+**Since**: 1.0.4  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [data] | <code>Object</code> | Archive params |
+| [data.cursor] | <code>string</code> | id of next page of orders, empty string on first call |
+| [datap.er_page] | <code>number</code> | number of orders per page |
+| [data.filters] | <code>Object</code> |  |
+| [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Orders&gt;</code> | [callback] |
+
+<a id="Orders+history" name="Orders+history"></a>
+
+### orders.history([orderId], [trackingNumber], [callback])
+
+Get the orders history created under the specific Route4Me account
+
+**See**: [https://route4me.io/docs](https://route4me.io/docs)  
+**Since**: 1.0.4  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [orderId] | <code>number</code> | Order ID |
+| [trackingNumber] | <code>string</code> | Tracking number |
+| [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Orders&gt;</code> | [callback] |
 

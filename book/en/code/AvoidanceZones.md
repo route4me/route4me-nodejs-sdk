@@ -12,7 +12,7 @@ AvoidanceZones facility
 * [AvoidanceZones](#AvoidanceZones) ℗
     * [new AvoidanceZones(requestManager)](#new_AvoidanceZones_new)
     * [.create(data, [callback])](#AvoidanceZones+create)
-    * [.get(id, [callback])](#AvoidanceZones+get)
+    * [.get([id], [callback])](#AvoidanceZones+get)
     * [.list([callback])](#AvoidanceZones+list)
     * [.update(id, data, [callback])](#AvoidanceZones+update)
     * [.remove(id, [callback])](#AvoidanceZones+remove)
@@ -45,7 +45,7 @@ Create an Avoidance Zone.
 
 <a id="AvoidanceZones+get" name="AvoidanceZones+get"></a>
 
-### avoidanceZones.get(id, [callback])
+### avoidanceZones.get([id], [callback])
 
 GET a specified Avoidance Zone by ID.
 
@@ -54,7 +54,7 @@ GET a specified Avoidance Zone by ID.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| id | <code>string</code> | Avoidance zone ID |
+| [id] | <code>string</code> | Avoidance zone ID |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AvoidanceZones.AvoidanceZone&gt;</code> |  |
 
 <a id="AvoidanceZones+list" name="AvoidanceZones+list"></a>

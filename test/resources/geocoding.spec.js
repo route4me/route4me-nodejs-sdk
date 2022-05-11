@@ -74,6 +74,27 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
+		describe("batch", () => {
+			it("should call route4me", (done) => {
+				const addresses = "33.941588, -118.40853\n41.003573, -81.598666\n41.162977, -81.479135"
+
+				resource.batch(addresses, (err, res) => {
+					expect(err).is.null
+					expect(res).to.exist
+
+					helper.expectRequest(req, "POST",
+						"https://api.route4me.com/api/geocoder.php", {},
+						{
+							"addresses": "33.941588, -118.40853\n41.003573, -81.598666\n41.162977, -81.479135",
+							"strExportFormat": "json"
+						},
+						"multipart/form-data"
+					)
+					done()
+				})
+			})
+		})
+
 		describe("rapid", () => {
 			describe("rapidGet", () => {
 				it("should call route4me", (done) => {

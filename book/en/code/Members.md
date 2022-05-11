@@ -15,6 +15,7 @@ Members facility
     * [.list([callback])](#Members+list)
     * [.get(id, [callback])](#Members+get)
     * [.update(id, data, [callback])](#Members+update)
+    * [.addCustomData(id, data, [callback])](#Members+addCustomData)
     * [.remove(id, [callback])](#Members+remove)
     * [.authenticate(email, password, [callback])](#Members+authenticate)
     * [.validateSession(id, sessionId, [callback])](#Members+validateSession)
@@ -177,6 +178,33 @@ Update an existing user.
 	"hideNonfutureRoutes": false,
 	"showAllVehicles": false,
 	"showAllDrivers": false,
+}
+```
+<a id="Members+addCustomData" name="Members+addCustomData"></a>
+
+### members.addCustomData(id, data, [callback])
+
+Add Custom Data to a User.
+
+**See**: [https://route4me.io/docs/#add-custom-data-to-a-user](https://route4me.io/docs/#add-custom-data-to-a-user)  
+**Since**: 1.0.6  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | Member ID |
+| data | <code>Object</code> | Parameters of new user |
+| data.custom_data | <code>Object</code> | custom data object |
+| data.custom_data.key | <code>string</code> | custom key |
+| data.custom_data.value | <code>string</code> | custom value |
+| [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Members.Member&gt;</code> |  |
+
+**Example** *(Sample input)*  
+```javascript
+{
+	custom_data: {
+		custom_kye_1: "custom value 1",
+		custom_kye_2: "custom value 2"
+	}
 }
 ```
 <a id="Members+remove" name="Members+remove"></a>

@@ -15,6 +15,7 @@
 
 * [Route4Me](code/Route4Me.md#Route4Me)
   * [ActivityFeed](code/ActivityFeed.md)
+  * [AddressBarcodes](code/AddressBarcodes.md)
   * [AddressBook](code/AddressBook.md)
   * [Addresses](code/Addresses.md)
   * [AvoidanceZones](code/AvoidanceZones.md)

@@ -140,7 +140,7 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 
-			describe("for N items", () => {
+			describe("for N items as string", () => {
 				beforeEach(() => {
 					saMock.get("*",  (r) => {
 						req = r
@@ -164,6 +164,68 @@ describe(helper.toSuiteName(__filename), () => {
 							"GET", "https://api.route4me.com/api.v4/order.php", {
 								"order_id": "7205711,7205712",
 							},
+							null
+						)
+
+						expect(res).is.an("array")
+						done()
+					})
+				})
+			})
+
+			describe("for N items as Array", () => {
+				beforeEach(() => {
+					saMock.get("*",  (r) => {
+						req = r
+						req.method = "GET"
+						return { body: { "results": [{ }, { }], "total": 2 } }
+					})
+				})
+
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				const orderIds = [7205711, 7205712]
+
+				it("should call route4me and receive an array", (done) => {
+					resource.list(orderIds, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"GET", "https://api.route4me.com/api.v4/order.php", {
+								"order_id": "7205711,7205712",
+							},
+							null
+						)
+
+						expect(res).is.an("array")
+						done()
+					})
+				})
+			})
+
+			describe("all routes", () => {
+				beforeEach(() => {
+					saMock.get("*",  (r) => {
+						req = r
+						req.method = "GET"
+						return { body: { "results": [{ }, { }], "total": 2 } }
+					})
+				})
+
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				it("should call route4me and receive an array", (done) => {
+					resource.list((err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"GET", "https://api.route4me.com/api.v4/order.php", {},
 							null
 						)
 
@@ -218,6 +280,23 @@ describe(helper.toSuiteName(__filename), () => {
 					helper.expectRequest(req,
 						"GET", "https://api.route4me.com/api.v4/order.php", {
 							"limit": "25",
+							"redirect": "0",
+						},
+						null
+					)
+
+					done()
+				})
+			})
+
+			it("should call route4me without options", (done) => {
+				resource.search(criteria, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"GET", "https://api.route4me.com/api.v4/order.php", {
+							"query": "Tbilisi",
 							"redirect": "0",
 						},
 						null
@@ -479,7 +558,7 @@ describe(helper.toSuiteName(__filename), () => {
 
 			const orderId = 7205711
 
-			it("orderCustomFields should call route4me", (done) => {
+			it("orderCustomFields for the one order, should call route4me", (done) => {
 				resource.getOrderCustomFields(orderId, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
@@ -487,6 +566,22 @@ describe(helper.toSuiteName(__filename), () => {
 					helper.expectRequest(req,
 						"GET", "https://api.route4me.com/api.v4/order_custom_user_fields.php", {
 							"order_id": "7205711",
+						},
+						null
+					)
+
+					done()
+				})
+			})
+
+			it("orderCustomFields for all orders, should call route4me and ", (done) => {
+				resource.getOrderCustomFields((err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"GET", "https://api.route4me.com/api.v4/order_custom_user_fields.php", {
+							"order_id": "0",
 						},
 						null
 					)
@@ -535,6 +630,59 @@ describe(helper.toSuiteName(__filename), () => {
 									"order_custom_field_value": "100"
 								}
 							]			
+						}
+					)
+
+					done()
+				})
+			})
+
+			it("orderCustomFields by field_id, should call route4me", (done) => {
+				resource.updateOrderCustomFields(data, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"PUT", "https://api.route4me.com/api.v4/order_custom_user_fields.php", {
+							"redirect": "0",
+						}, {
+							"custom_user_fields": [
+								{
+									"order_custom_field_id": 922,
+									"order_custom_field_value": "100"
+								}
+							]			
+						}
+					)
+
+					done()
+				})
+			})
+		})
+
+		describe("removeOrderCustomFields", () => {
+			beforeEach(() => {
+				saMock.del("*",  (r) => {
+					req = r
+					req.method = "DELETE"
+					return { body: {} }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
+			const orderId = "507516"
+
+			it("removeOrderCustomFields should call route4me", (done) => {
+				resource.removeOrderCustomFields(orderId, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"DELETE", "https://api.route4me.com/api.v4/order_custom_user_fields.php", {}, {
+							"order_custom_field_id": 507516
 						}
 					)
 

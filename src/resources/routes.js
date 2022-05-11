@@ -137,13 +137,15 @@ class Routes {
 	 *
 	 * @param {string}  id       - Route ID
 	 * @param {Object} [options] - Options
-	 * @param {boolean} [options.includeTracking] - if `true` - the route tracking data
+	 * @param {boolean} [options.includeTracking]    - if `true` - the route tracking data
 	 * will be included into the response.
 	 * See also {@link https://route4me.io/docs/#get-route-tracking-data}
-	 * @param {boolean} [options.includeDirections] - if `true` - returns directions
-	 * @param {boolean} [options.includeRoutePath] - if `true` - include route path
+	 * @param {boolean} [options.includeDirections]  - if `true` - returns directions
+	 * @param {boolean} [options.includeRoutePath]   - if `true` - include route path
+	 * @param {boolean} [options.compressPathPoints] - if `true` - the path points in
+	 * the response will be compressed
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
-	 */
+	*/
 	get(id, options, callback) {
 		let opt = options
 		let cb = callback
@@ -173,6 +175,10 @@ class Routes {
 			qs["route_path_output"] = opt.includeRoutePath ? "Points" : "None"
 		}
 
+		if (true === opt["compressPathPoints"]) {
+			qs["compress_path_points"] = "1"
+		}
+
 		return this.r._makeRequest({
 			method: "GET",
 			path: "/api.v4/route.php",
@@ -188,11 +194,13 @@ class Routes {
 	 * @since 0.1.8
 	 * @todo TODO: make options optional param
 	 *
-	 * @param {Object} options          - List-parameters
-	 * @param {number} [options.limit]  - List limit
-	 * @param {number} [options.offset] - List offset
+	 * @param {Object} options               - List-parameters
+	 * @param {number} [options.limit]       - List limit
+	 * @param {number} [options.offset]      - List offset
+	 * @param {string} [options.startDate]   - Start date of route as "YYYY-MM-DD"
+	 * @param {string} [options.endDate]     - End date of route as "YYYY-MM-DD"
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Routes>} [callback]
-	 */
+  	 */
 	list(options, callback) {
 		const qs = {}
 
@@ -202,6 +210,14 @@ class Routes {
 
 		if ("offset" in options) {
 			qs["offset"] = options.offset
+		}
+
+		if ("startDate" in options) {
+			qs["start_date"] = options.startDate
+		}
+
+		if ("endDate" in options) {
+			qs["end_date"] = options.endDate
 		}
 
 		return this.r._makeRequest({
