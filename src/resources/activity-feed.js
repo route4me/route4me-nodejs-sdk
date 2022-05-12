@@ -41,9 +41,17 @@ const activityTypeEnum = {
 	 *
 	 * @type {string}
 	 */
+	AddressbookInsert:       "addressbook-insert",
+	AddressbookUpdate:       "addressbook-update",
+	AddressbookDelete:       "addressbook-delete",
+
 	DriverArrivedEarly:      "driver-arrived-early",
 	DriverArrivedLate:       "driver-arrived-late",
+	DriverArrivedInTime:     "driver-arrived-in-time",
 	DriverArrivedOnTime:     "driver-arrived-on-time",
+
+	LocalGeofenceEntered:    "local_geofence_entered",
+	LocalGeofenceLeft:       "local_geofence_left",
 
 	MemberCreated:           "member-created",
 	MemberDeleted:           "member-deleted",
@@ -60,6 +68,13 @@ const activityTypeEnum = {
 	OrderUpdated:			 "order-updated",
 	OrderDeleted:  			 "order-deleted",
 	UnapprovedToExecute:	 "unapproved-to-execute",
+
+	PickupBarcodeScanning:   "pickup_barcode_scanning",
+
+	RouteCompleted:          "route-completed",
+	RouteDestinationStatus:  "route-destination-status",
+	RoutePaused:             "route-paused",
+	RouteStarted:            "route-started",
 	RouteUpdate:			 "route-update"
 }
 
