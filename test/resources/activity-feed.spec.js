@@ -56,7 +56,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"POST", "https://api.route4me.com/api.v4/activity_feed.php",
+						"POST", 
+						route4meClient.baseUrl() + "/api.v4/activity_feed.php",
 						{},
 						{
 							"activity_type": "user_message",
@@ -96,7 +97,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(err).not.exist
 						expect(res).exist
 						helper.expectRequest(req,
-							"GET", "https://api.route4me.com/api/get_activities.php",
+							"GET",
+							route4meClient.baseUrl() + "/api/get_activities.php",
 							{
 								"route_id": "5C15E83A4BE005BCD1537955D28D51D7",
 
@@ -120,7 +122,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(err).not.exist
 						expect(res).exist
 						helper.expectRequest(req,
-							"GET", "https://api.route4me.com/api/get_activities.php",
+							"GET",
+							route4meClient.baseUrl() + "/api/get_activities.php",
 							{
 								"route_id": "5C15E83A4BE005BCD1537955D28D51D7",
 							},
@@ -142,7 +145,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(err).not.exist
 						expect(res).exist
 						helper.expectRequest(req,
-							"GET", "https://api.route4me.com/api/get_activities.php",
+							"GET",
+							route4meClient.baseUrl() + "/api/get_activities.php",
 							{
 								"offset": "743",
 							},
@@ -163,7 +167,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(err).not.exist
 						expect(res).exist
 						helper.expectRequest(req,
-							"GET", "https://api.route4me.com/api/get_activities.php",
+							"GET",
+							route4meClient.baseUrl() + "/api/get_activities.php",
 							{
 								"route_id": "5C15E83A4BE005BCD1537955D28D51D7",
 							},
@@ -179,7 +184,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api/get_activities.php",
+						"GET",
+						route4meClient.baseUrl() + "/api/get_activities.php",
 						{
 							"activity_type": "route-optimized",
 						},
@@ -194,7 +200,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api/get_activities.php",
+						"GET",
+						route4meClient.baseUrl() + "/api/get_activities.php",
 						{
 						},
 						null

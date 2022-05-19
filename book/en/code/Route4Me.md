@@ -137,6 +137,8 @@ For most use cases it is necessary:
         * [.Tracking](#Route4Me+Tracking) : <code>Tracking</code>
         * [.Vehicles](#Route4Me+Vehicles) : <code>Vehicles</code>
         * [.version](#Route4Me+version) ⇒ <code>string</code>
+        * [.baseUrl()](#Route4Me+baseUrl) ⇒ <code>string</code>
+        * [.baseUrl5()](#Route4Me+baseUrl5) ⇒ <code>string</code>
     * _static_
         * [.version](#Route4Me.version) ⇒ <code>string</code>
 
@@ -152,9 +154,10 @@ Create new API client
 | --- | --- | --- | --- |
 | apiKey | <code>string</code> |  | API KEY |
 | [options] | <code>object</code> |  | Additional options for new instance |
-| [options.baseUrl] | <code>string</code> | <code>&quot;\&quot;https://api.route4me.com\&quot;&quot;</code> | Base URL for sending requests |
+| [options.baseUrl] | <code>string</code> | <code>&quot;https://api.route4me.com&quot;</code> | Base URL for sending requests |
+| [options.baseUrl5] | <code>string</code> | <code>&quot;https://wh.route4me.com/modules&quot;</code> | Base URL for sending requests to backend API v.5 |
 | [options.logger] | [<code>ILogger</code>](#ILogger) | <code></code> | Logger facility |
-| [options.promise] | <code>boolean</code> \| <code>function</code> | <code>false</code> | Use promises instead of callbacks. Usage: * `false` means _no promises, use callbacks_; * `true` means _use global `Promise`_ as promises' constructor; * `constructor (function)` forces to use explicit Promise library. See also Examples section of this documentation. |
+| [options.promise] | <code>boolean/function</code> | <code>false</code> | Use promises instead of callbacks. Usage: * `false` means _no promises, use callbacks_; * `true` means _use global `Promise`_ as promises' constructor; * `constructor (function)` forces to use explicit Promise library. See also Examples section of this documentation. |
 | [options.validate] | <code>module:route4me-node~ValidationCallback</code> | <code>false</code> | Validator for input and output parameters of the API methods. Set **falsey** value to skip autovalidation (in favor of manual check). |
 
 <a id="Route4Me+ActivityFeed" name="Route4Me+ActivityFeed"></a>
@@ -252,6 +255,24 @@ Version of this API client
 **Returns**: <code>string</code> - Version  
 **Read only**: true  
 **Since**: 0.2.0  
+<a id="Route4Me+baseUrl" name="Route4Me+baseUrl"></a>
+
+### route4Me.baseUrl() ⇒ <code>string</code>
+
+Base URL for sending requests
+
+**Returns**: <code>string</code> - URL  
+**Read only**: true  
+**Since**: 1.0.9  
+<a id="Route4Me+baseUrl5" name="Route4Me+baseUrl5"></a>
+
+### route4Me.baseUrl5() ⇒ <code>string</code>
+
+Base URL for sending requests to backend API v.5
+
+**Returns**: <code>string</code> - URL  
+**Read only**: true  
+**Since**: 1.0.9  
 <a id="Route4Me.version" name="Route4Me.version"></a>
 
 ### Route4Me.version ⇒ <code>string</code>
@@ -289,9 +310,15 @@ Enum for all known **activity type**.
 | MarkDestinationVisited | <code>string</code> | <code>&quot;mark-destination-visited&quot;</code> |  |
 | MoveDestination | <code>string</code> | <code>&quot;move-destination&quot;</code> |  |
 | UpdateDestinations | <code>string</code> | <code>&quot;update-destinations&quot;</code> |  |
-| DriverArrivedEarly | <code>string</code> | <code>&quot;driver-arrived-early&quot;</code> | Get driver arrived early activities [https://route4me.io/docs/#driver-arrived-early](https://route4me.io/docs/#driver-arrived-early) |
+| AddressbookInsert | <code>string</code> | <code>&quot;addressbook-insert&quot;</code> | Get driver arrived early activities [https://route4me.io/docs/#driver-arrived-early](https://route4me.io/docs/#driver-arrived-early) |
+| AddressbookUpdate | <code>string</code> | <code>&quot;addressbook-update&quot;</code> |  |
+| AddressbookDelete | <code>string</code> | <code>&quot;addressbook-delete&quot;</code> |  |
+| DriverArrivedEarly | <code>string</code> | <code>&quot;driver-arrived-early&quot;</code> |  |
 | DriverArrivedLate | <code>string</code> | <code>&quot;driver-arrived-late&quot;</code> |  |
+| DriverArrivedInTime | <code>string</code> | <code>&quot;driver-arrived-in-time&quot;</code> |  |
 | DriverArrivedOnTime | <code>string</code> | <code>&quot;driver-arrived-on-time&quot;</code> |  |
+| LocalGeofenceEntered | <code>string</code> | <code>&quot;local_geofence_entered&quot;</code> |  |
+| LocalGeofenceLeft | <code>string</code> | <code>&quot;local_geofence_left&quot;</code> |  |
 | MemberCreated | <code>string</code> | <code>&quot;member-created&quot;</code> |  |
 | MemberDeleted | <code>string</code> | <code>&quot;member-deleted&quot;</code> |  |
 | MemberModified | <code>string</code> | <code>&quot;member-modified&quot;</code> |  |
@@ -304,5 +331,10 @@ Enum for all known **activity type**.
 | OrderUpdated | <code>string</code> | <code>&quot;order-updated&quot;</code> |  |
 | OrderDeleted | <code>string</code> | <code>&quot;order-deleted&quot;</code> |  |
 | UnapprovedToExecute | <code>string</code> | <code>&quot;unapproved-to-execute&quot;</code> |  |
+| PickupBarcodeScanning | <code>string</code> | <code>&quot;pickup_barcode_scanning&quot;</code> |  |
+| RouteCompleted | <code>string</code> | <code>&quot;route-completed&quot;</code> |  |
+| RouteDestinationStatus | <code>string</code> | <code>&quot;route-destination-status&quot;</code> |  |
+| RoutePaused | <code>string</code> | <code>&quot;route-paused&quot;</code> |  |
+| RouteStarted | <code>string</code> | <code>&quot;route-started&quot;</code> |  |
 | RouteUpdate | <code>string</code> | <code>&quot;route-update&quot;</code> |  |
 

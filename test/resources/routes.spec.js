@@ -34,8 +34,10 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.get(3, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/route.php", {
-						"route_id": "3" },
+					helper.expectRequest(req,
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/route.php",
+						{ "route_id": "3" },
 						null
 					)
 					done()
@@ -50,10 +52,13 @@ describe(helper.toSuiteName(__filename), () => {
 					resource.get(11, options, (err, res) => {
 						expect(err).is.null
 						expect(res).is.not.null
-						helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/route.php", {
-							"route_id": "11",
-							"device_tracking_history": "1",
-						},
+						helper.expectRequest(req,
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/route.php",
+							{
+								"route_id": "11",
+								"device_tracking_history": "1",
+							},
 							null
 						)
 						done()
@@ -69,10 +74,13 @@ describe(helper.toSuiteName(__filename), () => {
 					resource.get(117, options, (err, res) => {
 						expect(err).is.null
 						expect(res).is.not.null
-						helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/route.php", {
-							"route_id": "117",
-							"route_path_output": "Points",
-						},
+						helper.expectRequest(req,
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/route.php",
+							{
+								"route_id": "117",
+								"route_path_output": "Points",
+							},
 							null
 						)
 						done()
@@ -88,10 +96,13 @@ describe(helper.toSuiteName(__filename), () => {
 					resource.get(117, options, (err, res) => {
 						expect(err).is.null
 						expect(res).is.not.null
-						helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/route.php", {
-							"route_id": "117",
-							"directions": "1"
-						},
+						helper.expectRequest(req,
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/route.php",
+							{
+								"route_id": "117",
+								"directions": "1"
+							},
 							null
 						)
 						done()
@@ -107,10 +118,13 @@ describe(helper.toSuiteName(__filename), () => {
 					resource.get(117, options, (err, res) => {
 						expect(err).is.null
 						expect(res).is.not.null
-						helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/route.php", {
-							"route_id": "117",
-							"compress_path_points": "1"
-						},
+						helper.expectRequest(req,
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/route.php",
+							{
+								"route_id": "117",
+								"compress_path_points": "1"
+							},
 							null
 						)
 						done()
@@ -129,10 +143,13 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.list(options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/route.php", {
-						"limit": "17",
-						"offset": "19"
-					},
+					helper.expectRequest(req,
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/route.php",
+						{
+							"limit": "17",
+							"offset": "19"
+						},
 						null
 					)
 					done()
@@ -150,12 +167,15 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.list(options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/route.php", {
-						"limit": "17",
-						"offset": "19",
-						"start_date": "2022-01-01",
-						"end_date": "2022-04-30"
-					},
+					helper.expectRequest(req,
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/route.php",
+						{
+							"limit": "17",
+							"offset": "19",
+							"start_date": "2022-01-01",
+							"end_date": "2022-04-30"
+						},
 						null
 					)
 					done()
@@ -170,9 +190,10 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.search(query, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/route.php", {
-						"query": "Tbilisi",
-					},
+					helper.expectRequest(req,
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/route.php",
+						{ "query": "Tbilisi" },
 						null
 					)
 					done()
@@ -196,8 +217,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"PUT", "https://api.route4me.com/api.v4/route.php", {
-							"route_id": "5C15E83A4BE005BCD1537955D28D51D7" },
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/route.php", 
+						{ "route_id": "5C15E83A4BE005BCD1537955D28D51D7" },
 						data
 					)
 					done()
@@ -222,7 +244,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(err).is.null
 						expect(res).is.not.null
 						helper.expectRequest(req,
-							"DELETE", "https://api.route4me.com/api.v4/route.php",
+							"DELETE", 
+							route4meClient.baseUrl() + "/api.v4/route.php",
 							tc.expQs,
 							null
 						)
@@ -255,8 +278,10 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.linkAddress("5C15E83A4BE005BCD1537955D28D51D7", addresses, options, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/route.php", {
-						"route_id": "5C15E83A4BE005BCD1537955D28D51D7" },
+					helper.expectRequest(req,
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/route.php",
+						{ "route_id": "5C15E83A4BE005BCD1537955D28D51D7" },
 						{
 							"addresses": [
 								{
@@ -283,8 +308,10 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.linkAddress("5C15E83A4BE005BCD1537955D28D51D7", addresses, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/route.php", {
-						"route_id": "5C15E83A4BE005BCD1537955D28D51D7" },
+					helper.expectRequest(req,
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/route.php",
+						{ "route_id": "5C15E83A4BE005BCD1537955D28D51D7" },
 						{
 							"addresses": [
 								{
@@ -337,7 +364,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(err).not.exist
 						expect(res).exist
 						helper.expectRequest(req,
-							"DELETE", "https://api.route4me.com/api.v4/address.php",
+							"DELETE",
+							route4meClient.baseUrl() + "/api.v4/address.php",
 							tc.expQs,
 							null
 						)
@@ -367,9 +395,13 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.duplicate(131, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "POST", "https://api.route4me.com/actions/duplicate_route.php", {
-						"route_id": "131",
-						"to": "none" },
+					helper.expectRequest(req,
+						"POST",
+						route4meClient.baseUrl() + "/actions/duplicate_route.php",
+						{
+							"route_id": "131",
+							"to": "none"
+						},
 						null
 					)
 					done()
@@ -415,8 +447,9 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(err).is.null
 						expect(res).is.not.null
 
-						helper.expectRequest(req, "POST",
-							"https://api.route4me.com/actions/merge_routes.php",
+						helper.expectRequest(req,
+							"POST",
+							route4meClient.baseUrl() + "/actions/merge_routes.php",
 							{},
 							tc.expBody
 						)
@@ -447,13 +480,13 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"POST", "https://api.route4me.com/actions/route/share_route.php", {
-							"response_format": "json",
-							"route_id": "5C15E83A4BE005BCD1537955D28D51D7",
-						},
+						"POST", 
+						route4meClient.baseUrl() + "/actions/route/share_route.php",
 						{
-							"recipient_email": "noreply@route4me.com",
+							"response_format": "json",
+							"route_id": "5C15E83A4BE005BCD1537955D28D51D7"
 						},
+						{ "recipient_email": "noreply@route4me.com" },
 						"multipart/form-data"
 					)
 
@@ -486,12 +519,13 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"POST", "https://api.route4me.com/actions/route/move_route_destination.php",
+						"POST",
+						route4meClient.baseUrl() + "/actions/route/move_route_destination.php",
 						{},
 						{
 							"to_route_id": "5C15E83A4BE005BCD1537955D28D51D7",
 							"route_destination_id": 167899269,
-							"after_destination_id": 167899270,
+							"after_destination_id": 167899270
 						},
 						"multipart/form-data"
 					)
@@ -512,9 +546,10 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"PUT", "https://api.route4me.com/api.v4/route.php", {
-							"route_id": "8E20987CCC7CC8943FB279BBD8E5D226",
-						}, {
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/route.php",
+						{ "route_id": "8E20987CCC7CC8943FB279BBD8E5D226" },
+						{
 							"addresses": [
 								{
 									"route_destination_id": 167899269,
@@ -549,12 +584,12 @@ describe(helper.toSuiteName(__filename), () => {
 					// Expectations about result
 					expect(err).is.null
 					expect(res).exist
-		
 
 					helper.expectRequest(req,
-						"PUT", "https://api.route4me.com/api.v4/route.php", {
-							"route_id": "8E20987CCC7CC8943FB279BBD8E5D226",
-						},{
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/route.php",
+						{ "route_id": "8E20987CCC7CC8943FB279BBD8E5D226" },
+						{
 							"disable_optimization": "0",
 							"optimize": "Distance",
 						},

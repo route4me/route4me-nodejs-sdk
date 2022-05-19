@@ -34,8 +34,10 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.get(3, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/optimization_problem.php", {
-						"optimization_problem_id": "3" },
+					helper.expectRequest(req,
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/optimization_problem.php",
+						{ "optimization_problem_id": "3" },
 						null
 					)
 					done()
@@ -53,8 +55,10 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.list([1, 2, 3], options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "GET", "https://api.route4me.com/api.v4/optimization_problem.php", {
-						"states": "1,2,3", "limit": "100", "offset": "0" },
+					helper.expectRequest(req, 
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/optimization_problem.php",
+						{ "states": "1,2,3", "limit": "100", "offset": "0" },
 						null
 					)
 					done()
@@ -84,7 +88,12 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.create({ "param": 1 }, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "POST", "https://api.route4me.com/api.v4/optimization_problem.php", null, { "param": 1 })
+					helper.expectRequest(req, 
+						"POST",
+						route4meClient.baseUrl() + "/api.v4/optimization_problem.php", 
+						null, 
+						{ "param": 1 }
+					)
 					//done()
 				})
 				done()
@@ -102,12 +111,15 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.update(opt_id, opt_data, reoptimize, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/optimization_problem.php", {
-						"optimization_problem_id": "0613EF353999F43E17B17DD07DDED59E",
-						"reoptimize": "1",
-					}, {
-						"parameters": [],
-					})
+					helper.expectRequest(req,
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/optimization_problem.php",
+						{ 
+							"optimization_problem_id": "0613EF353999F43E17B17DD07DDED59E",
+							"reoptimize": "1",
+						}, 
+						{ "parameters": [] }
+					)
 					done()
 				})
 			})
@@ -122,12 +134,15 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.update(opt_id, opt_data, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/optimization_problem.php", {
-						"optimization_problem_id": "0613EF353999F43E17B17DD07DDED59E",
-						"reoptimize": "0",
-					}, {
-						"parameters": [],
-					})
+					helper.expectRequest(req,
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/optimization_problem.php",
+						{
+							"optimization_problem_id": "0613EF353999F43E17B17DD07DDED59E",
+							"reoptimize": "0",
+						},
+						{ "parameters": [], }
+					)
 					done()
 				})
 			})
@@ -138,9 +153,11 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.remove(["0613EF353999F43E17B17DD07DDED59E"], (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "DELETE", "https://api.route4me.com/api.v4/optimization_problem.php", {
-						"optimization_problem_ids": "0613EF353999F43E17B17DD07DDED59E",
-					}, null
+					helper.expectRequest(req,
+						"DELETE",
+						route4meClient.baseUrl() + "/api.v4/optimization_problem.php",
+						{ "optimization_problem_ids": "0613EF353999F43E17B17DD07DDED59E" },
+						null
 					)
 					done()
 				})
@@ -156,14 +173,15 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.linkAddress(id, addresses, reoptimize, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/optimization_problem.php", {
-						"optimization_problem_id": "123",
-						"reoptimize": "0",
-					}, {
-						"addresses": [
-							{ "route_destination_id": 11, "in-body": true }
-						]
-					})
+					helper.expectRequest(req,
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/optimization_problem.php",
+						{
+							"optimization_problem_id": "123",
+							"reoptimize": "0",
+						},
+						{ "addresses": [{ "route_destination_id": 11, "in-body": true }] }
+					)
 					done()
 				})
 			})
@@ -176,14 +194,15 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.linkAddress(id, addresses, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "PUT", "https://api.route4me.com/api.v4/optimization_problem.php", {
-						"optimization_problem_id": "123",
-						"reoptimize": "0",
-					}, {
-						"addresses": [
-							{ "route_destination_id": 11, "in-body": true }
-						]
-					})
+					helper.expectRequest(req,
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/optimization_problem.php",
+						{
+							"optimization_problem_id": "123",
+							"reoptimize": "0",
+						},
+						{ "addresses": [{ "route_destination_id": 11, "in-body": true }] }
+					)
 					done()
 				})
 			})
@@ -196,10 +215,15 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.unlinkAddress(opt_id, route_id, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "DELETE", "https://api.route4me.com/api.v4/address.php", {
-						"optimization_problem_id": "987",
-						"route_destination_id": "543",
-					}, null)
+					helper.expectRequest(req,
+						"DELETE",
+						route4meClient.baseUrl() + "/api.v4/address.php",
+						{
+							"optimization_problem_id": "987",
+							"route_destination_id": "543",
+						},
+						null
+					)
 					done()
 				})
 			})
