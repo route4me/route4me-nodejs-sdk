@@ -58,7 +58,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"POST", "https://api.route4me.com/api.v4/address_book.php", {},
+						"POST",
+						route4meClient.baseUrl() + "/api.v4/address_book.php", {},
 						data
 					)
 					done()
@@ -96,7 +97,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(err).is.null
 						expect(res).is.not.null
 						helper.expectRequest(req,
-							"GET", "https://api.route4me.com/api.v4/address_book.php",
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/address_book.php",
 							tc.expQuery,
 							null
 						)
@@ -147,7 +149,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/address_book.php",
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/address_book.php",
 						{
 							"query": "dan",
 							"offset": "100",
@@ -176,7 +179,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"PUT", "https://api.route4me.com/api.v4/address_book.php",
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/address_book.php",
 						{},
 						{
 							"address_id": 7364,
@@ -222,7 +226,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(res).is.not.null
 
 						helper.expectRequest(req,
-							"DELETE", "https://api.route4me.com/api.v4/address_book.php",
+							"DELETE",
+							route4meClient.baseUrl() + "/api.v4/address_book.php",
 							{},
 							tc.expBody
 						)

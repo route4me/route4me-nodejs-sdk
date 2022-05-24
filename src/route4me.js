@@ -76,7 +76,9 @@ class Route4Me {
 	 *
 	 * @param  {string}  apiKey API KEY
 	 * @param  {object}  [options] Additional options for new instance
-	 * @param  {string}  [options.baseUrl="https://api.route4me.com"] Base URL for sending requests
+	 * @param  {string}  [options.baseUrl=https://api.route4me.com] Base URL for sending requests
+	 * @param  {string}  [options.baseUrl5=https://wh.route4me.com/modules] Base URL for sending
+	 * requests to backend API v.5
 	 * @param  {ILogger} [options.logger=null]   Logger facility
 	 * @param  {boolean|function} [options.promise=false] Use promises instead of
 	 * callbacks. Usage:
@@ -97,7 +99,7 @@ class Route4Me {
 		// check options
 
 		opt["baseUrl"]  = utils.get(options, "baseUrl", "https://api.route4me.com")
-		opt["baseUrl5"] = utils.get(options, "baseUrl", "https://wh.route4me.com/modules")
+		opt["baseUrl5"] = utils.get(options, "baseUrl5", "https://wh.route4me.com/modules")
 		opt["logger"]   = utils.get(options, "logger",   new utils.ILogger())
 		opt["promise"]  = utils.get(options, "promise",  false)
 		opt["validate"] = utils.get(options, "validate", false)
@@ -197,6 +199,26 @@ class Route4Me {
 		this.Vehicles = new Vehicles(req)
 
 		this._logger.debug({ msg: "initialized", version: Route4Me.version })
+
+		/**
+		 * Base URL for sending requests
+		 *
+		 * @since 1.0.9
+		 *
+		 * @return {string} URL
+		 * @readonly
+		 */
+		this.baseUrl = () => opt["baseUrl"]
+
+		/**
+		 * Base URL for sending requests to backend API v.5
+		 *
+		 * @since 1.0.9
+		 *
+		 * @return {string} URL
+		 * @readonly
+		 */
+		this.baseUrl5 = () => opt["baseUrl5"]
 	}
 
 	/**

@@ -36,10 +36,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.not.exist
 					expect(res).is.exist
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/status.php",
-						{
-							"tracking": "Q7G9P1L9",
-						},
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/status.php",
+						{ "tracking": "Q7G9P1L9" },
 						null
 					)
 					done()
@@ -77,7 +76,8 @@ describe(helper.toSuiteName(__filename), () => {
 							expect(err).is.not.exist
 							expect(res).is.exist
 							helper.expectRequest(req,
-								"GET", "https://api.route4me.com/get_device_location.php",
+								"GET",
+								route4meClient.baseUrl() + "/get_device_location.php",
 								{
 									"route_id": "814FB49CEA8188D134E9D4D4B8B0DAF7",
 									"time_period": "custom",
@@ -105,7 +105,8 @@ describe(helper.toSuiteName(__filename), () => {
 							expect(err).is.not.exist
 							expect(res).is.exist
 							helper.expectRequest(req,
-								"GET", "https://api.route4me.com/get_device_location.php",
+								"GET",
+								route4meClient.baseUrl() + "/get_device_location.php",
 								{
 									"route_id": "814FB49CEA8188D134E9D4D4B8B0DAF7",
 									"time_period": "today",
@@ -126,7 +127,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.not.exist
 					expect(res).is.exist
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api/track/view_user_locations.php", {},
+						"GET",
+						route4meClient.baseUrl() + "/api/track/view_user_locations.php",
+						{},
 						null
 					)
 					done()
@@ -142,9 +145,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.not.exist
 					expect(res).is.exist
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api/track/view_user_locations.php",{
-							"query": "Tony"
-						},
+						"GET",
+						route4meClient.baseUrl() + "/api/track/view_user_locations.php",
+						{ "query": "Tony" },
 						null
 					)
 					done()
@@ -191,7 +194,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(err).is.not.exist
 						expect(res).is.exist
 						helper.expectRequest(req,
-							"POST", "https://api.route4me.com/track/set.php",
+							"POST",
+							route4meClient.baseUrl() + "/track/set.php",
 							{
 								"frm": "JSON",
 								"member_id": "1",

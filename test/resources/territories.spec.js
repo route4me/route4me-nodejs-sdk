@@ -47,7 +47,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"POST", "https://api.route4me.com/api.v4/territory.php", {},
+						"POST",
+						route4meClient.baseUrl() + "/api.v4/territory.php",
+						{},
 						data
 					)
 					done()
@@ -61,7 +63,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/territory.php", {},
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/territory.php",
+						{},
 						null
 					)
 					done()
@@ -78,7 +82,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/territory.php",
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/territory.php",
 						{
 							"territory_id": "596A2A44FE9FB19EEB9C3C072BF2D0BE",
 							"addresses": "1",
@@ -95,7 +100,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/territory.php",
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/territory.php",
 						{
 							"territory_id": "596A2A44FE9FB19EEB9C3C072BF2D0BE",
 							"addresses": "0",
@@ -114,7 +120,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/territory.php",
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/territory.php",
 						{},
 						null
 					)
@@ -137,8 +144,9 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.update("39236C3A30F92CA338C41EB0978F9D8A", data, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "PUT",
-						"https://api.route4me.com/api.v4/territory.php",
+					helper.expectRequest(req,
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/territory.php",
 						{ "territory_id": "39236C3A30F92CA338C41EB0978F9D8A" },
 						data
 					)
@@ -161,7 +169,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(err).is.null
 						expect(res).is.not.null
 						helper.expectRequest(req,
-							"DELETE", "https://api.route4me.com/api.v4/territory.php",
+							"DELETE",
+							route4meClient.baseUrl() + "/api.v4/territory.php",
 							{ "territory_id": "8506E4725A006B59D5CA2EA375E08B97" },
 							null
 						)
@@ -184,7 +193,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(res).to.not.exist
 
 						helper.expectRequest(req,
-							"DELETE", "https://api.route4me.com/api.v4/territory.php",
+							"DELETE",
+							route4meClient.baseUrl() + "/api.v4/territory.php",
 							{ "territory_id": "AAAAAAAAAAAAAAA9D5CA2EA375E08B97" },
 							null
 						)

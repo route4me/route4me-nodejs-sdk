@@ -36,11 +36,11 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).to.exist
 
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/vehicle.php",
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/vehicle.php",
 						{},
 						null
 					)
-
 					done()
 				})
 			})
