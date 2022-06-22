@@ -97,6 +97,22 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(e).to.be.an.instanceof(errors.Route4MeError);
 					}
 				});
+
+				it("should return error if something goes wrong", () => {
+
+					opt.promise = true;
+					opt.method = "delete";
+					opt.validationContext = "fakedValidationContext";
+
+					let rm = new RequestManager(testApiKey, opt);
+					rm._makeRequest(opt)
+					.then((res) => {
+						// do something useful with res
+					})
+					.catch((err) => {
+						expect(err).to.be.an.instanceof(errors.Route4MeApiError);
+					});
+				});
 			});
 		});
 	});

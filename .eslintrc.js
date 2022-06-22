@@ -1,6 +1,6 @@
 exports = module.exports = {
 	"extends": [
-		"airbnb"
+		"airbnb-base"
 	],
 	"plugins": [
 		// TODO: this is LINT rules for DOC. `Use with npm install eslint-plugin-jsdoc`

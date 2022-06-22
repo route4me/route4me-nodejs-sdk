@@ -109,28 +109,75 @@ describe(helper.toSuiteName(__filename), () => {
 		})
 
 		describe("list", () => {
-			let mock
+			const testCases = [
+				{ msg: "for for number",
+					ids: 152,
+					expQuery: { "address_id": "152" },
+				},
+				{ msg: "for simple string",
+					ids: "9761",
+					expQuery: { "address_id": "9761" },
+				},
+				{ msg: "for array of numbers",
+					ids: [123, 456],
+					expQuery: { "address_id": "123,456" },
+				},
+				{ msg: "for array of strings",
+					ids: ["181729", "9128191"],
+					expQuery: { "address_id": "181729,9128191" },
+				},
+				{ msg: "for CSV-string",
+					ids: "59783,78230,   11, 10005",
+					expQuery: { "address_id": "59783,78230,11,10005" },
+				},
+			]
+
+			describe("list should call route4me wihtout options", () => {
+				testCases.forEach((tc) => {
+					it(`${tc.msg} should call route4me`, (done) => {
+						resource.list(tc.ids, (err, res) => {
+							expect(err).is.null
+							expect(res).is.not.null
+							helper.expectRequest(req,
+								"GET",
+								route4meClient.baseUrl() + "/api.v4/address_book.php",
+								tc.expQuery,
+								null
+							)
+							done()
+						})
+					})
+				})
+			})
+
 			const options = {
-				"offset": 3173,
+				fields: ["first_name", "address_email"],
+				routed: true,
+				offset: 100,
+				limit: 15,
 			}
 
-			before(() => {
-				mock = sinon.mock(resource)
-			})
+			describe("list should call route4me wiht options", () => {
+				it(`for array of strings should call route4me`, (done) => {
+					const ids = ["181729", "9128191"];
 
-			after(() => {
-				mock.verify()
-				mock.restore()
-			})
-
-			it("should be an alias for search", (done) => {
-				mock.expects("search")
-					.once()
-					.withExactArgs(undefined, options, sinon.match.any)
-					.callsArg(2) // call DONE (second argument)
-
-				resource.list(options, (/* err, res */) => {
-					done()
+					resource.list(ids, options, (err, res) => {
+						expect(err).is.null
+						expect(res).is.not.null
+						helper.expectRequest(req,
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/address_book.php",
+							{
+								"address_id": "181729,9128191",
+								"offset": "100",
+								"limit": "15",
+								"fields": "first_name,address_email",
+								"display": "routed"
+							},
+							null
+						)
+						done()
+					})
 				})
 			})
 		})

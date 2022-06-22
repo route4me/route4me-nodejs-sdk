@@ -75,15 +75,32 @@ class AddressBook {
 	 * @since 0.1.8
 	 *
 	 * @todo TODO: Parse response
-	 * @todo TODO: Describe ALL options (in one place, list+search)
-	 * @todo TODO: convert options to optional
 	 *
-	 * @param {Object} options - List-parameters
+	 * @param {String|Number|Array<String>|Array<Number>}	ids	- Order IDs
+	 *
+	 * @param {Object}	[options]			- List-parameters
+	 * @param {Number}	[options.offset]	- List offset
+	 * @param {Number}	[options.limit]	- List limit
+	 * @param {String}	[options.fields]	- String of comma separated fields to return
+	 * @param {Boolean}	[options.routed]	- Return routed or unrouted records
 	 * @param {module:route4me-node~RequestCallback<jsonschema:
 	 * AddressBook.AddressBookSearchResult>} [callback]
 	 */
-	list(options, callback) {
-		return this.search(undefined, options, callback)
+	list(ids, options, callback) {
+		let opt = options || {}
+		let cb = callback
+
+		if (undefined === cb && "function" === typeof opt) {
+			cb = opt
+			opt = {}
+		}
+
+		if ("address_id" in opt) {
+			opt["address_id"] = utils.toIntArray(opt["ids"]).concat(utils.toIntArray(ids))
+		} else {
+			opt["address_id"] = utils.toIntArray(ids)
+		}
+		return this.search(undefined, opt, cb)
 	}
 
 	/**
@@ -94,44 +111,51 @@ class AddressBook {
 	 * @see {@link https://route4me.io/docs/#location-search}
 	 * @since 0.1.8
 	 *
-	 * @todo TODO: convert options to optional
 	 * @todo TODO: Parse response
-	 * @todo TODO: Describe ALL options (in one place, list+search)
 	 * @todo TODO: Handle the diffrerent format of the output (when fields are set,
 	 * see https://github.com/route4me/route4me-nodejs-sdk/issues/38)
 	 *
 	 * @param {string} query            - Searched text
-	 * @param {Object} options          - List-parameters
-	 * @param {number} [options.limit]  - List limit
-	 * @param {number} [options.offset] - List offset
+	 * @param {Object}	[options]			- List-parameters
+	 * @param {Number}	[options.offset]	- List offset
+	 * @param {Number}	[options.limit]	- List limit
+	 * @param {String}	[options.fields]	- String of comma separated fields to return
+	 * @param {Boolean}	[options.routed]	- Return routed or unrouted records
 	 * @param {module:route4me-node~RequestCallback<jsonschema:
 	 * AddressBook.AddressBookSearchResult>} [callback]
 	 */
 	search(query, options, callback) {
 		const qs = {}
-		if (null !== query && query !== undefined) {
+		if (null !== query && undefined !== query) {
 			qs["query"] = query
 		}
-		// "query": "dan",
-		// "offset": "100",
-		// "limit": "15",
-		// "fields": "first_name,address_email",
-		// "routed": "routed"
 
-		if ("offset" in options) {
-			qs["offset"] = options.offset
+		let opt = options || {}
+		let cb = callback
+
+		if (undefined === cb && "function" === typeof opt) {
+			cb = opt
+			opt = {}
 		}
 
-		if ("limit" in options) {
-			qs["limit"] = options.limit
+		if ("address_id" in opt) {
+			qs["address_id"] = (utils.toIntArray(opt.address_id)).toString()
 		}
 
-		if ("fields" in options) {
-			qs["fields"] = options.fields
+		if ("offset" in opt) {
+			qs["offset"] = opt.offset
 		}
 
-		if ("routed" in options && "boolean" === typeof options.routed) {
-			qs["display"] = options.routed ? "routed" : "unrouted"
+		if ("limit" in opt) {
+			qs["limit"] = opt.limit
+		}
+
+		if ("fields" in opt) {
+			qs["fields"] = opt.fields
+		}
+
+		if ("routed" in opt && "boolean" === typeof opt.routed) {
+			qs["display"] = opt.routed ? "routed" : "unrouted"
 		}
 
 		return this.r._makeRequest({
@@ -139,7 +163,7 @@ class AddressBook {
 			path: "/api.v4/address_book.php",
 			qs,
 			validationContext: "AddressBook.AddressBookSearchResult",
-		}, callback)
+		}, cb)
 	}
 
 	/**
