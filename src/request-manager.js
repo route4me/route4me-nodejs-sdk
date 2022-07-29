@@ -1,8 +1,7 @@
 "use strict"
 
-const request  = require("superagent")
-
-const errors          = require("./errors")
+const request = require("superagent")
+const errors = require("./errors")
 
 class ResponseHandler {
 	constructor(PromiseConstructor, logger, validate, validateContext, callback) {

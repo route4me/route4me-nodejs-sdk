@@ -86,11 +86,9 @@ describe(helper.toSuiteName(__filename), () => {
 
 					helper.expectRequest(req, 
 						"POST",
-						route4meClient.baseUrl() + "/api/geocoder.php", {},
-						{
-							"addresses": "33.941588, -118.40853\n41.003573, -81.598666\n41.162977, -81.479135",
-							"strExportFormat": "json"
-						},
+						route4meClient.baseUrl() + "/api/geocoder.php",
+						{},
+						{},
 						"multipart/form-data"
 					)
 					done()

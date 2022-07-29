@@ -68,7 +68,7 @@ describe(helper.toSuiteName(__filename), () => {
 								"device_type": "android_phone",
 								"strUpdateType": "web"
 							},
-							tc.expBody,
+							{},
 							"multipart/form-data"
 						)
 						done()

@@ -486,7 +486,7 @@ describe(helper.toSuiteName(__filename), () => {
 							"response_format": "json",
 							"route_id": "5C15E83A4BE005BCD1537955D28D51D7"
 						},
-						{ "recipient_email": "noreply@route4me.com" },
+						{},
 						"multipart/form-data"
 					)
 
@@ -522,11 +522,7 @@ describe(helper.toSuiteName(__filename), () => {
 						"POST",
 						route4meClient.baseUrl() + "/actions/route/move_route_destination.php",
 						{},
-						{
-							"to_route_id": "5C15E83A4BE005BCD1537955D28D51D7",
-							"route_destination_id": 167899269,
-							"after_destination_id": 167899270
-						},
+						{},
 						"multipart/form-data"
 					)
 					done()
