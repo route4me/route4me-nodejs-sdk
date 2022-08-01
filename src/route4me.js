@@ -6,6 +6,7 @@ const platform = require("platform")
 const ActivityFeed    = require("./resources/activity-feed")
 const Addresses       = require("./resources/addresses")
 const AddressBook     = require("./resources/address-book")
+const AddressBookV5   = require("./resources/address-book-v5")
 const AddressBarcodes = require("./resources/address-barcodes")
 const AvoidanceZones  = require("./resources/avoidance-zones")
 const Geocoding       = require("./resources/geocoding")
@@ -36,6 +37,7 @@ const RequestManager  = require("./request-manager")
  * * [ActivityFeed     ]{@link ActivityFeed}
  * * [Addresses        ]{@link Addresses}
  * * [AddressBook      ]{@link AddressBook}
+ * * [AddressBookV5    ]{@link AddressBookV5}
  * * [AddressBarcodes  ]{@link AddressBarcodes}
  * * [AvoidanceZones   ]{@link AvoidanceZones}
  * * [Geocoding        ]{@link Geocoding}
@@ -130,6 +132,12 @@ class Route4Me {
 		 * @since 0.1.8
 		 */
 		this.AddressBook = new AddressBook(req)
+		/**
+		 * **AddressBookV5** related API calls
+		 * @type {AddressBookV5}
+		 * @since 0.1.8
+		 */
+		this.AddressBookV5 = new AddressBookV5(req)
 		/**
 		 * **AddressBarcodes** related API calls
 		 * @type {AddressBarcodes}

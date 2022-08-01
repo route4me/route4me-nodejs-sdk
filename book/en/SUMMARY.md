@@ -13,6 +13,8 @@
 
 ## Code
 
+### V4
+
 * [Route4Me](code/Route4Me.md#Route4Me)
   * [ActivityFeed](code/ActivityFeed.md)
   * [AddressBarcodes](code/AddressBarcodes.md)
@@ -33,6 +35,10 @@
   * [Route4MeApiError](code/Errors.md#Route4MeApiError)
   * [Route4MeValidationError](code/Errors.md#Route4MeValidationError)
 * [Other](code/Uncategorized.md)
+
+### V5
+
+  * [AddressBookV5](code/AddressBookV5.md)
 
 {% include "code/index.md" %}
 

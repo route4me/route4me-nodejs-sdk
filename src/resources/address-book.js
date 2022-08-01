@@ -1,6 +1,6 @@
 "use strict"
 
-const utils           = require("./../utils")
+const utils = require("./../utils")
 
 /**
  * AddressBook facility
@@ -80,7 +80,7 @@ class AddressBook {
 	 *
 	 * @param {Object}	[options]			- List-parameters
 	 * @param {Number}	[options.offset]	- List offset
-	 * @param {Number}	[options.limit]	- List limit
+	 * @param {Number}	[options.limit]		- List limit
 	 * @param {String}	[options.fields]	- String of comma separated fields to return
 	 * @param {Boolean}	[options.routed]	- Return routed or unrouted records
 	 * @param {module:route4me-node~RequestCallback<jsonschema:
@@ -118,7 +118,7 @@ class AddressBook {
 	 * @param {string} query            - Searched text
 	 * @param {Object}	[options]			- List-parameters
 	 * @param {Number}	[options.offset]	- List offset
-	 * @param {Number}	[options.limit]	- List limit
+	 * @param {Number}	[options.limit]		- List limit
 	 * @param {String}	[options.fields]	- String of comma separated fields to return
 	 * @param {Boolean}	[options.routed]	- Return routed or unrouted records
 	 * @param {module:route4me-node~RequestCallback<jsonschema:
@@ -172,7 +172,7 @@ class AddressBook {
 	 * @see {@link https://route4me.io/docs/#update-a-location}
 	 * @since 0.1.8
 	 *
-	 * @param {string}  id       - AddressBook item ID
+	 * @param {string}	id		- AddressBook item ID
 	 * @param {jsonschema:AddressBook.AddressBook}  data  - Valid AddressBook data.
 	 * @param {module:route4me-node~RequestCallback<jsonschema:
 	 * AddressBook.AddressBook>} [callback]

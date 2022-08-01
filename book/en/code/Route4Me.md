@@ -87,6 +87,7 @@ Main members of the instanse of `Route4Me` class:
 * [ActivityFeed     ](ActivityFeed)
 * [Addresses        ](Addresses)
 * [AddressBook      ](AddressBook)
+* [AddressBookV5    ](AddressBookV5)
 * [AddressBarcodes  ](AddressBarcodes)
 * [AvoidanceZones   ](AvoidanceZones)
 * [Geocoding        ](Geocoding)
@@ -125,6 +126,7 @@ For most use cases it is necessary:
     * _instance_
         * [.ActivityFeed](#Route4Me+ActivityFeed) : <code>ActivityFeed</code>
         * [.AddressBook](#Route4Me+AddressBook) : <code>AddressBook</code>
+        * [.AddressBookV5](#Route4Me+AddressBookV5) : <code>AddressBookV5</code>
         * [.AddressBarcodes](#Route4Me+AddressBarcodes) : <code>AddressBarcodes</code>
         * [.Addresses](#Route4Me+Addresses) : <code>Addresses</code>
         * [.AvoidanceZones](#Route4Me+AvoidanceZones) : <code>AvoidanceZones</code>
@@ -157,7 +159,7 @@ Create new API client
 | [options.baseUrl] | <code>string</code> | <code>&quot;https://api.route4me.com&quot;</code> | Base URL for sending requests |
 | [options.baseUrl5] | <code>string</code> | <code>&quot;https://wh.route4me.com/modules&quot;</code> | Base URL for sending requests to backend API v.5 |
 | [options.logger] | [<code>ILogger</code>](#ILogger) | <code></code> | Logger facility |
-| [options.promise] | <code>boolean/function</code> | <code>false</code> | Use promises instead of callbacks. Usage: * `false` means _no promises, use callbacks_; * `true` means _use global `Promise`_ as promises' constructor; * `constructor (function)` forces to use explicit Promise library. See also Examples section of this documentation. |
+| [options.promise] | <code>boolean</code> \| <code>function</code> | <code>false</code> | Use promises instead of callbacks. Usage: * `false` means _no promises, use callbacks_; * `true` means _use global `Promise`_ as promises' constructor; * `constructor (function)` forces to use explicit Promise library. See also Examples section of this documentation. |
 | [options.validate] | <code>module:route4me-node~ValidationCallback</code> | <code>false</code> | Validator for input and output parameters of the API methods. Set **falsey** value to skip autovalidation (in favor of manual check). |
 
 <a id="Route4Me+ActivityFeed" name="Route4Me+ActivityFeed"></a>
@@ -172,6 +174,13 @@ Create new API client
 ### route4Me.AddressBook : <code>AddressBook</code>
 
 **AddressBook** related API calls
+
+**Since**: 0.1.8  
+<a id="Route4Me+AddressBookV5" name="Route4Me+AddressBookV5"></a>
+
+### route4Me.AddressBookV5 : <code>AddressBookV5</code>
+
+**AddressBookV5** related API calls
 
 **Since**: 0.1.8  
 <a id="Route4Me+AddressBarcodes" name="Route4Me+AddressBarcodes"></a>
