@@ -553,5 +553,108 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 		})
+
+		describe("exportAddressesByIds", () => {
+			it("should call route4me", (done) => {
+				const addressIds = [85352155, 85352152];
+				const filename = "test_export.csv";
+
+				resource.exportAddressesByIds(addressIds, filename, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req,
+						"POST",
+						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/export",
+						null,
+						{
+							ids: [85352155, 85352152],
+							filename: "test_export.csv"
+						}
+					)
+					done()
+				})
+			})
+		})
+
+		describe("exportAddressesByAreas", () => {
+			it("should call route4me", (done) => {
+				const filter = {
+					query: "",
+					bounding_box: null,
+					selected_areas: [{
+						type: "circle", 
+						value: { center: { lat: 38.024654, lng: -77.338814 }, distance: 10000 }
+					}]
+				};
+	
+				resource.exportAddressesByAreas(filter, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req,
+						"POST",
+						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/export-by-areas",
+						null,
+						{ filter: filter }
+					)
+					done()
+				})
+			})
+		})
+
+		describe("exportAddressesByAreaIds", () => {
+			it("should call route4me", (done) => {
+				const territoryIds = [85352155, 85352152];
+				const filename = "test_export.csv";
+
+				resource.exportAddressesByAreaIds(territoryIds, filename, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req,
+						"POST",
+						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/export-by-area-ids",
+						null,
+						{
+							territory_ids: [85352155, 85352152],
+							filename: "test_export.csv"
+						}
+					)
+					done()
+				})
+			})
+		})
+
+		describe("getAddressesAsynchronousJobStatus", () => {
+			it("should call route4me", (done) => {
+				const jobId = "85352155";
+
+				resource.getAddressesAsynchronousJobStatus(jobId, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req,
+						"GET",
+						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/job-tracker/status/85352155",
+						null,
+						null					)
+					done()
+				})
+			})
+		})
+
+		describe("getAddressesAsynchronousJobResult", () => {
+			it("should call route4me", (done) => {
+				const jobId = "85352155";
+
+				resource.getAddressesAsynchronousJobResult(jobId, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req,
+						"GET",
+						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/job-tracker/result/85352155",
+						null,
+						null					)
+					done()
+				})
+			})
+		})
 	})
 })
