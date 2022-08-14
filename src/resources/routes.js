@@ -593,6 +593,146 @@ class Routes {
 			validationContext: "Routes.get_schedule_calendar",
 		}, callback)
 	}
+
+	/**
+	 * Store a new Driver Break in the database.
+	 *
+	 * @see {@link https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0}
+	 * @since 1.0.12
+	 *
+	 * @param {object}   options                         - Routebreaks params
+	 * @param {string[]} options.route_id                - Route IDs to get result.
+	 * @param {object[]} options.breaks                  - Break IDs.
+	 * @param {string}   options.breaks.type             - Type of break.
+	 * Possible values:
+	 *   - approximate_time_of_day
+	 *   - certain_number_of_total_elapsed_time
+	 *   - certain_number_of_travel_time
+	 *   - certain_number_of_service_time
+	 *   - certain_number_of_locations
+	 * @param {number}   options.breaks.duration         - Duration of break.
+	 * @param {number[]} options.breaks.params           - Params break.
+	 * @param {boolean}  options.replace_existing_breaks - Replace existing breaks.
+	 * @param {module:route4me-node~RequestCallback}       [callback]
+	 */
+	routeBreaks(options, callback) {
+		return this.r._makeRequest5({
+			method: "POST",
+			path: "/api/v5.0/route-breaks",
+			body: options,
+			validationContext: "RouteBreaks.RequestRouteBreak",
+		}, callback)
+	}
+
+	/**
+	 * Get the status by specifying the path parameter ID.
+	 *
+	 * @see {@link https://virtserver.swaggerhub.com/Route4Me/route-status/5.0}
+	 * @since 1.0.12
+	 *
+	 * @param {string} routeId                           - Route ID to get status.
+	 * @param {module:route4me-node~RequestCallback}       [callback]
+	 */
+	getStatus(routeId, callback) {
+		return this.r._makeRequest5({
+			method: "GET",
+			path: `/api/v5.0/route-status/${routeId}`,
+			validationContext: "RouteStatus.ResponseStatus",
+		}, callback)
+	}
+
+	/**
+	 * Roll back route status by specifying the path parameter ID.
+	 * Sometimes a status rollback is possible.
+	 *
+	 * @see {@link https://virtserver.swaggerhub.com/Route4Me/route-status/5.0}
+	 * @since 1.0.12
+	 *
+	 * @param {string} routeId                           - Route ID to rollback status.
+	 * @param {module:route4me-node~RequestCallback}       [callback]
+	 */
+	rollbackStatus(routeId, callback) {
+		return this.r._makeRequest5({
+			method: "GET",
+			path: `/api/v5.0/route-status/${routeId}/rollback`,
+			validationContext: "RouteStatus.ResponseStatus",
+		}, callback)
+	}
+
+	/**
+	 * Get route status history by specifying the path parameter ID.
+	 *
+	 * @see {@link https://virtserver.swaggerhub.com/Route4Me/route-status/5.0}
+	 * @since 1.0.12
+	 *
+	 * @param {string} routeId                           - Route ID to get history status.
+	 * @param {object} [options]
+	 * @param {string} [options.order_by]                - Result order.
+	 * Possible values: 'asc' and 'desc'
+	 * @param {number} [options.start]                   - Unix timestamp in seconds.
+	 * @param {number} [options.end]                     - Unix timestamp in seconds.
+	 * @param {module:route4me-node~RequestCallback}       [callback]
+	 */
+	getHistoryStatus(routeId, options, callback) {
+		let opt = options || {}
+		let cb = callback
+
+		if (undefined === cb && "function" === typeof opt) {
+			cb = opt
+			opt = {}
+		}
+
+		return this.r._makeRequest5({
+			method: "GET",
+			path: `/api/v5.0/route-status/${routeId}/history`,
+			qs: opt,
+			validationContext: "RouteStatus.HistoryCollection",
+		}, cb)
+	}
+
+	/**
+	 * Store a new Status in the database or update the status by specifying
+	 * the path parameter ID.
+	 * Route statuses change only forward - planned > started/paused > completed.
+	 *
+	 * @see {@link https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0}
+	 * @since 1.0.12
+	 *
+	 * @param {string} routeId                           - Route ID to update status.
+	 * @param {object} params
+	 * @param {string} params.status                     - Value of status.
+	 * Possible values: 'planned', 'started', 'paused' and 'completed'.
+	 * @param {number} params.lat                         - Latitude.
+	 * @param {number} params.lng                         - Longitude.
+	 * @param {number} params.event_timestamp             - Unix timestamp in seconds..
+	 * @param {module:route4me-node~RequestCallback}       [callback]
+	 */
+	updateStatus(routeId, params, callback) {
+		return this.r._makeRequest5({
+			method: "POST",
+			path: `/api/v5.0/route-status/${routeId}`,
+			body: params,
+			validationContext: "RouteStatus.ResponseStatus",
+		}, callback)
+	}
+
+	/**
+	 * Store a new Status in the database with 'planned' status.
+	 *
+	 * @see {@link https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0}
+	 * @since 1.0.12
+	 *
+	 * @param {string[]} routeIds                           - Route IDs to set 'planned' status.
+	 * @param {module:route4me-node~RequestCallback}          [callback]
+	 */
+	setPlannedStatus(routeIds, callback) {
+		return this.r._makeRequest5({
+			method: "POST",
+			path: "/api/v5.0/route-status/planned",
+			body: { route_ids: routeIds },
+			validationContext: "RouteStatus.StatusCollection",
+		}, callback)
+	}
 }
 
 module.exports = Routes
