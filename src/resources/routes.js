@@ -733,6 +733,29 @@ class Routes {
 			validationContext: "RouteStatus.StatusCollection",
 		}, callback)
 	}
+
+	/**
+	 * Insert or update route address status/statuses.
+	 *
+	 * @see {@link https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0}
+	 * @since 1.0.12
+	 *
+	 * @param {number[]} destinationIds          - Array of destination IDs to set status.
+	 * @param {string}   status                  - Value od status to set.
+	 * Possible values: 'Skipped', 'Completed', 'Failed' and 'Empty'.
+	 * @param {module:route4me-node~RequestCallback}          [callback]
+	 */
+	routeStopStatus(destinationIds, status, callback) {
+		return this.r._makeRequest5({
+			method: "POST",
+			path: "/api/v5.0/route-stop-status",
+			body: {
+				destination_ids: destinationIds,
+				status
+			},
+			validationContext: "RouteStatus.inline_response_200",
+		}, callback)
+	}
 }
 
 module.exports = Routes

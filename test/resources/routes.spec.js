@@ -770,5 +770,27 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 		})
+
+		describe("routeStopStatus", () => {
+			const destination_ids = [785757406]
+			const status = "Empty"
+			
+			it("should call route4me", (done) => {
+				resource.routeStopStatus(destination_ids, status, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"POST",
+						route4meClient.baseUrl5() + "/api/v5.0/route-stop-status",
+						{},
+						{
+							destination_ids: [785757406],
+							status: "Empty"
+						},
+					)
+					done()
+				})
+			})
+		})
 	})
 })

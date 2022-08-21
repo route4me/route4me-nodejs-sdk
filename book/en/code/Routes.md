@@ -32,6 +32,7 @@ Routes facility
     * [.getHistoryStatus(routeId, [options], [callback])](#Routes+getHistoryStatus)
     * [.updateStatus(routeId, params, [callback])](#Routes+updateStatus)
     * [.setPlannedStatus(routeIds, [callback])](#Routes+setPlannedStatus)
+    * [.routeStopStatus(destinationIds, status, [callback])](#Routes+routeStopStatus)
 
 <a id="new_Routes_new" name="new_Routes_new"></a>
 
@@ -410,5 +411,20 @@ Store a new Status in the database with 'planned' status.
 | Param | Type | Description |
 | --- | --- | --- |
 | routeIds | <code>Array.&lt;string&gt;</code> | Route IDs to set 'planned' status. |
+| [callback] | <code>module:route4me-node~RequestCallback</code> |  |
+
+<a id="Routes+routeStopStatus" name="Routes+routeStopStatus"></a>
+
+### routes.routeStopStatus(destinationIds, status, [callback])
+
+Insert or update route address status/statuses.
+
+**See**: [https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0](https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0)  
+**Since**: 1.0.12  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| destinationIds | <code>Array.&lt;number&gt;</code> | Array of destination IDs to set status. |
+| status | <code>string</code> | Value od status to set. Possible values: 'Skipped', 'Completed', 'Failed' and 'Empty'. |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 
