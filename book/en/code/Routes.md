@@ -26,6 +26,13 @@ Routes facility
     * [.optimize(id, criteria, [callback])](#Routes+optimize)
     * [.routeexamples_optiomization(param, [callback])](#Routes+routeexamples_optiomization)
     * [.get_schedule_calendar(param, [callback])](#Routes+get_schedule_calendar)
+    * [.routeBreaks(options, [callback])](#Routes+routeBreaks)
+    * [.getStatus(routeId, [callback])](#Routes+getStatus)
+    * [.rollbackStatus(routeId, [callback])](#Routes+rollbackStatus)
+    * [.getHistoryStatus(routeId, [options], [callback])](#Routes+getHistoryStatus)
+    * [.updateStatus(routeId, params, [callback])](#Routes+updateStatus)
+    * [.setPlannedStatus(routeIds, [callback])](#Routes+setPlannedStatus)
+    * [.routeStopStatus(destinationIds, status, [callback])](#Routes+routeStopStatus)
 
 <a id="new_Routes_new" name="new_Routes_new"></a>
 
@@ -302,5 +309,122 @@ Get Schedule Calendar
 | Param | Type | Description |
 | --- | --- | --- |
 | param | <code>object</code> | Schedule params |
+| [callback] | <code>module:route4me-node~RequestCallback</code> |  |
+
+<a id="Routes+routeBreaks" name="Routes+routeBreaks"></a>
+
+### routes.routeBreaks(options, [callback])
+
+Store a new Driver Break in the database.
+
+**See**: [https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0](https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0)  
+**Since**: 1.0.12  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>object</code> | Routebreaks params |
+| options.route_id | <code>Array.&lt;string&gt;</code> | Route IDs to get result. |
+| options.breaks | <code>Array.&lt;object&gt;</code> | Break IDs. |
+| options.breaks.type | <code>string</code> | Type of break. Possible values:   - approximate_time_of_day   - certain_number_of_total_elapsed_time   - certain_number_of_travel_time   - certain_number_of_service_time   - certain_number_of_locations |
+| options.breaks.duration | <code>number</code> | Duration of break. |
+| options.breaks.params | <code>Array.&lt;number&gt;</code> | Params break. |
+| options.replace_existing_breaks | <code>boolean</code> | Replace existing breaks. |
+| [callback] | <code>module:route4me-node~RequestCallback</code> |  |
+
+<a id="Routes+getStatus" name="Routes+getStatus"></a>
+
+### routes.getStatus(routeId, [callback])
+
+Get the status by specifying the path parameter ID.
+
+**See**: [https://virtserver.swaggerhub.com/Route4Me/route-status/5.0](https://virtserver.swaggerhub.com/Route4Me/route-status/5.0)  
+**Since**: 1.0.12  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| routeId | <code>string</code> | Route ID to get status. |
+| [callback] | <code>module:route4me-node~RequestCallback</code> |  |
+
+<a id="Routes+rollbackStatus" name="Routes+rollbackStatus"></a>
+
+### routes.rollbackStatus(routeId, [callback])
+
+Roll back route status by specifying the path parameter ID.
+Sometimes a status rollback is possible.
+
+**See**: [https://virtserver.swaggerhub.com/Route4Me/route-status/5.0](https://virtserver.swaggerhub.com/Route4Me/route-status/5.0)  
+**Since**: 1.0.12  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| routeId | <code>string</code> | Route ID to rollback status. |
+| [callback] | <code>module:route4me-node~RequestCallback</code> |  |
+
+<a id="Routes+getHistoryStatus" name="Routes+getHistoryStatus"></a>
+
+### routes.getHistoryStatus(routeId, [options], [callback])
+
+Get route status history by specifying the path parameter ID.
+
+**See**: [https://virtserver.swaggerhub.com/Route4Me/route-status/5.0](https://virtserver.swaggerhub.com/Route4Me/route-status/5.0)  
+**Since**: 1.0.12  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| routeId | <code>string</code> | Route ID to get history status. |
+| [options] | <code>object</code> |  |
+| [options.order_by] | <code>string</code> | Result order. Possible values: 'asc' and 'desc' |
+| [options.start] | <code>number</code> | Unix timestamp in seconds. |
+| [options.end] | <code>number</code> | Unix timestamp in seconds. |
+| [callback] | <code>module:route4me-node~RequestCallback</code> |  |
+
+<a id="Routes+updateStatus" name="Routes+updateStatus"></a>
+
+### routes.updateStatus(routeId, params, [callback])
+
+Store a new Status in the database or update the status by specifying
+the path parameter ID.
+Route statuses change only forward - planned > started/paused > completed.
+
+**See**: [https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0](https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0)  
+**Since**: 1.0.12  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| routeId | <code>string</code> | Route ID to update status. |
+| params | <code>object</code> |  |
+| params.status | <code>string</code> | Value of status. Possible values: 'planned', 'started', 'paused' and 'completed'. |
+| params.lat | <code>number</code> | Latitude. |
+| params.lng | <code>number</code> | Longitude. |
+| params.event_timestamp | <code>number</code> | Unix timestamp in seconds.. |
+| [callback] | <code>module:route4me-node~RequestCallback</code> |  |
+
+<a id="Routes+setPlannedStatus" name="Routes+setPlannedStatus"></a>
+
+### routes.setPlannedStatus(routeIds, [callback])
+
+Store a new Status in the database with 'planned' status.
+
+**See**: [https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0](https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0)  
+**Since**: 1.0.12  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| routeIds | <code>Array.&lt;string&gt;</code> | Route IDs to set 'planned' status. |
+| [callback] | <code>module:route4me-node~RequestCallback</code> |  |
+
+<a id="Routes+routeStopStatus" name="Routes+routeStopStatus"></a>
+
+### routes.routeStopStatus(destinationIds, status, [callback])
+
+Insert or update route address status/statuses.
+
+**See**: [https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0](https://virtserver.swaggerhub.com/Route4Me/route-breaks/5.0)  
+**Since**: 1.0.12  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| destinationIds | <code>Array.&lt;number&gt;</code> | Array of destination IDs to set status. |
+| status | <code>string</code> | Value od status to set. Possible values: 'Skipped', 'Completed', 'Failed' and 'Empty'. |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 

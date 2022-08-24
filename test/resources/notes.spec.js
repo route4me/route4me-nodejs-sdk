@@ -58,7 +58,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(err).is.not.exist
 						expect(res).is.exist
 						helper.expectRequest(req,
-							"POST", "https://api.route4me.com/actions/addRouteNotes.php",
+							"POST",
+							route4meClient.baseUrl() + "/actions/addRouteNotes.php",
 							{
 								"address_id": "167899269",
 								"route_id": "241466F15515D67D3F951E2DA38DE76D",

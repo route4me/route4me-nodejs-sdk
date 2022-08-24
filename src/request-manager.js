@@ -1,16 +1,17 @@
 "use strict"
 
-const request  = require("superagent")
-
-const errors          = require("./errors")
+const request = require("superagent")
+const errors = require("./errors")
 
 class ResponseHandler {
-	constructor(PromiseConstructor, logger, validate, validateContext, callback) {
+	constructor(PromiseConstructor, logger, validate, validateContext, callback, returns) {
 		const cb = "function" !== typeof callback ? x => x : callback
 		this._logger = logger
 
 		this._validate = validate
 		this._validateContext = validateContext
+
+		this._returns = returns
 
 		if (PromiseConstructor) {
 			const self = this
@@ -62,6 +63,24 @@ class ResponseHandler {
 			return this.fail(data)
 		}
 
+		if (this._returns) {
+			const returns = { data }
+
+			if (this._returns.status) {
+				returns.status = (res.statusCode ? res.statusCode : -1)
+			}
+
+			if (this._returns.jobId) {
+				returns.jobId = (res.headers && res.headers["x-job-id"] ? res.headers["x-job-id"] : "")
+			}
+
+			if (this._returns.location) {
+				returns.location = (res.headers && res.headers["location"] ? res.headers["location"] : "")
+			}
+			// TODO: include url and method to the log message
+			this._logger.info({ "msg": "response ok" })
+			return this._res(returns)
+		}
 		// TODO: include url and method to the log message
 		this._logger.info({ "msg": "response ok" })
 		return this._res(data)
@@ -149,6 +168,16 @@ class RequestManager {
 	 * * `null` cause validation disabled (TODO: test this case)
 	 * * `string` is threated as the name of JSON Schema
 	 * * `function` will be used for validation.
+	 * @param {object} [options.returns]                 Return values
+	 * if present the return will be object with next structure
+	 * {
+	 * 		status,		// e.g. 200, 201, 202, etc
+	 * 		...			// other fields, e.g. 'jobId'
+	 * 		res			// result of request
+	 * }
+	 * @param {boolean} [options.returns.status]         Return status
+	 * @param {boolean} [options.returns.jobId]          Return headers.x-job-id
+	 * @param {boolean} [options.returns.location]       Return headers.location
 	 * @param {module:route4me-node~RequestCallback}    [callback]
 	 */
 	_makeRequest(options, callback) {
@@ -204,7 +233,8 @@ class RequestManager {
 			this._logger,
 			v,
 			c,
-			callback
+			callback,
+			options.returns
 		)
 
 		// debug only!
@@ -247,6 +277,16 @@ class RequestManager {
 	 * * `null` cause validation disabled (TODO: test this case)
 	 * * `string` is threated as the name of JSON Schema
 	 * * `function` will be used for validation.
+	 * @param {object} [options.returns]                 Return values
+	 * if present the return will be object with next structure
+	 * {
+	 * 		status,		// e.g. 200, 201, 202, etc
+	 * 		...			// other fields, e.g. 'jobId'
+	 * 		res			// result of request
+	 * }
+	 * @param {boolean} [options.returns.status]         Return status
+	 * @param {boolean} [options.returns.jobId]          Return headers.x-job-id
+	 * @param {boolean} [options.returns.location]       Return headers.location
 	 * @param {module:route4me-node~RequestCallback}    [callback]
 	 */
 	_makeRequest5(options, callback) {

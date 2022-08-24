@@ -52,7 +52,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"POST", "https://api.route4me.com/api.v4/user.php",
+						"POST",
+						route4meClient.baseUrl() + "/api.v4/user.php",
 						{},
 						{
 							"member_phone": "571-259-5939",
@@ -83,7 +84,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/user.php",
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/user.php",
 						{},
 						null
 					)
@@ -98,7 +100,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/user.php",
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/user.php",
 						{
 							"member_id": "127"
 						},
@@ -136,7 +139,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"PUT", "https://api.route4me.com/api.v4/user.php",
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/user.php",
 						{},
 						{
 							"member_id": 8765,
@@ -178,7 +182,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"PUT", "https://api.route4me.com/api.v4/user.php",
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/user.php",
 						{},
 						{
 							"member_id": 2288930,
@@ -212,7 +217,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"DELETE", "https://api.route4me.com/api.v4/user.php",
+						"DELETE",
+						route4meClient.baseUrl() + "/api.v4/user.php",
 						{},
 						{
 							"member_id": 81943
@@ -231,7 +237,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"POST", "https://api.route4me.com/actions/authenticate.php", {},
+						"POST",
+						route4meClient.baseUrl() + "/actions/authenticate.php", {},
 						{
 							"strEmail": "man@ya.com",
 							"strPassword": "12345",
@@ -263,7 +270,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/datafeed/session/validate_session.php",
+						"GET",
+						route4meClient.baseUrl() + "/datafeed/session/validate_session.php",
 						{
 							"session_guid": "4552222222",
 							"member_id": "787544566",
@@ -292,7 +300,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 					helper.expectRequest(req,
-						"POST", "https://api.route4me.com/actions/register_action.php",
+						"POST",
+						route4meClient.baseUrl() + "/actions/register_action.php",
 						{
 							"plan": "demoPlan",
 						},

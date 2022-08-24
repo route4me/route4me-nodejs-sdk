@@ -44,8 +44,9 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.create(data, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "POST",
-						"https://api.route4me.com/api.v4/avoidance.php", {},
+					helper.expectRequest(req, 
+						"POST",
+						route4meClient.baseUrl() + "/api.v4/avoidance.php", {},
 						data
 					)
 					done()
@@ -59,7 +60,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/avoidance.php",
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/avoidance.php",
 						{ "territory_id": "adf123ADEDB" },
 						null
 					)
@@ -74,7 +76,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/avoidance.php",
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/avoidance.php",
 						null
 					)
 					done()
@@ -88,7 +91,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/avoidance.php",
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/avoidance.php",
 						{},
 						null
 					)
@@ -112,8 +116,9 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.update("1234567", data, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req, "PUT",
-						"https://api.route4me.com/api.v4/avoidance.php",
+					helper.expectRequest(req, 
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/avoidance.php",
 						{ "territory_id": "1234567" },
 						data
 					)
@@ -128,7 +133,8 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req,
-						"DELETE", "https://api.route4me.com/api.v4/avoidance.php",
+						"DELETE",
+						route4meClient.baseUrl() + "/api.v4/avoidance.php",
 						{ "territory_id": "67adadada0" },
 						null
 					)

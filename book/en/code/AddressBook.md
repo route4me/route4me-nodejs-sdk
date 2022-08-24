@@ -13,8 +13,8 @@ AddressBook facility
     * [new AddressBook(requestManager)](#new_AddressBook_new)
     * [.create(data, [callback])](#AddressBook+create)
     * [.getMany(ids, [callback])](#AddressBook+getMany)
-    * [.list(options, [callback])](#AddressBook+list)
-    * [.search(query, options, [callback])](#AddressBook+search)
+    * [.list(ids, [options], [callback])](#AddressBook+list)
+    * [.search(query, [options], [callback])](#AddressBook+search)
     * [.update(id, data, [callback])](#AddressBook+update)
     * [.remove(ids, [callback])](#AddressBook+remove)
 
@@ -65,7 +65,7 @@ GET locations from an address book by a specified list of locations IDs.
 
 <a id="AddressBook+list" name="AddressBook+list"></a>
 
-### addressBook.list(options, [callback])
+### addressBook.list(ids, [options], [callback])
 
 GET all locations from a user’s address book.
 
@@ -74,18 +74,21 @@ GET all locations from a user’s address book.
 **Todo**
 
 - [ ] TODO: Parse response
-- [ ] TODO: Describe ALL options (in one place, list+search)
-- [ ] TODO: convert options to optional
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | <code>Object</code> | List-parameters |
+| ids | <code>String</code> \| <code>Number</code> \| <code>Array.&lt;String&gt;</code> \| <code>Array.&lt;Number&gt;</code> | Order IDs |
+| [options] | <code>Object</code> | List-parameters |
+| [options.offset] | <code>Number</code> | List offset |
+| [options.limit] | <code>Number</code> | List limit |
+| [options.fields] | <code>String</code> | String of comma separated fields to return |
+| [options.routed] | <code>Boolean</code> | Return routed or unrouted records |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBook.AddressBookSearchResult&gt;</code> |  |
 
 <a id="AddressBook+search" name="AddressBook+search"></a>
 
-### addressBook.search(query, options, [callback])
+### addressBook.search(query, [options], [callback])
 
 Search an address book location by containing specified text in any
 field/defined fields.
@@ -98,9 +101,7 @@ field/defined fields.
 **Since**: 0.1.8  
 **Todo**
 
-- [ ] TODO: convert options to optional
 - [ ] TODO: Parse response
-- [ ] TODO: Describe ALL options (in one place, list+search)
 - [ ] TODO: Handle the diffrerent format of the output (when fields are set,
 see https://github.com/route4me/route4me-nodejs-sdk/issues/38)
 
@@ -108,9 +109,11 @@ see https://github.com/route4me/route4me-nodejs-sdk/issues/38)
 | Param | Type | Description |
 | --- | --- | --- |
 | query | <code>string</code> | Searched text |
-| options | <code>Object</code> | List-parameters |
-| [options.limit] | <code>number</code> | List limit |
-| [options.offset] | <code>number</code> | List offset |
+| [options] | <code>Object</code> | List-parameters |
+| [options.offset] | <code>Number</code> | List offset |
+| [options.limit] | <code>Number</code> | List limit |
+| [options.fields] | <code>String</code> | String of comma separated fields to return |
+| [options.routed] | <code>Boolean</code> | Return routed or unrouted records |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBook.AddressBookSearchResult&gt;</code> |  |
 
 <a id="AddressBook+update" name="AddressBook+update"></a>

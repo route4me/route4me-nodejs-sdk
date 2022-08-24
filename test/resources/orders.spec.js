@@ -50,8 +50,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"POST", "https://api.route4me.com/api.v4/order.php",
-						{ },
+						"POST",
+						route4meClient.baseUrl() + "/api.v4/order.php",
+						{},
 						{
 							"address_1": "1358 E Luzerne St, Philadelphia, PA 19124, US",
 							"cached_lat": 48.335991,
@@ -95,12 +96,11 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/order.php", {
-							"order_id": "7205711",
-						},
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/order.php",
+						{ "order_id": "7205711" },
 						null
 					)
-
 					done()
 				})
 			})
@@ -128,9 +128,9 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(res).exist
 
 						helper.expectRequest(req,
-							"GET", "https://api.route4me.com/api.v4/order.php", {
-								"order_id": "7205711",
-							},
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "order_id": "7205711" },
 							null
 						)
 
@@ -161,9 +161,9 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(res).exist
 
 						helper.expectRequest(req,
-							"GET", "https://api.route4me.com/api.v4/order.php", {
-								"order_id": "7205711,7205712",
-							},
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "order_id": "7205711,7205712" },
 							null
 						)
 
@@ -194,9 +194,9 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(res).exist
 
 						helper.expectRequest(req,
-							"GET", "https://api.route4me.com/api.v4/order.php", {
-								"order_id": "7205711,7205712",
-							},
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "order_id": "7205711,7205712" },
 							null
 						)
 
@@ -225,7 +225,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(res).exist
 
 						helper.expectRequest(req,
-							"GET", "https://api.route4me.com/api.v4/order.php", {},
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/order.php", {},
 							null
 						)
 
@@ -260,7 +261,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/order.php", {
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/order.php",
+						{
 							"query": "Tbilisi",
 							"limit": "25",
 							"redirect": "0",
@@ -278,7 +281,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/order.php", {
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/order.php",
+						{
 							"limit": "25",
 							"redirect": "0",
 						},
@@ -295,7 +300,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/order.php", {
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/order.php",
+						{
 							"query": "Tbilisi",
 							"redirect": "0",
 						},
@@ -317,7 +324,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/order.php", {
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/order.php",
+						{
 							"day_added_YYMMDD": "1970-01-01",
 							"scheduled_for_YYMMDD": "1970-01-01",
 							"limit": "25",
@@ -339,7 +348,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/order.php", {
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/order.php",
+						{
 							"fields": "",
 							"limit": "25",
 							"offset": "0",
@@ -384,20 +395,16 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"PUT", "https://api.route4me.com/api.v4/order.php", {
-							"redirect": "0",
-						}, {
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/order.php",
+						{ "redirect": "0" },
+						{
 							"order_id": 7205711,
 							"address_2": "Lviv",
-							"EXT_FIELD_custom_data": [
-								{
-									"customer_no": 11
-								}
-							],
+							"EXT_FIELD_custom_data": [{ "customer_no": 11 }],
 							"EXT_FIELD_phone": "032268593"
 						}
 					)
-
 					done()
 				})
 			})
@@ -424,13 +431,11 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"DELETE", "https://api.route4me.com/api.v4/order.php", {
-							"redirect": "0",
-						}, {
-							"order_ids": [7205711, 7205713]
-						}
+						"DELETE",
+						route4meClient.baseUrl() + "/api.v4/order.php",
+						{ "redirect": "0" },
+						{ "order_ids": [7205711, 7205713] }
 					)
-
 					done()
 				})
 			})
@@ -455,10 +460,10 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"POST", "https://wh.route4me.com/modules/api/v5.0/orders/archive", {
-						}
+						"POST",
+						route4meClient.baseUrl5() + "/api/v5.0/orders/archive",
+						{}
 					)
-
 					done()
 				})
 			})
@@ -486,13 +491,14 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"GET", "https://wh.route4me.com/modules/api/v5.0/orders/history", {
+						"GET",
+						route4meClient.baseUrl5() + "/api/v5.0/orders/history",
+						{
 							"order_id": "11105107",
 							"tracking_number": "1"
 						},
 						null
 					)
-
 					done()
 				})
 			})
@@ -525,19 +531,16 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"POST", "https://api.route4me.com/api.v4/order_custom_user_fields.php",
-						{ },
+						"POST",
+						route4meClient.baseUrl() + "/api.v4/order_custom_user_fields.php",
+						{},
 						{
 							"order_custom_field_name": "CustomField4",
 							"order_custom_field_label": "Custom Field 4",
 							"order_custom_field_type": "checkbox",
-							"order_custom_field_type_info": {
-								"short_label": "cFl4"
-							}
-						
+							"order_custom_field_type_info": { "short_label": "cFl4" }
 						}
 					)
-
 					done()
 				})
 			})
@@ -564,12 +567,11 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/order_custom_user_fields.php", {
-							"order_id": "7205711",
-						},
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/order_custom_user_fields.php",
+						{ "order_id": "7205711" },
 						null
 					)
-
 					done()
 				})
 			})
@@ -580,12 +582,11 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"GET", "https://api.route4me.com/api.v4/order_custom_user_fields.php", {
-							"order_id": "0",
-						},
+						"GET",
+						route4meClient.baseUrl() + "/api.v4/order_custom_user_fields.php", 
+						{ "order_id": "0" },
 						null
 					)
-
 					done()
 				})
 			})
@@ -620,9 +621,10 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"PUT", "https://api.route4me.com/api.v4/order_custom_user_fields.php", {
-							"redirect": "0",
-						}, {
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/order_custom_user_fields.php",
+						{ "redirect": "0" },
+						{
 							"order_id": 507516,
 							"custom_user_fields": [
 								{
@@ -632,7 +634,6 @@ describe(helper.toSuiteName(__filename), () => {
 							]			
 						}
 					)
-
 					done()
 				})
 			})
@@ -643,9 +644,10 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"PUT", "https://api.route4me.com/api.v4/order_custom_user_fields.php", {
-							"redirect": "0",
-						}, {
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/order_custom_user_fields.php",
+						{ "redirect": "0" },
+						{
 							"custom_user_fields": [
 								{
 									"order_custom_field_id": 922,
@@ -654,7 +656,6 @@ describe(helper.toSuiteName(__filename), () => {
 							]			
 						}
 					)
-
 					done()
 				})
 			})
@@ -681,11 +682,11 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).exist
 
 					helper.expectRequest(req,
-						"DELETE", "https://api.route4me.com/api.v4/order_custom_user_fields.php", {}, {
-							"order_custom_field_id": 507516
-						}
+						"DELETE",
+						route4meClient.baseUrl() + "/api.v4/order_custom_user_fields.php",
+						{},
+						{ "order_custom_field_id": 507516 }
 					)
-
 					done()
 				})
 			})

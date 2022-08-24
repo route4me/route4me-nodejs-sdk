@@ -37,8 +37,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req, "GET",
-						"https://api.route4me.com/api/geocoder.php",
+					helper.expectRequest(req, 
+						"GET",
+						route4meClient.baseUrl() + "/api/geocoder.php",
 						{
 							addresses: "Los Angeles International Airport, CA",
 							format: "json",
@@ -60,8 +61,9 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req, "GET",
-						"https://api.route4me.com/api/geocoder.php",
+					helper.expectRequest(req, 
+						"GET",
+						route4meClient.baseUrl() + "/api/geocoder.php",
 						{
 							addresses: "33.945705,-118.391105",
 							format: "json",
@@ -82,8 +84,10 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req, "POST",
-						"https://api.route4me.com/api/geocoder.php", {},
+					helper.expectRequest(req, 
+						"POST",
+						route4meClient.baseUrl() + "/api/geocoder.php",
+						{},
 						{
 							"addresses": "33.941588, -118.40853\n41.003573, -81.598666\n41.162977, -81.479135",
 							"strExportFormat": "json"
@@ -102,7 +106,8 @@ describe(helper.toSuiteName(__filename), () => {
 						expect(err).is.null
 						expect(res).to.exist
 
-						helper.expectRequest(req, "GET",
+						helper.expectRequest(req,
+							"GET",
 							"https://rapid.route4me.com/street_data/121/",
 							{},
 							null
