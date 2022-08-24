@@ -110,6 +110,10 @@ Uses base url route4me API v4.0
 | [options.qs] | <code>object</code> |  | Query string |
 | [options.body] | <code>object</code> |  | Body |
 | [options.validationContext] | <code>null</code> \| <code>string</code> \| <code>function</code> | <code></code> | * `null` cause validation disabled (TODO: test this case) * `string` is threated as the name of JSON Schema * `function` will be used for validation. |
+| [options.returns] | <code>object</code> |  | Return values if present the return will be object with next structure { 		status,		// e.g. 200, 201, 202, etc 		...			// other fields, e.g. 'jobId' 		res			// result of request } |
+| [options.returns.status] | <code>boolean</code> |  | Return status |
+| [options.returns.jobId] | <code>boolean</code> |  | Return headers.x-job-id |
+| [options.returns.location] | <code>boolean</code> |  | Return headers.location |
 | [callback] | [<code>RequestCallback</code>](#module_route4me-node..RequestCallback) |  |  |
 
 <a id="RequestManager+_makeRequest5" name="RequestManager+_makeRequest5"></a>
@@ -133,6 +137,10 @@ Uses base url route4me API v5.0
 | [options.qs] | <code>object</code> |  | Query string |
 | [options.body] | <code>object</code> |  | Body |
 | [options.validationContext] | <code>null</code> \| <code>string</code> \| <code>function</code> | <code></code> | * `null` cause validation disabled (TODO: test this case) * `string` is threated as the name of JSON Schema * `function` will be used for validation. |
+| [options.returns] | <code>object</code> |  | Return values if present the return will be object with next structure { 		status,		// e.g. 200, 201, 202, etc 		...			// other fields, e.g. 'jobId' 		res			// result of request } |
+| [options.returns.status] | <code>boolean</code> |  | Return status |
+| [options.returns.jobId] | <code>boolean</code> |  | Return headers.x-job-id |
+| [options.returns.location] | <code>boolean</code> |  | Return headers.location |
 | [callback] | [<code>RequestCallback</code>](#module_route4me-node..RequestCallback) |  |  |
 
 <a id="RequestManager+_makeError" name="RequestManager+_makeError"></a>

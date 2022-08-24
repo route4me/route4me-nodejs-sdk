@@ -599,5 +599,198 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 		})
+
+		describe("routeBreaks", () => {
+			beforeEach(() => {
+				saMock.post("*",  (r) => {
+					req = r
+					req.method = "POST"
+					return { body: { "status": true } }
+				})
+			})
+
+			afterEach(() => {
+				saMock.clearRoutes()
+			})
+
+			const options = {
+				route_id: ["5C15E83A4BE005BCD1537955D28D51D7"],
+				breaks: [{
+					type: "approximate_time_of_day",
+					duration: 1000,
+					params: [15]
+				}],
+				replace_existing_breaks: false
+			};
+			
+			it("should call route4me", (done) => {
+				resource.routeBreaks(options, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"POST",
+						route4meClient.baseUrl5() + "/api/v5.0/route-breaks",
+						{},
+						{
+							"route_id": ["5C15E83A4BE005BCD1537955D28D51D7"],
+							"breaks": [{
+								"type": "approximate_time_of_day",
+								"duration": 1000,
+								"params": [15]
+							}],
+							"replace_existing_breaks": false
+						},
+					)
+					done()
+				})
+			})
+		})
+
+		describe("getStatus", () => {
+			it("should call route4me", (done) => {
+				const route_id = "252339DACA8C2547DA1146EAE2080028"
+	
+				resource.getStatus(route_id, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"GET",
+						route4meClient.baseUrl5() + "/api/v5.0/route-status/252339DACA8C2547DA1146EAE2080028",
+						null,
+						null
+					)
+					done()
+				})
+			})
+		})
+
+		describe("rollbackStatus", () => {
+			it("should call route4me", (done) => {
+				const route_id = "252339DACA8C2547DA1146EAE2080028"
+	
+				resource.rollbackStatus(route_id, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"GET",
+						route4meClient.baseUrl5() + "/api/v5.0/route-status/252339DACA8C2547DA1146EAE2080028/rollback",
+						null,
+						null
+					)
+					done()
+				})
+			})
+		})
+
+		describe("getHistoryStatus", () => {
+			it("should call route4me with options", (done) => {
+				const route_id = "252339DACA8C2547DA1146EAE2080028"
+				const options = {
+					order_by: "asc",
+					start: 0,
+					end: 1
+				}
+					
+				resource.getHistoryStatus(route_id, options, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"GET",
+						route4meClient.baseUrl5() + "/api/v5.0/route-status/252339DACA8C2547DA1146EAE2080028/history", {
+							"order_by": "asc",
+							"start": "0",
+							"end": "1"
+						},
+						null
+					)
+					done()
+				})
+			})
+
+			it("should call route4me without options", (done) => {
+				const route_id = "252339DACA8C2547DA1146EAE2080028"
+					
+				resource.getHistoryStatus(route_id, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"GET",
+						route4meClient.baseUrl5() + "/api/v5.0/route-status/252339DACA8C2547DA1146EAE2080028/history", 
+						null,
+						null
+					)
+					done()
+				})
+			})
+		})
+
+		describe("updateStatus", () => {
+			const route_id = "252339DACA8C2547DA1146EAE2080028"
+			const params = {
+				"status": "paused",
+				"lng": -85.774864,
+				"lat": 38.178844,
+				"event_timestamp": 15
+			};
+			
+			it("should call route4me", (done) => {
+				resource.updateStatus(route_id, params, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"POST",
+						route4meClient.baseUrl5() + "/api/v5.0/route-status/252339DACA8C2547DA1146EAE2080028",
+						{},
+						{
+							"status": "paused",
+							"lng": -85.774864,
+							"lat": 38.178844,
+							"event_timestamp": 15
+						},
+					)
+					done()
+				})
+			})
+		})
+
+		describe("setPlannedStatus", () => {
+			const route_id = ["252339DACA8C2547DA1146EAE2080028"]
+			
+			it("should call route4me", (done) => {
+				resource.setPlannedStatus(route_id, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"POST",
+						route4meClient.baseUrl5() + "/api/v5.0/route-status/planned",
+						{},
+						{ route_ids: ["252339DACA8C2547DA1146EAE2080028"] },
+					)
+					done()
+				})
+			})
+		})
+
+		describe("routeStopStatus", () => {
+			const destination_ids = [785757406]
+			const status = "Empty"
+			
+			it("should call route4me", (done) => {
+				resource.routeStopStatus(destination_ids, status, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"POST",
+						route4meClient.baseUrl5() + "/api/v5.0/route-stop-status",
+						{},
+						{
+							destination_ids: [785757406],
+							status: "Empty"
+						},
+					)
+					done()
+				})
+			})
+		})
 	})
 })

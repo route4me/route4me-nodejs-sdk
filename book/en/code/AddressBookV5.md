@@ -28,6 +28,11 @@ AddressBookV5 facility
     * [.deleteAddressesByAreas(filter, callback)](#AddressBookV5+deleteAddressesByAreas)
     * [.getAddressCustomFields(callback)](#AddressBookV5+getAddressCustomFields)
     * [.getAddressesDepots(callback)](#AddressBookV5+getAddressesDepots)
+    * [.exportAddressesByIds(addressIds, filename, callback)](#AddressBookV5+exportAddressesByIds)
+    * [.exportAddressesByAreas(filter, callback)](#AddressBookV5+exportAddressesByAreas)
+    * [.exportAddressesByAreaIds(territoryIds, filename, callback)](#AddressBookV5+exportAddressesByAreaIds)
+    * [.getAddressesAsynchronousJobStatus(jobId, callback)](#AddressBookV5+getAddressesAsynchronousJobStatus)
+    * [.getAddressesAsynchronousJobResult(jobId, callback)](#AddressBookV5+getAddressesAsynchronousJobResult)
 
 <a id="new_AddressBookV5_new" name="new_AddressBookV5_new"></a>
 
@@ -502,4 +507,88 @@ Get depots Addresses.
 | Param | Type |
 | --- | --- |
 | callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBookV5.AddressBookSearchResult&gt;</code> | 
+
+<a id="AddressBookV5+exportAddressesByIds" name="AddressBookV5+exportAddressesByIds"></a>
+
+### addressBookV5.exportAddressesByIds(addressIds, filename, callback)
+
+Export Address Book Contacts to the specified file by sending a body
+payload with the array of the corresponding Address IDs.
+
+**See**: [https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0](https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0)  
+**Since**: 1.0.11  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| addressIds | <code>Array.&lt;Number&gt;</code> | Export the specified Addresses. |
+| filename | <code>String</code> | The name of the file to export. |
+| callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBookV5.AddressBookSearchResult&gt;</code> |  |
+
+<a id="AddressBookV5+exportAddressesByAreas" name="AddressBookV5+exportAddressesByAreas"></a>
+
+### addressBookV5.exportAddressesByAreas(filter, callback)
+
+Export the Address Book Contacts located in the selected areas
+by sending the corresponding body payload.
+
+**See**: [https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0](https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0)  
+**Since**: 1.0.11  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| filter | <code>Object</code> | Filter parameters |
+| [filter.query] | <code>String</code> | Search in the Addresses by the query phrase. |
+| [filter.bounding_box] | <code>Object</code> | Coordinates of bounding box |
+| [filter.bounding_box.top] | <code>Number</code> | Top |
+| [filter.bounding_box.left] | <code>Number</code> | Left |
+| [filter.bounding_box.bottom] | <code>Number</code> | Bottom |
+| [filter.bounding_box.right] | <code>Number</code> | Right |
+| filter.selected_areas | <code>Array.&lt;Object&gt;</code> | Selected areas |
+| filter.selected_areas.type | <code>string</code> | Area type. |
+| filter.selected_areas.value | <code>Object</code> | Area parameters. Possible values: 'circle', 'polygon', 'rect'. e.g., { type: "circle", value: { center: { lat: 40, lng: 80 }, distance: 1000 }} { type: "polygon", value: { points: [{ 74, 40 }, { 88, 30 }, { 90, 25 }]}} { type: "rect", value: { top_left: { 50, 90 }, bottom_right: { 48, 70 }}} |
+| filter.filename | <code>String</code> | The name of the file to export. |
+| callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBookV5.AddressBookSearchResult&gt;</code> |  |
+
+<a id="AddressBookV5+exportAddressesByAreaIds" name="AddressBookV5+exportAddressesByAreaIds"></a>
+
+### addressBookV5.exportAddressesByAreaIds(territoryIds, filename, callback)
+
+Export Addresses by the specified area IDs.
+
+**See**: [https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0](https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0)  
+**Since**: 1.0.11  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| territoryIds | <code>Array.&lt;String&gt;</code> | An array of the territory IDs. |
+| filename | <code>String</code> | The name of the file to export. |
+| callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBookV5.AddressBookSearchResult&gt;</code> |  |
+
+<a id="AddressBookV5+getAddressesAsynchronousJobStatus" name="AddressBookV5+getAddressesAsynchronousJobStatus"></a>
+
+### addressBookV5.getAddressesAsynchronousJobStatus(jobId, callback)
+
+Check the asynchronous job status by specifying the 'job_id' path parameter.
+
+**See**: [https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0](https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0)  
+**Since**: 1.0.11  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| jobId | <code>String</code> | Job ID to check status. |
+| callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBookV5.AddressBookSearchResult&gt;</code> |  |
+
+<a id="AddressBookV5+getAddressesAsynchronousJobResult" name="AddressBookV5+getAddressesAsynchronousJobResult"></a>
+
+### addressBookV5.getAddressesAsynchronousJobResult(jobId, callback)
+
+Get the asynchronous job result by specifying the 'job_id' path parameter.
+
+**See**: [https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0](https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0)  
+**Since**: 1.0.11  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| jobId | <code>String</code> | Job ID to get result. |
+| callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBookV5.AddressBookSearchResult&gt;</code> |  |
 

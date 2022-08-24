@@ -735,6 +735,7 @@ class AddressBookV5 {
 			method: "DELETE",
 			path: "/api/v5.0/address-book/addresses/delete",
 			body: { address_ids: addressIds },
+			returns: { status: true, jobId: true, location: true },
 			validationContext: "AddressBookV5.ResponseAddress",
 		}, callback)
 	}
@@ -774,6 +775,7 @@ class AddressBookV5 {
 			method: "DELETE",
 			path: "/api/v5.0/address-book/addresses/delete-by-areas",
 			body: { filter },
+			returns: { status: true, jobId: true, location: true },
 			validationContext: "AddressBookV5.PathToTheStatusChecker",
 		}, callback)
 	}
@@ -808,6 +810,132 @@ class AddressBookV5 {
 		return this.r._makeRequest5({
 			method: "GET",
 			path: "/api/v5.0/address-book/addresses/depots",
+			validationContext: "AddressBookV5.ResponseAddress",
+		}, callback)
+	}
+
+	/**
+	 * Export Address Book Contacts to the specified file by sending a body
+	 * payload with the array of the corresponding Address IDs.
+	 *
+	 * @see {@link https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0}
+	 * @since 1.0.11
+	 *
+	 * @param {Number[]}	addressIds		- Export the specified Addresses.
+	 * @param {String}		filename		- The name of the file to export.
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * AddressBookV5.AddressBookSearchResult>} callback
+	 */
+	exportAddressesByIds(addressIds, filename, callback) {
+		return this.r._makeRequest5({
+			method: "POST",
+			path: "/api/v5.0/address-book/addresses/export",
+			body: {
+				ids: addressIds,
+				filename
+			},
+			returns: { status: true, location: true },
+			validationContext: "AddressBookV5.Address",
+		}, callback)
+	}
+
+	/**
+	 * Export the Address Book Contacts located in the selected areas
+	 * by sending the corresponding body payload.
+	 *
+	 * @see {@link https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0}
+	 * @since 1.0.11
+	 *
+	 * @param {Object}		filter							- Filter parameters
+	 * @param {String}	[filter.query]				- Search in the Addresses by the query phrase.
+	 *
+	 * @param {Object}	[filter.bounding_box]			- Coordinates of bounding box
+	 * @param {Number}	[filter.bounding_box.top]		- Top
+	 * @param {Number}	[filter.bounding_box.left]		- Left
+	 * @param {Number}	[filter.bounding_box.bottom]	- Bottom
+	 * @param {Number}	[filter.bounding_box.right]		- Right
+	 *
+	 * @param {Object[]}	filter.selected_areas			- Selected areas
+	 * @param {string}		filter.selected_areas.type		- Area type.
+	 * @param {Object}		filter.selected_areas.value		- Area parameters.
+	 * Possible values: 'circle', 'polygon', 'rect'.
+	 * e.g.,
+	 * { type: "circle", value: { center: { lat: 40, lng: 80 }, distance: 1000 }}
+	 * { type: "polygon", value: { points: [{ 74, 40 }, { 88, 30 }, { 90, 25 }]}}
+	 * { type: "rect", value: { top_left: { 50, 90 }, bottom_right: { 48, 70 }}}
+	 *
+	 * @param {String}		filter.filename					- The name of the file to export.
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * AddressBookV5.AddressBookSearchResult>} callback
+	 */
+	exportAddressesByAreas(filter, callback) {
+		return this.r._makeRequest5({
+			method: "POST",
+			path: "/api/v5.0/address-book/addresses/export-by-areas",
+			body: { filter },
+			returns: { status: true, location: true },
+			validationContext: "AddressBookV5.Address",
+		}, callback)
+	}
+
+	/**
+	 * Export Addresses by the specified area IDs.
+	 *
+	 * @see {@link https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0}
+	 * @since 1.0.11
+	 *
+	 * @param {String[]}	territoryIds	- An array of the territory IDs.
+	 * @param {String}		filename		- The name of the file to export.
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * AddressBookV5.AddressBookSearchResult>} callback
+	 */
+	exportAddressesByAreaIds(territoryIds, filename, callback) {
+		return this.r._makeRequest5({
+			method: "POST",
+			path: "/api/v5.0/address-book/addresses/export-by-area-ids",
+			body: {
+				territory_ids: territoryIds,
+				filename
+			},
+			returns: { status: true, location: true },
+			validationContext: "AddressBookV5.Address",
+		}, callback)
+	}
+
+	/**
+	 * Check the asynchronous job status by specifying the 'job_id' path parameter.
+	 *
+	 * @see {@link https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0}
+	 * @since 1.0.11
+	 *
+	 * @param {String}	jobId		- Job ID to check status.
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * AddressBookV5.AddressBookSearchResult>} callback
+	 */
+	getAddressesAsynchronousJobStatus(jobId, callback) {
+		return this.r._makeRequest5({
+			method: "GET",
+			path: `/api/v5.0/address-book/addresses/job-tracker/status/${jobId}`,
+			returns: { status: true },
+			validationContext: "AddressBookV5.ResponseAddress",
+		}, callback)
+	}
+
+	/**
+	 * Get the asynchronous job result by specifying the 'job_id' path parameter.
+	 *
+	 * @see {@link https://virtserver.swaggerhub.com/Route4Me/address-book/1.0.0}
+	 * @since 1.0.11
+	 *
+	 * @param {String}	jobId		- Job ID to get result.
+	 * @param {module:route4me-node~RequestCallback<jsonschema:
+	 * AddressBookV5.AddressBookSearchResult>} callback
+	 */
+	getAddressesAsynchronousJobResult(jobId, callback) {
+		return this.r._makeRequest5({
+			method: "GET",
+			path: `/api/v5.0/address-book/addresses/job-tracker/result/${jobId}`,
+			returns: { status: true },
 			validationContext: "AddressBookV5.ResponseAddress",
 		}, callback)
 	}
