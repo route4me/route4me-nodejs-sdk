@@ -17,6 +17,16 @@ Access Route4Me's logistics-as-a-service API using our Node.js SDK
 
 [NPM]: https://www.npmjs.com/package/route4me-node
 
+# Installation
+
+```
+$ git clone https://github.com/route4me/route4me-nodejs-sdk.git
+$ cd route4me-nodejs-sdk
+$ nmp install
+$ npm run build
+$ npm run test
+```
+
 ### What does the Route4Me SDK permit me to do?
 This SDK makes it easier for you use the Route4Me API, which creates optimally sequenced driving routes for many drivers.
 
