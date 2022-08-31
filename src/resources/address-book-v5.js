@@ -1,7 +1,5 @@
 "use strict"
 
-// const utils = require("./../utils")
-
 /**
  * AddressBookV5 facility
  *

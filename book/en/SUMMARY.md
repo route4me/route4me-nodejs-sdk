@@ -39,6 +39,7 @@
 ### V5
 
   * [AddressBookV5](code/AddressBookV5.md)
+  * [TeamManagement](code/TeamManagement.md)
 
 {% include "code/index.md" %}
 
