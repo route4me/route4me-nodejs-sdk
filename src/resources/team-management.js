@@ -209,7 +209,7 @@ class TeamManagement {
 	 *
 	 * @param {module:route4me-node~RequestCallback}          [callback]
 	 */
-	 bulkInsert(users, options, callback) {
+	bulkInsert(users, options, callback) {
 		let opt = options || {}
 		let cb = callback
 
