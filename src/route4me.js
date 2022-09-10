@@ -15,9 +15,11 @@ const Notes           = require("./resources/notes")
 const Optimizations   = require("./resources/optimizations")
 const Orders          = require("./resources/orders")
 const Routes          = require("./resources/routes")
+const TeamManagement  = require("./resources/team-management")
 const Territories     = require("./resources/territories")
 const Tracking        = require("./resources/tracking")
 const Vehicles        = require("./resources/vehicles")
+const VehiclesV5      = require("./resources/vehicles-v5")
 
 const packageJson     = require("./../package.json")  // eslint-disable-line import/no-dynamic-require
 const utils           = require("./utils")
@@ -47,9 +49,11 @@ const RequestManager  = require("./request-manager")
  * * [Orders           ]{@link Orders}
  * * [OrderCustomFields]{@link OrderCustomFields}
  * * [Routes           ]{@link Routes}
+ * * [TeamManagement   ]{@link TeamManagement}
  * * [Territories      ]{@link Territories}
  * * [Tracking         ]{@link Tracking}
  * * [Vehicles         ]{@link Vehicles}
+ * * [VehiclesV5       ]{@link VehiclesV5}
  *
  * Each member corresponds to an bunch of methods, described in API-documentation,
  * but the most methods in this SDK have unified names:
@@ -191,6 +195,11 @@ class Route4Me {
 		 */
 		this.Routes = new Routes(req)
 		/**
+		 * **TeamManagement** related API calls
+		 * @type {TeamManagement}
+		 */
+		this.TeamManagement = new TeamManagement(req)
+		/**
 		 * **Territories** related API calls
 		 * @type {Territories}
 		 */
@@ -205,6 +214,11 @@ class Route4Me {
 		 * @type {Vehicles}
 		 */
 		this.Vehicles = new Vehicles(req)
+		/**
+		 * **VehiclesV5** related API calls
+		 * @type {VehiclesV5}
+		 */
+		this.VehiclesV5 = new VehiclesV5(req)
 
 		this._logger.debug({ msg: "initialized", version: Route4Me.version })
 

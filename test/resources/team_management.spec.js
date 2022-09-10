@@ -18,11 +18,11 @@ describe(helper.toSuiteName(__filename), () => {
 
 		beforeEach(() => {
 			req = null
-			saMock.get("*",  (r) => { req = r; req.method = "GET";    return { body: {} } })
-			saMock.post("*", (r) => { req = r; req.method = "POST";   return { body: {} } })
-			saMock.del("*", (r) =>  { req = r; req.method = "DELETE"; return { body: {} } })
-			saMock.put("*",  (r) => { req = r; req.method = "PUT";    return { body: {} } })
-			saMock.patch("*", (r) =>  { req = r; req.method = "PATCH"; return { body: {} } })
+			saMock.get("*", (r) => { req = r; req.method = "GET"; return { body: {} } })
+			saMock.post("*", (r) => { req = r; req.method = "POST"; return { body: {} } })
+			saMock.del("*", (r) => { req = r; req.method = "DELETE"; return { body: {} } })
+			saMock.put("*", (r) => { req = r; req.method = "PUT"; return { body: {} } })
+			saMock.patch("*", (r) => { req = r; req.method = "PATCH"; return { body: {} } })
 		})
 
 		afterEach(() => {

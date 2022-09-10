@@ -97,9 +97,11 @@ Main members of the instanse of `Route4Me` class:
 * [Orders           ](Orders)
 * [OrderCustomFields](OrderCustomFields)
 * [Routes           ](Routes)
+* [TeamManagement   ](TeamManagement)
 * [Territories      ](Territories)
 * [Tracking         ](Tracking)
 * [Vehicles         ](Vehicles)
+* [VehiclesV5       ](VehiclesV5)
 
 Each member corresponds to an bunch of methods, described in API-documentation,
 but the most methods in this SDK have unified names:
@@ -135,9 +137,11 @@ For most use cases it is necessary:
         * [.Optimizations](#Route4Me+Optimizations) : <code>Optimizations</code>
         * [.Orders](#Route4Me+Orders) : <code>Orders</code>
         * [.Routes](#Route4Me+Routes) : <code>Routes</code>
+        * [.TeamManagement](#Route4Me+TeamManagement) : <code>TeamManagement</code>
         * [.Territories](#Route4Me+Territories) : <code>Territories</code>
         * [.Tracking](#Route4Me+Tracking) : <code>Tracking</code>
         * [.Vehicles](#Route4Me+Vehicles) : <code>Vehicles</code>
+        * [.VehiclesV5](#Route4Me+VehiclesV5) : <code>VehiclesV5</code>
         * [.version](#Route4Me+version) ⇒ <code>string</code>
         * [.baseUrl()](#Route4Me+baseUrl) ⇒ <code>string</code>
         * [.baseUrl5()](#Route4Me+baseUrl5) ⇒ <code>string</code>
@@ -237,6 +241,12 @@ Create new API client
 **Routes** related API calls
 
 **Since**: 0.1.8  
+<a id="Route4Me+TeamManagement" name="Route4Me+TeamManagement"></a>
+
+### route4Me.TeamManagement : <code>TeamManagement</code>
+
+**TeamManagement** related API calls
+
 <a id="Route4Me+Territories" name="Route4Me+Territories"></a>
 
 ### route4Me.Territories : <code>Territories</code>
@@ -254,6 +264,12 @@ Create new API client
 ### route4Me.Vehicles : <code>Vehicles</code>
 
 **Vehicles** related API calls
+
+<a id="Route4Me+VehiclesV5" name="Route4Me+VehiclesV5"></a>
+
+### route4Me.VehiclesV5 : <code>VehiclesV5</code>
+
+**VehiclesV5** related API calls
 
 <a id="Route4Me+version" name="Route4Me+version"></a>
 

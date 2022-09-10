@@ -2,6 +2,7 @@
 
 const request = require("superagent")
 const errors = require("./errors")
+const utils = require("./utils")
 
 class ResponseHandler {
 	constructor(PromiseConstructor, logger, validate, validateContext, callback, returns) {
@@ -247,6 +248,10 @@ class RequestManager {
 			.redirects(1000)	// unlimited number of redirects
 			.accept("application/json")
 			.query(qs)
+
+		if (options.indices) {
+			utils.patchRequest.bind(req)(req)
+		}
 
 		if (form) {
 			req.type("multipart/form-data")
