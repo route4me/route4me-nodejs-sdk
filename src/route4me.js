@@ -15,6 +15,7 @@ const Notes           = require("./resources/notes")
 const Optimizations   = require("./resources/optimizations")
 const Orders          = require("./resources/orders")
 const Routes          = require("./resources/routes")
+const TeamManagement  = require("./resources/team-management")
 const Territories     = require("./resources/territories")
 const Tracking        = require("./resources/tracking")
 const Vehicles        = require("./resources/vehicles")
@@ -47,6 +48,7 @@ const RequestManager  = require("./request-manager")
  * * [Orders           ]{@link Orders}
  * * [OrderCustomFields]{@link OrderCustomFields}
  * * [Routes           ]{@link Routes}
+ * * [TeamManagement   ]{@link TeamManagement}
  * * [Territories      ]{@link Territories}
  * * [Tracking         ]{@link Tracking}
  * * [Vehicles         ]{@link Vehicles}
@@ -190,6 +192,11 @@ class Route4Me {
 		 * @since 0.1.8
 		 */
 		this.Routes = new Routes(req)
+		/**
+		 * **TeamManagement** related API calls
+		 * @type {TeamManagement}
+		 */
+		this.TeamManagement = new TeamManagement(req)
 		/**
 		 * **Territories** related API calls
 		 * @type {Territories}

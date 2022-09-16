@@ -1,7 +1,6 @@
 "use strict"
 
 const request = require("superagent")
-const sinon = require("sinon")
 const saMock  = require("superagent-mocker")(request)
 
 const helper  = require("./../helper")
