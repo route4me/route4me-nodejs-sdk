@@ -101,6 +101,7 @@ Main members of the instanse of `Route4Me` class:
 * [Territories      ](Territories)
 * [Tracking         ](Tracking)
 * [Vehicles         ](Vehicles)
+* [VehiclesV5       ](VehiclesV5)
 
 Each member corresponds to an bunch of methods, described in API-documentation,
 but the most methods in this SDK have unified names:
@@ -140,6 +141,7 @@ For most use cases it is necessary:
         * [.Territories](#Route4Me+Territories) : <code>Territories</code>
         * [.Tracking](#Route4Me+Tracking) : <code>Tracking</code>
         * [.Vehicles](#Route4Me+Vehicles) : <code>Vehicles</code>
+        * [.VehiclesV5](#Route4Me+VehiclesV5) : <code>VehiclesV5</code>
         * [.version](#Route4Me+version) ⇒ <code>string</code>
         * [.baseUrl()](#Route4Me+baseUrl) ⇒ <code>string</code>
         * [.baseUrl5()](#Route4Me+baseUrl5) ⇒ <code>string</code>
@@ -262,6 +264,12 @@ Create new API client
 ### route4Me.Vehicles : <code>Vehicles</code>
 
 **Vehicles** related API calls
+
+<a id="Route4Me+VehiclesV5" name="Route4Me+VehiclesV5"></a>
+
+### route4Me.VehiclesV5 : <code>VehiclesV5</code>
+
+**VehiclesV5** related API calls
 
 <a id="Route4Me+version" name="Route4Me+version"></a>
 
