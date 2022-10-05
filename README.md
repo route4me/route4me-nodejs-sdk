@@ -22,7 +22,7 @@ Access Route4Me's logistics-as-a-service API using our Node.js SDK
 ```
 $ git clone https://github.com/route4me/route4me-nodejs-sdk.git
 $ cd route4me-nodejs-sdk
-$ nmp install
+$ npm install
 $ npm run build
 $ npm run test
 ```
