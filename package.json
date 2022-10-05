@@ -2,8 +2,8 @@
   "name": "route4me-node",
   "version": "1.0.12",
   "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
-  "main": "./dist/",
-  "browser": "./dist/browser/route4me.js",
+  "main": "./src/",
+  "browser": "./src/route4me.js",
   "scripts": {
     "build": "gulp build",
     "lint": "gulp lint",
