@@ -228,6 +228,161 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 		})
+
+		describe("create2 use with advanced constraints", () => {
+			const parameters = {
+				algorithm_type: 9,
+				rt: true,
+				advanced_constraints: [{
+						max_capacity: 200,
+						tags: ["TAG001", "TAG002"],
+					}, {
+						max_capacity: 500,
+						tags: ["TAG003"],
+					}
+				]
+			};
+			
+			const addresses = [{ 
+					lat: 38.202496,
+					lng: -85.786514,
+					tags: ["TAG001", "TAG002"]
+				}, { 
+					lat: 38.176067,
+					lng: -85.824638,
+					tags: ["TAG003"]
+				}
+			];
+
+			it("should call create2 without depots", (done) => {
+
+				resource.create2({ parameters, addresses }, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, 
+						"POST",
+						route4meClient.baseUrl() + "/api.v4/optimization_problem.php", 
+						{ redirect: '0' }, 
+						{
+							parameters: {
+								algorithm_type: 9,
+								rt: true,
+								advanced_constraints: [{
+										max_capacity: 200,
+										tags: ["TAG001", "TAG002"],
+									}, {
+										max_capacity: 500,
+										tags: ["TAG003"],
+									}
+								]
+							},
+							addresses: [{ 
+									lat: 38.202496,
+									lng: -85.786514,
+									tags: ["TAG001", "TAG002"]
+								}, { 
+									lat: 38.176067,
+									lng: -85.824638,
+									tags: ["TAG003"]
+								}
+							]
+						}
+					)
+				})
+				done()
+			})
+
+			it("should call create2 without depots with redirect", (done) => {
+
+				resource.create2({ parameters, addresses }, true, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, 
+						"POST",
+						route4meClient.baseUrl() + "/api.v4/optimization_problem.php", 
+						null, 
+						{
+							parameters: {
+								algorithm_type: 9,
+								rt: true,
+								advanced_constraints: [{
+										max_capacity: 200,
+										tags: ["TAG001", "TAG002"],
+									}, {
+										max_capacity: 500,
+										tags: ["TAG003"],
+									}
+								]
+							},
+							addresses: [{ 
+									lat: 38.202496,
+									lng: -85.786514,
+									tags: ["TAG001", "TAG002"]
+								}, { 
+									lat: 38.176067,
+									lng: -85.824638,
+									tags: ["TAG003"]
+								}
+							]
+						}
+					)
+				})
+				done()
+			})
+
+			it("should call create2 with depots", (done) => {
+
+				const depots = [{
+					address: "1604 PARKRIDGE PKWY, Louisville, KY, 40214",
+					is_depot: true,
+					lat: 38.141598,
+					lng: -85.793846,
+					time: 300
+				}];
+				
+				resource.create2({ parameters, addresses, depots }, (err, res) => {
+					expect(err).is.null
+					expect(res).is.not.null
+					helper.expectRequest(req, 
+						"POST",
+						route4meClient.baseUrl() + "/api.v4/optimization_problem.php", 
+						{ redirect: '0' }, 
+						{
+							parameters: {
+								algorithm_type: 9,
+								rt: true,
+								advanced_constraints: [{
+										max_capacity: 200,
+										tags: ["TAG001", "TAG002"],
+									}, {
+										max_capacity: 500,
+										tags: ["TAG003"],
+									}
+								]
+							},
+							addresses: [{ 
+									lat: 38.202496,
+									lng: -85.786514,
+									tags: ["TAG001", "TAG002"]
+								}, { 
+									lat: 38.176067,
+									lng: -85.824638,
+									tags: ["TAG003"]
+								}
+							],
+							depots: [{
+								address: "1604 PARKRIDGE PKWY, Louisville, KY, 40214",
+								is_depot: true,
+								lat: 38.141598,
+								lng: -85.793846,
+								time: 300
+							}]
+						}
+					)
+				})
+				done()
+			})
+		})
 	})
 })
 
