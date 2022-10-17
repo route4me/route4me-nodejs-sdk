@@ -187,7 +187,7 @@ class Optimizations {
 	 * @param {RequestCallback} callback		- The callback that handles the response.
 	 * @see {@link https://github.com/route4me/route4me-json-schemas/blob/master/Optimization_response.json}
 	 */
-	create2(props, isRedirect, callback) {
+	createWithAdvancedConstraints(props, isRedirect, callback) {
 		let isRdr = isRedirect || false
 		let cb = callback
 

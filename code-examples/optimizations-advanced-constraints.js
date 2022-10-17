@@ -79,7 +79,7 @@ const depots = [{
 	time: 300
 }];
 
-route4me.Optimizations.create2({ parameters, addresses, depots }, (err, data) => {
+route4me.Optimizations.createWithAdvancedConstraints({ parameters, addresses, depots }, (err, data) => {
 	if(err) console.log(err);
 	console.log(data);
 });

@@ -80,7 +80,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			time: 300
 		}];
 		
-		route4me.Optimizations.create2({ parameters, addresses, depots }, (err, optimization) => {
+		route4me.Optimizations.createWithAdvancedConstraints({ parameters, addresses, depots }, (err, optimization) => {
 			debug("error  ", err)
 			debug("result ", optimization)
 			

@@ -12,7 +12,7 @@ Optimizations facility
 * [Optimizations](#Optimizations) ℗
     * [new Optimizations(requestManager)](#new_Optimizations_new)
     * [.create(optimization, isRedirect, [callback])](#Optimizations+create)
-    * [.create2(props, [isRedirect], callback)](#Optimizations+create2)
+    * [.createWithAdvancedConstraints(props, [isRedirect], callback)](#Optimizations+createWithAdvancedConstraints)
     * [.get(id, [callback])](#Optimizations+get)
     * [.list(states, options, [callback])](#Optimizations+list)
     * [.update(id, data, [reoptimize], [callback])](#Optimizations+update)
@@ -46,9 +46,9 @@ Create a new optimization
 | isRedirect | <code>boolean</code> |  |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Optimizations.Response&gt;</code> |  |
 
-<a id="Optimizations+create2" name="Optimizations+create2"></a>
+<a id="Optimizations+createWithAdvancedConstraints" name="Optimizations+createWithAdvancedConstraints"></a>
 
-### optimizations.create2(props, [isRedirect], callback)
+### optimizations.createWithAdvancedConstraints(props, [isRedirect], callback)
 
 Create a new optimization with Advanced constraints
 

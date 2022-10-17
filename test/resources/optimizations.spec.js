@@ -229,7 +229,7 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
-		describe("create2 use with advanced constraints", () => {
+		describe("createWithAdvancedConstraints", () => {
 			const parameters = {
 				algorithm_type: 9,
 				rt: true,
@@ -254,9 +254,9 @@ describe(helper.toSuiteName(__filename), () => {
 				}
 			];
 
-			it("should call create2 without depots", (done) => {
+			it("should call createWithAdvancedConstraints without depots", (done) => {
 
-				resource.create2({ parameters, addresses }, (err, res) => {
+				resource.createWithAdvancedConstraints({ parameters, addresses }, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req, 
@@ -292,9 +292,9 @@ describe(helper.toSuiteName(__filename), () => {
 				done()
 			})
 
-			it("should call create2 without depots with redirect", (done) => {
+			it("should call createWithAdvancedConstraints without depots with redirect", (done) => {
 
-				resource.create2({ parameters, addresses }, true, (err, res) => {
+				resource.createWithAdvancedConstraints({ parameters, addresses }, true, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req, 
@@ -330,7 +330,7 @@ describe(helper.toSuiteName(__filename), () => {
 				done()
 			})
 
-			it("should call create2 with depots", (done) => {
+			it("should call createWithAdvancedConstraints with depots", (done) => {
 
 				const depots = [{
 					address: "1604 PARKRIDGE PKWY, Louisville, KY, 40214",
@@ -340,7 +340,7 @@ describe(helper.toSuiteName(__filename), () => {
 					time: 300
 				}];
 				
-				resource.create2({ parameters, addresses, depots }, (err, res) => {
+				resource.createWithAdvancedConstraints({ parameters, addresses, depots }, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
 					helper.expectRequest(req, 
