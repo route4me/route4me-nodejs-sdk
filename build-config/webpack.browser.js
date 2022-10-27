@@ -5,7 +5,7 @@ const webpack      = require("webpack")
 
 const commonConfig = require("./webpack.common.js")
 const babelConfig = require("./babel.browser.js")
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const config = _.mergeWith({
 	mode : 'production',
@@ -35,13 +35,12 @@ const config = _.mergeWith({
 	],*/
 	optimization: {
 		minimizer: [
-		  // we specify a custom UglifyJsPlugin here to get source maps in production
-		  new UglifyJsPlugin({
-  			uglifyOptions: {
-  			  compress: false,
-  			},
-  			sourceMap: true
-		  })
+			new TerserPlugin({
+				terserOptions: {
+					compress: false,
+					sourceMap: true
+				}
+			})
 		]
 	},
 	output: {
