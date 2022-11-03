@@ -15,7 +15,7 @@ describe(helper.toSuiteName(__filename), () => {
 	it("should export a Route4Me", () => {
 		expect(pkg).have.property("Route4Me")
 			.that.is.a("function")
-		expect(pkg).has.deep.property("Route4Me.version").and.be.a("string")
+		expect(pkg).has.nested.property("Route4Me.version").and.be.a("string")
 	})
 
 	it("should export a Route4MeError", () => {

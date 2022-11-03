@@ -52,12 +52,6 @@ describe(helper.toSuiteName(__filename), () => {
 						.has.deep.property("[0]")
 							.that.is.an("object")
 							.and.has.property("optimization_problem_id")					
-					// validate all optimizations with jsonShema
-					/*
-					res["optimizations"].forEach((opt) => {
-						expect(opt).to.be.jsonSchema(jsonschemaOptimization)
-					})
-					*/
 				})
 				done()
 			})
@@ -114,10 +108,6 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).exist
 					expect(res)
-
-					// errors will be detected on validation!
-
-					//expect(validationCallCount, "Uncaught AssertionError: expected validationCallCount to equal 1").to.equal(1)
 				})
 				done()
 			})

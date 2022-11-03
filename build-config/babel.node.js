@@ -2,19 +2,24 @@
 
 const config = {
 	"presets": [
-		["env", {
-			"targets": {
-				"node": "current", //4.8,
-			},
-			"useBuiltIns": true
-		}],
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"node": "current",
+				},
+				"useBuiltIns": false
+			}
+		],
 	],
-	"plugins": [
-		// ["babel-plugin-transform-builtin-extend", {
-		// 	globals: ["Error"]
-		// }]
-		"require-context-hook"
-	],
+	"generatorOpts": {
+		"compact": false,
+		"retainLines": true,
+		"indent": {
+			"adjustMultilineComment": false,
+			"style": "	"
+		}
+	}
 }
 
 module.exports = config
