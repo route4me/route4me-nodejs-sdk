@@ -633,7 +633,8 @@ describe(helper.toSuiteName(__filename), () => {
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/job-tracker/status/85352155",
 						null,
-						null					)
+						null
+					)
 					done()
 				})
 			})
@@ -650,7 +651,8 @@ describe(helper.toSuiteName(__filename), () => {
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/job-tracker/result/85352155",
 						null,
-						null					)
+						null
+					)
 					done()
 				})
 			})

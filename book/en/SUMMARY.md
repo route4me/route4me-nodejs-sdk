@@ -39,6 +39,7 @@
 ### V5
 
   * [AddressBookV5](code/AddressBookV5.md)
+  * [AutomaticTerritories](code/AutomaticTerritories.md)
   * [TeamManagement](code/TeamManagement.md)
   * [VehiclesV5](code/VehiclesV5.md)
 
