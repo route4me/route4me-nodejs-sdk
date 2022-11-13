@@ -10,7 +10,6 @@ class AutomaticTerritories {
 	/**
 	 * Constructor
 	 *
-	 * @see {@link https://route4me.io/docs/#address-book}
 	 * @private
 	 *
 	 * @param  {RequestManager} requestManager - Request Manager
@@ -32,7 +31,7 @@ class AutomaticTerritories {
 	 * @param {Number}		[mode = 0]
 	 * @param {String[]}	[params = []] 		- An array of parameters.
 	 * @param {module:route4me-node~RequestCallback<jsonschema:
-	 * AutomaticTerritories.AddressBookSearchResult>} callback
+	 * AutomaticTerritories.JobID>} callback
 	 */
 	createJob(addresses, mode, params, callback) {
 		let md = mode || 0
@@ -67,7 +66,7 @@ class AutomaticTerritories {
 	 *
 	 * @param {String}	jobId		- Job ID to check status.
 	 * @param {module:route4me-node~RequestCallback<jsonschema:
-	 * AutomaticTerritories.AddressBookSearchResult>} callback
+	 * AutomaticTerritories.ResponseStatus>} callback
 	 */
 	getJobStatus(jobId, callback) {
 		return this.r._makeRequest5({
@@ -84,7 +83,7 @@ class AutomaticTerritories {
 	 *
 	 * @param {String}	jobId		- Job ID to get result.
 	 * @param {module:route4me-node~RequestCallback<jsonschema:
-	 * AutomaticTerritories.AddressBookSearchResult>} callback
+	 * AutomaticTerritories.ResponseJob>} callback
 	 */
 	getJobResult(jobId, callback) {
 		return this.r._makeRequest5({

@@ -6,7 +6,6 @@ AutomaticTerritories facility
 
 **Category**: AutomaticTerritories  
 **Access**: private  
-**See**: [https://route4me.io/docs/#address-book](https://route4me.io/docs/#address-book)  
 **Since**: 1.0.16  
 
 * [AutomaticTerritories](#AutomaticTerritories) ℗
@@ -43,7 +42,7 @@ Create job.
 | addresses.lng | <code>Number</code> |  | Address longitude. |
 | [mode] | <code>Number</code> | <code>0</code> |  |
 | [params] | <code>Array.&lt;String&gt;</code> | <code>[]</code> | An array of parameters. |
-| callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AutomaticTerritories.AddressBookSearchResult&gt;</code> |  |  |
+| callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AutomaticTerritories.JobID&gt;</code> |  |  |
 
 <a id="AutomaticTerritories+getJobStatus" name="AutomaticTerritories+getJobStatus"></a>
 
@@ -56,7 +55,7 @@ Check the asynchronous job status by specifying the 'job_id' path parameter.
 | Param | Type | Description |
 | --- | --- | --- |
 | jobId | <code>String</code> | Job ID to check status. |
-| callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AutomaticTerritories.AddressBookSearchResult&gt;</code> |  |
+| callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AutomaticTerritories.ResponseStatus&gt;</code> |  |
 
 <a id="AutomaticTerritories+getJobResult" name="AutomaticTerritories+getJobResult"></a>
 
@@ -69,5 +68,5 @@ Get the asynchronous job result by specifying the 'job_id' path parameter.
 | Param | Type | Description |
 | --- | --- | --- |
 | jobId | <code>String</code> | Job ID to get result. |
-| callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AutomaticTerritories.AddressBookSearchResult&gt;</code> |  |
+| callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AutomaticTerritories.ResponseJob&gt;</code> |  |
 
