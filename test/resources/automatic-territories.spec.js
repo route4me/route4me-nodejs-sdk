@@ -43,7 +43,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).is.not.null
 					helper.expectRequest(req,
 						"POST",
-						"https://wh-staging-yx2ian2bajaskas.route4me.com/modules/api/v5.0/automatic-territories",
+						route4meClient.baseUrl5() + "/api/v5.0/automatic-territories",
 						{},
 						{
 							addresses: [
@@ -64,7 +64,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).is.not.null
 					helper.expectRequest(req,
 						"POST",
-						"https://wh-staging-yx2ian2bajaskas.route4me.com/modules/api/v5.0/automatic-territories",
+						route4meClient.baseUrl5() + "/api/v5.0/automatic-territories",
 						{},
 						{
 							addresses: [
@@ -85,7 +85,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).is.not.null
 					helper.expectRequest(req,
 						"POST",
-						"https://wh-staging-yx2ian2bajaskas.route4me.com/modules/api/v5.0/automatic-territories",
+						route4meClient.baseUrl5() + "/api/v5.0/automatic-territories",
 						{},
 						{
 							addresses: [
@@ -110,7 +110,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).is.not.null
 					helper.expectRequest(req,
 						"GET",
-						"https://wh-staging-yx2ian2bajaskas.route4me.com/modules/api/v5.0/automatic-territories/job-tracker/status/85352155",
+						route4meClient.baseUrl5() + "/api/v5.0/automatic-territories/job-tracker/status/85352155",
 						null,
 						null
 					)
@@ -128,7 +128,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(res).is.not.null
 					helper.expectRequest(req,
 						"GET",
-						"https://wh-staging-yx2ian2bajaskas.route4me.com/modules/api/v5.0/automatic-territories/job-tracker/result/85352155",
+						route4meClient.baseUrl5() + "/api/v5.0/automatic-territories/job-tracker/result/85352155",
 						null,
 						null
 					)

@@ -49,7 +49,7 @@ class AutomaticTerritories {
 		}
 		return this.r._makeRequest5({
 			method: "POST",
-			url: "https://wh-staging-yx2ian2bajaskas.route4me.com/modules/api/v5.0/automatic-territories",
+			path: "/api/v5.0/automatic-territories",
 			body: {
 				addresses,
 				mode: md,
@@ -71,7 +71,7 @@ class AutomaticTerritories {
 	getJobStatus(jobId, callback) {
 		return this.r._makeRequest5({
 			method: "GET",
-			url: `https://wh-staging-yx2ian2bajaskas.route4me.com/modules/api/v5.0/automatic-territories/job-tracker/status/${jobId}`,
+			path: `/api/v5.0/automatic-territories/job-tracker/status/${jobId}`,
 			validationContext: "AutomaticTerritories.ResponseStatus",
 		}, callback)
 	}
@@ -88,7 +88,7 @@ class AutomaticTerritories {
 	getJobResult(jobId, callback) {
 		return this.r._makeRequest5({
 			method: "GET",
-			url: `https://wh-staging-yx2ian2bajaskas.route4me.com/modules/api/v5.0/automatic-territories/job-tracker/result/${jobId}`,
+			path: `/api/v5.0/automatic-territories/job-tracker/result/${jobId}`,
 			validationContext: "AutomaticTerritories.ResponseJob",
 		}, callback)
 	}
