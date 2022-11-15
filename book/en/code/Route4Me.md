@@ -84,24 +84,25 @@ With `route4me` instance you should get responses from API easy-peasy.
 
 Main members of the instanse of `Route4Me` class:
 
-* [ActivityFeed     ](ActivityFeed)
-* [Addresses        ](Addresses)
-* [AddressBook      ](AddressBook)
-* [AddressBookV5    ](AddressBookV5)
-* [AddressBarcodes  ](AddressBarcodes)
-* [AvoidanceZones   ](AvoidanceZones)
-* [Geocoding        ](Geocoding)
-* [Members          ](Members)
-* [Notes            ](Notes)
-* [Optimizations    ](Optimizations)
-* [Orders           ](Orders)
-* [OrderCustomFields](OrderCustomFields)
-* [Routes           ](Routes)
-* [TeamManagement   ](TeamManagement)
-* [Territories      ](Territories)
-* [Tracking         ](Tracking)
-* [Vehicles         ](Vehicles)
-* [VehiclesV5       ](VehiclesV5)
+* [ActivityFeed        ](ActivityFeed)
+* [Addresses           ](Addresses)
+* [AddressBook         ](AddressBook)
+* [AddressBookV5       ](AddressBookV5)
+* [AddressBarcodes     ](AddressBarcodes)
+* [AutomaticTerritories](AutomaticTerritories)
+* [AvoidanceZones      ](AvoidanceZones)
+* [Geocoding           ](Geocoding)
+* [Members             ](Members)
+* [Notes               ](Notes)
+* [Optimizations       ](Optimizations)
+* [Orders              ](Orders)
+* [OrderCustomFields   ](OrderCustomFields)
+* [Routes              ](Routes)
+* [TeamManagement      ](TeamManagement)
+* [Territories         ](Territories)
+* [Tracking            ](Tracking)
+* [Vehicles            ](Vehicles)
+* [VehiclesV5          ](VehiclesV5)
 
 Each member corresponds to an bunch of methods, described in API-documentation,
 but the most methods in this SDK have unified names:
@@ -131,6 +132,7 @@ For most use cases it is necessary:
         * [.AddressBookV5](#Route4Me+AddressBookV5) : <code>AddressBookV5</code>
         * [.AddressBarcodes](#Route4Me+AddressBarcodes) : <code>AddressBarcodes</code>
         * [.Addresses](#Route4Me+Addresses) : <code>Addresses</code>
+        * [.AutomaticTerritories](#Route4Me+AutomaticTerritories) : <code>AutomaticTerritories</code>
         * [.AvoidanceZones](#Route4Me+AvoidanceZones) : <code>AvoidanceZones</code>
         * [.Geocoding](#Route4Me+Geocoding) : <code>Geocoding</code>
         * [.Notes](#Route4Me+Notes) : <code>Notes</code>
@@ -201,6 +203,13 @@ Create new API client
 **Addresses** related API calls
 
 **Since**: 0.1.8  
+<a id="Route4Me+AutomaticTerritories" name="Route4Me+AutomaticTerritories"></a>
+
+### route4Me.AutomaticTerritories : <code>AutomaticTerritories</code>
+
+**AutomaticTerritories** related API calls
+
+**Since**: 0.1.16  
 <a id="Route4Me+AvoidanceZones" name="Route4Me+AvoidanceZones"></a>
 
 ### route4Me.AvoidanceZones : <code>AvoidanceZones</code>
