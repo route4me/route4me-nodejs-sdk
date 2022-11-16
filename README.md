@@ -4,8 +4,8 @@ Access Route4Me's logistics-as-a-service API using our Node.js SDK
 
 [![CircleCI](https://circleci.com/gh/route4me/route4me-nodejs-sdk/tree/master.svg?style=svg)](https://circleci.com/gh/route4me/route4me-nodejs-sdk/tree/master)
 
-[![npm version](https://img.shields.io/npm/v/route4me-node.svg)][NPM]
-[![npm downloads](https://img.shields.io/npm/dm/route4me-node.svg)][NPM]
+[![npm version](https://img.shields.io/npm/v/route4me-nodejs-sdk.svg)][NPM]
+[![npm downloads](https://img.shields.io/npm/dm/route4me-nodejs-sdk.svg)][NPM]
 [![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Star)](https://github.com/route4me/route4me-node-sdk)
 
 
@@ -13,9 +13,19 @@ Access Route4Me's logistics-as-a-service API using our Node.js SDK
 
 
 [![codebeat badge](https://codebeat.co/badges/79f229c5-27f7-4ab9-8503-2d6fc95052f9)](https://codebeat.co/projects/github-com-route4me-route4me-nodejs-sdk)
-[![Package Quality](http://npm.packagequality.com/shield/route4me-node.svg)](http://packagequality.com/#?package=route4me-node)
+[![Package Quality](http://npm.packagequality.com/shield/route4me-nodejs-sdk.svg)](http://packagequality.com/#?package=route4me-nodejs-sdk)
 
-[NPM]: https://www.npmjs.com/package/route4me-node
+[NPM]: https://www.npmjs.com/package/route4me-nodejs-sdk 
+
+# Installation
+
+```
+$ git clone https://github.com/route4me/route4me-nodejs-sdk.git
+$ cd route4me-nodejs-sdk
+$ npm install
+$ npm run build
+$ npm run test
+```
 
 ### What does the Route4Me SDK permit me to do?
 This SDK makes it easier for you use the Route4Me API, which creates optimally sequenced driving routes for many drivers.
