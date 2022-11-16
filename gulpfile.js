@@ -143,7 +143,6 @@ gulp.task("doc:install", gulp.series(function DI() { // eslint-disable-line pref
 
 gulp.task("watch:doc",gulp.series( ["doc:pre"], function D() { // eslint-disable-line prefer-arrow-callback
 	const cmd = gitbook.commands.filter(c => c.name.match(/^serve\s/i))[0]
-
 	return cmd.exec([
 		path.join(__dirname),
 		path.join(__dirname, "tmp", "gitbook")

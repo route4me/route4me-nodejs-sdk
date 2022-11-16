@@ -3,21 +3,24 @@
 const debug    = require("debug")("route4me")
 const platform = require("platform")
 
-const ActivityFeed    = require("./resources/activity-feed")
-const Addresses       = require("./resources/addresses")
-const AddressBook     = require("./resources/address-book")
-const AddressBookV5   = require("./resources/address-book-v5")
-const AddressBarcodes = require("./resources/address-barcodes")
-const AvoidanceZones  = require("./resources/avoidance-zones")
-const Geocoding       = require("./resources/geocoding")
-const Members         = require("./resources/members")
-const Notes           = require("./resources/notes")
-const Optimizations   = require("./resources/optimizations")
-const Orders          = require("./resources/orders")
-const Routes          = require("./resources/routes")
-const Territories     = require("./resources/territories")
-const Tracking        = require("./resources/tracking")
-const Vehicles        = require("./resources/vehicles")
+const ActivityFeed         = require("./resources/activity-feed")
+const Addresses            = require("./resources/addresses")
+const AddressBook          = require("./resources/address-book")
+const AddressBookV5        = require("./resources/address-book-v5")
+const AddressBarcodes      = require("./resources/address-barcodes")
+const AutomaticTerritories = require("./resources/automatic-territories")
+const AvoidanceZones       = require("./resources/avoidance-zones")
+const Geocoding            = require("./resources/geocoding")
+const Members              = require("./resources/members")
+const Notes                = require("./resources/notes")
+const Optimizations        = require("./resources/optimizations")
+const Orders               = require("./resources/orders")
+const Routes               = require("./resources/routes")
+const TeamManagement       = require("./resources/team-management")
+const Territories          = require("./resources/territories")
+const Tracking             = require("./resources/tracking")
+const Vehicles             = require("./resources/vehicles")
+const VehiclesV5           = require("./resources/vehicles-v5")
 
 const packageJson     = require("./../package.json")  // eslint-disable-line import/no-dynamic-require
 const utils           = require("./utils")
@@ -34,22 +37,25 @@ const RequestManager  = require("./request-manager")
  *
  * Main members of the instanse of `Route4Me` class:
  *
- * * [ActivityFeed     ]{@link ActivityFeed}
- * * [Addresses        ]{@link Addresses}
- * * [AddressBook      ]{@link AddressBook}
- * * [AddressBookV5    ]{@link AddressBookV5}
- * * [AddressBarcodes  ]{@link AddressBarcodes}
- * * [AvoidanceZones   ]{@link AvoidanceZones}
- * * [Geocoding        ]{@link Geocoding}
- * * [Members          ]{@link Members}
- * * [Notes            ]{@link Notes}
- * * [Optimizations    ]{@link Optimizations}
- * * [Orders           ]{@link Orders}
- * * [OrderCustomFields]{@link OrderCustomFields}
- * * [Routes           ]{@link Routes}
- * * [Territories      ]{@link Territories}
- * * [Tracking         ]{@link Tracking}
- * * [Vehicles         ]{@link Vehicles}
+ * * [ActivityFeed        ]{@link ActivityFeed}
+ * * [Addresses           ]{@link Addresses}
+ * * [AddressBook         ]{@link AddressBook}
+ * * [AddressBookV5       ]{@link AddressBookV5}
+ * * [AddressBarcodes     ]{@link AddressBarcodes}
+ * * [AutomaticTerritories]{@link AutomaticTerritories}
+ * * [AvoidanceZones      ]{@link AvoidanceZones}
+ * * [Geocoding           ]{@link Geocoding}
+ * * [Members             ]{@link Members}
+ * * [Notes               ]{@link Notes}
+ * * [Optimizations       ]{@link Optimizations}
+ * * [Orders              ]{@link Orders}
+ * * [OrderCustomFields   ]{@link OrderCustomFields}
+ * * [Routes              ]{@link Routes}
+ * * [TeamManagement      ]{@link TeamManagement}
+ * * [Territories         ]{@link Territories}
+ * * [Tracking            ]{@link Tracking}
+ * * [Vehicles            ]{@link Vehicles}
+ * * [VehiclesV5          ]{@link VehiclesV5}
  *
  * Each member corresponds to an bunch of methods, described in API-documentation,
  * but the most methods in this SDK have unified names:
@@ -151,6 +157,12 @@ class Route4Me {
 		 */
 		this.Addresses = new Addresses(req)
 		/**
+		 * **AutomaticTerritories** related API calls
+		 * @type {AutomaticTerritories}
+		 * @since 0.1.16
+		 */
+		this.AutomaticTerritories = new AutomaticTerritories(req)
+		/**
 		 * **AvoidanceZones** related API calls
 		 * @type {AvoidanceZones}
 		 * @since 0.1.8
@@ -191,6 +203,11 @@ class Route4Me {
 		 */
 		this.Routes = new Routes(req)
 		/**
+		 * **TeamManagement** related API calls
+		 * @type {TeamManagement}
+		 */
+		this.TeamManagement = new TeamManagement(req)
+		/**
 		 * **Territories** related API calls
 		 * @type {Territories}
 		 */
@@ -205,6 +222,11 @@ class Route4Me {
 		 * @type {Vehicles}
 		 */
 		this.Vehicles = new Vehicles(req)
+		/**
+		 * **VehiclesV5** related API calls
+		 * @type {VehiclesV5}
+		 */
+		this.VehiclesV5 = new VehiclesV5(req)
 
 		this._logger.debug({ msg: "initialized", version: Route4Me.version })
 
