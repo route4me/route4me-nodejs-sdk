@@ -14,19 +14,16 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 		const expect = chai.expect
 		const apiKey   = "11111111111111111111111111111111"
 		const route4me = new Route4Me(apiKey)
-        
-		const addresses = [
-			{ "id": "1", "lat": 39.86374, "lng": -86.199121 },
-			{ "id": "2", "lat": 39.792024, "lng": -86.221094 },
-			{ "id": "3", "lat": 39.728683, "lng": -86.210107 },
-			{ "id": "4", "lat": 39.787803, "lng": -84.254541 },
-			{ "id": "5", "lat": 39.728683, "lng": -84.254541 },
-			{ "id": "6", "lat": 39.762472, "lng": -84.117212 }
-		];
-		
-		const mode = 0;
-		const params = []
-		
+
+		const addresses = require("./data/addresses_200.json");
+		const mode = 1;
+		const params = [2];
+
+		for(let i = 0; i < addresses.length; ++i) {
+			addresses[i].original_route_id = (i < addresses.length / 2 ? "ZONE - 0" : "ZONE - 1");
+			addresses[i].time = 60;
+		}
+
 		route4me.AutomaticTerritories.createJob(addresses, mode, params, (err, res) => {
 			debug("error  ", err)
 			debug("result ", res)
