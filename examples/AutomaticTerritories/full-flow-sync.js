@@ -15,20 +15,15 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 		const apiKey   = "11111111111111111111111111111111"
 		const route4me = new Route4Me(apiKey)
 
-		const addresses = require("./data/addresses_200.json");
-		const mode = 1;
-		const params = [2];
-
-		for(let i = 0; i < addresses.length; ++i) {
-			addresses[i].original_route_id = (i < addresses.length / 2 ? "ZONE - 0" : "ZONE - 1");
-			addresses[i].time = 60;
-		}
+		const addresses = require("./data/addresses_200.json")
+		const mode = 1
+		const params = [2]
 
 		function createJobSync(addresses, mode, params) {
 			return new Promise((resolve) => {
 				route4me.AutomaticTerritories.createJob(addresses, mode, params, (err, data) => {
 					if(err) throw err
-					resolve(data);
+					resolve(data)
 				})
 			})
 		}
@@ -59,6 +54,15 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			})
 		}
 
+		function optimizationSync(params) {
+			return new Promise((resolve) => {
+				route4me.Optimizations.create(params, false, (err, data) => {
+					if(err) throw err
+					resolve(data)
+				})
+			})
+		}
+
 		(async () => {
 			try {
 				const job = await createJobSync(addresses, mode, params)
@@ -66,7 +70,46 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 				const res = await getJobResultSync(job.job_id)
 				debug("result ", res)
 				expect(res).exist
-				console.log(res)
+
+				if(res) {
+					const zone_0 = data.clusters[0].addresses_ids
+
+					for(let i = 0; i < addresses.length; ++i) {
+						addresses[i].original_route_id = (zone_0.includes(addresses[i].id) ? "ZONE - 0" : "ZONE - 1")
+						addresses[i].time = 60
+					}
+					
+					addresses.unshift({
+						alias: "DEPOT",
+						lat: 25.7559171435,
+						lng: -80.317204775,
+						is_depot: 1
+					})
+			
+					const params = {
+						parameters: {
+							algorithm_type: 3,
+							share_route: 0,
+							store_route: 0,
+							rt: 1,
+							route_time: 46800,
+							route_name: "Smart Zone Example",
+							optimize: "Time",
+							distance_unit: "mi",
+							device_type: "web",
+							travel_mode: "Driving",
+							parts: 1,
+							route_max_duration: 57600
+						},
+						addresses: addresses
+					}
+			
+					const opts = await optimizationSync(params)
+
+					debug("opts ", opts)
+					expect(opts).exist
+					console.log(opts)
+				}
 			}
 			catch(err) {
 				debug("error  ", err)
