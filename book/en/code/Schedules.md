@@ -26,9 +26,6 @@ Schedule facility
     * [.isScheduledRouteCopy(routeId, [callback])](#Schedules+isScheduledRouteCopy)
     * [.getScheduledRoutesCopies(param, route_date, [callback])](#Schedules+getScheduledRoutesCopies)
     * [.addMasterRoute(param, [callback])](#Schedules+addMasterRoute)
-    * [.getMasterRouteAPIConfig([callback])](#Schedules+getMasterRouteAPIConfig)
-    * [.getMasterRouteDataTable([options], [callback])](#Schedules+getMasterRouteDataTable)
-    * [.schedulePreview(param, [callback])](#Schedules+schedulePreview)
 
 <a id="new_Schedules_new" name="new_Schedules_new"></a>
 
@@ -322,69 +319,4 @@ Create a new Master Route by sending the corresponding body payload.
 | param.schedule | <code>string</code> |  | Schedule as JSON string e.g. '{"enabled":true,"mode":"daily","daily":{"every":2}, "from":"2019-06-05","timestamp":1558538737}'. |
 | param.timezone | <code>string</code> |  | Timezone as "America/New_York". |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |  |
-
-<a id="Schedules+getMasterRouteAPIConfig" name="Schedules+getMasterRouteAPIConfig"></a>
-
-### schedules.getMasterRouteAPIConfig([callback])
-
-Get the configuration.
-
-**See**: [https://support.route4me.com/optimize-recurring-routes-and-schedule-delivery-for-repeat-orders](https://support.route4me.com/optimize-recurring-routes-and-schedule-delivery-for-repeat-orders)  
-**Since**: 1.0.18  
-
-| Param | Type |
-| --- | --- |
-| [callback] | <code>module:route4me-node~RequestCallback</code> | 
-
-<a id="Schedules+getMasterRouteDataTable" name="Schedules+getMasterRouteDataTable"></a>
-
-### schedules.getMasterRouteDataTable([options], [callback])
-
-Search for the Routes by specifying the corresponding query parameters
-and retrieving a paginated list of the Routes.
-
-**See**: [https://support.route4me.com/optimize-recurring-routes-and-schedule-delivery-for-repeat-orders](https://support.route4me.com/optimize-recurring-routes-and-schedule-delivery-for-repeat-orders)  
-**Since**: 1.0.18  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [options] | <code>object</code> |  | Parameters |
-| [options.order_by] | <code>Array.&lt;string&gt;</code> |  | Array of order fields e.g., [["route_name", "asc"], ["name", "desc"]] |
-| [options.page] | <code>number</code> | <code>1</code> | Requested page. |
-| [options.per_page] | <code>number</code> | <code>15</code> | Number of File information per page. |
-| [options.vehicles] | <code>Array.&lt;string&gt;</code> |  | Filter by vehicles |
-| [options.members] | <code>Array.&lt;number&gt;</code> |  | Filter by members |
-| [options.start] | <code>string</code> |  | Start date as YYYY-MM-DDThh:mm:ss.sss+z |
-| [options.end] | <code>string</code> |  | End date as YYYY-MM-DDThh:mm:ss.sss+z |
-| [callback] | <code>module:route4me-node~RequestCallback</code> |  |  |
-
-<a id="Schedules+schedulePreview" name="Schedules+schedulePreview"></a>
-
-### schedules.schedulePreview(param, [callback])
-
-Schedule preview.
-
-**See**: [https://support.route4me.com/optimize-recurring-routes-and-schedule-delivery-for-repeat-orders](https://support.route4me.com/optimize-recurring-routes-and-schedule-delivery-for-repeat-orders)  
-**Since**: 1.0.18  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| param | <code>object</code> |  |
-| param.date_from_string | <code>string</code> | Route date as YYYY-MM-DD. |
-| param.date_to_string | <code>string</code> | Route date as YYYY-MM-DD. |
-| param.objects | <code>Array.&lt;object&gt;</code> |  |
-| param.objects.id | <code>string</code> |  |
-| param.objects.schedule | <code>Array.&lt;object&gt;</code> |  |
-| param.objects.schedule.enabled | <code>boolean</code> |  |
-| param.objects.schedule.mode | <code>string</code> | daily |
-| param.objects.schedule.from | <code>string</code> |  |
-| param.objects.schedule.to | <code>string</code> |  |
-| param.objects.schedule.daily | <code>object</code> |  |
-| param.objects.schedule.monthly | <code>object</code> |  |
-| param.objects.schedule.annually | <code>object</code> |  |
-| param.objects.schedule_blacklist | <code>Array.&lt;object&gt;</code> |  |
-| param.objects.schedule_blacklist.enabled | <code>boolean</code> |  |
-| param.objects.schedule_blacklist.start | <code>string</code> |  |
-| param.objects.schedule_blacklist.end | <code>string</code> |  |
-| [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 
