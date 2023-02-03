@@ -98,6 +98,7 @@ Main members of the instanse of `Route4Me` class:
 * [Orders              ](Orders)
 * [OrderCustomFields   ](OrderCustomFields)
 * [Routes              ](Routes)
+* [Schedules           ](Schedules)
 * [TeamManagement      ](TeamManagement)
 * [Territories         ](Territories)
 * [Tracking            ](Tracking)
@@ -139,6 +140,7 @@ For most use cases it is necessary:
         * [.Optimizations](#Route4Me+Optimizations) : <code>Optimizations</code>
         * [.Orders](#Route4Me+Orders) : <code>Orders</code>
         * [.Routes](#Route4Me+Routes) : <code>Routes</code>
+        * [.Schedules](#Route4Me+Schedules) : <code>Schedules</code>
         * [.TeamManagement](#Route4Me+TeamManagement) : <code>TeamManagement</code>
         * [.Territories](#Route4Me+Territories) : <code>Territories</code>
         * [.Tracking](#Route4Me+Tracking) : <code>Tracking</code>
@@ -250,6 +252,13 @@ Create new API client
 **Routes** related API calls
 
 **Since**: 0.1.8  
+<a id="Route4Me+Schedules" name="Route4Me+Schedules"></a>
+
+### route4Me.Schedules : <code>Schedules</code>
+
+**Schedules** related API calls
+
+**Since**: 1.0.18  
 <a id="Route4Me+TeamManagement" name="Route4Me+TeamManagement"></a>
 
 ### route4Me.TeamManagement : <code>TeamManagement</code>
