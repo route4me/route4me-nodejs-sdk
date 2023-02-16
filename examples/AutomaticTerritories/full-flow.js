@@ -14,19 +14,11 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 		const expect = chai.expect
 		const apiKey   = "11111111111111111111111111111111"
 		const route4me = new Route4Me(apiKey)
-        
-		const addresses = [
-			{ "id": "1", "lat": 39.86374, "lng": -86.199121 },
-			{ "id": "2", "lat": 39.792024, "lng": -86.221094 },
-			{ "id": "3", "lat": 39.728683, "lng": -86.210107 },
-			{ "id": "4", "lat": 39.787803, "lng": -84.254541 },
-			{ "id": "5", "lat": 39.728683, "lng": -84.254541 },
-			{ "id": "6", "lat": 39.762472, "lng": -84.117212 }
-		];
-		
-		const mode = 0;
-		const params = []
-		
+
+		const addresses = require("./data/addresses_200.json")
+		const mode = 1
+		const params = [2]
+
 		route4me.AutomaticTerritories.createJob(addresses, mode, params, (err, res) => {
 			debug("error  ", err)
 			debug("result ", res)
@@ -46,8 +38,47 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 					if(data.status === "processed") {
 						clearInterval(hInterval)
 						route4me.AutomaticTerritories.getJobResult(jobID, (err, data) => {
-							if(err) console.log(err)
+							if(err) {
+								console.log(err)
+								return
+							}
 							console.log(data)
+
+							const zone_0 = data.clusters[0].addresses_ids
+
+							for(let i = 0; i < addresses.length; ++i) {
+								addresses[i].original_route_id = (zone_0.includes(addresses[i].id) ? "ZONE - 0" : "ZONE - 1")
+								addresses[i].time = 60
+							}
+							
+							addresses.unshift({
+								alias: "DEPOT",
+								lat: 25.7559171435,
+								lng: -80.317204775,
+								is_depot: 1
+							})
+		
+							const params = {
+								parameters: {
+									algorithm_type: 3,
+									share_route: 0,
+									store_route: 0,
+									rt: 1,
+									route_time: 46800,
+									route_name: "Smart Zone Example",
+									optimize: "Time",
+									distance_unit: "mi",
+									device_type: "web",
+									travel_mode: "Driving",
+									parts: 1,
+									route_max_duration: 57600
+								},
+								addresses: addresses
+							}
+		
+							route4me.Optimizations.create(params, false, (err, data) => {
+								 console.log(data)
+							})
 						})
 					}
 				})
