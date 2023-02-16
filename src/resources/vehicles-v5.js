@@ -453,7 +453,7 @@ class VehiclesV5 {
 	 *
 	 * @param {String}	vehicleId					- Vehicle ID.
 	 * @param {Object}	data						- Profile properties.
-	 * @param {String}	data.vehicle_profile_id		-A unique ID of the vehicle profile.
+	 * @param {String}	data.vehicle_profile_id		- A unique ID of the vehicle profile.
 	 * @param {Number}	data.root_member_id			- A unique ID of the root member.
 	 * @param {String}	data.name					- The name of a vehicle profile.
 	 * @param {Number}	data.height					- The height of a vehicle.
