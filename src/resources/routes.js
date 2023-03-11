@@ -756,6 +756,53 @@ class Routes {
 			validationContext: "RouteStatus.inline_response_200",
 		}, callback)
 	}
+
+	/**
+	 * Route reoptimization.
+	 *
+	 * @since 0.1.21
+	 *
+	 * @param {string}                  id    - Route ID
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
+	 */
+	 reoptimization(id, callback) {
+		const qs = {
+			"route_id": id,
+			"reoptimize": true
+		}
+
+		return this.r._makeRequest({
+			method: "PUT",
+			path: "/api.v4/route.php",
+			qs,
+			body: {},
+			validationContext: "Routes.Route",
+		}, callback)
+	}
+
+	/**
+	 * Route reoptimization remaining stop.
+	 *
+	 * @since 0.1.21
+	 *
+	 * @param {string}                  id    - Route ID
+	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
+	 */
+	 reoptimizationRemainigStop(id, callback) {
+		const qs = {
+			"route_id": id,
+			"reoptimize": true,
+			"remaining": true
+		}
+
+		return this.r._makeRequest({
+			method: "PUT",
+			path: "/api.v4/route.php",
+			qs,
+			body: {},
+			validationContext: "Routes.Route",
+		}, callback)
+	}
 }
 
 module.exports = Routes
