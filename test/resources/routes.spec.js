@@ -514,7 +514,7 @@ describe(helper.toSuiteName(__filename), () => {
 			const addressId = 167899269
 			const afterAddressId = 167899270
 
-			it("should call route4me", (done) => {
+			it("should call route4me with afterAddressId", (done) => {
 				resource.pullAddress(id, addressId, afterAddressId, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
@@ -526,6 +526,24 @@ describe(helper.toSuiteName(__filename), () => {
 							"to_route_id": "5C15E83A4BE005BCD1537955D28D51D7",
 							"route_destination_id": 167899269,
 							"after_destination_id": 167899270
+						},
+						"multipart/form-data"
+					)
+					done()
+				})
+			})
+
+			it("should call route4me without afterAddressId", (done) => {
+				resource.pullAddress(id, addressId, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+					helper.expectRequest(req,
+						"POST",
+						route4meClient.baseUrl() + "/actions/route/move_route_destination.php",
+						{},
+						{
+							"to_route_id": "5C15E83A4BE005BCD1537955D28D51D7",
+							"route_destination_id": 167899269
 						},
 						"multipart/form-data"
 					)

@@ -466,25 +466,35 @@ class Routes {
 	 * @see {@link https://route4me.io/docs/#move-a-destination-into-a-route}
 	 * @since 0.1.10
 	 *
-	 * @param {string} id       - Destination route ID
-	 * @param {number} addressId      - An address ID to be moved
-	 * @param {number} afterAddressId - An address ID in a destination route after
+	 * @param {string} id               - Destination route ID
+	 * @param {number} addressId        - An address ID to be moved
+	 * @since 1.0.22
+	 * @param {number} [afterAddressId] - An address ID in a destination route after
 	 * which the moved destination will be inserted
 	 * @param {module:route4me-node~RequestCallback} [callback]
 	 */
 	pullAddress(id, addressId, afterAddressId, callback) {
+		let aaid = afterAddressId || null
+		let cb = callback
+
+		if (undefined === cb && "function" === typeof aaid) {
+			cb = aaid
+			aaid = null
+		}
+
 		const form = {
 			"to_route_id": id,
-			"route_destination_id": addressId,
-			"after_destination_id": afterAddressId,
+			"route_destination_id": addressId
 		}
+
+		if (aaid) form.after_destination_id = aaid
 
 		return this.r._makeRequest({
 			method: "POST",
 			path: "/actions/route/move_route_destination.php",
 			form,
 			validationContext: CustomInternalPostProcessing.pullAddress,
-		}, callback)
+		}, cb)
 	}
 
 	/**

@@ -21,7 +21,7 @@ Routes facility
     * [.duplicate(id, [callback])](#Routes+duplicate)
     * [.merge(ids, [callback])](#Routes+merge)
     * [.share(id, email, [callback])](#Routes+share)
-    * [.pullAddress(id, addressId, afterAddressId, [callback])](#Routes+pullAddress)
+    * [.pullAddress(id, addressId, [afterAddressId], [callback])](#Routes+pullAddress)
     * [.resequence(id, order, [callback])](#Routes+resequence)
     * [.optimize(id, criteria, [callback])](#Routes+optimize)
     * [.routeexamples_optiomization(param, [callback])](#Routes+routeexamples_optiomization)
@@ -240,20 +240,20 @@ Share a route via email.
 
 <a id="Routes+pullAddress" name="Routes+pullAddress"></a>
 
-### routes.pullAddress(id, addressId, afterAddressId, [callback])
+### routes.pullAddress(id, addressId, [afterAddressId], [callback])
 
 Move a Destination Into a Route
 
 _ID of the source route **is not required**_
 
 **See**: [https://route4me.io/docs/#move-a-destination-into-a-route](https://route4me.io/docs/#move-a-destination-into-a-route)  
-**Since**: 0.1.10  
+**Since**: 1.0.22  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | id | <code>string</code> | Destination route ID |
 | addressId | <code>number</code> | An address ID to be moved |
-| afterAddressId | <code>number</code> | An address ID in a destination route after which the moved destination will be inserted |
+| [afterAddressId] | <code>number</code> | An address ID in a destination route after which the moved destination will be inserted |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 
 <a id="Routes+resequence" name="Routes+resequence"></a>
