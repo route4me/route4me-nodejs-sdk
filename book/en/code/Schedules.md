@@ -318,5 +318,6 @@ Create a new Master Route by sending the corresponding body payload.
 | [param.advance_schedule_interval_days] | <code>number</code> | <code>0</code> |  |
 | param.schedule | <code>string</code> |  | Schedule as JSON string e.g. '{"enabled":true,"mode":"daily","daily":{"every":2}, "from":"2019-06-05","timestamp":1558538737}'. |
 | param.timezone | <code>string</code> |  | Timezone as "America/New_York". |
+| [param.sync] | <code>boolean</code> | <code>false</code> | Type of result, synchronous or not |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |  |
 

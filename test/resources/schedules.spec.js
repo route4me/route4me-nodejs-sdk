@@ -445,7 +445,7 @@ describe(helper.toSuiteName(__filename), () => {
 				timezone: "UTC"
 			};
    
-			it("should call route4me", (done) => {
+			it("should call route4me asynchronous", (done) => {
 				resource.addMasterRoute(data, (err, res) => {
 					expect(err).is.null
 					expect(res).to.exist
@@ -463,6 +463,32 @@ describe(helper.toSuiteName(__filename), () => {
 							schedule_blacklist: [],
 							schedule: null,
 							timezone: "UTC"
+						}
+					)
+					done()
+				})
+			})
+
+			it("should call route4me synchronous", (done) => {
+				data.sync = true;
+				resource.addMasterRoute(data, (err, res) => {
+					expect(err).is.null
+					expect(res).to.exist
+
+					helper.expectRequest(req,
+						"POST",
+						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/master-routes",
+						null,
+						{
+							member_id: "1053088",
+							name: "The Bestest schedule",
+							route_id: "66C2AC4A323053FF0A40FEB6918ACF5E",
+							route_name: "The Bestest route",
+							schedule_blacklist: [],
+							schedule: null,
+							sync: true,
+							timezone: "UTC",
+							vehicle_id: "061C7E7DCE3538AD2D0B047954F1F499"
 						}
 					)
 					done()

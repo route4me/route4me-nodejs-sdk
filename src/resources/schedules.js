@@ -395,6 +395,7 @@ class Schedules {
 	 * e.g. '{"enabled":true,"mode":"daily","daily":{"every":2},
 	 * "from":"2019-06-05","timestamp":1558538737}'.
 	 * @param {string}   param.timezone                          - Timezone as "America/New_York".
+	 * @param {boolean}  [param.sync = false]                    - Type of result, synchronous or not
 	 * @param {module:route4me-node~RequestCallback}               [callback]
 	 */
 	addMasterRoute(param, callback) {
