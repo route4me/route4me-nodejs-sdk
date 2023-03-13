@@ -792,5 +792,50 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 		})
+
+		describe("reoptimization", () => {
+			const routeId = "8E20987CCC7CC8943FB279BBD8E5D226"
+
+			it("should call route4me", (done) => {
+				resource.reoptimization(routeId, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/route.php",
+						{
+							"route_id": "8E20987CCC7CC8943FB279BBD8E5D226",
+							"reoptimize": "true"
+						},
+						{}
+					)
+					done()
+				})
+			})
+		})
+
+		describe("reoptimizationRemainigStop", () => {
+			const routeId = "8E20987CCC7CC8943FB279BBD8E5D226"
+
+			it("should call route4me", (done) => {
+				resource.reoptimizationRemainigStop(routeId, (err, res) => {
+					expect(err).not.exist
+					expect(res).exist
+
+					helper.expectRequest(req,
+						"PUT",
+						route4meClient.baseUrl() + "/api.v4/route.php",
+						{
+							"route_id": "8E20987CCC7CC8943FB279BBD8E5D226",
+							"reoptimize": "true",
+							"remaining": "true"
+						},
+						{}
+					)
+					done()
+				})
+			})
+		})
 	})
 })

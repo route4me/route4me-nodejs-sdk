@@ -33,6 +33,8 @@ Routes facility
     * [.updateStatus(routeId, params, [callback])](#Routes+updateStatus)
     * [.setPlannedStatus(routeIds, [callback])](#Routes+setPlannedStatus)
     * [.routeStopStatus(destinationIds, status, [callback])](#Routes+routeStopStatus)
+    * [.reoptimization(id, [callback])](#Routes+reoptimization)
+    * [.reoptimizationRemainigStop(id, [callback])](#Routes+reoptimizationRemainigStop)
 
 <a id="new_Routes_new" name="new_Routes_new"></a>
 
@@ -427,4 +429,30 @@ Insert or update route address status/statuses.
 | destinationIds | <code>Array.&lt;number&gt;</code> | Array of destination IDs to set status. |
 | status | <code>string</code> | Value od status to set. Possible values: 'Skipped', 'Completed', 'Failed' and 'Empty'. |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
+
+<a id="Routes+reoptimization" name="Routes+reoptimization"></a>
+
+### routes.reoptimization(id, [callback])
+
+Route reoptimization.
+
+**Since**: 0.1.21  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>string</code> | Route ID |
+| [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.Route&gt;</code> |  |
+
+<a id="Routes+reoptimizationRemainigStop" name="Routes+reoptimizationRemainigStop"></a>
+
+### routes.reoptimizationRemainigStop(id, [callback])
+
+Route reoptimization remaining stop.
+
+**Since**: 0.1.21  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>string</code> | Route ID |
+| [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Routes.Route&gt;</code> |  |
 
