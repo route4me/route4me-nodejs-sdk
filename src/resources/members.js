@@ -93,12 +93,18 @@ function _validateSessionValidate(data, ctx, res) {
 }
 
 /**
+ * @deprecated since version 1.0.24
+ * @see {@link TeamManagement.html TeamManagement}
+ *
  * Members facility
  *
  * @category Members
  */
 class Members {
 	/**
+	 * @deprecated since version 1.0.24
+	 * @see {@link TeamManagement.html#new_TeamManagement_new TeamManagement}
+	 *
 	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#territories}
@@ -113,6 +119,9 @@ class Members {
 	}
 
 	/**
+	 * @deprecated since version 1.0.24
+	 * @see {@link TeamManagement.html#TeamManagement+create TeamManagement.create}
+	 *
 	 * Create an User
 	 *
 	 * @see {@link https://route4me.io/docs/#create-an-user}
@@ -170,6 +179,9 @@ class Members {
 	}
 
 	/**
+	 * @deprecated since version 1.0.24
+	 * @see {@link TeamManagement.html#TeamManagement+list TeamManagement.list}
+	 *
 	 * Member’s Sub-users
 	 *
 	 * View existing sub-users in a member’s account.
@@ -190,6 +202,9 @@ class Members {
 	}
 
 	/**
+	 * @deprecated since version 1.0.24
+	 * @see {@link TeamManagement.html#TeamManagement+get TeamManagement.get}
+	 *
 	 * Get an User Details
 	 *
 	 * @see {@link https://route4me.io/docs/#get-an-user-details}
@@ -212,6 +227,9 @@ class Members {
 	}
 
 	/**
+	 * @deprecated since version 1.0.24
+	 * @see {@link TeamManagement.html#TeamManagement+update TeamManagement.update}
+	 *
 	 * Update an existing user.
 	 *
 	 * @see {@link https://route4me.io/docs/#update-an-user}
@@ -306,6 +324,9 @@ class Members {
 	}
 
 	/**
+	 * @deprecated since version 1.0.24
+	 * @see {@link TeamManagement.html#TeamManagement+delete TeamManagement.delete}
+	 *
 	 * Remove existing user from a member’s account.
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-an-user}
