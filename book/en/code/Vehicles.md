@@ -1,23 +1,23 @@
 <a id="Vehicles" name="Vehicles"></a>
 
-## Vehicles ℗
+## ~~Vehicles ℗~~
 
-Vehicles facility
+***Deprecated***
 
 **Category**: Vehicles  
 **Access**: private  
-**See**: [https://route4me.io/docs/#vehicles](https://route4me.io/docs/#vehicles)  
+**See**: [VehiclesV5](VehiclesV5.html)
+
+Vehicles facility  
 **Since**: 0.1.4  
 
-* [Vehicles](#Vehicles) ℗
+* ~~[Vehicles](#Vehicles) ℗~~
     * [new Vehicles(requestManager)](#new_Vehicles_new)
-    * [.list([callback])](#Vehicles+list)
+    * ~~[.list([callback])](#Vehicles+list)~~
 
 <a id="new_Vehicles_new" name="new_Vehicles_new"></a>
 
 ### new Vehicles(requestManager)
-
-Constructor
 
 **Returns**: [<code>Vehicles</code>](#Vehicles) - - Vehicles facility  
 
@@ -27,11 +27,17 @@ Constructor
 
 <a id="Vehicles+list" name="Vehicles+list"></a>
 
-### vehicles.list([callback])
+### ~~vehicles.list([callback])~~
+
+***Deprecated***
+
+**See**
+
+- [VehiclesV5.list](VehiclesV5.html#VehiclesV5+list)
 
 Get vehicles that belong to the Route4Me account
+- [https://route4me.io/docs/#get-vehicles](https://route4me.io/docs/#get-vehicles)
 
-**See**: [https://route4me.io/docs/#get-vehicles](https://route4me.io/docs/#get-vehicles)  
 **Todo**
 
 - [ ] Fix error in API docs: there the method utilizes `POST`-http-method to get results
