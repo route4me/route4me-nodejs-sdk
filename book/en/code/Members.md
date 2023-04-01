@@ -1,22 +1,24 @@
 <a id="Members" name="Members"></a>
 
-## Members ℗
+## ~~Members ℗~~
 
-Members facility
+***Deprecated***
 
 **Category**: Members  
 **Access**: private  
-**See**: [https://route4me.io/docs/#territories](https://route4me.io/docs/#territories)  
+**See**: [TeamManagement](TeamManagement.html)
+
+Members facility  
 **Since**: 0.1.8  
 
-* [Members](#Members) ℗
+* ~~[Members](#Members) ℗~~
     * [new Members(requestManager)](#new_Members_new)
-    * [.create(data, [callback])](#Members+create)
-    * [.list([callback])](#Members+list)
-    * [.get(id, [callback])](#Members+get)
-    * [.update(id, data, [callback])](#Members+update)
+    * ~~[.create(data, [callback])](#Members+create)~~
+    * ~~[.list([callback])](#Members+list)~~
+    * ~~[.get(id, [callback])](#Members+get)~~
+    * ~~[.update(id, data, [callback])](#Members+update)~~
     * [.addCustomData(id, data, [callback])](#Members+addCustomData)
-    * [.remove(id, [callback])](#Members+remove)
+    * ~~[.remove(id, [callback])](#Members+remove)~~
     * [.authenticate(email, password, [callback])](#Members+authenticate)
     * [.validateSession(id, sessionId, [callback])](#Members+validateSession)
     * [.registerAccount(data, [callback])](#Members+registerAccount)
@@ -24,8 +26,6 @@ Members facility
 <a id="new_Members_new" name="new_Members_new"></a>
 
 ### new Members(requestManager)
-
-Constructor
 
 **Returns**: [<code>Members</code>](#Members) - - Members facility  
 
@@ -35,11 +35,17 @@ Constructor
 
 <a id="Members+create" name="Members+create"></a>
 
-### members.create(data, [callback])
+### ~~members.create(data, [callback])~~
+
+***Deprecated***
+
+**See**
+
+- [TeamManagement.create](TeamManagement.html#TeamManagement+create)
 
 Create an User
+- [https://route4me.io/docs/#create-an-user](https://route4me.io/docs/#create-an-user)
 
-**See**: [https://route4me.io/docs/#create-an-user](https://route4me.io/docs/#create-an-user)  
 **Since**: 0.1.9  
 **Todo**
 
@@ -89,13 +95,19 @@ Create an User
 ```
 <a id="Members+list" name="Members+list"></a>
 
-### members.list([callback])
+### ~~members.list([callback])~~
+
+***Deprecated***
+
+**See**
+
+- [TeamManagement.list](TeamManagement.html#TeamManagement+list)
 
 Member’s Sub-users
 
 View existing sub-users in a member’s account.
+- [https://route4me.io/docs/#members-sub-users](https://route4me.io/docs/#members-sub-users)
 
-**See**: [https://route4me.io/docs/#members-sub-users](https://route4me.io/docs/#members-sub-users)  
 **Since**: 0.1.9  
 **Todo**
 
@@ -108,11 +120,17 @@ View existing sub-users in a member’s account.
 
 <a id="Members+get" name="Members+get"></a>
 
-### members.get(id, [callback])
+### ~~members.get(id, [callback])~~
+
+***Deprecated***
+
+**See**
+
+- [TeamManagement.get](TeamManagement.html#TeamManagement+get)
 
 Get an User Details
+- [https://route4me.io/docs/#get-an-user-details](https://route4me.io/docs/#get-an-user-details)
 
-**See**: [https://route4me.io/docs/#get-an-user-details](https://route4me.io/docs/#get-an-user-details)  
 **Since**: 0.1.9  
 **Todo**
 
@@ -126,11 +144,17 @@ Get an User Details
 
 <a id="Members+update" name="Members+update"></a>
 
-### members.update(id, data, [callback])
+### ~~members.update(id, data, [callback])~~
+
+***Deprecated***
+
+**See**
+
+- [TeamManagement.update](TeamManagement.html#TeamManagement+update)
 
 Update an existing user.
+- [https://route4me.io/docs/#update-an-user](https://route4me.io/docs/#update-an-user)
 
-**See**: [https://route4me.io/docs/#update-an-user](https://route4me.io/docs/#update-an-user)  
 **Since**: 0.1.9  
 **Todo**
 
@@ -209,11 +233,17 @@ Add Custom Data to a User.
 ```
 <a id="Members+remove" name="Members+remove"></a>
 
-### members.remove(id, [callback])
+### ~~members.remove(id, [callback])~~
+
+***Deprecated***
+
+**See**
+
+- [TeamManagement.delete](TeamManagement.html#TeamManagement+delete)
 
 Remove existing user from a member’s account.
+- [https://route4me.io/docs/#remove-an-user](https://route4me.io/docs/#remove-an-user)
 
-**See**: [https://route4me.io/docs/#remove-an-user](https://route4me.io/docs/#remove-an-user)  
 **Since**: 0.1.9  
 
 | Param | Type | Description |
