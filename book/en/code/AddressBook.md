@@ -1,28 +1,28 @@
 <a id="AddressBook" name="AddressBook"></a>
 
-## AddressBook ℗
+## ~~AddressBook ℗~~
 
-AddressBook facility
+***Deprecated***
 
 **Category**: AddressBook  
 **Access**: private  
-**See**: [https://route4me.io/docs/#address-book](https://route4me.io/docs/#address-book)  
+**See**: [AddressBookV5](AddressBookV5.html)
+
+AddressBook facility  
 **Since**: 0.1.8  
 
-* [AddressBook](#AddressBook) ℗
+* ~~[AddressBook](#AddressBook) ℗~~
     * [new AddressBook(requestManager)](#new_AddressBook_new)
-    * [.create(data, [callback])](#AddressBook+create)
-    * [.getMany(ids, [callback])](#AddressBook+getMany)
-    * [.list(ids, [options], [callback])](#AddressBook+list)
-    * [.search(query, [options], [callback])](#AddressBook+search)
-    * [.update(id, data, [callback])](#AddressBook+update)
-    * [.remove(ids, [callback])](#AddressBook+remove)
+    * ~~[.create(data, [callback])](#AddressBook+create)~~
+    * ~~[.getMany(ids, [callback])](#AddressBook+getMany)~~
+    * ~~[.list(ids, [options], [callback])](#AddressBook+list)~~
+    * ~~[.search(query, [options], [callback])](#AddressBook+search)~~
+    * ~~[.update(id, data, [callback])](#AddressBook+update)~~
+    * ~~[.remove(ids, [callback])](#AddressBook+remove)~~
 
 <a id="new_AddressBook_new" name="new_AddressBook_new"></a>
 
 ### new AddressBook(requestManager)
-
-Constructor
 
 **Returns**: [<code>AddressBook</code>](#AddressBook) - - AddressBook facility  
 
@@ -32,11 +32,17 @@ Constructor
 
 <a id="AddressBook+create" name="AddressBook+create"></a>
 
-### addressBook.create(data, [callback])
+### ~~addressBook.create(data, [callback])~~
+
+***Deprecated***
+
+**See**
+
+- [AddressBookV5.addAddress](AddressBookV5.html#AddressBookV5+addAddress)
 
 Create a new AddressBook.
+- [https://route4me.io/docs/#create-a-location](https://route4me.io/docs/#create-a-location)
 
-**See**: [https://route4me.io/docs/#create-a-location](https://route4me.io/docs/#create-a-location)  
 **Since**: 0.1.8  
 
 | Param | Type | Description |
@@ -46,11 +52,17 @@ Create a new AddressBook.
 
 <a id="AddressBook+getMany" name="AddressBook+getMany"></a>
 
-### addressBook.getMany(ids, [callback])
+### ~~addressBook.getMany(ids, [callback])~~
+
+***Deprecated***
+
+**See**
+
+- [AddressBookV5.getAddresses](AddressBookV5.html#AddressBookV5+getAddresses)
 
 GET locations from an address book by a specified list of locations IDs.
+- [https://route4me.io/docs/#get-locations-by-ids](https://route4me.io/docs/#get-locations-by-ids)
 
-**See**: [https://route4me.io/docs/#get-locations-by-ids](https://route4me.io/docs/#get-locations-by-ids)  
 **Since**: 0.1.8  
 **Todo**
 
@@ -65,11 +77,17 @@ GET locations from an address book by a specified list of locations IDs.
 
 <a id="AddressBook+list" name="AddressBook+list"></a>
 
-### addressBook.list(ids, [options], [callback])
+### ~~addressBook.list(ids, [options], [callback])~~
+
+***Deprecated***
+
+**See**
+
+- [AddressBookV5.getAddressesPaginated](AddressBookV5.html#AddressBookV5+getAddressesPaginated)
 
 GET all locations from a user’s address book.
+- [https://route4me.io/docs/#get-locations](https://route4me.io/docs/#get-locations)
 
-**See**: [https://route4me.io/docs/#get-locations](https://route4me.io/docs/#get-locations)  
 **Since**: 0.1.8  
 **Todo**
 
@@ -88,13 +106,16 @@ GET all locations from a user’s address book.
 
 <a id="AddressBook+search" name="AddressBook+search"></a>
 
-### addressBook.search(query, [options], [callback])
+### ~~addressBook.search(query, [options], [callback])~~
 
-Search an address book location by containing specified text in any
-field/defined fields.
+***Deprecated***
 
 **See**
 
+- [AddressBookV5.getAddresses](AddressBookV5.html#AddressBookV5+getAddresses)
+
+Search an address book location by containing specified text in any
+field/defined fields.
 - [https://route4me.io/docs/#get-a-location](https://route4me.io/docs/#get-a-location)
 - [https://route4me.io/docs/#location-search](https://route4me.io/docs/#location-search)
 
@@ -118,11 +139,17 @@ see https://github.com/route4me/route4me-nodejs-sdk/issues/38)
 
 <a id="AddressBook+update" name="AddressBook+update"></a>
 
-### addressBook.update(id, data, [callback])
+### ~~addressBook.update(id, data, [callback])~~
+
+***Deprecated***
+
+**See**
+
+- [AddressBookV5.updateAddressesByIds](AddressBookV5.html#AddressBookV5+updateAddressesByIds)
 
 UPDATE existing address book location parameters.
+- [https://route4me.io/docs/#update-a-location](https://route4me.io/docs/#update-a-location)
 
-**See**: [https://route4me.io/docs/#update-a-location](https://route4me.io/docs/#update-a-location)  
 **Since**: 0.1.8  
 
 | Param | Type | Description |
@@ -133,11 +160,17 @@ UPDATE existing address book location parameters.
 
 <a id="AddressBook+remove" name="AddressBook+remove"></a>
 
-### addressBook.remove(ids, [callback])
+### ~~addressBook.remove(ids, [callback])~~
+
+***Deprecated***
+
+**See**
+
+- [AddressBookV5.deleteAddressesByIds](AddressBookV5.html#AddressBookV5+deleteAddressesByIds)
 
 REMOVE locations from an address book.
+- [https://route4me.io/docs/#remove-locations](https://route4me.io/docs/#remove-locations)
 
-**See**: [https://route4me.io/docs/#remove-locations](https://route4me.io/docs/#remove-locations)  
 **Since**: 0.1.8  
 **Todo**
 
