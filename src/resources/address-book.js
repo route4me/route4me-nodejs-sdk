@@ -3,12 +3,18 @@
 const utils = require("./../utils")
 
 /**
+ * @deprecated since version 1.0.25
+ * @see {@link AddressBookV5.html AddressBookV5}
+ *
  * AddressBook facility
  *
  * @category AddressBook
  */
 class AddressBook {
 	/**
+	 * @deprecated since version 1.0.25
+	 * @see {@link AddressBookV5.html#new_AddressBookV5_new AddressBookV5}
+	 *
 	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#address-book}
@@ -23,6 +29,9 @@ class AddressBook {
 	}
 
 	/**
+	 * @deprecated since version 1.0.25
+	 * @see {@link AddressBookV5.html#AddressBookV5+addAddress AddressBookV5.addAddress}
+	 *
 	 * Create a new AddressBook.
 	 *
 	 * @see {@link https://route4me.io/docs/#create-a-location}
@@ -42,6 +51,9 @@ class AddressBook {
 	}
 
 	/**
+	 * @deprecated since version 1.0.25
+	 * @see {@link AddressBookV5.html#AddressBookV5+getAddresses AddressBookV5.getAddresses}
+	 *
 	 * GET locations from an address book by a specified list of locations IDs.
 	 *
 	 * @see {@link https://route4me.io/docs/#get-locations-by-ids}
@@ -69,6 +81,10 @@ class AddressBook {
 	}
 
 	/**
+	 * @deprecated since version 1.0.25
+	 * @see {@link AddressBookV5.html#AddressBookV5+getAddressesPaginated
+	 * AddressBookV5.getAddressesPaginated}
+	 *
 	 * GET all locations from a user’s address book.
 	 *
 	 * @see {@link https://route4me.io/docs/#get-locations}
@@ -104,6 +120,9 @@ class AddressBook {
 	}
 
 	/**
+	 * @deprecated since version 1.0.25
+	 * @see {@link AddressBookV5.html#AddressBookV5+getAddresses AddressBookV5.getAddresses}
+	 *
 	 * Search an address book location by containing specified text in any
 	 * field/defined fields.
 	 *
@@ -167,6 +186,9 @@ class AddressBook {
 	}
 
 	/**
+	 * @deprecated since version 1.0.25
+	 * @see {@link AddressBookV5.html#AddressBookV5+updateAddressById AddressBookV5.updateAddressById}
+	 *
 	 * UPDATE existing address book location parameters.
 	 *
 	 * @see {@link https://route4me.io/docs/#update-a-location}
@@ -190,6 +212,10 @@ class AddressBook {
 	}
 
 	/**
+	 * @deprecated since version 1.0.25
+	 * @see {@link AddressBookV5.html#AddressBookV5+deleteAddressesByIds
+	 * AddressBookV5.deleteAddressesByIds}
+	 *
 	 * REMOVE locations from an address book.
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-locations}

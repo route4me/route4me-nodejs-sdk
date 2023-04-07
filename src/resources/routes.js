@@ -775,7 +775,7 @@ class Routes {
 	 * @param {string}                  id    - Route ID
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
 	 */
-	 reoptimization(id, callback) {
+	reoptimization(id, callback) {
 		const qs = {
 			"route_id": id,
 			"reoptimize": true
@@ -798,7 +798,7 @@ class Routes {
 	 * @param {string}                  id    - Route ID
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Routes.Route>} [callback]
 	 */
-	 reoptimizationRemainigStop(id, callback) {
+	reoptimizationRemainigStop(id, callback) {
 		const qs = {
 			"route_id": id,
 			"reoptimize": true,

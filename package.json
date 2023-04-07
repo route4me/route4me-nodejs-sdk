@@ -1,6 +1,6 @@
 {
   "name": "route4me-nodejs-sdk",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
   "main": "src/index.js",
   "browser": "src/route4me.js",
