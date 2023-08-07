@@ -103,7 +103,7 @@ describe(helper.toSuiteName(__filename), () => {
 				page: 1,
 				per_page: 10,
 				show: "all",
-				search_query: "TST15"
+				search_query: "TST 15"
 			};
 
 			it("should call route4me with options", (done) => {
@@ -118,7 +118,7 @@ describe(helper.toSuiteName(__filename), () => {
 							"page": "1",
 							"per_page": "10",
 							"show": "all",
-							"search_query": "TST15"
+							"search_query": "TST%2015"
 						},
 						null
 					)
@@ -731,7 +731,7 @@ describe(helper.toSuiteName(__filename), () => {
 				mergePagesParam: true,
 				page: 1,
 				per_page: 10,
-				search_query: "TST15"
+				search_query: "TST 15"
 			};
 
 			it("should call route4me with options", (done) => {
@@ -746,7 +746,7 @@ describe(helper.toSuiteName(__filename), () => {
 							"mergePagesParam": "true",
 							"page": "1",
 							"per_page": "10",
-							"search_query": "TST15"
+							"search_query": "TST%2015"
 						},
 						null
 					)
