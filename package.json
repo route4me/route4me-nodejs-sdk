@@ -1,6 +1,6 @@
 {
   "name": "route4me-nodejs-sdk",
-  "version": "1.0.25",
+  "version": "1.0.27",
   "description": "Access Route4Me's logistics-as-a-service API using our Node.js SDK",
   "main": "src/index.js",
   "browser": "src/route4me.js",
@@ -57,12 +57,11 @@
   },
   "homepage": "http://route4me.com",
   "dependencies": {
-    "cookiejar": "^2.1.3",
     "debug": "^4.3.2",
     "del": "^6.0.0",
     "platform": "^1.3.6",
     "qs": "^6.10.3",
-    "superagent": "^7.1.1"
+    "superagent": "^8.0.9"
   },
   "devDependencies": {
     "ajv": "^6.12.6",
