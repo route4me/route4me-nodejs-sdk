@@ -86,7 +86,7 @@ class AddressBookV5 {
 	 * @param {Number}	[data.address_pieces]		- The item quantity of the cargo being delivered
 	 * or picked up at the address.
 	 *
-	 * @param {Number}	[data.address_reference_no]	- The reference number for the address.
+	 * @param {String}	[data.address_reference_no]	- The reference number for the address.
 	 * @param {Number}	[data.address_revenue]		- The total revenue for the address
 	 * @param {Number}	[data.address_weight]		- Weight of the cargo being delivered or picked
 	 * up at the address.
@@ -124,7 +124,7 @@ class AddressBookV5 {
 	 * @see {@link https://route4me.io/docs/#create-a-location}
 	 * @since 1.0.11
 	 *
-	 * @param {Object}	data	- Array of addresses look for more information in addAddresses.
+	 * @param {Object}	data	- Array of addresses look for more information in addAddress.
 	 *
 	 * @param {module:route4me-node~RequestCallback<jsonschema:
 	 * AddressBookV5.AddressBookV5>} [callback]
@@ -147,7 +147,7 @@ class AddressBookV5 {
 	 * @param {Object}	[options]					- List-parameters
 	 * @param {String}	[options.fields]			- Comma-delimited list of the address
 	 * fields to be included into the search results.
-	 * e.g., "address_id, address_alias, address_1).
+	 * e.g., "address_id, address_alias, address_1".
 	 *
 	 * @param {String}	[options.display = all]		- Specify which Addresses to show in the
 	 * corresponding query results.
@@ -159,8 +159,8 @@ class AddressBookV5 {
 	 * @param {String}	[options.query]				- Search in the Addresses by the
 	 * corresponding query phrase.
 	 *
-	 * @param {Number}	[options.page = 1]			- Requested page.
-	 * @param {Number}	[options.per_page = 30]		- Number of Addresses per page.
+	 * @param {Number}	[options.limit]				- Limit of the queried records number.
+	 * @param {Number}	[options.offset]			- Offset from the beginning of the queried records.
 	 *
 	 * @param {module:route4me-node~RequestCallback<jsonschema:
 	 * AddressBookV5.AddressBookSearchResult>} callback
@@ -273,7 +273,7 @@ class AddressBookV5 {
 	 * @param {Object}	[options]					- List-parameters
 	 * @param {String}	[options.fields]			- Comma-delimited list of the address
 	 * fields to be included into the search results.
-	 * e.g., "address_id, address_alias, address_1).
+	 * e.g., "address_id, address_alias, address_1".
 	 *
 	 * @param {String}	[options.display = all]		- Specify which Addresses to show in the
 	 * corresponding query results.
@@ -539,7 +539,7 @@ class AddressBookV5 {
 	 *
 	 * @param {Number}	addressId		- The Address ID to update.
 	 * @param {Object}	data			- Parameters of address to update,  look for more
-	 * information in addAddresses
+	 * information in addAddress
 	 *
 	 * @param {module:route4me-node~RequestCallback<jsonschema:
 	 * AddressBookV5.AddressBookSearchResult>} callback
