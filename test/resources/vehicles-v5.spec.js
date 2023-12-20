@@ -118,7 +118,7 @@ describe(helper.toSuiteName(__filename), () => {
 							"page": "1",
 							"per_page": "10",
 							"show": "all",
-							"search_query": "TST 15"
+							"search_query": "TST%2015"
 						},
 						null
 					)
@@ -494,7 +494,7 @@ describe(helper.toSuiteName(__filename), () => {
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/location",
 						{
-							"ids": "004ADB6E1335BA6BCE4FB8A89E6311"
+							"ids%5B0%5D": "004ADB6E1335BA6BCE4FB8A89E6311"
 						},
 						null
 					)
@@ -546,7 +546,7 @@ describe(helper.toSuiteName(__filename), () => {
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/bulk/delete",
 						{
-							"vehicle_ids": "004ADB6E1335BA6BCE4FB8A89E6311"
+							"vehicle_ids%5B0%5D": "004ADB6E1335BA6BCE4FB8A89E6311"
 						},
 						null
 					)
@@ -567,7 +567,7 @@ describe(helper.toSuiteName(__filename), () => {
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/bulk/activate",
 						{
-							"vehicle_ids": "004ADB6E1335BA6BCE4FB8A89E6311"
+							"vehicle_ids%5B0%5D": "004ADB6E1335BA6BCE4FB8A89E6311"
 						},
 						null
 					)
@@ -603,7 +603,7 @@ describe(helper.toSuiteName(__filename), () => {
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/bulk/deactivate",
 						{
-							"vehicle_ids": "004ADB6E1335BA6BCE4FB8A89E6311"
+							"vehicle_ids%5B0%5D": "004ADB6E1335BA6BCE4FB8A89E6311"
 						},
 						null
 					)
@@ -639,7 +639,7 @@ describe(helper.toSuiteName(__filename), () => {
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/bulk/restore",
 						{
-							"vehicle_ids": "004ADB6E1335BA6BCE4FB8A89E6311"
+							"vehicle_ids%5B0%5D": "004ADB6E1335BA6BCE4FB8A89E6311"
 						},
 						null
 					)
@@ -746,7 +746,7 @@ describe(helper.toSuiteName(__filename), () => {
 							"mergePagesParam": "true",
 							"page": "1",
 							"per_page": "10",
-							"search_query": "TST 15"
+							"search_query": "TST%2015"
 						},
 						null
 					)

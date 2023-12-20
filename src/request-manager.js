@@ -1,8 +1,8 @@
 "use strict"
 
 const request = require("superagent")
+const qstr = require("qs")
 const errors = require("./errors")
-const utils = require("./utils")
 
 class ResponseHandler {
 	constructor(PromiseConstructor, logger, validate, validateContext, callback, returns) {
@@ -247,11 +247,7 @@ class RequestManager {
 			.timeout(timeouts)
 			.redirects(1000)	// unlimited number of redirects
 			.accept("application/json")
-			.query(qs)
-
-		if (options.indices) {
-			utils.patchRequest.bind(req)(req)
-		}
+			.query(options.indices ? qstr.stringify(qs, { arrayFormat: "indices" }) : qs)
 
 		if (form) {
 			req.type("multipart/form-data")
