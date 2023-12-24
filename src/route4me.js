@@ -198,20 +198,21 @@ class Route4Me {
 		/**
 		 * **Orders** related API calls
 		 * @type {Orders}
+		 * @since 0.1.11
 		 */
 		this.Orders = new Orders(req)
+		/**
+		 * **PodWorkflow** related API calls
+		 * @type {PodWorkflow}
+		 * @since 1.0.28
+		 */
+		this.PodWorkflow = new PodWorkflow(req)
 		/**
 		 * **Routes** related API calls
 		 * @type {Routes}
 		 * @since 0.1.8
 		 */
 		this.Routes = new Routes(req)
-		/**
-		 * **PodWorkflow** related API calls
-		 * @type {PodWorkflow}
-		 * @since 0.1.8
-		 */
-		this.PodWorkflow = new PodWorkflow(req)
 		/**
 		 * **Schedules** related API calls
 		 * @type {Schedules}

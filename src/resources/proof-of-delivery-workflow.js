@@ -34,7 +34,7 @@ class PodWorkflow {
 	 * @param {Boolean}		data.is_default				- If true, the PodWorkflow is default.
 	 * @param {String}		data.title					- The title of PodWorkflow.
 	 * @param {Object[]}	[done_actions]				- Array of done actions.
-	 * @param {String}		[done_actions.title]			- Title of action.
+	 * @param {String}		[done_actions.title]		- Title of action.
 	 * @param {String}		[done_actions.type]			- Type of action.
 	 * Possible values:	"questionnaire", "signeeName", "singleChoice", "multiplyChoice"
 	 *

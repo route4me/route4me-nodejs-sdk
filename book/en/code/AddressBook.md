@@ -145,7 +145,7 @@ see https://github.com/route4me/route4me-nodejs-sdk/issues/38)
 
 **See**
 
-- [AddressBookV5.updateAddressesByIds](AddressBookV5.html#AddressBookV5+updateAddressesByIds)
+- [AddressBookV5.updateAddressById](AddressBookV5.html#AddressBookV5+updateAddressById)
 
 UPDATE existing address book location parameters.
 - [https://route4me.io/docs/#update-a-location](https://route4me.io/docs/#update-a-location)
