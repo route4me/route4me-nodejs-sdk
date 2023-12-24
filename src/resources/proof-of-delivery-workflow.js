@@ -41,12 +41,12 @@ class PodWorkflow {
 	 * @param {String}		[done_actions.required]		- If true, the action is required.
 	 * @param {Object[]}	[done_actions.options]		- Array of options of the action.
 	 *
-	 * @param {Object[]}	[failed_actions]				- Array of failed actions.
+	 * @param {Object[]}	[failed_actions]			- Array of failed actions.
 	 * @param {String}		[failed_actions.title]		- Title of action.
-	 * @param {String}		[failed_actions.type]			- Type of action.
+	 * @param {String}		[failed_actions.type]		- Type of action.
 	 * Possible values:	"questionnaire", "signeeName", "singleChoice", "multiplyChoice"
 	 *
-	 * @param {String}		[failed_actions.required]		- If true, the action is required.
+	 * @param {String}		[failed_actions.required]	- If true, the action is required.
 	 * @param {Object[]}	[failed_actions.options]	- Array of options of the action.
 	 *
 	 * @param {module:route4me-node~RequestCallback<jsonschema:
