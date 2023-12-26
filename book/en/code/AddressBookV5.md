@@ -96,7 +96,7 @@ Add a new Address Book Contact by sending a body payload with the corresponding 
 | [data.schedule_blacklist] | <code>Array.&lt;String&gt;</code> | Array of the dates, which should be excluded from a trip schedule to a location. Also can be a date string with the 'YYYY-MM-DD' format or null. |
 | [data.address_cube] | <code>Number</code> | The cubic volume of the cargo being delivered or picked up at the address. |
 | [data.address_pieces] | <code>Number</code> | The item quantity of the cargo being delivered or picked up at the address. |
-| [data.address_reference_no] | <code>Number</code> | The reference number for the address. |
+| [data.address_reference_no] | <code>String</code> | The reference number for the address. |
 | [data.address_revenue] | <code>Number</code> | The total revenue for the address |
 | [data.address_weight] | <code>Number</code> | Weight of the cargo being delivered or picked up at the address. |
 | [data.address_priority] | <code>Number</code> | Priority of address 0 is the highest priority, n has higher priority than n + 1 |
@@ -123,7 +123,7 @@ the corresponding Address parameters.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| data | <code>Object</code> | Array of addresses look for more information in addAddresses. |
+| data | <code>Object</code> | Array of addresses look for more information in addAddress. |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBookV5.AddressBookV5&gt;</code> |  |
 
 <a id="AddressBookV5+getAddresses" name="AddressBookV5+getAddresses"></a>
@@ -138,11 +138,11 @@ Get all Addresses filtered by specifying the corresponding query parameters.
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>Object</code> |  | List-parameters |
-| [options.fields] | <code>String</code> |  | Comma-delimited list of the address fields to be included into the search results. e.g., "address_id, address_alias, address_1). |
+| [options.fields] | <code>String</code> |  | Comma-delimited list of the address fields to be included into the search results. e.g., "address_id, address_alias, address_1". |
 | [options.display] | <code>String</code> | <code>all</code> | Specify which Addresses to show in the corresponding query results. Possible values: 'all' - all records; 'routed' - only routed records; 'unrouted' - only unrouted records. |
 | [options.query] | <code>String</code> |  | Search in the Addresses by the corresponding query phrase. |
-| [options.page] | <code>Number</code> | <code>1</code> | Requested page. |
-| [options.per_page] | <code>Number</code> | <code>30</code> | Number of Addresses per page. |
+| [options.limit] | <code>Number</code> |  | Limit of the queried records number. |
+| [options.offset] | <code>Number</code> |  | Offset from the beginning of the queried records. |
 | callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBookV5.AddressBookSearchResult&gt;</code> |  |  |
 
 <a id="AddressBookV5+getAddressesByBodyPayload" name="AddressBookV5+getAddressesByBodyPayload"></a>
@@ -193,7 +193,7 @@ Get a paginated list of all Addresses.
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>Object</code> |  | List-parameters |
-| [options.fields] | <code>String</code> |  | Comma-delimited list of the address fields to be included into the search results. e.g., "address_id, address_alias, address_1). |
+| [options.fields] | <code>String</code> |  | Comma-delimited list of the address fields to be included into the search results. e.g., "address_id, address_alias, address_1". |
 | [options.display] | <code>String</code> | <code>all</code> | Specify which Addresses to show in the corresponding query results. Possible values: 'all' - all records; 'routed' - only routed records; 'unrouted' - only unrouted records. |
 | [options.query] | <code>String</code> |  | Search in the Addresses by the corresponding query phrase. |
 | [options.page] | <code>Number</code> | <code>1</code> | Requested page. |
@@ -328,7 +328,7 @@ and by sending a body payload with the corresponding Address parameters.
 | Param | Type | Description |
 | --- | --- | --- |
 | addressId | <code>Number</code> | The Address ID to update. |
-| data | <code>Object</code> | Parameters of address to update,  look for more information in addAddresses |
+| data | <code>Object</code> | Parameters of address to update,  look for more information in addAddress |
 | callback | <code>module:route4me-node~RequestCallback.&lt;jsonschema:AddressBookV5.AddressBookSearchResult&gt;</code> |  |
 
 <a id="AddressBookV5+updateAddressesByIds" name="AddressBookV5+updateAddressesByIds"></a>

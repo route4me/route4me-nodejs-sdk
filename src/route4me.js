@@ -15,6 +15,7 @@ const Members              = require("./resources/members")
 const Notes                = require("./resources/notes")
 const Optimizations        = require("./resources/optimizations")
 const Orders               = require("./resources/orders")
+const PodWorkflow          = require("./resources/proof-of-delivery-workflow")
 const Routes               = require("./resources/routes")
 const Schedules            = require("./resources/schedules")
 const TeamManagement       = require("./resources/team-management")
@@ -51,6 +52,7 @@ const RequestManager  = require("./request-manager")
  * * [Optimizations       ]{@link Optimizations}
  * * [Orders              ]{@link Orders}
  * * [OrderCustomFields   ]{@link OrderCustomFields}
+ * * [PodWorkflow         ]{@link PodWorkflow}
  * * [Routes              ]{@link Routes}
  * * [Schedules           ]{@link Schedules}
  * * [TeamManagement      ]{@link TeamManagement}
@@ -196,8 +198,15 @@ class Route4Me {
 		/**
 		 * **Orders** related API calls
 		 * @type {Orders}
+		 * @since 0.1.11
 		 */
 		this.Orders = new Orders(req)
+		/**
+		 * **PodWorkflow** related API calls
+		 * @type {PodWorkflow}
+		 * @since 1.0.28
+		 */
+		this.PodWorkflow = new PodWorkflow(req)
 		/**
 		 * **Routes** related API calls
 		 * @type {Routes}
