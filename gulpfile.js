@@ -40,6 +40,12 @@ const babelNodeConfig      = require("./build-config/babel.node.js")
 const fix = !!argv.fix
 const grep = argv.grep
 
+{
+	const { emitWarning } = process;
+	process.emitWarning = (warning, type, code, ...extraArgs) => 
+		code !== 'DEP0097' && emitWarning(warning, type, code, ...extraArgs);
+}
+
 /*
  ======================================
  MONKEY PATCH
