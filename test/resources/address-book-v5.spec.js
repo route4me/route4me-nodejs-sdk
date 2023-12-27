@@ -56,7 +56,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.addAddress(data, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses",
 						{},
@@ -96,7 +96,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.addMultipleAddresses(data, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/batch-create",
 						{},
@@ -116,7 +116,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddresses(options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/index/all",
 						{ query: "Zeeweg" },
@@ -130,7 +130,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddresses((err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/index/all",
 						null,
@@ -155,7 +155,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressesByBodyPayload(options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/index/all",
 						null,
@@ -169,7 +169,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressesByBodyPayload((err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/index/all",
 						null,
@@ -191,7 +191,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressesPaginated(options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/index/pagination",
 						{
@@ -209,7 +209,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressesPaginated((err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/index/pagination",
 						null,
@@ -239,7 +239,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressesPaginatedByBodyPayload(options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/index/pagination",
 						null,
@@ -265,7 +265,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressesPaginatedByBodyPayload((err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/index/pagination",
 						null,
@@ -285,7 +285,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressClusters(options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/index/clustering",
 						{ "query": "Zeeweg" },
@@ -299,7 +299,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressClusters((err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/index/clustering",
 						null,
@@ -327,7 +327,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressClustersByBodyPayload(options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/index/clustering",
 						null,
@@ -351,7 +351,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressClustersByBodyPayload((err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/index/clustering",
 						null,
@@ -369,7 +369,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressById(addressId, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/show",
 						{ "address_id": "51101441" },
@@ -387,7 +387,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressesByIds(addressIds, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/show",
 						null,
@@ -408,7 +408,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.updateAddressById(addressId, data, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"PUT",
 						route4meClient.baseUrl5() + `/api/v5.0/address-book/addresses/${addressId}`,
 						{},
@@ -430,7 +430,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.updateAddressesByIds(data, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"PUT",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/batch-update",
 						{},
@@ -463,7 +463,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.updateAddressesByAreas(filter, data, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"PUT",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/update-by-areas",
 						{},
@@ -482,7 +482,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"DELETE",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/delete",
 						{},
@@ -509,7 +509,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"DELETE",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/delete-by-areas",
 						{},
@@ -526,7 +526,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressCustomFields((err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/custom-fields",
 						null,
@@ -542,7 +542,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressesDepots((err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/depots",
 						null,
@@ -561,7 +561,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.exportAddressesByIds(addressIds, filename, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/export",
 						null,
@@ -589,7 +589,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.exportAddressesByAreas(filter, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/export-by-areas",
 						null,
@@ -608,7 +608,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.exportAddressesByAreaIds(territoryIds, filename, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/export-by-area-ids",
 						null,
@@ -629,7 +629,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressesAsynchronousJobStatus(jobId, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/job-tracker/status/85352155",
 						null,
@@ -647,7 +647,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getAddressesAsynchronousJobResult(jobId, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/address-book/addresses/job-tracker/result/85352155",
 						null,

@@ -45,7 +45,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.addPodWorkflow(data, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/workflows",
 						{},
@@ -65,7 +65,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getPodWorkflows(options, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/workflows",
 						{ search_query: "workflow_super_ID" },
@@ -79,7 +79,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getPodWorkflows((err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/workflows",
 						null,
@@ -97,7 +97,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getByGUID(guid, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + `/api/v5.0/workflows/${guid}`,
 						null,
@@ -126,7 +126,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.updateByGUID(guid, data, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"PUT",
 						route4meClient.baseUrl5() + `/api/v5.0/workflows/${guid}`,
 						{},
@@ -145,7 +145,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).is.not.null
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"DELETE",
 						route4meClient.baseUrl5() + `/api/v5.0/workflows/${guid}`,
 						{},

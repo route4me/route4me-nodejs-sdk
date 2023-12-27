@@ -42,7 +42,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles",
 						null,
@@ -69,7 +69,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles",
 						{
@@ -87,7 +87,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles",
 						{},
@@ -111,7 +111,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/paginate",
 						{
@@ -131,7 +131,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/paginate",
 						{},
@@ -150,7 +150,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/004ADB6E1335BA6BCE4FB8A89E6311",
 						{},
@@ -169,7 +169,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"DELETE",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/004ADB6E1335BA6BCE4FB8A89E6311",
 						{},
@@ -192,7 +192,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"PATCH",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/004ADB6E1335BA6BCE4FB8A89E6311",
 						{},
@@ -218,7 +218,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/004ADB6E1335BA6BCE4FB8A89E6311/track",
 						{
@@ -236,7 +236,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/004ADB6E1335BA6BCE4FB8A89E6311/track",
 						{},
@@ -260,7 +260,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/assign",
 						null,
@@ -288,7 +288,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicle-profiles",
 						{
@@ -307,7 +307,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicle-profiles",
 						{},
@@ -329,7 +329,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicle-profiles",
 						null,
@@ -351,7 +351,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicle-profiles/004ADB6E1335BA6BCE4FB8A89E6311",
 						{},
@@ -370,7 +370,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"DELETE",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicle-profiles/004ADB6E1335BA6BCE4FB8A89E6311",
 						{},
@@ -393,7 +393,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"PATCH",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicle-profiles/004ADB6E1335BA6BCE4FB8A89E6311",
 						{},
@@ -419,7 +419,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/search",
 						{},
@@ -446,7 +446,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/execute",
 						{},
@@ -469,7 +469,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/license",
 						{
@@ -490,7 +490,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/location",
 						{
@@ -516,7 +516,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/bulk/update",
 						{},
@@ -542,7 +542,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/bulk/delete",
 						{
@@ -563,7 +563,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/bulk/activate",
 						{
@@ -580,7 +580,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/bulk/activate",
 						{},
@@ -599,7 +599,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/bulk/deactivate",
 						{
@@ -616,7 +616,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/bulk/deactivate",
 						{},
@@ -635,7 +635,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/bulk/restore",
 						{
@@ -652,7 +652,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/bulk/restore",
 						{},
@@ -674,7 +674,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/sync/pending",
 						{},
@@ -696,7 +696,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/job-tracker/status/004ADB6E1335BA6BCE4FB8A89E6311",
 						{},
@@ -715,7 +715,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicles/job-tracker/result/004ADB6E1335BA6BCE4FB8A89E6311",
 						{},
@@ -739,7 +739,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicle-capacity-profiles",
 						{
@@ -759,7 +759,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicle-capacity-profiles",
 						{},
@@ -781,7 +781,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicle-capacity-profiles",
 						{},
@@ -803,7 +803,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicle-capacity-profiles/1NPAX6EX50743",
 						{},
@@ -822,7 +822,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"DELETE",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicle-capacity-profiles/1NPAX6EX50743",
 						{},
@@ -847,7 +847,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"PATCH",
 						route4meClient.baseUrl5() + "/api/v5.0/vehicle-capacity-profiles/1NPAX6EX50743",
 						{},

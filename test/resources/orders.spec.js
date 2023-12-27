@@ -459,7 +459,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/orders/archive",
 						{}
@@ -490,7 +490,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).not.exist
 					expect(res).exist
 
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/orders/history",
 						{

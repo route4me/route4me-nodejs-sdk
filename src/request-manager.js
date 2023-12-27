@@ -207,7 +207,12 @@ class RequestManager {
 			apiUrl = (options["v5"] ? `${this._baseUrl5}${options.path}` : `${this._baseUrl}${options.path}`)
 		}
 
-		qs["api_key"] = this._apiKey
+		const authorization = { type: "" }
+		if (options["v5"]) {
+			authorization.type = "bearer"
+		} else {
+			qs["api_key"] = this._apiKey
+		}
 
 		if (undefined === options.validationContext) {
 			// this is just a protective wall
@@ -244,6 +249,7 @@ class RequestManager {
 
 		const req = request[method](apiUrl)
 			.set("Route4Me-User-Agent", this._userAgent)
+			.auth(this._apiKey, "", authorization)
 			.timeout(timeouts)
 			.redirects(1000)	// unlimited number of redirects
 			.accept("application/json")

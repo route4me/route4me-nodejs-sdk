@@ -35,7 +35,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.get(routeId, routeDestinationId, limit, cursor, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET", "https://wh.route4me.com/modules/api/v5.0/address-barcodes",
 						{
 							"route_id": "C50594BD37618FA8B28EE6A86FEFD9D1",
@@ -54,7 +54,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.get(routeId, routeDestinationId, limit, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET", "https://wh.route4me.com/modules/api/v5.0/address-barcodes",
 						{
 							"route_id": "C50594BD37618FA8B28EE6A86FEFD9D1",
@@ -95,7 +95,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.save(data, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST", "https://wh.route4me.com/modules/api/v5.0/address-barcodes", {}, 
 						data
 					)

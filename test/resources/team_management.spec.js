@@ -44,7 +44,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.create(user, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/team/users",
 						null,
@@ -68,7 +68,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.list((err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/team/users",
 						null,
@@ -87,7 +87,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.get(member_id, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/team/users/2355524",
 						null,
@@ -106,7 +106,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.delete(member_id, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"DELETE",
 						route4meClient.baseUrl5() + "/api/v5.0/team/users/2355524",
 						null,
@@ -129,7 +129,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.update(member_id, user, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"PATCH",
 						route4meClient.baseUrl5() + "/api/v5.0/team/users/2355524",
 						null,
@@ -161,7 +161,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.bulkInsert(users, options, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/team/bulk-insert",
 						{
@@ -187,7 +187,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.bulkInsert(users, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest(req,
+					helper.expectRequest5(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/team/bulk-insert",
 						null,
