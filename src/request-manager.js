@@ -207,8 +207,9 @@ class RequestManager {
 			apiUrl = (options["v5"] ? `${this._baseUrl5}${options.path}` : `${this._baseUrl}${options.path}`)
 		}
 
+		const urlObject = new URL(apiUrl)
 		const authorization = { type: "" }
-		if (options["v5"]) {
+		if (urlObject && "wh" === urlObject.hostname.substring(0, 2).toLocaleLowerCase()) {
 			authorization.type = "bearer"
 		} else {
 			qs["api_key"] = this._apiKey
