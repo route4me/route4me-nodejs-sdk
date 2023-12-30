@@ -44,7 +44,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/schedules",
 						null,
@@ -70,7 +70,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/schedules/1515E9A65DD2DEF79CAD7A7E68D91515",
 						{},
@@ -90,7 +90,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"PUT",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/schedules/1515E9A65DD2DEF79CAD7A7E68D91515",
 						{},
@@ -111,7 +111,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"DELETE",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/schedules/1515E9A65DD2DEF79CAD7A7E68D91515",
 						{
@@ -128,7 +128,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"DELETE",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/schedules/1515E9A65DD2DEF79CAD7A7E68D91515",
 						{
@@ -153,7 +153,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/schedules/pagination",
 						{
@@ -172,7 +172,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/schedules",
 						{},
@@ -194,7 +194,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/route-schedules",
 						null,
@@ -220,7 +220,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/route-schedules/pagination",
 						{
@@ -239,7 +239,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/route-schedules",
 						{},
@@ -258,7 +258,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 	
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/route-schedules/66C2AC4A323053FF0A40FEB6918ACF5E",
 						{},
@@ -282,7 +282,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"PUT",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/route-schedules/66C2AC4A323053FF0A40FEB6918ACF5E",
 						{},
@@ -305,7 +305,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"DELETE",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/route-schedules/66C2AC4A323053FF0A40FEB6918ACF5E",
 						{},
@@ -324,7 +324,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"DELETE",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/route-schedules/66C2AC4A323053FF0A40FEB6918ACF5E/items",
 						{},
@@ -348,7 +348,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"PUT",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/route-schedules/replace/66C2AC4A323053FF0A40FEB6918ACF5E",
 						{},
@@ -373,7 +373,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 	
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/route-schedules/66C2AC4A323053FF0A40FEB6918ACF5E/preview",
 						{
@@ -395,7 +395,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 	
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/scheduled-routes/is-copy/66C2AC4A323053FF0A40FEB6918ACF5E",
 						{},
@@ -418,7 +418,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/scheduled-routes/get-copies",
 						null,
@@ -450,7 +450,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/master-routes",
 						null,
@@ -475,7 +475,7 @@ describe(helper.toSuiteName(__filename), () => {
 					expect(err).is.null
 					expect(res).to.exist
 
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/recurring-routes/master-routes",
 						null,

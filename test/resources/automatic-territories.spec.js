@@ -41,7 +41,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.createJob(addresses, mode, params, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/automatic-territories",
 						{},
@@ -62,7 +62,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.createJob(addresses, mode, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/automatic-territories",
 						{},
@@ -83,7 +83,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.createJob(addresses, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/automatic-territories",
 						{},
@@ -108,7 +108,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getJobStatus(jobId, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/automatic-territories/job-tracker/status/85352155",
 						null,
@@ -126,7 +126,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getJobResult(jobId, (err, res) => {
 					expect(err).is.null
 					expect(res).is.not.null
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/automatic-territories/job-tracker/result/85352155",
 						null,

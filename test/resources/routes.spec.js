@@ -645,7 +645,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.routeBreaks(options, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/route-breaks",
 						{},
@@ -671,7 +671,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getStatus(route_id, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/route-status/252339DACA8C2547DA1146EAE2080028",
 						null,
@@ -689,7 +689,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.rollbackStatus(route_id, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/route-status/252339DACA8C2547DA1146EAE2080028/rollback",
 						null,
@@ -712,7 +712,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getHistoryStatus(route_id, options, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/route-status/252339DACA8C2547DA1146EAE2080028/history", {
 							"order_by": "asc",
@@ -731,7 +731,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.getHistoryStatus(route_id, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"GET",
 						route4meClient.baseUrl5() + "/api/v5.0/route-status/252339DACA8C2547DA1146EAE2080028/history", 
 						null,
@@ -755,7 +755,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.updateStatus(route_id, params, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/route-status/252339DACA8C2547DA1146EAE2080028",
 						{},
@@ -778,7 +778,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.setPlannedStatus(route_id, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/route-status/planned",
 						{},
@@ -797,7 +797,7 @@ describe(helper.toSuiteName(__filename), () => {
 				resource.routeStopStatus(destination_ids, status, (err, res) => {
 					expect(err).not.exist
 					expect(res).exist
-					helper.expectRequest5(req,
+					helper.expectRequest(req,
 						"POST",
 						route4meClient.baseUrl5() + "/api/v5.0/route-stop-status",
 						{},
