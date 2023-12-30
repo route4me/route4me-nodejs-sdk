@@ -6,11 +6,14 @@ const _       = require("lodash")
 const runIntegrationTests = "1" === process.env["TEST_INTEGRATION"]
 //const describeIntegration = runIntegrationTests ? describe : describe.skip
 const describeIntegration = describe
-function expectRequest(req, method, url, query, body, contentType /* , form */) {
+function expectRequest(req, method, url, query, body, contentType) {
 	const ct = contentType || "application/json"
 
 	expect(req).has.property("url")
 		.and.is.equal(url)
+
+	const urlObject = new URL(req.url)
+	const api_v4 = ("wh" !== urlObject.hostname.substring(0, 2).toLocaleLowerCase())
 
 	expect(req).has.property("method")
 		.and.is.equal(method)
@@ -18,11 +21,21 @@ function expectRequest(req, method, url, query, body, contentType /* , form */) 
 	expect(req).has.property("headers")
 		.that.has.property("content-type", ct)
 
+	// With API v5 the API-KEY is sent as header entry rather than as URL parameter.
+	if (!api_v4) {
+		expect(req.headers).has.property("authorization")
+	}
+
 	// QUERY assertions
-	expect(req).has.property("query")
-		.with.property("api_key")
-		.that.is.exist
-		.that.not.oneOf(["null", "undefined", ""])
+	if (api_v4) {
+		expect(req).has.property("query")
+			.with.property("api_key")
+			.that.is.exist
+			.that.not.oneOf(["null", "undefined", ""])
+	} else {
+		expect(req).has.property("query")
+			.that.not.oneOf(["null", "undefined", ""])
+	}
 
 	const qs = _({})
 		.merge(req.query)
@@ -43,13 +56,6 @@ function expectRequest(req, method, url, query, body, contentType /* , form */) 
 		expect(req).has.property("body")
 			.and.is.null
 	}
-
-	// if (form) {
-	// 	expect(req).has.property("form")
-	// 		.that.is.deep.equal(form)
-	// } else {
-	// 	expect(req).has.not.property("form")
-	// }
 }
 
 function toSuiteName(filename) {
