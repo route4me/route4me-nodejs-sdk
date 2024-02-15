@@ -15,9 +15,6 @@ function expectRequest(req, method, url, query, body, contentType /* , form */) 
 	expect(req).has.property("method")
 		.and.is.equal(method)
 
-	expect(req).has.property("headers")
-		.that.has.property("content-type", ct)
-
 	// QUERY assertions
 	expect(req).has.property("query")
 		.with.property("api_key")
@@ -37,11 +34,14 @@ function expectRequest(req, method, url, query, body, contentType /* , form */) 
 
 	// BODY assertions
 	if (body) {
+		expect(req).has.property("headers")
+		.that.has.property("content-type", ct)
+
 		expect(req).has.property("body")
 			.that.is.deep.equal(body)
 	} else {
 		expect(req).has.property("body")
-			.and.is.null
+			.and.is.deep.equal({})
 	}
 
 	// if (form) {

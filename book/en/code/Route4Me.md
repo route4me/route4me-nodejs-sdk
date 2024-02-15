@@ -96,6 +96,7 @@ Main members of the instanse of `Route4Me` class:
 * [Notes               ](Notes)
 * [Optimizations       ](Optimizations)
 * [Orders              ](Orders)
+* [OrdersV5            ](OrdersV5)
 * [OrderCustomFields   ](OrderCustomFields)
 * [PodWorkflow         ](PodWorkflow)
 * [Routes              ](Routes)
@@ -140,6 +141,7 @@ For most use cases it is necessary:
         * [.Notes](#Route4Me+Notes) : <code>Notes</code>
         * [.Optimizations](#Route4Me+Optimizations) : <code>Optimizations</code>
         * [.Orders](#Route4Me+Orders) : <code>Orders</code>
+        * [.OrdersV5](#Route4Me+OrdersV5) : <code>OrdersV5</code>
         * [.PodWorkflow](#Route4Me+PodWorkflow) : <code>PodWorkflow</code>
         * [.Routes](#Route4Me+Routes) : <code>Routes</code>
         * [.Schedules](#Route4Me+Schedules) : <code>Schedules</code>
@@ -248,6 +250,13 @@ Create new API client
 **Orders** related API calls
 
 **Since**: 0.1.11  
+<a id="Route4Me+OrdersV5" name="Route4Me+OrdersV5"></a>
+
+### route4Me.OrdersV5 : <code>OrdersV5</code>
+
+**OrdersV5** related API calls
+
+**Since**: 1.0.30  
 <a id="Route4Me+PodWorkflow" name="Route4Me+PodWorkflow"></a>
 
 ### route4Me.PodWorkflow : <code>PodWorkflow</code>
