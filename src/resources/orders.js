@@ -114,40 +114,38 @@ class Orders {
 	}
 
 	/**
-	 * Get an Order Details
+	 * Get an Order Details by ID or by UUID
 	 *
 	 * @see {@link https://route4me.io/docs/#get-an-order-details}
-	 * @since 0.1.11
+	 * @since 1.0.30
 	 *
-	 * @param {number} id - Order ID
+	 * @param {number|string} id - Order ID as number or order UUID as HEX-string
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Order>} [callback]
 	 */
 	get(id, callback) {
-		const pureId = Number(id)
-
 		return this.r._makeRequest({
 			method: "GET",
 			path: "/api.v4/order.php",
 			qs: {
-				"order_id": pureId,
+				"order_id": id,
 			},
 			validationContext: "Orders.Order",
 		}, callback)
 	}
 
 	/**
-	 * Get all the orders created under the specific Route4Me account
+	 * Get all the orders created under the specific Route4Me account by IDs or by UUIDs
 	 *
 	 * @see {@link https://route4me.io/docs/#get-orders-with-details}
-	 * @since 0.1.11
+	 * @since 1.0.30
 	 *
-	 * @param {number|string|Array<number>|Array<string>} [ids] - Order IDs in one
+	 * @param {number|string|Array<number>|Array<string>} [ids] - Order IDs or order UUIDs in one
 	 * of the following form:
-	 * * CSV-string
-	 * * one ID as string
+	 * * one UUID as HEX-string
+	 * * UUIDs as CSV-HEX-string
+	 * * UUIDs as array of HEX-strings
 	 * * one ID as number
-	 * * array of strings
-	 * * array of numbers
+	 * * IDs as array of numbers
 	 *
 	 * If you want to load all Orders:
 	 * * **Don't pass** this parameter
@@ -168,13 +166,8 @@ class Orders {
 
 		const qs = {}
 
-		if (pureIds || 0 === pureIds) {
-			if (pureIds instanceof Array) {
-				qs["order_id"] = pureIds.toString()
-			} else {
-				pureIds = utils.toIntArray(pureIds)
-				qs["order_id"] = pureIds
-			}
+		if (pureIds) {
+			qs["order_id"] = pureIds.toString()
 		}
 
 		return this.r._makeRequest({
@@ -186,29 +179,27 @@ class Orders {
 	}
 
 	/**
-	 * Remove an Order
+	 * Remove Orders by ID or by UUID
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-an-order}
-	 * @since 0.1.11
+	 * @since 1.0.30
 	 *
-	 * @param {number|string|Array<number>|Array<string>}  ids - Order ID/IDs to remove in one
+	 * @param {number|string|Array<number>|Array<string>}  ids - Order IDs or order UUIDs in one
 	 * of the following form:
-	 * * CSV-string
-	 * * one ID as string
+	 * * one UUID as HEX-string
+	 * * UUIDs as CSV-HEX-string
+	 * * UUIDs as array of HEX-strings
 	 * * one ID as number
-	 * * array of strings
-	 * * array of numbers
+	 * * IDs as array of numbers
 	 *
 	 * @param {module:route4me-node~RequestCallback} [callback]
 	 */
 	remove(ids, callback) {
-		const pureIds = utils.toIntArray(ids)
-
 		const qs = {
 			"redirect": 0,
 		}
 		const body = {
-			"order_ids": pureIds
+			"order_ids": utils.toStringArray(ids)
 		}
 
 		return this.r._makeRequest({
@@ -221,12 +212,12 @@ class Orders {
 	}
 
 	/**
-	 * Update an Order
+	 * Update an Order by ID or by UUID
 	 *
 	 * @see {@link https://route4me.io/docs/#update-an-order}
-	 * @since 0.1.11
+	 * @since 1.0.30
 	 *
-	 * @param {number}                  id   - Order ID
+	 * @param {number|string}           id   - Order ID as number or order UUID as HEX-string
 	 * @param {jsonschema:Orders.Order} data - Order data
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Order>} [callback]
 	 */
@@ -235,7 +226,7 @@ class Orders {
 			"redirect": 0,
 		}
 		const body = utils.clone(data)
-		body["order_id"] = Number(id)
+		body["order_id"] = id.toString()
 
 		return this.r._makeRequest({
 			method: "PUT",
@@ -257,7 +248,7 @@ class Orders {
 	 * @todo TODO: Handle the diffrerent format of the output (when fields are set,
 	 * see https://github.com/route4me/route4me-nodejs-sdk/issues/38)
 	 *
-	 * @param {string|Object} criteria            - Searched text or searching criteria
+	 * @param {string|Object} criteria                  - Searched text or searching criteria
 	 * @param {Date}         [criteria.byAddDate]       - Date order was inserted
 	 * @param {Date}         [criteria.byScheduledDate] - Date order was scheduled for
 	 * @param {string}       [criteria.query]           - The text searched for
