@@ -206,7 +206,7 @@ class Route4Me {
 		/**
 		 * **OrdersV5** related API calls
 		 * @type {OrdersV5}
-		 * @since 1.0.30
+		 * @since 1.1.0
 		 */
 		this.OrdersV5 = new OrdersV5(req)
 		/**

@@ -7,7 +7,7 @@ Orders facility
 **Category**: OrdersV5  
 **Access**: private  
 **See**: [https://route4me.io/docs/#orders](https://route4me.io/docs/#orders)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 * [OrdersV5](#OrdersV5) ℗
     * [new OrdersV5(requestManager)](#new_OrdersV5_new)
@@ -44,7 +44,7 @@ Constructor
 Create single order
 
 **See**: [https://route4me.io/docs/#create-an-order](https://route4me.io/docs/#create-an-order)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -129,7 +129,7 @@ Create single order
 Show single order by its id
 
 **See**: [https://route4me.io/docs/#get-an-order-details](https://route4me.io/docs/#get-an-order-details)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -143,7 +143,7 @@ Show single order by its id
 Update single order by its id
 
 **See**: [https://route4me.io/docs/#update-an-order](https://route4me.io/docs/#update-an-order)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -168,7 +168,7 @@ const data = {
 Delete (soft) single order by its id
 
 **See**: [https://route4me.io/docs/#remove-an-order](https://route4me.io/docs/#remove-an-order)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -182,7 +182,7 @@ Delete (soft) single order by its id
 Search orders in ElasticSearch storage or in Spanner database
 
 **See**: [https://route4me.io/docs/#search-orders](https://route4me.io/docs/#search-orders)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -263,7 +263,7 @@ Search orders in ElasticSearch storage or in Spanner database
 Update the batch of orders (asynchronous, by filters)
 
 **See**: [https://route4me.io/docs/#update-an-order](https://route4me.io/docs/#update-an-order)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -280,7 +280,7 @@ Update the batch of orders (asynchronous, by filters)
 Delete the batch of orders
 
 **See**: [https://route4me.io/docs/#remove-an-order](https://route4me.io/docs/#remove-an-order)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -294,7 +294,7 @@ Delete the batch of orders
 Update the batch of orders by ids
 
 **See**: [https://route4me.io/docs/#update-an-order](https://route4me.io/docs/#update-an-order)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -309,7 +309,7 @@ Update the batch of orders by ids
 Create the batch of orders
 
 **See**: [https://route4me.io/docs/#update-an-order](https://route4me.io/docs/#update-an-order)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -323,7 +323,7 @@ Create the batch of orders
 Get a list of Order Custom Fields
 
 **See**: [https://route4me.io/docs/#get-an-order-details](https://route4me.io/docs/#get-an-order-details)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type |
 | --- | --- |
@@ -336,7 +336,7 @@ Get a list of Order Custom Fields
 Create one Order Custom Field
 
 **See**: [https://route4me.io/docs/#create-an-order-custom-fields](https://route4me.io/docs/#create-an-order-custom-fields)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -375,7 +375,7 @@ Create one Order Custom Field
 Update one Order Custom Fields
 
 **See**: [https://route4me.io/docs/#update-an-order-custom-fields](https://route4me.io/docs/#update-an-order-custom-fields)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -393,7 +393,7 @@ Update one Order Custom Fields
 Remove an Order Custom Fields
 
 **See**: [https://route4me.io/docs/#remove-user-custom-field](https://route4me.io/docs/#remove-user-custom-field)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |

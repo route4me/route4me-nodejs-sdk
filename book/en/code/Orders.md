@@ -82,7 +82,7 @@ Create an Order
 Get an Order Details by ID or by UUID
 
 **See**: [https://route4me.io/docs/#get-an-order-details](https://route4me.io/docs/#get-an-order-details)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -96,7 +96,7 @@ Get an Order Details by ID or by UUID
 Get all the orders created under the specific Route4Me account by IDs or by UUIDs
 
 **See**: [https://route4me.io/docs/#get-orders-with-details](https://route4me.io/docs/#get-orders-with-details)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -110,7 +110,7 @@ Get all the orders created under the specific Route4Me account by IDs or by UUID
 Remove Orders by ID or by UUID
 
 **See**: [https://route4me.io/docs/#remove-an-order](https://route4me.io/docs/#remove-an-order)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -124,7 +124,7 @@ Remove Orders by ID or by UUID
 Update an Order by ID or by UUID
 
 **See**: [https://route4me.io/docs/#update-an-order](https://route4me.io/docs/#update-an-order)  
-**Since**: 1.0.30  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |

@@ -12,7 +12,7 @@ class OrdersV5 {
 	 * Constructor
 	 *
 	 * @see {@link https://route4me.io/docs/#orders}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 * @private
 	 *
 	 * @param  {RequestManager} requestManager - Request Manager
@@ -46,7 +46,7 @@ class OrdersV5 {
 		};
 	 *
 	 * @see {@link https://route4me.io/docs/#create-an-order}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {Object}   data								- Parameters of order to create
 	 * @param {Number}   [data.member_id]					- Order owner ID.
@@ -126,7 +126,7 @@ class OrdersV5 {
 	 * Show single order by its id
 	 *
 	 * @see {@link https://route4me.io/docs/#get-an-order-details}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {String}   id			- Order ID, HEX-String
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Order>} [callback]
@@ -152,7 +152,7 @@ class OrdersV5 {
 	 * };
 	 *
 	 * @see {@link https://route4me.io/docs/#update-an-order}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {String}   id			- Order ID, HEX-String
 	 * @param {Object}   data		- Parameters of order to update, look for more
@@ -173,7 +173,7 @@ class OrdersV5 {
 	 * Delete (soft) single order by its id
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-an-order}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {String}   id			- Order ID, HEX-String
 	 * @param {module:route4me-node~RequestCallback} [callback]
@@ -201,7 +201,7 @@ class OrdersV5 {
 		};
 	 *
 	 * @see {@link https://route4me.io/docs/#search-orders}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {Object}   data							- Search and filter parameters.
 	 * @param {String[]} [data.order_ids]				- Array of order ids, HEX-Strings.
@@ -325,7 +325,7 @@ class OrdersV5 {
 	 * Update the batch of orders (asynchronous, by filters)
 	 *
 	 * @see {@link https://route4me.io/docs/#update-an-order}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {Object}   params				- Batch update parameters.
 	 * @param {Object}   params.data		- Order values for batch update, look for more
@@ -352,7 +352,7 @@ class OrdersV5 {
 	 * Delete the batch of orders
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-an-order}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {String}   orderIds			- Array of Order IDs, HEX-Strings.
 	 * @param {module:route4me-node~RequestCallback} [callback]
@@ -370,7 +370,7 @@ class OrdersV5 {
 	 * Update the batch of orders by ids
 	 *
 	 * @see {@link https://route4me.io/docs/#update-an-order}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {Object}   orderIds			- Array of Order IDs, HEX-Strings.
 	 * @param {Object}   data				- Order values for batch update, look for more
@@ -394,7 +394,7 @@ class OrdersV5 {
 	 * Create the batch of orders
 	 *
 	 * @see {@link https://route4me.io/docs/#update-an-order}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {Object[]} orders				- Array of Order values for batch create,
 	 * look for more information in create()
@@ -414,7 +414,7 @@ class OrdersV5 {
 	 * Get a list of Order Custom Fields
 	 *
 	 * @see {@link https://route4me.io/docs/#get-an-order-details}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Response>} [callback]
 	 */
@@ -450,7 +450,7 @@ class OrdersV5 {
 		}
 	 *
 	 * @see {@link https://route4me.io/docs/#create-an-order-custom-fields}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {Object}   data								- Params of Order custom field
 	 * @param {String}   data.order_custom_field_name		- Name, max 128 characters.
@@ -474,7 +474,7 @@ class OrdersV5 {
 	 * Update one Order Custom Fields
 	 *
 	 * @see {@link https://route4me.io/docs/#update-an-order-custom-fields}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {Number}   uuid								- OrderCustomField ID, HEX-string.
 	 * @param {Object}   data								- Params of Order custom field
@@ -498,7 +498,7 @@ class OrdersV5 {
 	 * Remove an Order Custom Fields
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-user-custom-field}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {Number}   uuid								- OrderCustomField ID, HEX-string.
 	 *

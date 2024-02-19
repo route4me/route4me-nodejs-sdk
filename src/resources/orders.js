@@ -117,7 +117,7 @@ class Orders {
 	 * Get an Order Details by ID or by UUID
 	 *
 	 * @see {@link https://route4me.io/docs/#get-an-order-details}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {number|string} id - Order ID as number or order UUID as HEX-string
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Order>} [callback]
@@ -137,7 +137,7 @@ class Orders {
 	 * Get all the orders created under the specific Route4Me account by IDs or by UUIDs
 	 *
 	 * @see {@link https://route4me.io/docs/#get-orders-with-details}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {number|string|Array<number>|Array<string>} [ids] - Order IDs or order UUIDs in one
 	 * of the following form:
@@ -182,7 +182,7 @@ class Orders {
 	 * Remove Orders by ID or by UUID
 	 *
 	 * @see {@link https://route4me.io/docs/#remove-an-order}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {number|string|Array<number>|Array<string>}  ids - Order IDs or order UUIDs in one
 	 * of the following form:
@@ -215,7 +215,7 @@ class Orders {
 	 * Update an Order by ID or by UUID
 	 *
 	 * @see {@link https://route4me.io/docs/#update-an-order}
-	 * @since 1.0.30
+	 * @since 1.1.0
 	 *
 	 * @param {number|string}           id   - Order ID as number or order UUID as HEX-string
 	 * @param {jsonschema:Orders.Order} data - Order data
