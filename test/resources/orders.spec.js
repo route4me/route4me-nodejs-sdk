@@ -76,38 +76,71 @@ describe(helper.toSuiteName(__filename), () => {
 		})
 
 		describe("get", () => {
-			beforeEach(() => {
-				saMock.get("*",  (r) => {
-					req = r
-					req.method = "GET"
-					return { body: {} }
+			describe("order by ID as number", () => {
+				beforeEach(() => {
+					saMock.get("*",  (r) => {
+						req = r
+						req.method = "GET"
+						return { body: {} }
+					})
+				})
+
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				const orderId = 7205711
+
+				it("should call route4me", (done) => {
+					resource.get(orderId, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "order_id": "7205711" },
+							null
+						)
+						done()
+					})
 				})
 			})
 
-			afterEach(() => {
-				saMock.clearRoutes()
-			})
+			describe("order by UUID as string", () => {
+				beforeEach(() => {
+					saMock.get("*",  (r) => {
+						req = r
+						req.method = "GET"
+						return { body: {} }
+					})
+				})
 
-			const orderId = 7205711
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
 
-			it("should call route4me", (done) => {
-				resource.get(orderId, (err, res) => {
-					expect(err).not.exist
-					expect(res).exist
+				const orderId = "AAAAACB6FBA530A80000000000DDDDDD"
 
-					helper.expectRequest(req,
-						"GET",
-						route4meClient.baseUrl() + "/api.v4/order.php",
-						{ "order_id": "7205711" },
-						null
-					)
-					done()
+				it("should call route4me", (done) => {
+					resource.get(orderId, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "order_id": "AAAAACB6FBA530A80000000000DDDDDD" },
+							null
+						)
+						done()
+					})
 				})
 			})
 		})
 
 		describe("list", () => {
-			describe("for one item", () => {
+			describe("for one item ID as string", () => {
 				beforeEach(() => {
 					saMock.get("*",  (r) => {
 						req = r
@@ -140,7 +173,40 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 
-			describe("for N items as string", () => {
+			describe("for one item ID as number", () => {
+				beforeEach(() => {
+					saMock.get("*",  (r) => {
+						req = r
+						req.method = "GET"
+						return { body: { "order_id": 7205711 } }
+					})
+				})
+
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				const orderIds = 7205711
+
+				it("should call route4me and receive an array", (done) => {
+					resource.list(orderIds, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "order_id": "7205711" },
+							null
+						)
+
+						expect(res).is.an("array")
+						done()
+					})
+				})
+			})
+
+			describe("for N items ID as CSV-string", () => {
 				beforeEach(() => {
 					saMock.get("*",  (r) => {
 						req = r
@@ -163,6 +229,39 @@ describe(helper.toSuiteName(__filename), () => {
 						helper.expectRequest(req,
 							"GET",
 							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "order_id": "7205711, 7205712" },
+							null
+						)
+
+						expect(res).is.an("array")
+						done()
+					})
+				})
+			})
+
+			describe("for N items ID as Array of string", () => {
+				beforeEach(() => {
+					saMock.get("*",  (r) => {
+						req = r
+						req.method = "GET"
+						return { body: { "results": [{ }, { }], "total": 2 } }
+					})
+				})
+
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				const orderIds = ["7205711", "7205712"]
+
+				it("should call route4me and receive an array", (done) => {
+					resource.list(orderIds, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/order.php",
 							{ "order_id": "7205711,7205712" },
 							null
 						)
@@ -173,7 +272,7 @@ describe(helper.toSuiteName(__filename), () => {
 				})
 			})
 
-			describe("for N items as Array", () => {
+			describe("for N items ID as Array on number", () => {
 				beforeEach(() => {
 					saMock.get("*",  (r) => {
 						req = r
@@ -197,6 +296,105 @@ describe(helper.toSuiteName(__filename), () => {
 							"GET",
 							route4meClient.baseUrl() + "/api.v4/order.php",
 							{ "order_id": "7205711,7205712" },
+							null
+						)
+
+						expect(res).is.an("array")
+						done()
+					})
+				})
+			})
+
+			describe("for one item UUID as string", () => {
+				beforeEach(() => {
+					saMock.get("*",  (r) => {
+						req = r
+						req.method = "GET"
+						return { body: { "order_id": 7205711 } }
+					})
+				})
+
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				const orderIds = "AAAAACB6FBA530A80000000000DDDDDD"
+
+				it("should call route4me and receive an array", (done) => {
+					resource.list(orderIds, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "order_id": "AAAAACB6FBA530A80000000000DDDDDD" },
+							null
+						)
+
+						expect(res).is.an("array")
+						done()
+					})
+				})
+			})
+
+			describe("for N items UUID as CSV-string", () => {
+				beforeEach(() => {
+					saMock.get("*",  (r) => {
+						req = r
+						req.method = "GET"
+						return { body: { "results": [{ }, { }], "total": 2 } }
+					})
+				})
+
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				const orderIds = "AAAAACB6FBA530A80000000000DDDDDD, AAAAABBBBBA530A80000000000DDDDDD"
+
+				it("should call route4me and receive an array", (done) => {
+					resource.list(orderIds, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "order_id": "AAAAACB6FBA530A80000000000DDDDDD, AAAAABBBBBA530A80000000000DDDDDD" },
+							null
+						)
+
+						expect(res).is.an("array")
+						done()
+					})
+				})
+			})
+
+			describe("for N items UUID as Array of string", () => {
+				beforeEach(() => {
+					saMock.get("*",  (r) => {
+						req = r
+						req.method = "GET"
+						return { body: { "results": [{ }, { }], "total": 2 } }
+					})
+				})
+
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				const orderIds = ["AAAAACB6FBA530A80000000000DDDDDD", "AAAAABBBBBA530A80000000000DDDDDD"]
+
+				it("should call route4me and receive an array", (done) => {
+					resource.list(orderIds, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"GET",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "order_id": "AAAAACB6FBA530A80000000000DDDDDD,AAAAABBBBBA530A80000000000DDDDDD" },
 							null
 						)
 
@@ -365,78 +563,252 @@ describe(helper.toSuiteName(__filename), () => {
 		})
 
 		describe("update", () => {
-			beforeEach(() => {
-				saMock.put("*",  (r) => {
-					req = r
-					req.method = "PUT"
-					return { body: { } }
+			describe("order by ID as number", () => {
+				beforeEach(() => {
+					saMock.put("*",  (r) => {
+						req = r
+						req.method = "PUT"
+						return { body: { } }
+					})
+				})
+
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				const orderId = 7205711
+				const data = {
+					"order_id": "34",
+					"address_2": "Lviv",
+					"EXT_FIELD_custom_data": [
+						{
+							"customer_no": 11
+						}
+					],
+					"EXT_FIELD_phone": "032268593"
+				}
+
+				it("should call route4me", (done) => {
+					resource.update(orderId, data, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"PUT",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "redirect": "0" },
+							{
+								"order_id": "7205711",
+								"address_2": "Lviv",
+								"EXT_FIELD_custom_data": [{ "customer_no": 11 }],
+								"EXT_FIELD_phone": "032268593"
+							}
+						)
+						done()
+					})
 				})
 			})
 
-			afterEach(() => {
-				saMock.clearRoutes()
-			})
+			describe("order by UUID as string", () => {
+				beforeEach(() => {
+					saMock.put("*",  (r) => {
+						req = r
+						req.method = "PUT"
+						return { body: { } }
+					})
+				})
 
-			const orderId = "7205711"
-			const data = {
-				"order_id": "34",
-				"address_2": "Lviv",
-				"EXT_FIELD_custom_data": [
-					{
-						"customer_no": 11
-					}
-				],
-				"EXT_FIELD_phone": "032268593"
-			}
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
 
-			it("should call route4me", (done) => {
-				resource.update(orderId, data, (err, res) => {
-					expect(err).not.exist
-					expect(res).exist
-
-					helper.expectRequest(req,
-						"PUT",
-						route4meClient.baseUrl() + "/api.v4/order.php",
-						{ "redirect": "0" },
+				const orderId = "AAAAACB6FBA530A80000000000DDDDDD"
+				const data = {
+					"order_id": "34",
+					"address_2": "Lviv",
+					"EXT_FIELD_custom_data": [
 						{
-							"order_id": 7205711,
-							"address_2": "Lviv",
-							"EXT_FIELD_custom_data": [{ "customer_no": 11 }],
-							"EXT_FIELD_phone": "032268593"
+							"customer_no": 11
 						}
-					)
-					done()
+					],
+					"EXT_FIELD_phone": "032268593"
+				}
+
+				it("should call route4me", (done) => {
+					resource.update(orderId, data, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"PUT",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "redirect": "0" },
+							{
+								"order_id": "AAAAACB6FBA530A80000000000DDDDDD",
+								"address_2": "Lviv",
+								"EXT_FIELD_custom_data": [{ "customer_no": 11 }],
+								"EXT_FIELD_phone": "032268593"
+							}
+						)
+						done()
+					})
 				})
 			})
 		})
 
 		describe("remove", () => {
-			beforeEach(() => {
-				saMock.del("*",  (r) => {
-					req = r
-					req.method = "DELETE"
-					return { body: { "status": true } }
+			describe("order by ID as number", () => {
+				beforeEach(() => {
+					saMock.del("*",  (r) => {
+						req = r
+						req.method = "DELETE"
+						return { body: { "status": true } }
+					})
+				})
+
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				const orderIds = 7205711
+
+				it("should call route4me", (done) => {
+					resource.remove(orderIds, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"DELETE",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "redirect": "0" },
+							{ "order_ids": ["7205711"] }
+						)
+						done()
+					})
 				})
 			})
 
-			afterEach(() => {
-				saMock.clearRoutes()
+			describe("order by ID as array of numbers", () => {
+				beforeEach(() => {
+					saMock.del("*",  (r) => {
+						req = r
+						req.method = "DELETE"
+						return { body: { "status": true } }
+					})
+				})
+
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				const orderIds = [7205711 , 7205713]
+
+				it("should call route4me", (done) => {
+					resource.remove(orderIds, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"DELETE",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "redirect": "0" },
+							{ "order_ids": ["7205711", "7205713"] }
+						)
+						done()
+					})
+				})
 			})
 
-			const orderIds = "7205711 , 7205713"
+			describe("order by UUID as string", () => {
+				beforeEach(() => {
+					saMock.del("*",  (r) => {
+						req = r
+						req.method = "DELETE"
+						return { body: { "status": true } }
+					})
+				})
 
-			it("should call route4me", (done) => {
-				resource.remove(orderIds, (err, res) => {
-					expect(err).not.exist
-					expect(res).exist
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
 
-					helper.expectRequest(req,
-						"DELETE",
-						route4meClient.baseUrl() + "/api.v4/order.php",
-						{ "redirect": "0" },
-						{ "order_ids": [7205711, 7205713] }
-					)
-					done()
+				const orderIds = "AAAAACB6FBA530A80000000000DDDDDD"
+
+				it("should call route4me", (done) => {
+					resource.remove(orderIds, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"DELETE",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "redirect": "0" },
+							{ "order_ids": ["AAAAACB6FBA530A80000000000DDDDDD"] }
+						)
+						done()
+					})
+				})
+			})
+
+			describe("order by UUID as array of string", () => {
+				beforeEach(() => {
+					saMock.del("*",  (r) => {
+						req = r
+						req.method = "DELETE"
+						return { body: { "status": true } }
+					})
+				})
+
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				const orderIds = ["AAAAACB6FBA530A80000000000DDDDDD" , "AAAAABBBBBA530A80000000000DDDDDD"]
+
+				it("should call route4me", (done) => {
+					resource.remove(orderIds, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"DELETE",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "redirect": "0" },
+							{ "order_ids": ["AAAAACB6FBA530A80000000000DDDDDD", "AAAAABBBBBA530A80000000000DDDDDD"] }
+						)
+						done()
+					})
+				})
+			})
+
+			describe("order by UUID as CSV-string", () => {
+				beforeEach(() => {
+					saMock.del("*",  (r) => {
+						req = r
+						req.method = "DELETE"
+						return { body: { "status": true } }
+					})
+				})
+
+				afterEach(() => {
+					saMock.clearRoutes()
+				})
+
+				const orderIds = "AAAAACB6FBA530A80000000000DDDDDD, AAAAABBBBBA530A80000000000DDDDDD"
+
+				it("should call route4me", (done) => {
+					resource.remove(orderIds, (err, res) => {
+						expect(err).not.exist
+						expect(res).exist
+
+						helper.expectRequest(req,
+							"DELETE",
+							route4meClient.baseUrl() + "/api.v4/order.php",
+							{ "redirect": "0" },
+							{ "order_ids": ["AAAAACB6FBA530A80000000000DDDDDD", "AAAAABBBBBA530A80000000000DDDDDD"] }
+						)
+						done()
+					})
 				})
 			})
 		})

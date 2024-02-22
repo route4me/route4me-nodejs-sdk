@@ -79,56 +79,56 @@ Create an Order
 
 ### orders.get(id, [callback])
 
-Get an Order Details
+Get an Order Details by ID or by UUID
 
 **See**: [https://route4me.io/docs/#get-an-order-details](https://route4me.io/docs/#get-an-order-details)  
-**Since**: 0.1.11  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| id | <code>number</code> | Order ID |
+| id | <code>number</code> \| <code>string</code> | Order ID as number or order UUID as HEX-string |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Order&gt;</code> |  |
 
 <a id="Orders+list" name="Orders+list"></a>
 
 ### orders.list([ids], [callback])
 
-Get all the orders created under the specific Route4Me account
+Get all the orders created under the specific Route4Me account by IDs or by UUIDs
 
 **See**: [https://route4me.io/docs/#get-orders-with-details](https://route4me.io/docs/#get-orders-with-details)  
-**Since**: 0.1.11  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [ids] | <code>number</code> \| <code>string</code> \| <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;string&gt;</code> | Order IDs in one of the following form: * CSV-string * one ID as string * one ID as number * array of strings * array of numbers If you want to load all Orders: * **Don't pass** this parameter * **OR** pass `ids=undefined` * **OR** pass `ids=false` |
+| [ids] | <code>number</code> \| <code>string</code> \| <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;string&gt;</code> | Order IDs or order UUIDs in one of the following form: * one UUID as HEX-string * UUIDs as CSV-HEX-string * UUIDs as array of HEX-strings * one ID as number * IDs as array of numbers If you want to load all Orders: * **Don't pass** this parameter * **OR** pass `ids=undefined` * **OR** pass `ids=false` |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Orders&gt;</code> | [callback] |
 
 <a id="Orders+remove" name="Orders+remove"></a>
 
 ### orders.remove(ids, [callback])
 
-Remove an Order
+Remove Orders by ID or by UUID
 
 **See**: [https://route4me.io/docs/#remove-an-order](https://route4me.io/docs/#remove-an-order)  
-**Since**: 0.1.11  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| ids | <code>number</code> \| <code>string</code> \| <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;string&gt;</code> | Order ID/IDs to remove in one of the following form: * CSV-string * one ID as string * one ID as number * array of strings * array of numbers |
+| ids | <code>number</code> \| <code>string</code> \| <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;string&gt;</code> | Order IDs or order UUIDs in one of the following form: * one UUID as HEX-string * UUIDs as CSV-HEX-string * UUIDs as array of HEX-strings * one ID as number * IDs as array of numbers |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 
 <a id="Orders+update" name="Orders+update"></a>
 
 ### orders.update(id, data, [callback])
 
-Update an Order
+Update an Order by ID or by UUID
 
 **See**: [https://route4me.io/docs/#update-an-order](https://route4me.io/docs/#update-an-order)  
-**Since**: 0.1.11  
+**Since**: 1.1.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| id | <code>number</code> | Order ID |
+| id | <code>number</code> \| <code>string</code> | Order ID as number or order UUID as HEX-string |
 | data | <code>jsonschema:Orders.Order</code> | Order data |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Order&gt;</code> |  |
 
