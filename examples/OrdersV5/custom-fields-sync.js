@@ -28,7 +28,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 
 			try {
 				// create CustomUserField
-				const custom_field = await route4me.OrdersV5.createOrderCustomFields(data);
+				const custom_field = await route4me.OrdersV5.createOrderCustomField(data);
 				expect(custom_field).exist
 
 				ocf_uuid = custom_field.data.order_custom_field_uuid;
@@ -45,11 +45,11 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 					// update CustomUserFields
 					const { order_custom_field_uuid, ...update_ocf } = found_res;
 					update_ocf.order_custom_field_label = "Custom Field 16";
-					const update_field = await route4me.OrdersV5.updateOrderCustomFields(ocf_uuid, update_ocf);
+					const update_field = await route4me.OrdersV5.updateOrderCustomField(ocf_uuid, update_ocf);
 					console.log(`Update CustomUserField label is '${update_field.data.order_custom_field_label}'`);
 		
 					// delete CustomUserFields
-					await route4me.OrdersV5.removeOrderCustomFields(ocf_uuid);
+					await route4me.OrdersV5.removeOrderCustomField(ocf_uuid);
 					console.log(`CustomUserField with uuid=${ocf_uuid} was deleted successful.`);
 				} else {
 					console.log(`CustomUserField with uuid ${ocf_uuid} not found.'`);
@@ -61,7 +61,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 		
 				if(ocf_uuid) {
 					try {
-						await route4me.OrdersV5.removeOrderCustomFields(ocf_uuid);
+						await route4me.OrdersV5.removeOrderCustomField(ocf_uuid);
 						console.log(`CustomUserField with uuid=${ocf_uuid} was cleaned up successful.`);
 					}
 					catch(err) {

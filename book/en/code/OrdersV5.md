@@ -11,7 +11,7 @@ Orders facility
 
 * [OrdersV5](#OrdersV5) ℗
     * [new OrdersV5(requestManager)](#new_OrdersV5_new)
-    * [.create(data, [date_scheduled_for], [callback])](#OrdersV5+create)
+    * [.create(data, [callback])](#OrdersV5+create)
     * [.get(id, [callback])](#OrdersV5+get)
     * [.update(id, data, [callback])](#OrdersV5+update)
     * [.remove(id, [callback])](#OrdersV5+remove)
@@ -21,9 +21,9 @@ Orders facility
     * [.batchUpdate(orderIds, data, [callback])](#OrdersV5+batchUpdate)
     * [.batchCreate(orders, [callback])](#OrdersV5+batchCreate)
     * [.getOrderCustomFields([callback])](#OrdersV5+getOrderCustomFields)
-    * [.createOrderCustomFields(data, [callback])](#OrdersV5+createOrderCustomFields)
-    * [.updateOrderCustomFields(uuid, data, [callback])](#OrdersV5+updateOrderCustomFields)
-    * [.removeOrderCustomFields(uuid, [callback])](#OrdersV5+removeOrderCustomFields)
+    * [.createOrderCustomField(data, [callback])](#OrdersV5+createOrderCustomField)
+    * [.updateOrderCustomField(uuid, data, [callback])](#OrdersV5+updateOrderCustomField)
+    * [.removeOrderCustomField(uuid, [callback])](#OrdersV5+removeOrderCustomField)
 
 <a id="new_OrdersV5_new" name="new_OrdersV5_new"></a>
 
@@ -39,7 +39,7 @@ Constructor
 
 <a id="OrdersV5+create" name="OrdersV5+create"></a>
 
-### ordersV5.create(data, [date_scheduled_for], [callback])
+### ordersV5.create(data, [callback])
 
 Create single order
 
@@ -63,7 +63,7 @@ Create single order
 | data.curbside_geo | <code>Object</code> | Curbside GPS coords of address. |
 | [data.curbside_geo.lat] | <code>Number</code> | Curbside latitude. |
 | [data.curbside_geo.lng] | <code>Number</code> | Curbside longitude. |
-| [date_scheduled_for] | <code>String</code> | Date scheduled. Possible formats: YY-MM-DD, YYMMDD, ISO 8601 |
+| [data.date_scheduled_for] | <code>String</code> | Date scheduled. Possible formats: YY-MM-DD, YYMMDD, ISO 8601 |
 | [data.order_status_id] | <code>Number</code> | Order status ID. |
 | [data.is_pending] | <code>Boolean</code> | If true, the order is pending. |
 | [data.is_accepted] | <code>Boolean</code> | If true, the order is accepted. |
@@ -189,7 +189,7 @@ Search orders in ElasticSearch storage or in Spanner database
 | data | <code>Object</code> |  | Search and filter parameters. |
 | [data.order_ids] | <code>Array.&lt;String&gt;</code> |  | Array of order ids, HEX-Strings. |
 | data.return_provided_fields_as_map | <code>Boolean</code> |  |  |
-| data.orderBy | <code>Array.&lt;Object&gt;</code> |  | Search and filter parameters. |
+| data.orderBy | <code>Array.&lt;Object&gt;</code> |  | Sort and direction parameters. |
 | orderBy.0 | <code>String</code> |  | The name of the sort field, this is one of 'address_alias', 'first_name', 'last_name', 'phone', 'is_pending', 'is_validated', 'is_accepted', 'is_completed', 'scheduled_for', 'day_added' |
 | [orderBy.1] | <code>String</code> | <code>&#x27;asc&#x27;</code> | Sorting direction, this is one of 'asc', 'ASC', 'desc', 'DESC' |
 | data.limit | <code>Number</code> |  | = 30				- The number of orders per page. |
@@ -284,7 +284,7 @@ Delete the batch of orders
 
 | Param | Type | Description |
 | --- | --- | --- |
-| orderIds | <code>String</code> | Array of Order IDs, HEX-Strings. |
+| orderIds | <code>Array.&lt;String&gt;</code> | Array of Order IDs, HEX-Strings. |
 | [callback] | <code>module:route4me-node~RequestCallback</code> |  |
 
 <a id="OrdersV5+batchUpdate" name="OrdersV5+batchUpdate"></a>
@@ -298,7 +298,7 @@ Update the batch of orders by ids
 
 | Param | Type | Description |
 | --- | --- | --- |
-| orderIds | <code>Object</code> | Array of Order IDs, HEX-Strings. |
+| orderIds | <code>Array.&lt;String&gt;</code> | Array of Order IDs, HEX-Strings. |
 | data | <code>Object</code> | Order values for batch update, look for more information in create() |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.List&gt;</code> |  |
 
@@ -329,9 +329,9 @@ Get a list of Order Custom Fields
 | --- | --- |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Response&gt;</code> | 
 
-<a id="OrdersV5+createOrderCustomFields" name="OrdersV5+createOrderCustomFields"></a>
+<a id="OrdersV5+createOrderCustomField" name="OrdersV5+createOrderCustomField"></a>
 
-### ordersV5.createOrderCustomFields(data, [callback])
+### ordersV5.createOrderCustomField(data, [callback])
 
 Create one Order Custom Field
 
@@ -368,9 +368,9 @@ Create one Order Custom Field
 			}
 		}
 ```
-<a id="OrdersV5+updateOrderCustomFields" name="OrdersV5+updateOrderCustomFields"></a>
+<a id="OrdersV5+updateOrderCustomField" name="OrdersV5+updateOrderCustomField"></a>
 
-### ordersV5.updateOrderCustomFields(uuid, data, [callback])
+### ordersV5.updateOrderCustomField(uuid, data, [callback])
 
 Update one Order Custom Fields
 
@@ -386,9 +386,9 @@ Update one Order Custom Fields
 | data.order_custom_field_type_info | <code>Object</code> | Info, as JSON Object max 4096 characters. |
 | [callback] | <code>module:route4me-node~RequestCallback.&lt;jsonschema:Orders.Response&gt;</code> |  |
 
-<a id="OrdersV5+removeOrderCustomFields" name="OrdersV5+removeOrderCustomFields"></a>
+<a id="OrdersV5+removeOrderCustomField" name="OrdersV5+removeOrderCustomField"></a>
 
-### ordersV5.removeOrderCustomFields(uuid, [callback])
+### ordersV5.removeOrderCustomField(uuid, [callback])
 
 Remove an Order Custom Fields
 

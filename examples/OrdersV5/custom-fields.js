@@ -19,7 +19,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 			expect(err).exist
 		
 			if(cleanup_uuid) {
-				route4me.OrdersV5.removeOrderCustomFields(cleanup_uuid, (err, data) => {
+				route4me.OrdersV5.removeOrderCustomField(cleanup_uuid, (err, data) => {
 					if(err) {
 						console.log("Error: cleanup, " + err);
 						return;
@@ -41,7 +41,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 		};
 				
 		// create CustomUserField
-		route4me.OrdersV5.createOrderCustomFields(data, (err, data) => {
+		route4me.OrdersV5.createOrderCustomField(data, (err, data) => {
 			debug("error  ", err)
 			expect(err).is.null
 			expect(res).exist
@@ -69,7 +69,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 					// update CustomUserFields
 					const { order_custom_field_uuid, ...update_ocf } = found_res;
 					update_ocf.order_custom_field_label = "Custom Field 16";
-					route4me.OrdersV5.updateOrderCustomFields(ocf_uuid, update_ocf, (err, data) => {
+					route4me.OrdersV5.updateOrderCustomField(ocf_uuid, update_ocf, (err, data) => {
 						if(err) {
 							cleanup(err, ocf_uuid);
 							return;
@@ -77,7 +77,7 @@ helper.describeIntegration(helper.toSuiteName(__filename), function T() {
 						console.log(`Update CustomUserField label is '${data.data.order_custom_field_label}'`);
 
 						// delete CustomUserFields
-						route4me.OrdersV5.removeOrderCustomFields(ocf_uuid, (err, data) => {
+						route4me.OrdersV5.removeOrderCustomField(ocf_uuid, (err, data) => {
 							if(err) {
 								cleanup(err);
 								return;

@@ -63,7 +63,7 @@ class OrdersV5 {
 	 * @param {Object}   data.curbside_geo					- Curbside GPS coords of address.
 	 * @param {Number}   [data.curbside_geo.lat]			- Curbside latitude.
 	 * @param {Number}   [data.curbside_geo.lng]			- Curbside longitude.
-	 * @param {String}   [date_scheduled_for]				- Date scheduled.
+	 * @param {String}   [data.date_scheduled_for]			- Date scheduled.
 	 * Possible formats: YY-MM-DD, YYMMDD, ISO 8601
 	 *
 	 * @param {Number}   [data.order_status_id]				- Order status ID.
@@ -206,7 +206,7 @@ class OrdersV5 {
 	 * @param {Object}   data							- Search and filter parameters.
 	 * @param {String[]} [data.order_ids]				- Array of order ids, HEX-Strings.
 	 * @param {Boolean}  data.return_provided_fields_as_map
-	 * @param {Object[]} data.orderBy					- Search and filter parameters.
+	 * @param {Object[]} data.orderBy					- Sort and direction parameters.
 	 * @param {String}   orderBy.0						- The name of the sort field, this is
 	 * one of 'address_alias', 'first_name', 'last_name', 'phone', 'is_pending', 'is_validated',
 	 * 'is_accepted', 'is_completed', 'scheduled_for', 'day_added'
@@ -354,7 +354,7 @@ class OrdersV5 {
 	 * @see {@link https://route4me.io/docs/#remove-an-order}
 	 * @since 1.1.0
 	 *
-	 * @param {String}   orderIds			- Array of Order IDs, HEX-Strings.
+	 * @param {String[]}   orderIds			- Array of Order IDs, HEX-Strings.
 	 * @param {module:route4me-node~RequestCallback} [callback]
 	 */
 	batchRemove(orderIds, callback) {
@@ -372,7 +372,7 @@ class OrdersV5 {
 	 * @see {@link https://route4me.io/docs/#update-an-order}
 	 * @since 1.1.0
 	 *
-	 * @param {Object}   orderIds			- Array of Order IDs, HEX-Strings.
+	 * @param {String[]} orderIds			- Array of Order IDs, HEX-Strings.
 	 * @param {Object}   data				- Order values for batch update, look for more
 	 * information in create()
 	 *
@@ -461,7 +461,7 @@ class OrdersV5 {
 	 *
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Response>} [callback]
 	 */
-	createOrderCustomFields(data, callback) {
+	createOrderCustomField(data, callback) {
 		return this.r._makeRequest5({
 			method: "POST",
 			path: "/api/v5.0/orders-platform/order-custom-user-fields",
@@ -485,7 +485,7 @@ class OrdersV5 {
 	 *
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Response>} [callback]
 	 */
-	updateOrderCustomFields(uuid, data, callback) {
+	updateOrderCustomField(uuid, data, callback) {
 		return this.r._makeRequest5({
 			method: "PUT",
 			path: `/api/v5.0/orders-platform/order-custom-user-fields/${uuid}`,
@@ -504,7 +504,7 @@ class OrdersV5 {
 	 *
 	 * @param {module:route4me-node~RequestCallback<jsonschema:Orders.Response>} [callback]
 	 */
-	removeOrderCustomFields(uuid, callback) {
+	removeOrderCustomField(uuid, callback) {
 		return this.r._makeRequest5({
 			method: "DELETE",
 			path: `/api/v5.0/orders-platform/order-custom-user-fields/${uuid}`,

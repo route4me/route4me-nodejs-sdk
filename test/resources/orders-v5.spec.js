@@ -422,7 +422,7 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
-		describe("createOrderCustomFields", () => {
+		describe("createOrderCustomField", () => {
 			beforeEach(() => {
 				saMock.post("*",  (r) => {
 					req = r
@@ -442,7 +442,7 @@ describe(helper.toSuiteName(__filename), () => {
 				"order_custom_field_type_info": { "short_label": "cFl4" }
 			}			
 			it(" orderCustomFields should call route4me", (done) => {
-				resource.createOrderCustomFields(data, (err, res) => {
+				resource.createOrderCustomField(data, (err, res) => {
 					expect(err).not.exist
 					expect(res).is.not.null
 
@@ -490,7 +490,7 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
-		describe("updateOrderCustomFields", () => {
+		describe("updateOrderCustomField", () => {
 			beforeEach(() => {
 				saMock.put("*",  (r) => {
 					req = r
@@ -510,7 +510,7 @@ describe(helper.toSuiteName(__filename), () => {
 			}
 
 			it("orderCustomFields should call route4me", (done) => {
-				resource.updateOrderCustomFields(uuid, data, (err, res) => {
+				resource.updateOrderCustomField(uuid, data, (err, res) => {
 					expect(err).not.exist
 					expect(res).is.not.null
 
@@ -528,7 +528,7 @@ describe(helper.toSuiteName(__filename), () => {
 			})
 		})
 
-		describe("removeOrderCustomFields", () => {
+		describe("removeOrderCustomField", () => {
 			beforeEach(() => {
 				saMock.del("*",  (r) => {
 					req = r
@@ -543,8 +543,8 @@ describe(helper.toSuiteName(__filename), () => {
 
 			const uuid = "CCCCCA90F77841C693C656123F346AAA"
 
-			it("removeOrderCustomFields should call route4me", (done) => {
-				resource.removeOrderCustomFields(uuid, (err, res) => {
+			it("orderCustomFields should call route4me", (done) => {
+				resource.removeOrderCustomField(uuid, (err, res) => {
 					expect(err).not.exist
 					expect(res).is.not.null
 
