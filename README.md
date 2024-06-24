@@ -1,5 +1,4 @@
-Access Route4Me's logistics-as-a-service API using our Node.js SDK
--------------------
+# Route4Me Node.js SDK
 
 [![CircleCI](https://circleci.com/gh/route4me/route4me-nodejs-sdk/tree/master.svg?style=svg)](https://circleci.com/gh/route4me/route4me-nodejs-sdk/tree/master)
 [![npm version](https://img.shields.io/npm/v/route4me-nodejs-sdk.svg)][NPM]
