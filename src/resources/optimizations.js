@@ -148,6 +148,7 @@ class Optimizations {
 	 * @param {string} [props.parameters.advanced_constraints.group]								- Group name of the advanced constraints.
 	 *
 	 * @param {object[]} [props.depots]								- A valid array of Address objects of Depots.
+	 * @param {object}   [props.optimization_profile_id]			- A valid ID of optimization profile.
 	 * @param {object[]} props.addresses							- A valid array of Address objects.
 	 * Here are some required and useful properties of the Address object,
 	 * for full list of properties look at docs.

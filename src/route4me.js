@@ -14,6 +14,7 @@ const Geocoding            = require("./resources/geocoding")
 const Members              = require("./resources/members")
 const Notes                = require("./resources/notes")
 const Optimizations        = require("./resources/optimizations")
+const OptimizationProfiles = require("./resources/optimization-profiles")
 const Orders               = require("./resources/orders")
 const PodWorkflow          = require("./resources/proof-of-delivery-workflow")
 const Routes               = require("./resources/routes")
@@ -50,6 +51,7 @@ const RequestManager  = require("./request-manager")
  * * [Members             ]{@link Members}
  * * [Notes               ]{@link Notes}
  * * [Optimizations       ]{@link Optimizations}
+ * * [OptimizationProfiles]{@link OptimizationProfiles}
  * * [Orders              ]{@link Orders}
  * * [OrderCustomFields   ]{@link OrderCustomFields}
  * * [PodWorkflow         ]{@link PodWorkflow}
@@ -195,6 +197,12 @@ class Route4Me {
 		 * @type {Optimizations}
 		 */
 		this.Optimizations = new Optimizations(req)
+		/**
+		 * **OptimizationProfiles** related API calls
+		 * @type {OptimizationProfiles}
+		 * @since 1.2.0
+		 */
+		this.OptimizationProfiles = new OptimizationProfiles(req)
 		/**
 		 * **Orders** related API calls
 		 * @type {Orders}
