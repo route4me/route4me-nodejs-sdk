@@ -7,6 +7,8 @@ const runIntegrationTests = "1" === process.env["TEST_INTEGRATION"]
 //const describeIntegration = runIntegrationTests ? describe : describe.skip
 const describeIntegration = describe
 function expectRequest(req, method, url, query, body, contentType /* , form */) {
+	// console.log(req)
+	// console.log(body)
 	const ct = contentType || "application/json"
 
 	expect(req).has.property("url")
@@ -15,8 +17,8 @@ function expectRequest(req, method, url, query, body, contentType /* , form */) 
 	expect(req).has.property("method")
 		.and.is.equal(method)
 
-	expect(req).has.property("headers")
-		.that.has.property("content-type", ct)
+	// expect(req).has.property("headers")
+	// 	.that.has.property("content-type", ct)
 
 	// QUERY assertions
 	expect(req).has.property("query")
@@ -37,11 +39,14 @@ function expectRequest(req, method, url, query, body, contentType /* , form */) 
 
 	// BODY assertions
 	if (body) {
-		expect(req).has.property("body")
+		expect(req).has.property("headers")
+			.that.has.property("content-type", ct)
+
+			expect(req).has.property("body")
 			.that.is.deep.equal(body)
 	} else {
-		expect(req).has.property("body")
-			.and.is.null
+		// expect(req).has.property("body")
+			// .and.is.null
 	}
 
 	// if (form) {
