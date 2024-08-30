@@ -95,6 +95,7 @@ Main members of the instanse of `Route4Me` class:
 * [Members             ](Members)
 * [Notes               ](Notes)
 * [Optimizations       ](Optimizations)
+* [OptimizationProfiles](OptimizationProfiles)
 * [Orders              ](Orders)
 * [OrderCustomFields   ](OrderCustomFields)
 * [PodWorkflow         ](PodWorkflow)
@@ -139,6 +140,7 @@ For most use cases it is necessary:
         * [.Geocoding](#Route4Me+Geocoding) : <code>Geocoding</code>
         * [.Notes](#Route4Me+Notes) : <code>Notes</code>
         * [.Optimizations](#Route4Me+Optimizations) : <code>Optimizations</code>
+        * [.OptimizationProfiles](#Route4Me+OptimizationProfiles) : <code>OptimizationProfiles</code>
         * [.Orders](#Route4Me+Orders) : <code>Orders</code>
         * [.PodWorkflow](#Route4Me+PodWorkflow) : <code>PodWorkflow</code>
         * [.Routes](#Route4Me+Routes) : <code>Routes</code>
@@ -241,6 +243,13 @@ Create new API client
 
 **Optimizations** related API calls
 
+<a id="Route4Me+OptimizationProfiles" name="Route4Me+OptimizationProfiles"></a>
+
+### route4Me.OptimizationProfiles : <code>OptimizationProfiles</code>
+
+**OptimizationProfiles** related API calls
+
+**Since**: 1.2.0  
 <a id="Route4Me+Orders" name="Route4Me+Orders"></a>
 
 ### route4Me.Orders : <code>Orders</code>

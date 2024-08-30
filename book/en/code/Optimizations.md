@@ -98,6 +98,7 @@ Create a new optimization with Advanced constraints
 | [props.parameters.advanced_constraints.location_sequence_pattern.time] | <code>number</code> |  | Location service time |
 | [props.parameters.advanced_constraints.group] | <code>string</code> |  | Group name of the advanced constraints. |
 | [props.depots] | <code>Array.&lt;object&gt;</code> |  | A valid array of Address objects of Depots. |
+| [props.optimization_profile_id] | <code>object</code> |  | A valid ID of optimization profile. |
 | props.addresses | <code>Array.&lt;object&gt;</code> |  | A valid array of Address objects. Here are some required and useful properties of the Address object, for full list of properties look at docs. |
 | props.addresses.lat | <code>number</code> |  | Latitude. |
 | props.addresses.lng | <code>number</code> |  | Longitude. |

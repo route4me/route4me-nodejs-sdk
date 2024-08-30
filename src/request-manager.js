@@ -252,7 +252,7 @@ class RequestManager {
 		if (form) {
 			req.type("multipart/form-data")
 				.field(form)
-		} else {
+		} else if (body) {
 			req.type("application/json")
 				.send(body)
 		}
